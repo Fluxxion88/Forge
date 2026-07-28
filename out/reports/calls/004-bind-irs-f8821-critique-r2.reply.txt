@@ -1,0 +1,1 @@
+Reported 2 findings for round 2, page 0 of irs-f8821: a fabricated signature date (08/03/2026, unsupported by any estate fact) and clipped text in the item 3(d) "Specific Tax Matters" column across all three rows.

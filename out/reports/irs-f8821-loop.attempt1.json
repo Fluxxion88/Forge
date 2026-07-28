@@ -1,0 +1,44 @@
+{
+  "formId": "irs-f8821",
+  "estateId": "estate-05-in-formal-probate",
+  "converged": false,
+  "rounds": 2,
+  "elapsedSeconds": 532.8,
+  "modelCalls": 4,
+  "draft": "artifacts/bindings/irs-f8821.json",
+  "history": [
+    {
+      "round": 1,
+      "renders": [
+        "out/renders/irs-f8821/round-1-page-0.png"
+      ],
+      "deterministicFindings": [],
+      "modelFindings": [
+        {
+          "target": "Date (signature block)",
+          "problem": "Signature date 08/03/2026 has no supporting estate fact and is later than the current date, suggesting an invented value.",
+          "mustFix": true
+        },
+        {
+          "target": "Name and address (second designee)",
+          "problem": "Curtis Alan Reddick's address duplicates the suite number, showing '1450 W. Meade Road 210' followed by a redundant 'Suite 210' line.",
+          "mustFix": true
+        },
+        {
+          "target": "3d, Specific Tax Matters",
+          "problem": "Text in all three rows of the Specific Tax Matters column is truncated/clipped at the box edge (e.g. 'Final individual return of the dece').",
+          "mustFix": true
+        }
+      ],
+      "fieldsFilled": 28,
+      "fieldsEmpty": 11,
+      "diffFromPreviousRound": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          "topmostSubform[0].Page1[0].f1_15[0]"
+        ]
+      }
+    }
+  ]
+}

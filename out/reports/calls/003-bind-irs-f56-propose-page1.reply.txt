@@ -1,0 +1,277 @@
+```json
+{
+  "bindings": [
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].c2_1[0]",
+      "itemNumber": "6a",
+      "label": "Check this box if you are revoking or terminating all prior notices concerning fiduciary relationships on file with the Internal Revenue Service for the same tax matters and years or periods covered by this notice concerning fiduciary relationship",
+      "source": {"kind": "condition", "path": "form56.totalRevocation.revokeAllPriorNotices", "equals": true},
+      "format": "checkbox",
+      "onValue": "/1",
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].f2_01[0]",
+      "itemNumber": "6d",
+      "label": "Other. Describe:",
+      "source": {"kind": "path", "path": "form56.totalRevocation.reasonOtherDescription"},
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": "Renders blank whenever the estate has no other-reason description, which is harmless regardless of whether checkbox 6d ends up checked (see unbound entry for c2_2[2]).",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].c2_3[0]",
+      "itemNumber": "7a",
+      "label": "Check this box if you are revoking earlier notices concerning fiduciary relationships on file with the Internal Revenue Service for the same tax matters and years or periods covered by this notice concerning fiduciary relationship",
+      "source": {"kind": "condition", "path": "form56.partialRevocation.revokeEarlierNotices", "equals": true},
+      "format": "checkbox",
+      "onValue": "/1",
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].f2_02[0]",
+      "itemNumber": "7b",
+      "label": "Specify to whom granted, date, and address, including ZIP code.",
+      "source": {"kind": "path", "path": "form56.partialRevocation.grantedToDateAndAddress"},
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": "Estate schema stores this as one already-composed string (name/date/address), so a direct path bind is used rather than a template.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].c2_4[0]",
+      "itemNumber": "8",
+      "label": "Check this box if a new fiduciary or fiduciaries have been or will be substituted for the revoking or terminating fiduciary and specify the name(s) and address(es), including ZIP code(s), of the new fiduciary(ies)",
+      "source": {"kind": "condition", "path": "form56.substituteFiduciary.hasSubstitute", "equals": true},
+      "format": "checkbox",
+      "onValue": "/1",
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].f2_03[0]",
+      "itemNumber": "8",
+      "label": "specify the name(s) and address(es), including ZIP code(s), of the new fiduciary(ies)",
+      "source": {"kind": "path", "path": "form56.substituteFiduciary.namesAndAddresses"},
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": "Already a single composed string in the estate schema; direct path bind.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].f2_04[0]",
+      "itemNumber": null,
+      "label": "Name of court (if other than a court proceeding, identify the type of proceeding and name of agency)",
+      "source": {"kind": "path", "path": "authority.proceeding.courtName"},
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": "Confirmed against estate-04 (isCourtProceeding=false), whose courtName already reads 'No court proceeding — trust administration under...' — i.e. the source field itself carries the non-court description this caption asks for, so one unconditional path bind covers both branches.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].f2_05[0]",
+      "itemNumber": null,
+      "label": "Date proceeding initiated",
+      "source": {"kind": "path", "path": "authority.proceeding.dateProceedingInitiated"},
+      "format": "date",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].f2_06[0]",
+      "itemNumber": null,
+      "label": "Address of court (number and street)",
+      "source": {"kind": "path", "path": "authority.proceeding.courtAddress.line1"},
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].f2_07[0]",
+      "itemNumber": null,
+      "label": "Room or suite no.",
+      "source": {"kind": "path", "path": "authority.proceeding.courtRoomOrSuite"},
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].f2_08[0]",
+      "itemNumber": null,
+      "label": "Docket number of proceeding",
+      "source": {"kind": "path", "path": "authority.proceeding.docketNumber"},
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].f2_09[0]",
+      "itemNumber": null,
+      "label": "City or town",
+      "source": {"kind": "path", "path": "authority.proceeding.courtAddress.city"},
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].f2_10[0]",
+      "itemNumber": null,
+      "label": "State",
+      "source": {"kind": "path", "path": "authority.proceeding.courtAddress.state"},
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].f2_11[0]",
+      "itemNumber": null,
+      "label": "ZIP code",
+      "source": {"kind": "path", "path": "authority.proceeding.courtAddress.zip"},
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].f2_12[0]",
+      "itemNumber": null,
+      "label": "Date",
+      "source": {"kind": "path", "path": "authority.proceeding.hearingDate"},
+      "format": "date",
+      "onValue": null,
+      "required": false,
+      "confidence": "medium",
+      "note": "Positioned after the court address/docket fields and immediately before the Time/a.m./p.m. block, so it reads as the hearing date paired with hearingTime. No sample estate populates hearingDate to confirm this placement empirically.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].Time_ReadOrder[0].f2_13[0]",
+      "itemNumber": null,
+      "label": "Time",
+      "source": {"kind": "path", "path": "authority.proceeding.hearingTime"},
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": "Grouped with the a.m./p.m. checkboxes under Time_ReadOrder, matching authority.proceeding.hearingTime.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].f2_14[0]",
+      "itemNumber": null,
+      "label": "Place of other proceedings",
+      "source": {"kind": "path", "path": "authority.proceeding.placeOfOtherProceedings"},
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].f2_15[0]",
+      "itemNumber": null,
+      "label": "Title, if applicable",
+      "source": {"kind": "path", "path": "fiduciary.title"},
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": "Generic fiduciary.title used over form56.signature.title per the preference rule; both hold the same value in every sample estate.",
+      "when": null
+    }
+  ],
+  "unbound": [
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].c2_2[0]",
+      "label": "Court order revoking fiduciary authority",
+      "reason": "This checkbox fires on a specific literal value of form56.totalRevocation.reason, but no sample estate ever populates that field (all five leave it null) and no schema file is present in the repo to confirm its exact enum tokens. This estate schema mixes casing conventions elsewhere (e.g. bondRequired='Not Required' vs administrationPath='FORMAL_PROBATE' vs authorityStatus='LettersOfAdministrationObtained'), so guessing the equality literal risks a confident-but-wrong binding.",
+      "whatWouldFillIt": "form56.totalRevocation.reason, once its enum token for 'court order' is confirmed against the actual estate-form-data schema."
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].c2_2[1]",
+      "label": "Certificate of dissolution or termination of a business entity",
+      "reason": "Same as c2_2[0]: depends on an unconfirmed literal value of form56.totalRevocation.reason.",
+      "whatWouldFillIt": "form56.totalRevocation.reason, once its enum token for 'certificate of dissolution' is confirmed against the actual estate-form-data schema."
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].c2_2[2]",
+      "label": "Other. Describe:",
+      "reason": "Same as c2_2[0]/c2_2[1]: depends on an unconfirmed literal value of form56.totalRevocation.reason. The five source kinds have no 'not equal to the other options' or presence-based checkbox kind, so this cannot be inferred indirectly from reasonOtherDescription being non-null either.",
+      "whatWouldFillIt": "form56.totalRevocation.reason, once its enum token for 'other' is confirmed against the actual estate-form-data schema."
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].Time_ReadOrder[0].c2_5[0]",
+      "label": "a.m.",
+      "reason": "Depends on a literal value of authority.proceeding.hearingTimeMeridiem, which is null in all five sample estates. The exact enum token ('AM' vs 'a.m.' vs other casing) cannot be confirmed without a schema or a populated example.",
+      "whatWouldFillIt": "authority.proceeding.hearingTimeMeridiem, once its enum token for a.m. is confirmed."
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].Time_ReadOrder[0].c2_5[1]",
+      "label": "p.m.",
+      "reason": "Same as c2_5[0]: depends on an unconfirmed literal value of authority.proceeding.hearingTimeMeridiem.",
+      "whatWouldFillIt": "authority.proceeding.hearingTimeMeridiem, once its enum token for p.m. is confirmed."
+    }
+  ],
+  "exclusiveGroups": [
+    {
+      "label": "Reason for total revocation of prior notices (6b/6c/6d)",
+      "rule": "atMostOne",
+      "members": [
+        "topmostSubform[0].Page2[0].c2_2[0]",
+        "topmostSubform[0].Page2[0].c2_2[1]",
+        "topmostSubform[0].Page2[0].c2_2[2]"
+      ],
+      "when": {"path": "form56.totalRevocation.revokeAllPriorNotices", "equals": true}
+    },
+    {
+      "label": "Hearing time meridiem (a.m./p.m.)",
+      "rule": "atMostOne",
+      "members": [
+        "topmostSubform[0].Page2[0].Time_ReadOrder[0].c2_5[0]",
+        "topmostSubform[0].Page2[0].Time_ReadOrder[0].c2_5[1]"
+      ],
+      "when": null
+    }
+  ]
+}
+```
+
+Two ambiguities are surfaced rather than guessed: the reason checkboxes for total revocation (6b/6c/6d) and the a.m./p.m. hearing-time checkboxes both key off enum fields (`form56.totalRevocation.reason`, `authority.proceeding.hearingTimeMeridiem`) that are null in every sample estate and have no schema file in the repo to confirm exact token spelling — so they're in `unbound` rather than risking a confident-but-wrong `equals` match.

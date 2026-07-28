@@ -1,0 +1,109 @@
+You are auditing a filled government form irs-f8821 (round 2).
+FIRST use the Read tool to view every rendered page:
+- page 0: /Users/fluxxion/untitled folder/Work_projects/Hackothons/Alix Hackathoon/forge/out/renders/irs-f8821/round-2-page-0.png
+
+What each box on this form is FOR, from a separate calibration of the BLANK form:
+- page 0, unnumbered (text box): "Received by:" — IRS employee name who received the form (For IRS Use Only box).
+- page 0, unnumbered (text box): "Name" — IRS employee's name who received the form (For IRS Use Only box).
+- page 0, unnumbered (text box): "Telephone" — IRS employee's telephone number (For IRS Use Only box).
+- page 0, unnumbered (text box): "Function" — IRS employee's function/department (For IRS Use Only box).
+- page 0, unnumbered (text box): "Date" — Date the form was received by the IRS (For IRS Use Only box).
+- page 0, unnumbered (text box): "Taxpayer name and address" — Taxpayer's full name and mailing address.
+- page 0, unnumbered (text box): "Taxpayer identification number(s)" — Taxpayer's SSN, ITIN, or EIN.
+- page 0, unnumbered (text box): "Daytime telephone number" — Taxpayer's daytime telephone number.
+- page 0, unnumbered (text box): "Plan number (if applicable)" — Employee plan number, if the authorization concerns a specific benefit plan.
+- page 0, item 2 (checkbox): "Check here if a list of additional designees is attached" — Checked if more than two designees are named on an attached list.
+- page 0, unnumbered (text box): "Name and address" — First designee's name and mailing address.
+- page 0, unnumbered (checkbox): "Check if to be sent copies of notices and communications" — Checked if the first designee should receive copies of notices and communications.
+- page 0, unnumbered (text box): "CAF No." — First designee's Centralized Authorization File number.
+- page 0, unnumbered (text box): "PTIN" — First designee's Preparer Tax Identification Number.
+- page 0, unnumbered (text box): "Telephone No." — First designee's telephone number.
+- page 0, unnumbered (text box): "Fax No." — First designee's fax number.
+- page 0, unnumbered (checkbox): "Check if new: Address" — Checked if the first designee's address is new since last CAF filing.
+- page 0, unnumbered (checkbox): "Check if new: Telephone No." — Checked if the first designee's telephone number is new since last CAF filing.
+- page 0, unnumbered (checkbox): "Check if new: Fax No." — Checked if the first designee's fax number is new since last CAF filing.
+- page 0, unnumbered (text box): "Name and address" — Second designee's name and mailing address.
+- page 0, unnumbered (checkbox): "Check if to be sent copies of notices and communications" — Checked if the second designee should receive copies of notices and communications.
+- page 0, unnumbered (text box): "CAF No." — Second designee's Centralized Authorization File number.
+- page 0, unnumbered (text box): "PTIN" — Second designee's Preparer Tax Identification Number.
+- page 0, unnumbered (text box): "Telephone No." — Second designee's telephone number.
+- page 0, unnumbered (text box): "Fax No." — Second designee's fax number.
+- page 0, unnumbered (checkbox): "Check if new: Address" — Checked if the second designee's address is new since last CAF filing.
+- page 0, unnumbered (checkbox): "Check if new: Telephone No." — Checked if the second designee's telephone number is new since last CAF filing.
+- page 0, unnumbered (checkbox): "Check if new: Fax No." — Checked if the second designee's fax number is new since last CAF filing.
+- page 0, item 3 (checkbox): "By checking here, I authorize access to my IRS records via an Intermediate Service Provider." — Checked to authorize designee access to IRS records through an Intermediate Service Provider.
+- page 0, item 3a (text box): "Type of Tax Information" — Row 1: type of tax information (e.g., Income, Employment, Estate) covered by the authorization.
+- page 0, item 3b (text box): "Tax Form Number" — Row 1: tax form number (e.g., 1040, 941, 720) covered by the authorization.
+- page 0, item 3c (text box): "Year(s) or Period(s)" — Row 1: tax year(s) or period(s) covered by the authorization.
+- page 0, item 3d (text box): "Specific Tax Matters" — Row 1: specific tax matters the authorization covers.
+- page 0, item 3a (text box): "Type of Tax Information" — Row 2: type of tax information (e.g., Income, Employment, Estate) covered by the authorization.
+- page 0, item 3b (text box): "Tax Form Number" — Row 2: tax form number (e.g., 1040, 941, 720) covered by the authorization.
+- page 0, item 3c (text box): "Year(s) or Period(s)" — Row 2: tax year(s) or period(s) covered by the authorization.
+- page 0, item 3d (text box): "Specific Tax Matters" — Row 2: specific tax matters the authorization covers.
+- page 0, item 3a (text box): "Type of Tax Information" — Row 3: type of tax information (e.g., Income, Employment, Estate) covered by the authorization.
+- page 0, item 3b (text box): "Tax Form Number" — Row 3: tax form number (e.g., 1040, 941, 720) covered by the authorization.
+- page 0, item 3c (text box): "Year(s) or Period(s)" — Row 3: tax year(s) or period(s) covered by the authorization.
+- page 0, item 3d (text box): "Specific Tax Matters" — Row 3: specific tax matters the authorization covers.
+- page 0, item 4 (checkbox): "Specific use not recorded on the Centralized Authorization File (CAF)" — Checked if this authorization is for a specific use that will not be recorded on the CAF system.
+- page 0, item 5 (checkbox): "Retention/revocation of prior tax information authorizations" — Checked to retain prior tax information authorizations (with a copy attached) instead of having them auto-revoked.
+- page 0, unnumbered (text box): "Signature" — Taxpayer's handwritten signature authorizing the form.
+- page 0, unnumbered (text box): "Date" — Date the taxpayer signed the form.
+
+Verified estate facts this filling must agree with:
+- decedent.name.full = 'Walter Dean Prescott'
+- decedent.ssn = '957-22-1064'
+- decedent.dateOfDeath = '2026-01-23'
+- decedent.residenceAddress.line1 = '3204 Adams Street'
+- decedent.residenceAddress.city = 'Indianapolis'
+- decedent.residenceAddress.state = 'IN'
+- decedent.residenceAddress.zip = '46221'
+- fiduciary.name.full = 'Sharon Prescott'
+- fiduciary.title = 'Personal Representative'
+- fiduciary.address.line1 = '3204 Adams Street'
+- fiduciary.address.city = 'Indianapolis'
+- fiduciary.address.state = 'IN'
+- fiduciary.address.zip = '46221'
+- estateEntity.legalName = 'Estate of Walter Dean Prescott'
+- estateEntity.ein = '35-6082714'
+- authority.basis = 'CourtAppointmentTestate'
+- authority.hasWill = True
+- authority.dateOfAppointment = '2026-07-28'
+- authority.proceeding.courtName = 'Marion Superior Court, Probate Division — State of Indiana'
+- authority.proceeding.docketNumber = '49D08-2601-EU-004192'
+- authority.proceeding.courtAddress.line1 = '200 E Washington St'
+- authority.proceeding.courtAddress.city = 'Indianapolis'
+- authority.proceeding.courtAddress.state = 'IN'
+- authority.proceeding.courtAddress.zip = '46204'
+- form56.signature.title = 'Personal Representative'
+- taxMatters.authorizationRows[0].taxFormNumber = '1040'
+
+Boxes the filler left empty on purpose (flag one only if the facts above clearly
+support filling it):
+- Plan number (if applicable): estateEntity.planNumber is empty
+- item 2: no supporting data
+- Fax No.: form8821.designees[0].faxNumber is empty
+- Check if new: Address: no supporting data
+- Check if new: Telephone No.: no supporting data
+- Check if new: Fax No.: no supporting data
+- Check if to be sent copies of notices and communications: no supporting data
+- Check if new: Telephone No.: no supporting data
+- Check if new: Fax No.: no supporting data
+- item 3: no supporting data
+- item 4: no supporting data
+
+Judge the IMAGE against each box's printed purpose and the estate
+facts. Report ONLY genuine problems, as a JSON array (empty array [] if the page is
+correct). Each finding: {"target": "<item number or printed label>",
+"problem": "<one sentence>", "mustFix": true|false}. Look for:
+- content in a box that does not match that box's printed purpose (e.g. the
+  decedent's name where the caption says fiduciary, a city in a street-address box)
+- content that contradicts the estate facts listed above
+- a value in the wrong box, or shifted by one row/column
+- text overflowing its rectangle or clipped
+- a date rendered in a format the form does not use (this form wants MM/DD/YYYY)
+- a checkbox marked that contradicts the estate facts, or a choice group with no mark
+- a name or address split across the wrong lines
+- a box left EMPTY — even one on the deliberately-empty list — whose printed purpose
+  clearly has supporting data among the estate facts; name the data
+An empty box with no available supporting data is correct, not a finding. Do not
+invent problems on a correct page.

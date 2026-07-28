@@ -91,21 +91,19 @@ support filling it):
 {_deliberately_empty(result)}
 
 {FINDING_KINDS}"""
-    reply = progress.call_with_retry(
-        f"critique round {round_no}",
-        len(result.fields),
-        lambda: llm.client.call(
+    def call_and_parse() -> list[dict[str, Any]]:
+        # Parsing inside the retried callable: an unparseable reply (prose instead
+        # of the JSON array) raises ModelCallFailed and is retried once, per
+        # docs/05 §2 — one bad reply must not kill the round.
+        reply = llm.client.call(
             purpose=f"bind:{form_id}:critique:r{round_no}", prompt=prompt,
             images=len(pngs), timeout=300,
-        ),
-    )
-    if reply is None:
-        return None
-    try:
+        )
         return llm.extract_json_array(reply)
-    except llm.ModelCallFailed as exc:
-        print(f"  WARN critique round {round_no} unparseable: {exc}", flush=True)
-        return None
+
+    return progress.call_with_retry(
+        f"critique round {round_no}", len(result.fields), call_and_parse
+    )
 
 
 def _repair(
@@ -128,20 +126,16 @@ Revise the binding to address every finding. Keep everything that is correct. If
 finding cannot be fixed with the five source kinds plus when-guards, move that field
 to "unbound" with an explanation — never approximate.
 Answer with ONLY a JSON object: {{"bindings": [...], "unbound": [...], "exclusiveGroups": [...]}}"""
-    reply = progress.call_with_retry(
-        f"repair round {round_no}",
-        len(findings),
-        lambda: llm.client.call(
+    def call_and_parse() -> dict[str, Any]:
+        # Same retry-on-unparseable contract as the critique (docs/05 §2).
+        reply = llm.client.call(
             purpose=f"bind:{form_id}:repair:r{round_no}", prompt=prompt, timeout=420
-        ),
-    )
-    if reply is None:
-        return None
-    try:
+        )
         return llm.extract_json_object(reply)
-    except llm.ModelCallFailed as exc:
-        print(f"  WARN repair round {round_no} unparseable: {exc}", flush=True)
-        return None
+
+    return progress.call_with_retry(
+        f"repair round {round_no}", len(findings), call_and_parse
+    )
 
 
 def _diff(old: dict[str, Any], new: dict[str, Any]) -> dict[str, list[str]]:
@@ -158,7 +152,45 @@ def _diff(old: dict[str, Any], new: dict[str, Any]) -> dict[str, list[str]]:
     }
 
 
-def _estate_summary(estate: EstateData) -> str:
+# Per-form fact keys for the critique's estate summary. The base list below is
+# generic + Form 56; a form whose facts live in its own block (form8821.*) must have
+# them listed here, or the critique reports every such value as fabricated — that is
+# exactly what happened on the first irs-f8821 run (see decisions-f8821.md).
+FORM_SUMMARY_KEYS: dict[str, list[str]] = {
+    "irs-f8821": [
+        "form8821.taxpayerNameAndAddressBlock",
+        "form8821.taxpayerIdentificationNumbers",
+        "estateEntity.daytimePhone.number",
+        "form8821.additionalDesigneesAttached",
+        "form8821.authorizeIntermediateServiceProvider",
+        "form8821.specificUseNotRecordedOnCaf",
+        "form8821.retainPriorAuthorizations",
+        "form8821.signature.printName",
+        "form8821.signature.title",
+        "form8821.signature.date",
+    ]
+    + [
+        f"form8821.designees[{i}].{leaf}"
+        for i in range(2)
+        for leaf in (
+            "name", "firmName", "address.line1", "address.line2", "address.city",
+            "address.state", "address.zip", "cafNumber", "ptin", "phone.number",
+            "faxNumber", "sendCopiesOfNotices", "isNewAddress", "isNewPhone",
+            "isNewFax",
+        )
+    ]
+    + [
+        f"taxMatters.authorizationRows[{i}].{leaf}"
+        for i in range(3)
+        for leaf in (
+            "typeOfTaxInformation", "taxFormNumber", "yearsOrPeriods",
+            "specificTaxMatters",
+        )
+    ],
+}
+
+
+def _estate_summary(estate: EstateData, form_id: str | None = None) -> str:
     keys = [
         "decedent.name.full", "decedent.ssn", "decedent.dateOfDeath",
         "decedent.residenceAddress.line1", "decedent.residenceAddress.city",
@@ -174,6 +206,7 @@ def _estate_summary(estate: EstateData) -> str:
         "authority.proceeding.courtAddress.state", "authority.proceeding.courtAddress.zip",
         "form56.signature.title", "taxMatters.authorizationRows[0].taxFormNumber",
     ]
+    keys += FORM_SUMMARY_KEYS.get(form_id or "", [])
     lines = []
     for k in keys:
         r = estate.resolve(k)
@@ -253,11 +286,23 @@ def run_loop(form_id: str, estate_id: str, from_draft: bool = False) -> int:
         ] + [{"target": "validation", "problem": p, "mustFix": True} for p in problems]
 
         model_findings = _critique(
-            form_id, round_no, pngs, cal, result, _estate_summary(estate), progress
+            form_id, round_no, pngs, cal, result, _estate_summary(estate, form_id),
+            progress,
         )
         if model_findings is None:
             print("FAIL: critique unavailable; cannot verify the round — stopping")
             break
+        # the reply is model output: keep only well-formed finding objects (a bare
+        # string/number in the array crashed the first f56 run — see decisions.md)
+        dropped = [f for f in model_findings if not (isinstance(f, dict) and f.get("problem"))]
+        if dropped:
+            print(f"  WARN dropped {len(dropped)} malformed finding(s): {dropped[:2]}", flush=True)
+        model_findings = [
+            {"target": str(f.get("target", "?")), "problem": str(f["problem"]),
+             "mustFix": bool(f.get("mustFix", True))}
+            for f in model_findings
+            if isinstance(f, dict) and f.get("problem")
+        ]
         findings = det_findings + model_findings
 
         history.append(
@@ -282,7 +327,7 @@ def run_loop(form_id: str, estate_id: str, from_draft: bool = False) -> int:
             converged = True
             break
 
-        findings_key = json.dumps(sorted(f["problem"] for f in findings))
+        findings_key = json.dumps(sorted(str(f.get("problem")) for f in findings))
         if findings_key == prev_findings_key:
             print("STUCK: two consecutive rounds with identical findings — reporting, not spinning")
             break

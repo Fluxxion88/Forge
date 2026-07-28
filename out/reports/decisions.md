@@ -20,3 +20,9 @@ Format: timestamp UTC · fork · decision · reason.
   JSON) timed out twice at 420s. Per §2 "halve the batch": added per-page proposal
   fallback (merge of page-scoped proposals), firing after ONE whole-form attempt since
   the failure is reproducible. Evidence: out/reports/calls/00{1,2}-bind-irs-f56-propose.error.txt.
+- 2026-07-28T04:20Z · **Loop crash round 1 (f56)** · Critique returned an array with a
+  malformed member; `f["problem"]` on a non-dict crashed the run after round 1. Fix:
+  findings are sanitised (only dicts with a `problem` key survive, target/mustFix
+  coerced), malformed entries are dropped loudly. Per-page propose fallback worked:
+  pages 0+1 proposed in 360+206s after the whole-form 420s timeout. Round 1 had
+  produced 1 image finding before the crash; rerunning the loop from scratch.
