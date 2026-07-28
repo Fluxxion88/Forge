@@ -1,0 +1,351 @@
+{
+  "$schema": "./estate-form-data.schema.json",
+  "meta": {
+    "recordId": "estate-03-oh-trust-administration",
+    "schemaVersion": "1.0.0",
+    "label": "Ohio revocable-trust administration with a small companion probate for a non-trust asset. Fiduciary is an out-of-state successor trustee, so Form 56 authority is the trust instrument (box 1e) and the appointment date rather than the date of death drives line 2b.",
+    "anonymized": true,
+    "sourceSystem": "alix-estate-manager",
+    "generatedAt": "2026-07-27T00:00:00Z"
+  },
+
+  "decedent": {
+    "name": { "first": "Rosalind", "middle": null, "last": "Kellerman", "suffix": null, "full": "Rosalind Kellerman" },
+    "aliases": [],
+    "ssn": "903-56-8172",
+    "dateOfBirth": "1944-11-08",
+    "dateOfDeath": "2026-06-16",
+    "sex": "FEMALE",
+    "maritalStatus": "Unknown",
+    "citizenship": "USA",
+    "wasVeteran": false,
+    "email": null,
+    "phones": [],
+    "residenceAddress": {
+      "line1": "612 Lakeshore Drive",
+      "line2": null,
+      "city": "Bay Village",
+      "county": "Cuyahoga",
+      "state": "OH",
+      "zip": "44140",
+      "country": "USA",
+      "isPoBox": false
+    },
+    "placeOfDeath": null,
+    "birthplace": null,
+    "identifications": [
+      { "type": "DriversLicense", "number": "RT418205", "issuingState": "OH", "issuingCountry": "USA", "expirationDate": null }
+    ]
+  },
+
+  "estateEntity": {
+    "legalName": "Rosalind Kellerman Revocable Living Trust",
+    "tradeName": "Estate of Rosalind Kellerman",
+    "careOfName": "Paula Kellerman Vance",
+    "entityKind": "Trust",
+    "ein": null,
+    "identifyingNumber": "903-56-8172",
+    "mailingAddress": {
+      "line1": "3308 Elder Crossing",
+      "line2": null,
+      "city": "Coppell",
+      "county": "Dallas",
+      "state": "TX",
+      "zip": "75019",
+      "country": "USA",
+      "isPoBox": false
+    },
+    "physicalAddress": {
+      "line1": "612 Lakeshore Drive",
+      "line2": null,
+      "city": "Bay Village",
+      "county": "Cuyahoga",
+      "state": "OH",
+      "zip": "44140",
+      "country": "USA",
+      "isPoBox": false
+    },
+    "physicalAddressDiffersFromMailing": true,
+    "principalCounty": "Cuyahoga",
+    "principalState": "OH",
+    "daytimePhone": { "number": "(972) 555-0146", "countryCode": "+1", "type": "Mobile", "primary": true },
+    "planNumber": null,
+    "trust": {
+      "name": "Rosalind Kellerman Revocable Living Trust",
+      "dateOfTrust": null,
+      "trusteeName": "Paula Kellerman Vance",
+      "grantorTin": "903-56-8172",
+      "isRevocableAtDeath": true
+    }
+  },
+
+  "fiduciary": {
+    "name": { "first": "Paula", "middle": "Kellerman", "last": "Vance", "suffix": null, "full": "Paula Kellerman Vance" },
+    "title": "Successor Trustee",
+    "isIndividual": true,
+    "ssn": null,
+    "ein": null,
+    "responsiblePartyTin": null,
+    "dateOfBirth": "1975-12-10",
+    "address": {
+      "line1": "3308 Elder Crossing",
+      "line2": null,
+      "city": "Coppell",
+      "county": "Dallas",
+      "state": "TX",
+      "zip": "75019",
+      "country": "USA",
+      "isPoBox": false
+    },
+    "phone": { "number": "(972) 555-0146", "countryCode": "+1", "type": "Mobile", "primary": true },
+    "faxNumber": null,
+    "email": "p.vance@example.com",
+    "identifications": [
+      { "type": "DriversLicense", "number": "V400-183-75-902-0", "issuingState": "FL", "issuingCountry": "USA", "expirationDate": null }
+    ],
+    "relationshipToDecedent": "Daughter",
+    "signatureDate": "2026-07-09"
+  },
+
+  "authority": {
+    "basis": "ValidTrustInstrument",
+    "basisOtherDescription": null,
+    "dateOfDeath": "2026-06-16",
+    "dateOfAppointment": "2026-06-29",
+    "assetsUnderCourtControl": null,
+    "transferredAssetsDescription": null,
+    "authorityStatus": "InProcess",
+    "administrationPath": "TRUST_ADMINISTRATION",
+    "hasWill": true,
+    "hasTrust": true,
+    "bondRequired": null,
+    "bondAmount": null,
+    "proceeding": {
+      "courtName": "Cuyahoga County Court of Common Pleas, Probate Division",
+      "isCourtProceeding": true,
+      "dateProceedingInitiated": null,
+      "courtAddress": {
+        "line1": "1 W Lakeside Ave",
+        "line2": null,
+        "city": "Cleveland",
+        "county": "Cuyahoga",
+        "state": "OH",
+        "zip": "44113",
+        "country": "USA",
+        "isPoBox": false
+      },
+      "courtRoomOrSuite": null,
+      "docketNumber": null,
+      "hearingDate": null,
+      "hearingTime": null,
+      "hearingTimeMeridiem": null,
+      "placeOfOtherProceedings": "Trust administration is conducted out of court. The probate filing covers a single vehicle that was never retitled into the trust.",
+      "courtPhone": null,
+      "courtHours": null,
+      "lettersIssuedDate": null,
+      "closureDate": null,
+      "attorneyOfRecord": null
+    }
+  },
+
+  "taxMatters": {
+    "taxTypes": ["Income"],
+    "taxTypeOtherDescription": null,
+    "federalFormNumbers": ["1040_or_1040SR", "1041"],
+    "federalFormOtherList": null,
+    "authorityLimitedToSpecificPeriods": false,
+    "specificPeriods": null,
+    "authorizationRows": [
+      { "typeOfTaxInformation": "Income", "taxFormNumber": "1040", "yearsOrPeriods": "2024, 2025, 2026", "specificTaxMatters": "Final individual return of the grantor" },
+      { "typeOfTaxInformation": "Income", "taxFormNumber": "1041", "yearsOrPeriods": "2026, 2027", "specificTaxMatters": "Fiduciary income tax for the trust after the grantor's death" },
+      { "typeOfTaxInformation": "Income", "taxFormNumber": "1099", "yearsOrPeriods": "2025, 2026", "specificTaxMatters": "Wage and income transcripts for asset discovery" }
+    ]
+  },
+
+  "form56": {
+    "isNewNotice": true,
+    "totalRevocation": { "revokeAllPriorNotices": false, "reason": null, "reasonOtherDescription": null },
+    "partialRevocation": { "revokeEarlierNotices": false, "grantedToDateAndAddress": null },
+    "substituteFiduciary": { "hasSubstitute": false, "namesAndAddresses": null },
+    "signature": { "signerName": "Paula Kellerman Vance", "title": "Successor Trustee", "date": "2026-07-09" }
+  },
+
+  "form8821": {
+    "taxpayerNameAndAddressBlock": "Rosalind Kellerman Revocable Living Trust\nc/o Paula Kellerman Vance, Successor Trustee\n3308 Elder Crossing\nCoppell, TX 75019",
+    "taxpayerIdentificationNumbers": "903-56-8172 (grantor SSN — trust EIN not yet issued)",
+    "designees": [
+      {
+        "name": "Paula Kellerman Vance",
+        "firmName": null,
+        "address": {
+          "line1": "3308 Elder Crossing", "line2": null, "city": "Coppell", "county": "Dallas",
+          "state": "TX", "zip": "75019", "country": "USA", "isPoBox": false
+        },
+        "cafNumber": "NONE",
+        "ptin": null,
+        "phone": { "number": "(972) 555-0146", "countryCode": "+1", "type": "Mobile", "primary": true },
+        "faxNumber": null,
+        "sendCopiesOfNotices": true,
+        "isNewAddress": true,
+        "isNewPhone": false,
+        "isNewFax": false
+      },
+      {
+        "name": "Vision Financial Management",
+        "firmName": "Vision Financial Management",
+        "address": {
+          "line1": "1400 Superior Ave E", "line2": "Suite 900", "city": "Cleveland", "county": "Cuyahoga",
+          "state": "OH", "zip": "44114", "country": "USA", "isPoBox": false
+        },
+        "cafNumber": "3104-88213R",
+        "ptin": "P01947725",
+        "phone": { "number": "(216) 555-0121", "countryCode": "+1", "type": "Work", "primary": true },
+        "faxNumber": "(216) 555-0122",
+        "sendCopiesOfNotices": false,
+        "isNewAddress": false,
+        "isNewPhone": false,
+        "isNewFax": false
+      }
+    ],
+    "additionalDesigneesAttached": false,
+    "authorizeIntermediateServiceProvider": true,
+    "specificUseNotRecordedOnCaf": false,
+    "retainPriorAuthorizations": false,
+    "signature": { "printName": "Paula Kellerman Vance", "title": "Successor Trustee", "date": "2026-07-09" },
+    "irsUseOnly": null
+  },
+
+  "formSS4": {
+    "isLlc": false,
+    "llcMemberCount": null,
+    "llcOrganizedInUs": null,
+    "entityType": "Trust",
+    "entityTypeQualifier": "903-56-8172",
+    "groupExemptionNumber": null,
+    "incorporationState": null,
+    "incorporationForeignCountry": null,
+    "reasonForApplying": "CreatedATrust",
+    "reasonSpecify": "Irrevocable at the grantor's death — revocable living trust",
+    "businessStartOrAcquiredDate": "2026-06-16",
+    "closingMonthOfAccountingYear": "December",
+    "expectedEmployees": { "agricultural": 0, "household": 0, "other": 0 },
+    "electForm944": false,
+    "firstWagesPaidDate": null,
+    "principalActivity": "Other",
+    "principalActivityOther": "Trust administration",
+    "principalLineOfMerchandiseOrServices": "Administration and distribution of a decedent's revocable living trust. No trade or business activity.",
+    "hasEverAppliedForEin": false,
+    "previousEin": null,
+    "thirdPartyDesignee": {
+      "name": "Vision Financial Management",
+      "address": {
+        "line1": "1400 Superior Ave E", "line2": "Suite 900", "city": "Cleveland", "county": "Cuyahoga",
+        "state": "OH", "zip": "44114", "country": "USA", "isPoBox": false
+      },
+      "phone": { "number": "(216) 555-0121", "countryCode": "+1", "type": "Work", "primary": true },
+      "faxNumber": "(216) 555-0122"
+    },
+    "applicant": {
+      "nameAndTitle": "Paula Kellerman Vance, Successor Trustee",
+      "phone": { "number": "(972) 555-0146", "countryCode": "+1", "type": "Mobile", "primary": true },
+      "faxNumber": null,
+      "signatureDate": "2026-07-09"
+    }
+  },
+
+  "formDL142": {
+    "applicable": false,
+    "notApplicableReason": "The decedent held an Ohio driver licence. DL 142 is a California Department of Motor Vehicles form and cannot be used to cancel an out-of-state licence; the Ohio BMV equivalent is required. The licence data is carried here so the sibling state form can be driven from the same record.",
+    "documentHolderName": "Rosalind Kellerman",
+    "documentHolderAddress": {
+      "line1": "612 Lakeshore Drive",
+      "line2": null,
+      "city": "Bay Village",
+      "county": "Cuyahoga",
+      "state": "OH",
+      "zip": "44140",
+      "country": "USA",
+      "isPoBox": false
+    },
+    "documentNumber": "RT418205",
+    "documentType": "DriverLicense",
+    "dateOfBirth": "1944-11-08",
+    "locationOfLicense": "LostOrDestroyed",
+    "locationOfLicenseOtherExplanation": null,
+    "reasonForCancellation": "Licence holder is deceased. Date of death 06/16/2026.",
+    "minorSection": null,
+    "completedBy": {
+      "printedName": "Paula Kellerman Vance",
+      "address": {
+        "line1": "3308 Elder Crossing", "line2": null, "city": "Coppell", "county": "Dallas",
+        "state": "TX", "zip": "75019", "country": "USA", "isPoBox": false
+      },
+      "signatureDate": null
+    },
+    "dmvUseOnly": null
+  },
+
+  "relatedParties": [
+    {
+      "name": { "first": "Gregory", "middle": null, "last": "Kellerman", "suffix": null, "full": "Gregory Kellerman" },
+      "roles": ["BENEFICIARY", "HEIR", "FAMILY_MEMBER"],
+      "contactType": "Individual",
+      "organizationName": null,
+      "isAttorneyOfRecord": false,
+      "isDeceased": false,
+      "dateOfBirth": "1973-01-21",
+      "ssn": null,
+      "sex": "MALE",
+      "citizenship": null,
+      "email": null,
+      "phone": null,
+      "address": null,
+      "identifications": []
+    },
+    {
+      "name": { "first": "Alison", "middle": null, "last": "Kellerman", "suffix": null, "full": "Alison Kellerman" },
+      "roles": ["BENEFICIARY", "HEIR", "FAMILY_MEMBER"],
+      "contactType": "Individual",
+      "organizationName": null,
+      "isAttorneyOfRecord": false,
+      "isDeceased": false,
+      "dateOfBirth": "1974-02-20",
+      "ssn": null,
+      "sex": "FEMALE",
+      "citizenship": null,
+      "email": null,
+      "phone": null,
+      "address": null,
+      "identifications": []
+    }
+  ],
+
+  "assets": [
+    { "category": "RealEstate", "subcategory": "PrimaryResidence", "count": 1, "totalEstimatedValue": 1793300.0, "totalDateOfDeathValue": null, "institutions": [] },
+    { "category": "BankAccount", "subcategory": "Checking", "count": 3, "totalEstimatedValue": 173385.06, "totalDateOfDeathValue": null, "institutions": ["Fifth Third Bank", "PNC Bank"] },
+    { "category": "Vehicle", "subcategory": "Car", "count": 1, "totalEstimatedValue": 9000.0, "totalDateOfDeathValue": null, "institutions": [] },
+    { "category": "Investment", "subcategory": "Brokerage", "count": 2, "totalEstimatedValue": 500.98, "totalDateOfDeathValue": null, "institutions": ["LPL Financial", "TIAA"] },
+    { "category": "Investment", "subcategory": "Other", "count": 1, "totalEstimatedValue": null, "totalDateOfDeathValue": null, "institutions": ["Vision Financial Management"] },
+    { "category": "PersonalProperty", "subcategory": null, "count": 1, "totalEstimatedValue": 203.93, "totalDateOfDeathValue": null, "institutions": [] },
+    { "category": "UnclaimedProperty", "subcategory": null, "count": 6, "totalEstimatedValue": 140.0, "totalDateOfDeathValue": null, "institutions": [] }
+  ],
+
+  "provenance": {
+    "sourceEstateScanBoxId": "000001ef",
+    "authorityTypeInSource": "Trust",
+    "anonymizationMethod": "Structure-preserving synthesis. Only shape data left the production database: presence flags, enum values, dates, city/county/state/ZIP, and character-class patterns for identifiers. Names, street lines, emails, phone numbers and all identifier digits were generated fresh against those patterns.",
+    "dateJitterDays": 51,
+    "fieldsSynthesized": [
+      "all personal names", "trust name", "all street address line1 values (generated to match the source character-class pattern)",
+      "all email addresses", "all phone numbers", "SSNs (900-block, never issued by SSA)", "driver licence numbers",
+      "CAF number", "PTIN", "designee firm address"
+    ],
+    "fieldsPreservedFromSource": [
+      "date intervals (all dates shifted by a single constant offset)", "city / county / state / ZIP",
+      "sex, marital status, citizenship, veteran status", "identification document type",
+      "identifier character-class patterns", "authority type and administration path", "proceeding status",
+      "asset category / subcategory / count / value", "institution names", "debt count (9)"
+    ],
+    "notes": "The successor trustee's licence pattern in the source record is 'A999-999-99-999-9' — a Florida-format licence held by a Texas-resident fiduciary. The pattern is preserved verbatim rather than normalised to Texas, because that mismatch is real data and an auto-fill needs to survive it. Vision Financial Management appears in the source as an asset institution and is reused here as the professional designee, which is why it carries a CAF number and PTIN the source does not store."
+  }
+}

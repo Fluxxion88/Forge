@@ -1,0 +1,382 @@
+{
+  "$schema": "./estate-form-data.schema.json",
+  "meta": {
+    "recordId": "estate-05-in-formal-probate",
+    "schemaVersion": "1.0.0",
+    "label": "Indiana formal probate with letters of administration already issued. Most complete court record in the set: docket number, letters date, county of venue, bond disposition and an EIN. Two attorneys on the matter, so both Form 8821 designee slots are used. One contact address is truncated in the source and is preserved as-is.",
+    "anonymized": true,
+    "sourceSystem": "alix-estate-manager",
+    "generatedAt": "2026-07-27T00:00:00Z"
+  },
+
+  "decedent": {
+    "name": { "first": "Walter", "middle": "Dean", "last": "Prescott", "suffix": null, "full": "Walter Dean Prescott" },
+    "aliases": [],
+    "ssn": "957-22-1064",
+    "dateOfBirth": "1946-03-06",
+    "dateOfDeath": "2026-01-23",
+    "sex": "MALE",
+    "maritalStatus": "Widowed",
+    "citizenship": "USA",
+    "wasVeteran": false,
+    "email": null,
+    "phones": [],
+    "residenceAddress": {
+      "line1": "3204 Adams Street",
+      "line2": null,
+      "city": "Indianapolis",
+      "county": "Marion",
+      "state": "IN",
+      "zip": "46221",
+      "country": "USA",
+      "isPoBox": false
+    },
+    "placeOfDeath": null,
+    "birthplace": null,
+    "identifications": [
+      { "type": "DriversLicense", "number": "4821-96-3057", "issuingState": "IN", "issuingCountry": "USA", "expirationDate": null }
+    ]
+  },
+
+  "estateEntity": {
+    "legalName": "Estate of Walter Dean Prescott",
+    "tradeName": null,
+    "careOfName": "Sharon Prescott",
+    "entityKind": "DecedentEstate",
+    "ein": "35-6082714",
+    "identifyingNumber": "35-6082714",
+    "mailingAddress": {
+      "line1": "3204 Adams Street",
+      "line2": null,
+      "city": "Indianapolis",
+      "county": "Marion",
+      "state": "IN",
+      "zip": "46221",
+      "country": "USA",
+      "isPoBox": false
+    },
+    "physicalAddress": {
+      "line1": "3204 Adams Street",
+      "line2": null,
+      "city": "Indianapolis",
+      "county": "Marion",
+      "state": "IN",
+      "zip": "46221",
+      "country": "USA",
+      "isPoBox": false
+    },
+    "physicalAddressDiffersFromMailing": false,
+    "principalCounty": "Marion",
+    "principalState": "IN",
+    "daytimePhone": { "number": "(317) 555-0154", "countryCode": "+1", "type": "Mobile", "primary": true },
+    "planNumber": null,
+    "trust": null
+  },
+
+  "fiduciary": {
+    "name": { "first": "Sharon", "middle": null, "last": "Prescott", "suffix": null, "full": "Sharon Prescott" },
+    "title": "Personal Representative",
+    "isIndividual": true,
+    "ssn": null,
+    "ein": null,
+    "responsiblePartyTin": null,
+    "dateOfBirth": "1961-12-05",
+    "address": {
+      "line1": "3204 Adams Street",
+      "line2": null,
+      "city": "Indianapolis",
+      "county": "Marion",
+      "state": "IN",
+      "zip": "46221",
+      "country": "USA",
+      "isPoBox": false
+    },
+    "phone": { "number": "(317) 555-0154", "countryCode": "+1", "type": "Mobile", "primary": true },
+    "faxNumber": null,
+    "email": "s.prescott@example.com",
+    "identifications": [],
+    "relationshipToDecedent": "Daughter",
+    "signatureDate": "2026-08-03"
+  },
+
+  "authority": {
+    "basis": "CourtAppointmentTestate",
+    "basisOtherDescription": null,
+    "dateOfDeath": "2026-01-23",
+    "dateOfAppointment": "2026-07-28",
+    "assetsUnderCourtControl": null,
+    "transferredAssetsDescription": null,
+    "authorityStatus": "LettersOfAdministrationObtained",
+    "administrationPath": "FORMAL_PROBATE",
+    "hasWill": true,
+    "hasTrust": false,
+    "bondRequired": "Not Required",
+    "bondAmount": null,
+    "proceeding": {
+      "courtName": "Marion Superior Court, Probate Division — State of Indiana",
+      "isCourtProceeding": true,
+      "dateProceedingInitiated": "2026-07-28",
+      "courtAddress": {
+        "line1": "200 E Washington St",
+        "line2": null,
+        "city": "Indianapolis",
+        "county": "Marion",
+        "state": "IN",
+        "zip": "46204",
+        "country": "USA",
+        "isPoBox": false
+      },
+      "courtRoomOrSuite": "W-122",
+      "docketNumber": "49D08-2601-EU-004192",
+      "hearingDate": null,
+      "hearingTime": null,
+      "hearingTimeMeridiem": null,
+      "placeOfOtherProceedings": null,
+      "courtPhone": null,
+      "courtHours": null,
+      "lettersIssuedDate": "2026-07-28",
+      "closureDate": null,
+      "attorneyOfRecord": null
+    }
+  },
+
+  "taxMatters": {
+    "taxTypes": ["Income", "Estate"],
+    "taxTypeOtherDescription": null,
+    "federalFormNumbers": ["1040_or_1040SR", "1041"],
+    "federalFormOtherList": null,
+    "authorityLimitedToSpecificPeriods": true,
+    "specificPeriods": "Tax year 2025 through the close of estate administration",
+    "authorizationRows": [
+      { "typeOfTaxInformation": "Income", "taxFormNumber": "1040", "yearsOrPeriods": "2024, 2025, 2026", "specificTaxMatters": "Final individual return of the decedent" },
+      { "typeOfTaxInformation": "Income", "taxFormNumber": "1041", "yearsOrPeriods": "2026", "specificTaxMatters": "Fiduciary income tax for the estate" },
+      { "typeOfTaxInformation": "Civil Penalty", "taxFormNumber": "1040", "yearsOrPeriods": "2024, 2025", "specificTaxMatters": "Resolution of an outstanding balance-due notice" }
+    ]
+  },
+
+  "form56": {
+    "isNewNotice": true,
+    "totalRevocation": { "revokeAllPriorNotices": false, "reason": null, "reasonOtherDescription": null },
+    "partialRevocation": { "revokeEarlierNotices": false, "grantedToDateAndAddress": null },
+    "substituteFiduciary": { "hasSubstitute": false, "namesAndAddresses": null },
+    "signature": { "signerName": "Sharon Prescott", "title": "Personal Representative", "date": "2026-08-03" }
+  },
+
+  "form8821": {
+    "taxpayerNameAndAddressBlock": "Estate of Walter Dean Prescott\nc/o Sharon Prescott, Personal Representative\n3204 Adams Street\nIndianapolis, IN 46221",
+    "taxpayerIdentificationNumbers": "35-6082714",
+    "designees": [
+      {
+        "name": "Marguerite T. Holloway",
+        "firmName": "Holloway Estate Law LLC",
+        "address": {
+          "line1": "151 N", "line2": null, "city": "Indianapolis", "county": null,
+          "state": "IN", "zip": "46221", "country": "USA", "isPoBox": false
+        },
+        "cafNumber": "2871-40119R",
+        "ptin": "P00583612",
+        "phone": { "number": "(317) 555-0108", "countryCode": "+1", "type": "Work", "primary": true },
+        "faxNumber": null,
+        "sendCopiesOfNotices": true,
+        "isNewAddress": false,
+        "isNewPhone": false,
+        "isNewFax": false
+      },
+      {
+        "name": "Curtis Alan Reddick",
+        "firmName": "Reddick & Associates",
+        "address": {
+          "line1": "1450 W. Meade Road 210", "line2": "Suite 210", "city": "Morgantown", "county": null,
+          "state": "IN", "zip": "46160", "country": "USA", "isPoBox": false
+        },
+        "cafNumber": "2871-55207R",
+        "ptin": "P01120884",
+        "phone": { "number": "(812) 555-0143", "countryCode": "+1", "type": "Work", "primary": true },
+        "faxNumber": "(812) 555-0144",
+        "sendCopiesOfNotices": false,
+        "isNewAddress": true,
+        "isNewPhone": false,
+        "isNewFax": false
+      }
+    ],
+    "additionalDesigneesAttached": false,
+    "authorizeIntermediateServiceProvider": false,
+    "specificUseNotRecordedOnCaf": false,
+    "retainPriorAuthorizations": true,
+    "signature": { "printName": "Sharon Prescott", "title": "Personal Representative", "date": "2026-08-03" },
+    "irsUseOnly": null
+  },
+
+  "formSS4": {
+    "isLlc": false,
+    "llcMemberCount": null,
+    "llcOrganizedInUs": null,
+    "entityType": "Estate",
+    "entityTypeQualifier": "957-22-1064",
+    "groupExemptionNumber": null,
+    "incorporationState": null,
+    "incorporationForeignCountry": null,
+    "reasonForApplying": "BankingPurpose",
+    "reasonSpecify": "To open an estate checking account for the sale proceeds of the residence and vehicle",
+    "businessStartOrAcquiredDate": "2026-01-23",
+    "closingMonthOfAccountingYear": "December",
+    "expectedEmployees": { "agricultural": 0, "household": 0, "other": 0 },
+    "electForm944": false,
+    "firstWagesPaidDate": null,
+    "principalActivity": "Other",
+    "principalActivityOther": "Estate administration",
+    "principalLineOfMerchandiseOrServices": "Administration and distribution of a decedent's estate, including sale of one residential property and one motor vehicle. No trade or business activity.",
+    "hasEverAppliedForEin": false,
+    "previousEin": null,
+    "thirdPartyDesignee": {
+      "name": "Marguerite T. Holloway",
+      "address": {
+        "line1": "151 N", "line2": null, "city": "Indianapolis", "county": null,
+        "state": "IN", "zip": "46221", "country": "USA", "isPoBox": false
+      },
+      "phone": { "number": "(317) 555-0108", "countryCode": "+1", "type": "Work", "primary": true },
+      "faxNumber": null
+    },
+    "applicant": {
+      "nameAndTitle": "Sharon Prescott, Personal Representative",
+      "phone": { "number": "(317) 555-0154", "countryCode": "+1", "type": "Mobile", "primary": true },
+      "faxNumber": null,
+      "signatureDate": "2026-08-03"
+    }
+  },
+
+  "formDL142": {
+    "applicable": false,
+    "notApplicableReason": "The decedent held an Indiana driver licence. DL 142 is a California Department of Motor Vehicles form and cannot be used to cancel an out-of-state licence; the Indiana BMV equivalent is required. The licence data is carried here so the sibling state form can be driven from the same record.",
+    "documentHolderName": "Walter Dean Prescott",
+    "documentHolderAddress": {
+      "line1": "3204 Adams Street",
+      "line2": null,
+      "city": "Indianapolis",
+      "county": "Marion",
+      "state": "IN",
+      "zip": "46221",
+      "country": "USA",
+      "isPoBox": false
+    },
+    "documentNumber": "4821-96-3057",
+    "documentType": "DriverLicense",
+    "dateOfBirth": "1946-03-06",
+    "locationOfLicense": "Attached",
+    "locationOfLicenseOtherExplanation": null,
+    "reasonForCancellation": "Licence holder is deceased. Date of death 01/23/2026. Surrendered by the court-appointed personal representative.",
+    "minorSection": null,
+    "completedBy": {
+      "printedName": "Sharon Prescott",
+      "address": {
+        "line1": "3204 Adams Street", "line2": null, "city": "Indianapolis", "county": "Marion",
+        "state": "IN", "zip": "46221", "country": "USA", "isPoBox": false
+      },
+      "signatureDate": null
+    },
+    "dmvUseOnly": null
+  },
+
+  "relatedParties": [
+    {
+      "name": { "first": "Sharon", "middle": null, "last": "Prescott", "suffix": null, "full": "Sharon Prescott" },
+      "roles": ["EXECUTOR"],
+      "contactType": "Individual",
+      "organizationName": null,
+      "isAttorneyOfRecord": false,
+      "isDeceased": false,
+      "dateOfBirth": "1961-12-05",
+      "ssn": null,
+      "sex": "FEMALE",
+      "citizenship": null,
+      "email": "s.prescott@example.com",
+      "phone": { "number": "(317) 555-0154", "countryCode": "+1", "type": "Mobile", "primary": true },
+      "address": {
+        "line1": "3204 Adams Street", "line2": null, "city": "Indianapolis", "county": "Marion",
+        "state": "IN", "zip": "46221", "country": "USA", "isPoBox": false
+      },
+      "identifications": []
+    },
+    {
+      "name": { "first": "Marguerite", "middle": "T", "last": "Holloway", "suffix": null, "full": "Marguerite T. Holloway" },
+      "roles": ["LAWYER"],
+      "contactType": "Individual",
+      "organizationName": "Holloway Estate Law LLC",
+      "isAttorneyOfRecord": false,
+      "isDeceased": false,
+      "dateOfBirth": null,
+      "ssn": null,
+      "sex": null,
+      "citizenship": "USA",
+      "email": null,
+      "phone": { "number": "(317) 555-0108", "countryCode": "+1", "type": "Work", "primary": true },
+      "address": {
+        "line1": "151 N", "line2": null, "city": "Indianapolis", "county": null,
+        "state": "IN", "zip": "46221", "country": "USA", "isPoBox": false
+      },
+      "identifications": []
+    },
+    {
+      "name": { "first": "Curtis", "middle": "Alan", "last": "Reddick", "suffix": null, "full": "Curtis Alan Reddick" },
+      "roles": ["LAWYER"],
+      "contactType": "Individual",
+      "organizationName": "Reddick & Associates",
+      "isAttorneyOfRecord": false,
+      "isDeceased": false,
+      "dateOfBirth": null,
+      "ssn": null,
+      "sex": "MALE",
+      "citizenship": null,
+      "email": "c.reddick@example.com",
+      "phone": { "number": "(812) 555-0143", "countryCode": "+1", "type": "Work", "primary": true },
+      "address": {
+        "line1": "1450 W. Meade Road 210", "line2": "Suite 210", "city": "Morgantown", "county": null,
+        "state": "IN", "zip": "46160", "country": "USA", "isPoBox": false
+      },
+      "identifications": []
+    },
+    {
+      "name": { "first": "Louise", "middle": "Margaret", "last": "Prescott", "suffix": null, "full": "Louise Margaret Prescott" },
+      "roles": ["FAMILY_MEMBER"],
+      "contactType": "Individual",
+      "organizationName": null,
+      "isAttorneyOfRecord": false,
+      "isDeceased": true,
+      "dateOfBirth": null,
+      "ssn": null,
+      "sex": "FEMALE",
+      "citizenship": "USA",
+      "email": null,
+      "phone": null,
+      "address": null,
+      "identifications": []
+    }
+  ],
+
+  "assets": [
+    { "category": "RealEstate", "subcategory": "PrimaryResidence", "count": 1, "totalEstimatedValue": 173000.0, "totalDateOfDeathValue": null, "institutions": [] },
+    { "category": "Vehicle", "subcategory": "Car", "count": 1, "totalEstimatedValue": 8800.0, "totalDateOfDeathValue": null, "institutions": [] },
+    { "category": "BankAccount", "subcategory": "Other", "count": 1, "totalEstimatedValue": 4310.97, "totalDateOfDeathValue": null, "institutions": ["PNC Bank"] }
+  ],
+
+  "provenance": {
+    "sourceEstateScanBoxId": "00000182",
+    "authorityTypeInSource": "Estate_LawyerRequired",
+    "anonymizationMethod": "Structure-preserving synthesis. Only shape data left the production database: presence flags, enum values, dates, city/county/state/ZIP, and character-class patterns for identifiers. Names, street lines, emails, phone numbers and all identifier digits were generated fresh against those patterns.",
+    "dateJitterDays": 19,
+    "fieldsSynthesized": [
+      "all personal names", "law firm names", "all street address line1 values (generated to match the source character-class pattern)",
+      "all email addresses", "all phone numbers", "SSNs (900-block, never issued by SSA)", "EIN",
+      "docket number", "driver licence number", "CAF numbers", "PTINs", "court room number"
+    ],
+    "fieldsPreservedFromSource": [
+      "date intervals (all dates shifted by a single constant offset)", "city / county / state / ZIP",
+      "sex, marital status, citizenship, veteran status", "identification document type",
+      "identifier character-class patterns including the Indiana 9999-99-9999 licence format and the 99A99-9999-AA-999999 docket format",
+      "authority type and administration path", "proceeding status and bond disposition (Not Required)",
+      "asset category / subcategory / count / value", "institution names", "debt count (1)",
+      "the truncated street address on the first attorney contact"
+    ],
+    "notes": "The first attorney's street address is literally '151 N' in the source — a truncated entry — and is reproduced verbatim so that form-fill behaviour against incomplete addresses can be exercised. probateEstateValue in the source (173,000) equals the estimated value of the residence alone, which is why it is not restated as a separate field here."
+  }
+}

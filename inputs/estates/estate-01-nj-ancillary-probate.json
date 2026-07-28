@@ -1,0 +1,355 @@
+{
+  "$schema": "./estate-form-data.schema.json",
+  "meta": {
+    "recordId": "estate-01-nj-ancillary-probate",
+    "schemaVersion": "1.0.0",
+    "label": "New Jersey testate estate, ancillary probate in Mercer County Surrogate's Court. EIN already issued, court details on file, out-of-state executor, decedent held a passport rather than a driver licence.",
+    "anonymized": true,
+    "sourceSystem": "alix-estate-manager",
+    "generatedAt": "2026-07-27T00:00:00Z"
+  },
+
+  "decedent": {
+    "name": { "first": "Margaret", "middle": "Ellen", "last": "Ashford", "suffix": null, "full": "Margaret Ellen Ashford" },
+    "aliases": [],
+    "ssn": "912-44-8630",
+    "dateOfBirth": "1941-03-02",
+    "dateOfDeath": "2026-05-10",
+    "sex": "FEMALE",
+    "maritalStatus": "Unknown",
+    "citizenship": "USA",
+    "wasVeteran": false,
+    "email": null,
+    "phones": [],
+    "residenceAddress": {
+      "line1": "4127 Greenwood Hamilton Square Road",
+      "line2": null,
+      "city": "Hamilton Township",
+      "county": "Mercer",
+      "state": "NJ",
+      "zip": "08690",
+      "country": "USA",
+      "isPoBox": false
+    },
+    "placeOfDeath": {
+      "type": "NursingHome",
+      "name": "Hamilton Meadows Rehabilitation and Nursing Center",
+      "address": {
+        "line1": "1900 Klockner Road",
+        "line2": null,
+        "city": "Hamilton Township",
+        "county": "Mercer",
+        "state": "NJ",
+        "zip": "08690",
+        "country": "USA",
+        "isPoBox": false
+      }
+    },
+    "birthplace": null,
+    "identifications": [
+      { "type": "Passport", "number": "PZ4820371", "issuingState": null, "issuingCountry": "USA", "expirationDate": null }
+    ]
+  },
+
+  "estateEntity": {
+    "legalName": "Estate of Margaret Ellen Ashford",
+    "tradeName": null,
+    "careOfName": "Douglas Ashford Jr.",
+    "entityKind": "DecedentEstate",
+    "ein": "22-6104839",
+    "identifyingNumber": "22-6104839",
+    "mailingAddress": {
+      "line1": "318 Ridgeway Avenue",
+      "line2": null,
+      "city": "Eagleville",
+      "county": "Montgomery",
+      "state": "PA",
+      "zip": "19403",
+      "country": "USA",
+      "isPoBox": false
+    },
+    "physicalAddress": {
+      "line1": "4127 Greenwood Hamilton Square Road",
+      "line2": null,
+      "city": "Hamilton Township",
+      "county": "Mercer",
+      "state": "NJ",
+      "zip": "08690",
+      "country": "USA",
+      "isPoBox": false
+    },
+    "physicalAddressDiffersFromMailing": true,
+    "principalCounty": "Mercer",
+    "principalState": "NJ",
+    "daytimePhone": { "number": "(610) 555-0184", "countryCode": "+1", "type": "Mobile", "primary": true },
+    "planNumber": null,
+    "trust": null
+  },
+
+  "fiduciary": {
+    "name": { "first": "Douglas", "middle": null, "last": "Ashford", "suffix": "JR", "full": "Douglas Ashford Jr." },
+    "title": "Executor",
+    "isIndividual": true,
+    "ssn": "907-31-5528",
+    "ein": null,
+    "responsiblePartyTin": "907-31-5528",
+    "dateOfBirth": "1968-08-21",
+    "address": {
+      "line1": "318 Ridgeway Avenue",
+      "line2": null,
+      "city": "Eagleville",
+      "county": "Montgomery",
+      "state": "PA",
+      "zip": "19403",
+      "country": "USA",
+      "isPoBox": false
+    },
+    "phone": { "number": "(610) 555-0184", "countryCode": "+1", "type": "Mobile", "primary": true },
+    "faxNumber": null,
+    "email": "d.ashford@example.com",
+    "identifications": [
+      { "type": "DriversLicense", "number": "26 418 903", "issuingState": "PA", "issuingCountry": "USA", "expirationDate": null }
+    ],
+    "relationshipToDecedent": "Son",
+    "signatureDate": "2026-08-12"
+  },
+
+  "authority": {
+    "basis": "CourtAppointmentTestate",
+    "basisOtherDescription": null,
+    "dateOfDeath": "2026-05-10",
+    "dateOfAppointment": "2026-08-06",
+    "assetsUnderCourtControl": null,
+    "transferredAssetsDescription": null,
+    "authorityStatus": "InProcess",
+    "administrationPath": "ANCILLARY_PROBATE",
+    "hasWill": true,
+    "hasTrust": false,
+    "bondRequired": "Waived",
+    "bondAmount": null,
+    "proceeding": {
+      "courtName": "Mercer County Surrogate's Court, State of New Jersey",
+      "isCourtProceeding": true,
+      "dateProceedingInitiated": "2026-08-06",
+      "courtAddress": {
+        "line1": "175 S Broad St",
+        "line2": null,
+        "city": "Trenton",
+        "county": "Mercer",
+        "state": "NJ",
+        "zip": "08608",
+        "country": "USA",
+        "isPoBox": false
+      },
+      "courtRoomOrSuite": null,
+      "docketNumber": "26-41883",
+      "hearingDate": null,
+      "hearingTime": null,
+      "hearingTimeMeridiem": null,
+      "placeOfOtherProceedings": null,
+      "courtPhone": { "number": "(609) 555-0177", "countryCode": "+1", "type": "Work", "primary": true },
+      "courtHours": "08:30-16:30",
+      "lettersIssuedDate": "2026-08-06",
+      "closureDate": null,
+      "attorneyOfRecord": {
+        "name": { "first": "Douglas", "middle": null, "last": "Ashford", "suffix": "JR", "full": "Douglas Ashford Jr." },
+        "roles": ["EXECUTOR"],
+        "contactType": "Individual",
+        "organizationName": null,
+        "isAttorneyOfRecord": true,
+        "isDeceased": false,
+        "dateOfBirth": "1968-08-21",
+        "ssn": "907-31-5528",
+        "sex": "MALE",
+        "citizenship": "USA",
+        "email": "d.ashford@example.com",
+        "phone": { "number": "(610) 555-0184", "countryCode": "+1", "type": "Mobile", "primary": true },
+        "address": {
+          "line1": "318 Ridgeway Avenue", "line2": null, "city": "Eagleville", "county": "Montgomery",
+          "state": "PA", "zip": "19403", "country": "USA", "isPoBox": false
+        },
+        "identifications": [
+          { "type": "DriversLicense", "number": "26 418 903", "issuingState": "PA", "issuingCountry": "USA", "expirationDate": null }
+        ]
+      }
+    }
+  },
+
+  "taxMatters": {
+    "taxTypes": ["Income", "Estate"],
+    "taxTypeOtherDescription": null,
+    "federalFormNumbers": ["706Series", "1040_or_1040SR", "1041"],
+    "federalFormOtherList": null,
+    "authorityLimitedToSpecificPeriods": true,
+    "specificPeriods": "Tax year 2025 and tax year 2026",
+    "authorizationRows": [
+      { "typeOfTaxInformation": "Income", "taxFormNumber": "1040", "yearsOrPeriods": "2024, 2025, 2026", "specificTaxMatters": "Final individual return of the decedent" },
+      { "typeOfTaxInformation": "Income", "taxFormNumber": "1041", "yearsOrPeriods": "2026", "specificTaxMatters": "Fiduciary income tax for the estate" },
+      { "typeOfTaxInformation": "Estate", "taxFormNumber": "706", "yearsOrPeriods": "Date of death 05/10/2026", "specificTaxMatters": "Account transcripts and notices" }
+    ]
+  },
+
+  "form56": {
+    "isNewNotice": true,
+    "totalRevocation": { "revokeAllPriorNotices": false, "reason": null, "reasonOtherDescription": null },
+    "partialRevocation": { "revokeEarlierNotices": false, "grantedToDateAndAddress": null },
+    "substituteFiduciary": { "hasSubstitute": false, "namesAndAddresses": null },
+    "signature": { "signerName": "Douglas Ashford Jr.", "title": "Executor", "date": "2026-08-12" }
+  },
+
+  "form8821": {
+    "taxpayerNameAndAddressBlock": "Estate of Margaret Ellen Ashford\nc/o Douglas Ashford Jr., Executor\n318 Ridgeway Avenue\nEagleville, PA 19403",
+    "taxpayerIdentificationNumbers": "22-6104839",
+    "designees": [
+      {
+        "name": "Douglas Ashford Jr.",
+        "firmName": null,
+        "address": {
+          "line1": "318 Ridgeway Avenue", "line2": null, "city": "Eagleville", "county": "Montgomery",
+          "state": "PA", "zip": "19403", "country": "USA", "isPoBox": false
+        },
+        "cafNumber": "NONE",
+        "ptin": null,
+        "phone": { "number": "(610) 555-0184", "countryCode": "+1", "type": "Mobile", "primary": true },
+        "faxNumber": null,
+        "sendCopiesOfNotices": true,
+        "isNewAddress": false,
+        "isNewPhone": false,
+        "isNewFax": false
+      }
+    ],
+    "additionalDesigneesAttached": false,
+    "authorizeIntermediateServiceProvider": false,
+    "specificUseNotRecordedOnCaf": false,
+    "retainPriorAuthorizations": false,
+    "signature": { "printName": "Douglas Ashford Jr.", "title": "Executor", "date": "2026-08-12" },
+    "irsUseOnly": null
+  },
+
+  "formSS4": {
+    "isLlc": false,
+    "llcMemberCount": null,
+    "llcOrganizedInUs": null,
+    "entityType": "Estate",
+    "entityTypeQualifier": "912-44-8630",
+    "groupExemptionNumber": null,
+    "incorporationState": null,
+    "incorporationForeignCountry": null,
+    "reasonForApplying": "BankingPurpose",
+    "reasonSpecify": "To open an estate checking account and consolidate estate assets",
+    "businessStartOrAcquiredDate": "2026-05-10",
+    "closingMonthOfAccountingYear": "December",
+    "expectedEmployees": { "agricultural": 0, "household": 0, "other": 0 },
+    "electForm944": false,
+    "firstWagesPaidDate": null,
+    "principalActivity": "Other",
+    "principalActivityOther": "Estate administration",
+    "principalLineOfMerchandiseOrServices": "Administration and distribution of a decedent's estate. No trade or business activity.",
+    "hasEverAppliedForEin": false,
+    "previousEin": null,
+    "thirdPartyDesignee": null,
+    "applicant": {
+      "nameAndTitle": "Douglas Ashford Jr., Executor",
+      "phone": { "number": "(610) 555-0184", "countryCode": "+1", "type": "Mobile", "primary": true },
+      "faxNumber": null,
+      "signatureDate": "2026-08-12"
+    }
+  },
+
+  "formDL142": {
+    "applicable": false,
+    "notApplicableReason": "The decedent's only recorded government identification is a United States passport. No California driver licence or identification card is on file, and the decedent resided in New Jersey. DL 142 is a California-only form; the passport is surrendered to the U.S. Department of State instead.",
+    "documentHolderName": "Margaret Ellen Ashford",
+    "documentHolderAddress": {
+      "line1": "4127 Greenwood Hamilton Square Road",
+      "line2": null,
+      "city": "Hamilton Township",
+      "county": "Mercer",
+      "state": "NJ",
+      "zip": "08690",
+      "country": "USA",
+      "isPoBox": false
+    },
+    "documentNumber": "PZ4820371",
+    "documentType": null,
+    "dateOfBirth": "1941-03-02",
+    "locationOfLicense": null,
+    "locationOfLicenseOtherExplanation": null,
+    "reasonForCancellation": null,
+    "minorSection": null,
+    "completedBy": {
+      "printedName": "Douglas Ashford Jr.",
+      "address": {
+        "line1": "318 Ridgeway Avenue", "line2": null, "city": "Eagleville", "county": "Montgomery",
+        "state": "PA", "zip": "19403", "country": "USA", "isPoBox": false
+      },
+      "signatureDate": null
+    },
+    "dmvUseOnly": null
+  },
+
+  "relatedParties": [
+    {
+      "name": { "first": "Carolyn", "middle": null, "last": "Ashford", "suffix": null, "full": "Carolyn Ashford" },
+      "roles": ["BENEFICIARY", "HEIR", "FAMILY_MEMBER"],
+      "contactType": "Individual",
+      "organizationName": null,
+      "isAttorneyOfRecord": false,
+      "isDeceased": false,
+      "dateOfBirth": "1973-01-02",
+      "ssn": null,
+      "sex": "FEMALE",
+      "citizenship": null,
+      "email": null,
+      "phone": null,
+      "address": {
+        "line1": "62 Crosswicks Street", "line2": null, "city": "Bordentown", "county": null,
+        "state": "NJ", "zip": "08505", "country": "USA", "isPoBox": false
+      },
+      "identifications": []
+    },
+    {
+      "name": { "first": "Diane", "middle": "Marie", "last": "Ashford", "suffix": null, "full": "Diane Marie Ashford" },
+      "roles": ["FAMILY_MEMBER"],
+      "contactType": "Individual",
+      "organizationName": null,
+      "isAttorneyOfRecord": false,
+      "isDeceased": false,
+      "dateOfBirth": "1975-01-22",
+      "ssn": "938-52-7401",
+      "sex": "FEMALE",
+      "citizenship": "USA",
+      "email": null,
+      "phone": null,
+      "address": {
+        "line1": "417 Sterigere St", "line2": null, "city": "NORRISTOWN", "county": null,
+        "state": "PA", "zip": "19403-4103", "country": null, "isPoBox": false
+      },
+      "identifications": []
+    }
+  ],
+
+  "assets": [
+    { "category": "BankAccount", "subcategory": "Checking", "count": 2, "totalEstimatedValue": 23221.33, "totalDateOfDeathValue": null, "institutions": ["KeyBank National Association"] },
+    { "category": "Investment", "subcategory": "Brokerage", "count": 2, "totalEstimatedValue": 51497.12, "totalDateOfDeathValue": null, "institutions": ["Invesco Investments", "The Torray Fund"] }
+  ],
+
+  "provenance": {
+    "sourceEstateScanBoxId": "000001d8",
+    "authorityTypeInSource": "Estate_Probate",
+    "anonymizationMethod": "Structure-preserving synthesis. Only shape data left the production database: presence flags, enum values, dates, city/county/state/ZIP, and character-class patterns for identifiers. Names, street lines, emails, phone numbers and all identifier digits were generated fresh against those patterns.",
+    "dateJitterDays": 37,
+    "fieldsSynthesized": [
+      "all personal names", "all street address line1 values (generated to match the source character-class pattern)",
+      "all email addresses", "all phone numbers", "SSNs (900-block, never issued by SSA)", "EIN", "docket number",
+      "passport number", "driver licence number", "place-of-death facility name"
+    ],
+    "fieldsPreservedFromSource": [
+      "date intervals (all dates shifted by a single constant offset)", "city / county / state / ZIP",
+      "court name and public court address", "court opening hours", "sex, marital status, citizenship, veteran status",
+      "identification document type", "identifier character-class patterns", "authority type and administration path",
+      "proceeding status and bond disposition", "asset category / subcategory / count / value", "institution names"
+    ],
+    "notes": "Source estate had two Probate proceedings; the non-primary one carried the two brokerage assets and no dates, so it is folded into the asset roll-up rather than modelled as a second proceeding. The executor is also flagged as the attorney of record in the source record, which is preserved here."
+  }
+}

@@ -1,0 +1,305 @@
+{
+  "$schema": "./estate-form-data.schema.json",
+  "meta": {
+    "recordId": "estate-04-ca-trust-and-estate",
+    "schemaVersion": "1.0.0",
+    "label": "California combined trust-and-estate matter. Trust certification is complete and the trust already has an EIN; the probate track is flagged Authority Not Required. Surviving spouse is the sole successor trustee and sole beneficiary. Decedent held a California driver licence, so DL 142 applies.",
+    "anonymized": true,
+    "sourceSystem": "alix-estate-manager",
+    "generatedAt": "2026-07-27T00:00:00Z"
+  },
+
+  "decedent": {
+    "name": { "first": "Nathaniel", "middle": "Ross", "last": "Bayard", "suffix": null, "full": "Nathaniel Ross Bayard" },
+    "aliases": [],
+    "ssn": "915-83-6209",
+    "dateOfBirth": "1976-11-15",
+    "dateOfDeath": "2026-03-04",
+    "sex": "MALE",
+    "maritalStatus": "Married",
+    "citizenship": "USA",
+    "wasVeteran": false,
+    "email": null,
+    "phones": [],
+    "residenceAddress": {
+      "line1": "5312 Range Street",
+      "line2": null,
+      "city": "Los Angeles",
+      "county": "Los Angeles",
+      "state": "CA",
+      "zip": "90042",
+      "country": "USA",
+      "isPoBox": false
+    },
+    "placeOfDeath": null,
+    "birthplace": {
+      "type": "Home",
+      "name": null,
+      "address": { "line1": null, "line2": null, "city": null, "county": null, "state": null, "zip": null, "country": "USA", "isPoBox": null }
+    },
+    "identifications": [
+      { "type": "DriversLicense", "number": "B38401962", "issuingState": "CA", "issuingCountry": "USA", "expirationDate": null }
+    ]
+  },
+
+  "estateEntity": {
+    "legalName": "Bayard Family Living Trust",
+    "tradeName": "Estate of Nathaniel Ross Bayard",
+    "careOfName": "Renata Bayard",
+    "entityKind": "Trust",
+    "ein": "95-4718203",
+    "identifyingNumber": "95-4718203",
+    "mailingAddress": {
+      "line1": "5312 Range Street",
+      "line2": null,
+      "city": "Los Angeles",
+      "county": "Los Angeles",
+      "state": "CA",
+      "zip": "90042",
+      "country": "USA",
+      "isPoBox": false
+    },
+    "physicalAddress": {
+      "line1": "5312 Range Street",
+      "line2": null,
+      "city": "Los Angeles",
+      "county": "Los Angeles",
+      "state": "CA",
+      "zip": "90042",
+      "country": "USA",
+      "isPoBox": false
+    },
+    "physicalAddressDiffersFromMailing": false,
+    "principalCounty": "Los Angeles",
+    "principalState": "CA",
+    "daytimePhone": { "number": "(323) 555-0169", "countryCode": "+1", "type": "Mobile", "primary": true },
+    "planNumber": null,
+    "trust": {
+      "name": "Bayard Family Living Trust",
+      "dateOfTrust": null,
+      "trusteeName": "Renata Bayard",
+      "grantorTin": "915-83-6209",
+      "isRevocableAtDeath": true
+    }
+  },
+
+  "fiduciary": {
+    "name": { "first": "Renata", "middle": null, "last": "Bayard", "suffix": null, "full": "Renata Bayard" },
+    "title": "Successor Trustee",
+    "isIndividual": true,
+    "ssn": null,
+    "ein": null,
+    "responsiblePartyTin": null,
+    "dateOfBirth": "1988-07-08",
+    "address": {
+      "line1": "5312 Range Street",
+      "line2": null,
+      "city": "Los Angeles",
+      "county": "Los Angeles",
+      "state": "CA",
+      "zip": "90042",
+      "country": "USA",
+      "isPoBox": false
+    },
+    "phone": { "number": "(323) 555-0169", "countryCode": "+1", "type": "Mobile", "primary": true },
+    "faxNumber": null,
+    "email": "r.bayard@example.com",
+    "identifications": [],
+    "relationshipToDecedent": "Spouse",
+    "signatureDate": "2026-06-02"
+  },
+
+  "authority": {
+    "basis": "ValidTrustInstrument",
+    "basisOtherDescription": null,
+    "dateOfDeath": "2026-03-04",
+    "dateOfAppointment": "2026-05-28",
+    "assetsUnderCourtControl": null,
+    "transferredAssetsDescription": null,
+    "authorityStatus": "TrustCertificationComplete",
+    "administrationPath": "TRUST_ADMINISTRATION",
+    "hasWill": true,
+    "hasTrust": true,
+    "bondRequired": null,
+    "bondAmount": null,
+    "proceeding": {
+      "courtName": "No court proceeding — trust administration under California Probate Code sections 18100.5 and 16060 et seq.",
+      "isCourtProceeding": false,
+      "dateProceedingInitiated": null,
+      "courtAddress": null,
+      "courtRoomOrSuite": null,
+      "docketNumber": null,
+      "hearingDate": null,
+      "hearingTime": null,
+      "hearingTimeMeridiem": null,
+      "placeOfOtherProceedings": "Trust administration conducted out of court. The companion probate track was evaluated as INDEPENDENT_ADMINISTRATION and closed as Authority Not Required — all assets pass by trust or by beneficiary designation.",
+      "courtPhone": null,
+      "courtHours": null,
+      "lettersIssuedDate": null,
+      "closureDate": null,
+      "attorneyOfRecord": null
+    }
+  },
+
+  "taxMatters": {
+    "taxTypes": ["Income", "Estate"],
+    "taxTypeOtherDescription": null,
+    "federalFormNumbers": ["1040_or_1040SR", "1041", "706Series"],
+    "federalFormOtherList": null,
+    "authorityLimitedToSpecificPeriods": false,
+    "specificPeriods": null,
+    "authorizationRows": [
+      { "typeOfTaxInformation": "Income", "taxFormNumber": "1040", "yearsOrPeriods": "2024, 2025, 2026", "specificTaxMatters": "Final joint return of the decedent and surviving spouse" },
+      { "typeOfTaxInformation": "Income", "taxFormNumber": "1041", "yearsOrPeriods": "2026, 2027", "specificTaxMatters": "Fiduciary income tax for the irrevocable sub-trusts" },
+      { "typeOfTaxInformation": "Estate", "taxFormNumber": "706", "yearsOrPeriods": "Date of death 03/04/2026", "specificTaxMatters": "Portability election for the deceased spousal unused exclusion" }
+    ]
+  },
+
+  "form56": {
+    "isNewNotice": true,
+    "totalRevocation": { "revokeAllPriorNotices": false, "reason": null, "reasonOtherDescription": null },
+    "partialRevocation": { "revokeEarlierNotices": false, "grantedToDateAndAddress": null },
+    "substituteFiduciary": { "hasSubstitute": false, "namesAndAddresses": null },
+    "signature": { "signerName": "Renata Bayard", "title": "Successor Trustee", "date": "2026-06-02" }
+  },
+
+  "form8821": {
+    "taxpayerNameAndAddressBlock": "Bayard Family Living Trust\nc/o Renata Bayard, Successor Trustee\n5312 Range Street\nLos Angeles, CA 90042",
+    "taxpayerIdentificationNumbers": "95-4718203 / decedent SSN 915-83-6209",
+    "designees": [
+      {
+        "name": "Renata Bayard",
+        "firmName": null,
+        "address": {
+          "line1": "5312 Range Street", "line2": null, "city": "Los Angeles", "county": "Los Angeles",
+          "state": "CA", "zip": "90042", "country": "USA", "isPoBox": false
+        },
+        "cafNumber": "NONE",
+        "ptin": null,
+        "phone": { "number": "(323) 555-0169", "countryCode": "+1", "type": "Mobile", "primary": true },
+        "faxNumber": null,
+        "sendCopiesOfNotices": true,
+        "isNewAddress": false,
+        "isNewPhone": false,
+        "isNewFax": false
+      }
+    ],
+    "additionalDesigneesAttached": false,
+    "authorizeIntermediateServiceProvider": false,
+    "specificUseNotRecordedOnCaf": true,
+    "retainPriorAuthorizations": false,
+    "signature": { "printName": "Renata Bayard", "title": "Successor Trustee", "date": "2026-06-02" },
+    "irsUseOnly": null
+  },
+
+  "formSS4": {
+    "isLlc": false,
+    "llcMemberCount": null,
+    "llcOrganizedInUs": null,
+    "entityType": "Trust",
+    "entityTypeQualifier": "915-83-6209",
+    "groupExemptionNumber": null,
+    "incorporationState": null,
+    "incorporationForeignCountry": null,
+    "reasonForApplying": "CreatedATrust",
+    "reasonSpecify": "Irrevocable at the grantor's death — family living trust",
+    "businessStartOrAcquiredDate": "2026-03-04",
+    "closingMonthOfAccountingYear": "December",
+    "expectedEmployees": { "agricultural": 0, "household": 0, "other": 0 },
+    "electForm944": false,
+    "firstWagesPaidDate": null,
+    "principalActivity": "Other",
+    "principalActivityOther": "Trust administration",
+    "principalLineOfMerchandiseOrServices": "Administration and distribution of a decedent's family living trust. No trade or business activity.",
+    "hasEverAppliedForEin": true,
+    "previousEin": "95-4718203",
+    "thirdPartyDesignee": null,
+    "applicant": {
+      "nameAndTitle": "Renata Bayard, Successor Trustee",
+      "phone": { "number": "(323) 555-0169", "countryCode": "+1", "type": "Mobile", "primary": true },
+      "faxNumber": null,
+      "signatureDate": "2026-05-28"
+    }
+  },
+
+  "formDL142": {
+    "applicable": true,
+    "notApplicableReason": null,
+    "documentHolderName": "Nathaniel Ross Bayard",
+    "documentHolderAddress": {
+      "line1": "5312 Range Street",
+      "line2": null,
+      "city": "Los Angeles",
+      "county": "Los Angeles",
+      "state": "CA",
+      "zip": "90042",
+      "country": "USA",
+      "isPoBox": false
+    },
+    "documentNumber": "B38401962",
+    "documentType": "DriverLicense",
+    "dateOfBirth": "1976-11-15",
+    "locationOfLicense": "Other",
+    "locationOfLicenseOtherExplanation": "Licence was retained by the coroner's office with the decedent's personal effects and has not been released to the family.",
+    "reasonForCancellation": "Licence holder is deceased. Date of death 03/04/2026. Surrendered by the surviving spouse and successor trustee.",
+    "minorSection": null,
+    "completedBy": {
+      "printedName": "Renata Bayard",
+      "address": {
+        "line1": "5312 Range Street", "line2": null, "city": "Los Angeles", "county": "Los Angeles",
+        "state": "CA", "zip": "90042", "country": "USA", "isPoBox": false
+      },
+      "signatureDate": "2026-06-02"
+    },
+    "dmvUseOnly": null
+  },
+
+  "relatedParties": [
+    {
+      "name": { "first": "Renata", "middle": null, "last": "Bayard", "suffix": null, "full": "Renata Bayard" },
+      "roles": ["EXECUTOR", "BENEFICIARY", "HEIR", "FAMILY_MEMBER"],
+      "contactType": "Individual",
+      "organizationName": null,
+      "isAttorneyOfRecord": false,
+      "isDeceased": false,
+      "dateOfBirth": "1988-07-08",
+      "ssn": null,
+      "sex": "FEMALE",
+      "citizenship": null,
+      "email": "r.bayard@example.com",
+      "phone": { "number": "(323) 555-0169", "countryCode": "+1", "type": "Mobile", "primary": true },
+      "address": {
+        "line1": "5312 Range Street", "line2": null, "city": "Los Angeles", "county": "Los Angeles",
+        "state": "CA", "zip": "90042", "country": "USA", "isPoBox": false
+      },
+      "identifications": []
+    }
+  ],
+
+  "assets": [
+    { "category": "RealEstate", "subcategory": "PrimaryResidence", "count": 1, "totalEstimatedValue": 848200.0, "totalDateOfDeathValue": null, "institutions": [] },
+    { "category": "LifeInsurance", "subcategory": null, "count": 2, "totalEstimatedValue": 196492.67, "totalDateOfDeathValue": null, "institutions": ["Reliance Standard Life Insurance Company"] },
+    { "category": "BankAccount", "subcategory": "Checking", "count": 1, "totalEstimatedValue": 1572.24, "totalDateOfDeathValue": null, "institutions": ["Hawaii State Federal Credit Union"] },
+    { "category": "Investment", "subcategory": "Brokerage", "count": 1, "totalEstimatedValue": null, "totalDateOfDeathValue": null, "institutions": ["Robinhood"] },
+    { "category": "Retirement", "subcategory": "K401", "count": 1, "totalEstimatedValue": null, "totalDateOfDeathValue": null, "institutions": ["Empower"] }
+  ],
+
+  "provenance": {
+    "sourceEstateScanBoxId": "00000203",
+    "authorityTypeInSource": "Trust_Estate",
+    "anonymizationMethod": "Structure-preserving synthesis. Only shape data left the production database: presence flags, enum values, dates, city/county/state/ZIP, and character-class patterns for identifiers. Names, street lines, emails, phone numbers and all identifier digits were generated fresh against those patterns.",
+    "dateJitterDays": -44,
+    "fieldsSynthesized": [
+      "all personal names", "trust name", "all street address line1 values (generated to match the source character-class pattern)",
+      "all email addresses", "all phone numbers", "SSNs (900-block, never issued by SSA)", "trust EIN", "driver licence number"
+    ],
+    "fieldsPreservedFromSource": [
+      "date intervals (all dates shifted by a single constant offset)", "city / county / state / ZIP",
+      "sex, marital status, citizenship, veteran status, birthplace type", "identification document type",
+      "identifier character-class patterns", "authority type and both administration paths",
+      "proceeding statuses (AuthorityNotRequired / TrustCertificationComplete)",
+      "asset category / subcategory / count / value", "institution names", "debt count (7)"
+    ],
+    "notes": "The decedent's licence pattern in the source is 'A99999999' — one letter plus eight digits, which is one digit longer than a standard California licence. The pattern is reproduced faithfully rather than corrected, because an auto-fill has to handle the malformed values that are actually in the table. The trust EIN comes from the Trust proceeding row rather than Estate.taxId, which is empty in the source."
+  }
+}

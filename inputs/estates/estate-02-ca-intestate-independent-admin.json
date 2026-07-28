@@ -1,0 +1,340 @@
+{
+  "$schema": "./estate-form-data.schema.json",
+  "meta": {
+    "recordId": "estate-02-ca-intestate-independent-admin",
+    "schemaVersion": "1.0.0",
+    "label": "California intestate estate under independent administration. No will, no EIN yet (SS-4 is the live application), decedent held a California driver licence so DL 142 applies in full.",
+    "anonymized": true,
+    "sourceSystem": "alix-estate-manager",
+    "generatedAt": "2026-07-27T00:00:00Z"
+  },
+
+  "decedent": {
+    "name": { "first": "Anthony", "middle": "Robert", "last": "Cordell", "suffix": null, "full": "Anthony Robert Cordell" },
+    "aliases": [],
+    "ssn": "944-07-2913",
+    "dateOfBirth": "1963-05-07",
+    "dateOfDeath": "2026-01-08",
+    "sex": "MALE",
+    "maritalStatus": "Unknown",
+    "citizenship": "USA",
+    "wasVeteran": false,
+    "email": null,
+    "phones": [],
+    "residenceAddress": {
+      "line1": "2841 Westgate Boulevard",
+      "line2": null,
+      "city": "Los Angeles",
+      "county": "Los Angeles",
+      "state": "CA",
+      "zip": "90064",
+      "country": "USA",
+      "isPoBox": false
+    },
+    "placeOfDeath": null,
+    "birthplace": null,
+    "identifications": [
+      { "type": "DriversLicense", "number": "D7418205", "issuingState": "CA", "issuingCountry": "USA", "expirationDate": null }
+    ]
+  },
+
+  "estateEntity": {
+    "legalName": "Estate of Anthony Robert Cordell",
+    "tradeName": null,
+    "careOfName": "Marcus Elijah Cordell",
+    "entityKind": "DecedentEstate",
+    "ein": null,
+    "identifyingNumber": "944-07-2913",
+    "mailingAddress": {
+      "line1": "1204 Hillcrest Dr Apt B",
+      "line2": "Apt B",
+      "city": "INGLEWOOD",
+      "county": "Los Angeles",
+      "state": "CA",
+      "zip": "90301",
+      "country": "USA",
+      "isPoBox": false
+    },
+    "physicalAddress": {
+      "line1": "2841 Westgate Boulevard",
+      "line2": null,
+      "city": "Los Angeles",
+      "county": "Los Angeles",
+      "state": "CA",
+      "zip": "90064",
+      "country": "USA",
+      "isPoBox": false
+    },
+    "physicalAddressDiffersFromMailing": true,
+    "principalCounty": "Los Angeles",
+    "principalState": "CA",
+    "daytimePhone": { "number": "(310) 555-0132", "countryCode": "+1", "type": "Mobile", "primary": true },
+    "planNumber": null,
+    "trust": null
+  },
+
+  "fiduciary": {
+    "name": { "first": "Marcus", "middle": "Elijah", "last": "Cordell", "suffix": null, "full": "Marcus Elijah Cordell" },
+    "title": "Administrator",
+    "isIndividual": true,
+    "ssn": "926-18-4470",
+    "ein": null,
+    "responsiblePartyTin": "926-18-4470",
+    "dateOfBirth": "1979-12-14",
+    "address": {
+      "line1": "1204 Hillcrest Dr Apt B",
+      "line2": "Apt B",
+      "city": "INGLEWOOD",
+      "county": "Los Angeles",
+      "state": "CA",
+      "zip": "90301",
+      "country": "USA",
+      "isPoBox": false
+    },
+    "phone": { "number": "(310) 555-0132", "countryCode": "+1", "type": "Mobile", "primary": true },
+    "faxNumber": null,
+    "email": "m.cordell@example.com",
+    "identifications": [
+      { "type": "DriversLicense", "number": "F2960483", "issuingState": "CA", "issuingCountry": "USA", "expirationDate": null }
+    ],
+    "relationshipToDecedent": "Son",
+    "signatureDate": "2026-04-24"
+  },
+
+  "authority": {
+    "basis": "CourtAppointmentIntestate",
+    "basisOtherDescription": null,
+    "dateOfDeath": "2026-01-08",
+    "dateOfAppointment": null,
+    "assetsUnderCourtControl": null,
+    "transferredAssetsDescription": null,
+    "authorityStatus": "InProcess",
+    "administrationPath": "INDEPENDENT_ADMINISTRATION",
+    "hasWill": false,
+    "hasTrust": false,
+    "bondRequired": null,
+    "bondAmount": null,
+    "proceeding": {
+      "courtName": "Superior Court of California, County of Los Angeles — Probate Division",
+      "isCourtProceeding": true,
+      "dateProceedingInitiated": null,
+      "courtAddress": {
+        "line1": "111 N Hill St",
+        "line2": null,
+        "city": "Los Angeles",
+        "county": "Los Angeles",
+        "state": "CA",
+        "zip": "90012",
+        "country": "USA",
+        "isPoBox": false
+      },
+      "courtRoomOrSuite": null,
+      "docketNumber": null,
+      "hearingDate": null,
+      "hearingTime": null,
+      "hearingTimeMeridiem": null,
+      "placeOfOtherProceedings": null,
+      "courtPhone": null,
+      "courtHours": null,
+      "lettersIssuedDate": null,
+      "closureDate": null,
+      "attorneyOfRecord": null
+    }
+  },
+
+  "taxMatters": {
+    "taxTypes": ["Income"],
+    "taxTypeOtherDescription": null,
+    "federalFormNumbers": ["1040_or_1040SR", "1041"],
+    "federalFormOtherList": null,
+    "authorityLimitedToSpecificPeriods": false,
+    "specificPeriods": null,
+    "authorizationRows": [
+      { "typeOfTaxInformation": "Income", "taxFormNumber": "1040", "yearsOrPeriods": "2023, 2024, 2025, 2026", "specificTaxMatters": "Transcripts and final individual return of the decedent" },
+      { "typeOfTaxInformation": "Income", "taxFormNumber": "1041", "yearsOrPeriods": "2026", "specificTaxMatters": "Fiduciary income tax for the estate" },
+      { "typeOfTaxInformation": "Civil Penalty", "taxFormNumber": "1040", "yearsOrPeriods": "2023, 2024, 2025", "specificTaxMatters": "Penalty and interest notices issued to the decedent" }
+    ]
+  },
+
+  "form56": {
+    "isNewNotice": true,
+    "totalRevocation": { "revokeAllPriorNotices": false, "reason": null, "reasonOtherDescription": null },
+    "partialRevocation": { "revokeEarlierNotices": false, "grantedToDateAndAddress": null },
+    "substituteFiduciary": { "hasSubstitute": false, "namesAndAddresses": null },
+    "signature": { "signerName": "Marcus Elijah Cordell", "title": "Administrator", "date": "2026-04-24" }
+  },
+
+  "form8821": {
+    "taxpayerNameAndAddressBlock": "Estate of Anthony Robert Cordell\nc/o Marcus Elijah Cordell, Administrator\n1204 Hillcrest Dr Apt B\nInglewood, CA 90301",
+    "taxpayerIdentificationNumbers": "944-07-2913 (decedent SSN — estate EIN not yet issued)",
+    "designees": [
+      {
+        "name": "Marcus Elijah Cordell",
+        "firmName": null,
+        "address": {
+          "line1": "1204 Hillcrest Dr Apt B", "line2": "Apt B", "city": "INGLEWOOD", "county": "Los Angeles",
+          "state": "CA", "zip": "90301", "country": "USA", "isPoBox": false
+        },
+        "cafNumber": "NONE",
+        "ptin": null,
+        "phone": { "number": "(310) 555-0132", "countryCode": "+1", "type": "Mobile", "primary": true },
+        "faxNumber": null,
+        "sendCopiesOfNotices": true,
+        "isNewAddress": true,
+        "isNewPhone": false,
+        "isNewFax": false
+      }
+    ],
+    "additionalDesigneesAttached": false,
+    "authorizeIntermediateServiceProvider": false,
+    "specificUseNotRecordedOnCaf": false,
+    "retainPriorAuthorizations": false,
+    "signature": { "printName": "Marcus Elijah Cordell", "title": "Administrator", "date": "2026-04-24" },
+    "irsUseOnly": null
+  },
+
+  "formSS4": {
+    "isLlc": false,
+    "llcMemberCount": null,
+    "llcOrganizedInUs": null,
+    "entityType": "Estate",
+    "entityTypeQualifier": "944-07-2913",
+    "groupExemptionNumber": null,
+    "incorporationState": null,
+    "incorporationForeignCountry": null,
+    "reasonForApplying": "BankingPurpose",
+    "reasonSpecify": "To open an estate account and claim unclaimed property held by the State of California",
+    "businessStartOrAcquiredDate": "2026-01-08",
+    "closingMonthOfAccountingYear": "December",
+    "expectedEmployees": { "agricultural": 0, "household": 0, "other": 0 },
+    "electForm944": false,
+    "firstWagesPaidDate": null,
+    "principalActivity": "Other",
+    "principalActivityOther": "Estate administration",
+    "principalLineOfMerchandiseOrServices": "Administration and distribution of a decedent's estate. No trade or business activity.",
+    "hasEverAppliedForEin": false,
+    "previousEin": null,
+    "thirdPartyDesignee": null,
+    "applicant": {
+      "nameAndTitle": "Marcus Elijah Cordell, Administrator",
+      "phone": { "number": "(310) 555-0132", "countryCode": "+1", "type": "Mobile", "primary": true },
+      "faxNumber": null,
+      "signatureDate": "2026-04-24"
+    }
+  },
+
+  "formDL142": {
+    "applicable": true,
+    "notApplicableReason": null,
+    "documentHolderName": "Anthony Robert Cordell",
+    "documentHolderAddress": {
+      "line1": "2841 Westgate Boulevard",
+      "line2": null,
+      "city": "Los Angeles",
+      "county": "Los Angeles",
+      "state": "CA",
+      "zip": "90064",
+      "country": "USA",
+      "isPoBox": false
+    },
+    "documentNumber": "D7418205",
+    "documentType": "DriverLicense",
+    "dateOfBirth": "1963-05-07",
+    "locationOfLicense": "Attached",
+    "locationOfLicenseOtherExplanation": null,
+    "reasonForCancellation": "Licence holder is deceased. Date of death 01/08/2026. Surrendered by the court-appointed administrator of the estate.",
+    "minorSection": null,
+    "completedBy": {
+      "printedName": "Marcus Elijah Cordell",
+      "address": {
+        "line1": "1204 Hillcrest Dr Apt B", "line2": "Apt B", "city": "INGLEWOOD", "county": "Los Angeles",
+        "state": "CA", "zip": "90301", "country": "USA", "isPoBox": false
+      },
+      "signatureDate": "2026-04-24"
+    },
+    "dmvUseOnly": null
+  },
+
+  "relatedParties": [
+    {
+      "name": { "first": "Tania", "middle": null, "last": "Cordell", "suffix": null, "full": "Tania Cordell" },
+      "roles": ["HEIR", "FAMILY_MEMBER"],
+      "contactType": "Individual",
+      "organizationName": null,
+      "isAttorneyOfRecord": false,
+      "isDeceased": false,
+      "dateOfBirth": "1983-08-14",
+      "ssn": null,
+      "sex": null,
+      "citizenship": null,
+      "email": "t.cordell@example.com",
+      "phone": { "number": "(424) 555-0198", "countryCode": "+1", "type": "Mobile", "primary": true },
+      "address": {
+        "line1": "18402 Bonanova Ave", "line2": null, "city": "Carson", "county": null,
+        "state": "CA", "zip": "90746", "country": "USA", "isPoBox": false
+      },
+      "identifications": []
+    },
+    {
+      "name": { "first": "Yvonne", "middle": null, "last": "Cordell", "suffix": null, "full": "Yvonne Cordell" },
+      "roles": ["HEIR", "FAMILY_MEMBER"],
+      "contactType": "Individual",
+      "organizationName": null,
+      "isAttorneyOfRecord": false,
+      "isDeceased": false,
+      "dateOfBirth": "1988-12-15",
+      "ssn": null,
+      "sex": null,
+      "citizenship": null,
+      "email": "y.cordell@example.com",
+      "phone": null,
+      "address": {
+        "line1": "8317 West 104th Terrace", "line2": null, "city": "Los Angeles", "county": "Los Angeles",
+        "state": "CA", "zip": "90047", "country": "USA", "isPoBox": false
+      },
+      "identifications": []
+    },
+    {
+      "name": { "first": "Eleanor", "middle": "Faye", "last": "Cordell", "suffix": null, "full": "Eleanor Faye Cordell" },
+      "roles": ["FAMILY_MEMBER"],
+      "contactType": "Individual",
+      "organizationName": null,
+      "isAttorneyOfRecord": false,
+      "isDeceased": true,
+      "dateOfBirth": "1942-05-13",
+      "ssn": null,
+      "sex": null,
+      "citizenship": null,
+      "email": null,
+      "phone": null,
+      "address": {
+        "line1": "8319 West Century Boulevard", "line2": null, "city": "Los Angeles", "county": "Los Angeles",
+        "state": "CA", "zip": "90047", "country": "USA", "isPoBox": false
+      },
+      "identifications": []
+    }
+  ],
+
+  "assets": [
+    { "category": "BankAccount", "subcategory": "Checking", "count": 1, "totalEstimatedValue": 536305.62, "totalDateOfDeathValue": null, "institutions": ["Chase Bank"] },
+    { "category": "UnclaimedProperty", "subcategory": null, "count": 1, "totalEstimatedValue": 28.74, "totalDateOfDeathValue": null, "institutions": [] }
+  ],
+
+  "provenance": {
+    "sourceEstateScanBoxId": "000001ee",
+    "authorityTypeInSource": "Estate_Probate",
+    "anonymizationMethod": "Structure-preserving synthesis. Only shape data left the production database: presence flags, enum values, dates, city/county/state/ZIP, and character-class patterns for identifiers. Names, street lines, emails, phone numbers and all identifier digits were generated fresh against those patterns.",
+    "dateJitterDays": -23,
+    "fieldsSynthesized": [
+      "all personal names", "all street address line1 values (generated to match the source character-class pattern)",
+      "all email addresses", "all phone numbers", "SSNs (900-block, never issued by SSA)", "driver licence numbers"
+    ],
+    "fieldsPreservedFromSource": [
+      "date intervals (all dates shifted by a single constant offset)", "city / county / state / ZIP",
+      "sex, marital status, citizenship, veteran status", "identification document type",
+      "identifier character-class patterns", "authority type and administration path", "proceeding status",
+      "asset category / subcategory / count / value", "institution names", "the ALL-CAPS city casing as stored"
+    ],
+    "notes": "The source estate has no court record, no docket number and no EIN — the court name and address here are the public venue implied by the decedent's county of residence and are marked as such by the absence of a docket number. hasWill is false in the source, which is why Form 56 box 1b (intestate) is selected and the fiduciary title is Administrator rather than Executor."
+  }
+}

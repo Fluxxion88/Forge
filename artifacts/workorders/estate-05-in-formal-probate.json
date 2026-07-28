@@ -1,0 +1,45 @@
+{
+  "estateId": "estate-05-in-formal-probate",
+  "estatePath": "inputs/estates/estate-05-in-formal-probate.json",
+  "jurisdiction": {
+    "state": "IN",
+    "county": "Marion"
+  },
+  "route": "FORMAL_PROBATE",
+  "generatedAt": "2026-07-28T02:00:31Z",
+  "generatedBy": "warrant_mock",
+  "forms": [
+    {
+      "formId": "irs-f56",
+      "applicable": true,
+      "reason": null,
+      "priority": 2,
+      "blastRadius": "high",
+      "reversibility": "irreversible"
+    },
+    {
+      "formId": "irs-ss4",
+      "applicable": false,
+      "reason": "The estate already holds EIN 35-6082714; SS-4 applies for a new one.",
+      "priority": null,
+      "blastRadius": null,
+      "reversibility": null
+    },
+    {
+      "formId": "irs-f8821",
+      "applicable": true,
+      "reason": null,
+      "priority": 3,
+      "blastRadius": "medium",
+      "reversibility": "reversible"
+    },
+    {
+      "formId": "ca-dmv-dl142",
+      "applicable": false,
+      "reason": "The decedent held an Indiana driver licence. DL 142 is a California Department of Motor Vehicles form and cannot be used to cancel an out-of-state licence; the Indiana BMV equivalent is required. The licence data is carried here so the sibling state form can be driven from the same record.",
+      "priority": null,
+      "blastRadius": null,
+      "reversibility": null
+    }
+  ]
+}

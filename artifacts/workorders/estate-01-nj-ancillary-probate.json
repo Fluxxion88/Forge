@@ -1,0 +1,45 @@
+{
+  "estateId": "estate-01-nj-ancillary-probate",
+  "estatePath": "inputs/estates/estate-01-nj-ancillary-probate.json",
+  "jurisdiction": {
+    "state": "NJ",
+    "county": "Mercer"
+  },
+  "route": "ANCILLARY_PROBATE",
+  "generatedAt": "2026-07-28T02:00:31Z",
+  "generatedBy": "warrant_mock",
+  "forms": [
+    {
+      "formId": "irs-f56",
+      "applicable": true,
+      "reason": null,
+      "priority": 2,
+      "blastRadius": "high",
+      "reversibility": "irreversible"
+    },
+    {
+      "formId": "irs-ss4",
+      "applicable": false,
+      "reason": "The estate already holds EIN 22-6104839; SS-4 applies for a new one.",
+      "priority": null,
+      "blastRadius": null,
+      "reversibility": null
+    },
+    {
+      "formId": "irs-f8821",
+      "applicable": true,
+      "reason": null,
+      "priority": 3,
+      "blastRadius": "medium",
+      "reversibility": "reversible"
+    },
+    {
+      "formId": "ca-dmv-dl142",
+      "applicable": false,
+      "reason": "The decedent's only recorded government identification is a United States passport. No California driver licence or identification card is on file, and the decedent resided in New Jersey. DL 142 is a California-only form; the passport is surrendered to the U.S. Department of State instead.",
+      "priority": null,
+      "blastRadius": null,
+      "reversibility": null
+    }
+  ]
+}
