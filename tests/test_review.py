@@ -45,11 +45,48 @@ def test_approval_versions_and_attributes(dirs):
     assert frozen["approvedBy"] == "Pat Reviewer"
     assert frozen["approvedAt"]
 
-    # next approval becomes v2, never overwrites v1
+    # An UNCHANGED draft cannot be approved again. This is how v1 and v2 both got
+    # minted from one binding tonight: after approval the draft is a byte-copy of the
+    # approved artifact, so a second press produces a version differing only in its
+    # timestamp. Refuse it.
+    with pytest.raises(ValueError, match="identical to the approved"):
+        review.approve("irs-f56", "Pat Reviewer")
+    assert not (approved / "irs-f56.v2.json").exists()
+
+
+def test_approval_after_a_real_edit_becomes_v2(dirs):
+    """An edited draft is a genuine new version and must still version cleanly."""
+    drafts, approved = dirs
+    review.approve("irs-f56", "Pat Reviewer")
+
+    edited = json.loads(json.dumps(ARTIFACT))
+    edited["bindings"].append(
+        {
+            "qualifiedName": "top[0].Page1[0].f1_01[0]",
+            "itemNumber": "1",
+            "label": "Name",
+            "source": {"kind": "path", "path": "decedent.name.full"},
+            "format": "text",
+            "required": True,
+            "confidence": "high",
+        }
+    )
+    (drafts / "irs-f56.json").write_text(json.dumps(edited))
+
     out2 = review.approve("irs-f56", "Pat Reviewer")
     assert out2["version"] == 2
     assert (approved / "irs-f56.v1.json").exists()
     assert (approved / "irs-f56.v2.json").exists()
+
+
+def test_load_for_review_prefers_approved_over_draft(dirs):
+    """Defaulting to the draft is what lets a stray version get minted."""
+    drafts, _ = dirs
+    review.approve("irs-f56", "Pat Reviewer")
+    _, path, source = review.load_for_review("irs-f56")
+    assert source == "approved" and path.name == "irs-f56.v1.json"
+    _, dpath, dsource = review.load_for_review("irs-f56", prefer_draft=True)
+    assert dsource == "draft" and dpath.name == "irs-f56.json"
 
 
 def test_unattributed_approval_is_refused(dirs):

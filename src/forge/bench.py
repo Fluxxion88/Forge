@@ -17,6 +17,7 @@ from . import llm
 from .estatepath import EstateData
 from .fill import fill_pdf, load_approved
 from .registry import (
+    BINDINGS_DIR,
     CALIBRATION_DIR,
     ESTATES_DIR,
     FILLS_DIR,
@@ -72,7 +73,21 @@ def run_bench() -> int:
             try:
                 binding, binding_path = load_approved(form_id)
             except FileNotFoundError:
-                row["status"] = "not compiled (no approved binding)"
+                # "no approved binding" covers two materially different states and the
+                # report must not blur them: a form nobody has compiled at all, versus a
+                # form that IS compiled and is waiting on a human. Both refuse to fill —
+                # docs/02 §4 never falls back to a draft — but only the first is a gap in
+                # the system. Conflating them made 9 pairs look uncompiled when 2 forms
+                # were in fact drafted and queued for approval.
+                draft = BINDINGS_DIR / f"{form_id}.json"
+                if draft.exists():
+                    d = json.loads(draft.read_text(encoding="utf-8"))
+                    row["status"] = "compiled, awaiting human approval"
+                    row["fieldsBound"] = len(d.get("bindings") or [])
+                    row["fieldsUnbound"] = len(d.get("unbound") or [])
+                    row["draft"] = rel(draft)
+                else:
+                    row["status"] = "not compiled (no binding at all)"
                 rows.append(row)
                 continue
 
@@ -134,6 +149,11 @@ def run_bench() -> int:
         f"Generated {report['generatedAt']}. {applicable_count} applicable pairs of "
         f"{pair_count}; SS-4 correctly refused where an EIN already exists.",
         "",
+        "A pair that is not filled is in one of two states, and they are not the same "
+        "thing: **compiled, awaiting human approval** means the binding exists and a "
+        "person has to sign it off before anything is produced (`forge fill` never falls "
+        "back to a draft); **not compiled** means there is no binding at all.",
+        "",
         "| Estate | Form | Applicable | Filled | Empty (reported) | Fill ms | LLM calls at fill |",
         "|---|---|---|---|---|---|---|",
     ]
@@ -144,7 +164,14 @@ def run_bench() -> int:
                 f"| {r['fieldsEmptyReported']} | {r['fillMs']} | **{r['llmCallsAtRuntime']}** |"
             )
         elif r["applicable"]:
-            lines.append(f"| {r['estateId']} | {r['formId']} | yes | — | — | — | {r['status']} |")
+            bound = (
+                f"{r['fieldsBound']} bound / {r['fieldsUnbound']} unbound — "
+                if r.get("fieldsBound") is not None else ""
+            )
+            lines.append(
+                f"| {r['estateId']} | {r['formId']} | yes | — | — | — "
+                f"| {bound}{r['status']} |"
+            )
         else:
             reason = (r["skipReason"] or "")[:60]
             lines.append(f"| {r['estateId']} | {r['formId']} | no — {reason} | | | | |")
@@ -170,8 +197,11 @@ def run_bench() -> int:
     filled = sum(1 for r in rows if r.get("status") == "filled")
     print(f"wrote {rel(REPORTS_DIR / 'benchmark.json')}")
     print(f"wrote {rel(REPORTS_DIR / 'benchmark.md')}")
+    awaiting = sum(1 for r in rows if r.get("status") == "compiled, awaiting human approval")
+    uncompiled = sum(1 for r in rows if r.get("status") == "not compiled (no binding at all)")
     print(
         f"{pair_count} pairs, {applicable_count} applicable, {filled} filled, "
+        f"{awaiting} compiled-awaiting-approval, {uncompiled} with no binding at all, "
         f"llmCallsAtRuntime all zero: {zero}"
     )
     print("PASS" if zero and filled > 0 else "FAIL")

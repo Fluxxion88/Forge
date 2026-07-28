@@ -14,7 +14,7 @@
   "guardedOff": 5,
   "groupViolations": [],
   "llmCallsAtRuntime": 0,
-  "elapsedMs": 40,
+  "elapsedMs": 41,
   "pdf": "out/demo/reuse/estate-01-nj-ancillary-probate.pdf",
   "renders": [
     "out/demo/reuse/estate-01-nj-ancillary-probate-page-0.png",

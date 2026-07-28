@@ -220,9 +220,19 @@ Point at one binding (a data path onto a box), a `when` guard with `equalsAny`, 
 once; it is data, not code; no model runs from here on.* Then point at `changeLog` — the
 three defects v1 shipped with, and what fixed them.
 
-**3. The review UI** (already open). Hover any row — the box it fills lights up on the
-rendered form. Click to pin. Every value on the paper traces to a named path, and you
-can see which box.
+**3. The review UI** (already open). It is now a six-tab walkthrough in demo order:
+ESTATE → FORMS NEEDED → REVIEW → REUSE → SELF-CORRECTION → SPONSOR RUNTIME. Steps 4-9
+below each have a tab, so the whole story can be run from the browser, dropping to the
+terminal only for the two live fills.
+
+On **FORMS NEEDED**, point at a skipped form and read its reason aloud — that panel is
+the seam with the other half of the system, and a system that refuses to produce a
+document and says why is the strongest thirty seconds in the demo.
+
+On **REVIEW**, hover any row — the box it fills lights up on the rendered form. Click to
+pin. Every value on the paper traces to a named path, and you can see which box. The tab
+shows the **approved** artifact and its Approve button is disabled; add `&draft=1` to the
+URL to review a draft instead.
 
 **4. The fill.**
 

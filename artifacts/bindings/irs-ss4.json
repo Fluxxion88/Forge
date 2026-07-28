@@ -1,0 +1,1432 @@
+{
+  "formId": "irs-ss4",
+  "version": 1,
+  "status": "draft",
+  "sourceFormSha256": "23d295529950b05979596cf58d559db6c433a4ec852407b1820265c117cb3ca2",
+  "calibrationRef": "artifacts/calibration/irs-ss4.json",
+  "createdAt": "2026-07-28T06:26:26Z",
+  "approvedBy": null,
+  "approvedAt": null,
+  "anvilCastEid": null,
+  "bindings": [
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_2[0]",
+      "itemNumber": 1,
+      "label": "Legal name of entity (or individual) for whom the EIN is being requested",
+      "source": {
+        "kind": "path",
+        "path": "estateEntity.legalName"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_3[0]",
+      "itemNumber": 2,
+      "label": "Trade name of business (if different from name on line 1)",
+      "source": {
+        "kind": "path",
+        "path": "estateEntity.tradeName"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_4[0]",
+      "itemNumber": 3,
+      "label": "Executor, administrator, trustee, \"care of\" name",
+      "source": {
+        "kind": "path",
+        "path": "estateEntity.careOfName"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].Line4ReadOrder[0].f1_5[0]",
+      "itemNumber": "4a",
+      "label": "Mailing address (room, apt., suite no. and street, or P.O. box)",
+      "source": {
+        "kind": "path",
+        "path": "estateEntity.mailingAddress.line1"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].Line4ReadOrder[0].f1_6[0]",
+      "itemNumber": "4b",
+      "label": "City, state, and ZIP code (if foreign, see instructions)",
+      "source": {
+        "kind": "template",
+        "pattern": "{0}, {1} {2}",
+        "paths": [
+          "estateEntity.mailingAddress.city",
+          "estateEntity.mailingAddress.state",
+          "estateEntity.mailingAddress.zip"
+        ]
+      },
+      "format": "text",
+      "onValue": null,
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_7[0]",
+      "itemNumber": "5a",
+      "label": "Street address (if different) (Don't enter a P.O. box.)",
+      "source": {
+        "kind": "path",
+        "path": "estateEntity.physicalAddress.line1"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": "Only filled when the physical address differs from the mailing address.",
+      "when": {
+        "path": "estateEntity.physicalAddressDiffersFromMailing",
+        "equals": true
+      }
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_8[0]",
+      "itemNumber": "5b",
+      "label": "City, state, and ZIP code (if foreign, see instructions)",
+      "source": {
+        "kind": "template",
+        "pattern": "{0}, {1} {2}",
+        "paths": [
+          "estateEntity.physicalAddress.city",
+          "estateEntity.physicalAddress.state",
+          "estateEntity.physicalAddress.zip"
+        ]
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": "Only filled when the physical address differs from the mailing address.",
+      "when": {
+        "path": "estateEntity.physicalAddressDiffersFromMailing",
+        "equals": true
+      }
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_9[0]",
+      "itemNumber": 6,
+      "label": "County and state where principal business is located",
+      "source": {
+        "kind": "template",
+        "pattern": "{0}, {1}",
+        "paths": [
+          "estateEntity.principalCounty",
+          "estateEntity.principalState"
+        ]
+      },
+      "format": "text",
+      "onValue": null,
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_10[0]",
+      "itemNumber": "7a",
+      "label": "Name of responsible party",
+      "source": {
+        "kind": "path",
+        "path": "fiduciary.name.full"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_11[0]",
+      "itemNumber": "7b",
+      "label": "SSN, ITIN, or EIN",
+      "source": {
+        "kind": "path",
+        "path": "fiduciary.responsiblePartyTin"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_1[0]",
+      "itemNumber": "8a",
+      "label": "Is this application for a limited liability company (LLC) (or a foreign equivalent)? \u2014 Yes",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.isLlc",
+        "equals": true
+      },
+      "format": "checkbox",
+      "onValue": "/1",
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_1[1]",
+      "itemNumber": "8a",
+      "label": "Is this application for a limited liability company (LLC) (or a foreign equivalent)? \u2014 No",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.isLlc",
+        "equals": false
+      },
+      "format": "checkbox",
+      "onValue": "/2",
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_12[0]",
+      "itemNumber": "8b",
+      "label": "If 8a is \"Yes,\" enter the number of LLC members",
+      "source": {
+        "kind": "path",
+        "path": "formSS4.llcMemberCount"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": {
+        "path": "formSS4.isLlc",
+        "equals": true
+      }
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_2[0]",
+      "itemNumber": "8c",
+      "label": "If 8a is \"Yes,\" was the LLC organized in the United States? \u2014 Yes",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.llcOrganizedInUs",
+        "equals": true
+      },
+      "format": "checkbox",
+      "onValue": "/1",
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": {
+        "path": "formSS4.isLlc",
+        "equals": true
+      }
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_2[1]",
+      "itemNumber": "8c",
+      "label": "If 8a is \"Yes,\" was the LLC organized in the United States? \u2014 No",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.llcOrganizedInUs",
+        "equals": false
+      },
+      "format": "checkbox",
+      "onValue": "/2",
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": {
+        "path": "formSS4.isLlc",
+        "equals": true
+      }
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_3[0]",
+      "itemNumber": "9a",
+      "label": "Sole proprietor (SSN)",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.entityType",
+        "equals": "SoleProprietor"
+      },
+      "format": "checkbox",
+      "onValue": "/1",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum spelling unverified \u2014 guessed by convention. Only 'Estate' has been observed as an actual entityType value in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_3[1]",
+      "itemNumber": "9a",
+      "label": "Estate (SSN of decedent)",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.entityType",
+        "equals": "Estate"
+      },
+      "format": "checkbox",
+      "onValue": "/8",
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_14[0]",
+      "itemNumber": "9a",
+      "label": "Estate (SSN of decedent)",
+      "source": {
+        "kind": "path",
+        "path": "decedent.ssn"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": {
+        "path": "formSS4.entityType",
+        "equals": "Estate"
+      }
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_3[2]",
+      "itemNumber": "9a",
+      "label": "Partnership",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.entityType",
+        "equals": "Partnership"
+      },
+      "format": "checkbox",
+      "onValue": "/2",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum spelling unverified \u2014 guessed by convention. Only 'Estate' has been observed as an actual entityType value in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_3[3]",
+      "itemNumber": "9a",
+      "label": "Plan administrator (TIN)",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.entityType",
+        "equals": "PlanAdministrator"
+      },
+      "format": "checkbox",
+      "onValue": "/9",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum spelling unverified \u2014 guessed by convention. Only 'Estate' has been observed as an actual entityType value in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_3[4]",
+      "itemNumber": "9a",
+      "label": "Corporation (enter form number to be filed)",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.entityType",
+        "equals": "Corporation"
+      },
+      "format": "checkbox",
+      "onValue": "/3",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum spelling unverified \u2014 guessed by convention. Only 'Estate' has been observed as an actual entityType value in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_3[5]",
+      "itemNumber": "9a",
+      "label": "Trust (TIN of grantor)",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.entityType",
+        "equals": "Trust"
+      },
+      "format": "checkbox",
+      "onValue": "/10",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum spelling unverified \u2014 guessed by convention. Only 'Estate' has been observed as an actual entityType value in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_3[6]",
+      "itemNumber": "9a",
+      "label": "Personal service corporation",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.entityType",
+        "equals": "PersonalServiceCorporation"
+      },
+      "format": "checkbox",
+      "onValue": "/4",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum spelling unverified \u2014 guessed by convention. Only 'Estate' has been observed as an actual entityType value in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_3[7]",
+      "itemNumber": "9a",
+      "label": "Military/National Guard",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.entityType",
+        "equals": "Military"
+      },
+      "format": "checkbox",
+      "onValue": "/11",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum spelling unverified \u2014 guessed by convention. Only 'Estate' has been observed as an actual entityType value in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_3[8]",
+      "itemNumber": "9a",
+      "label": "State/local government",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.entityType",
+        "equals": "StateLocalGovernment"
+      },
+      "format": "checkbox",
+      "onValue": "/14",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum spelling unverified \u2014 guessed by convention. Only 'Estate' has been observed as an actual entityType value in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_3[9]",
+      "itemNumber": "9a",
+      "label": "Church or church-controlled organization",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.entityType",
+        "equals": "Church"
+      },
+      "format": "checkbox",
+      "onValue": "/5",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum spelling unverified \u2014 guessed by convention. Only 'Estate' has been observed as an actual entityType value in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_3[10]",
+      "itemNumber": "9a",
+      "label": "Farmers' cooperative",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.entityType",
+        "equals": "FarmersCooperative"
+      },
+      "format": "checkbox",
+      "onValue": "/12",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum spelling unverified \u2014 guessed by convention. Only 'Estate' has been observed as an actual entityType value in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_3[11]",
+      "itemNumber": "9a",
+      "label": "Federal government",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.entityType",
+        "equals": "FederalGovernment"
+      },
+      "format": "checkbox",
+      "onValue": "/15",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum spelling unverified \u2014 guessed by convention. Only 'Estate' has been observed as an actual entityType value in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_3[12]",
+      "itemNumber": "9a",
+      "label": "Other nonprofit organization (specify)",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.entityType",
+        "equals": "OtherNonprofit"
+      },
+      "format": "checkbox",
+      "onValue": "/6",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum spelling unverified \u2014 guessed by convention. Only 'Estate' has been observed as an actual entityType value in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_3[13]",
+      "itemNumber": "9a",
+      "label": "REMIC",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.entityType",
+        "equals": "REMIC"
+      },
+      "format": "checkbox",
+      "onValue": "/13",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum spelling unverified \u2014 guessed by convention. Only 'Estate' has been observed as an actual entityType value in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_3[14]",
+      "itemNumber": "9a",
+      "label": "Indian tribal governments/enterprises",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.entityType",
+        "equals": "IndianTribalGovernment"
+      },
+      "format": "checkbox",
+      "onValue": "/16",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum spelling unverified \u2014 guessed by convention. Only 'Estate' has been observed as an actual entityType value in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_3[15]",
+      "itemNumber": "9a",
+      "label": "Other (specify)",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.entityType",
+        "equals": "Other"
+      },
+      "format": "checkbox",
+      "onValue": "/7",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum spelling unverified \u2014 guessed by convention. Only 'Estate' has been observed as an actual entityType value in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_20[0]",
+      "itemNumber": "9a",
+      "label": "Group Exemption Number (GEN) if any",
+      "source": {
+        "kind": "path",
+        "path": "formSS4.groupExemptionNumber"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_21[0]",
+      "itemNumber": "9b",
+      "label": "If a corporation, name the state or foreign country (if applicable) where incorporated \u2014 State",
+      "source": {
+        "kind": "path",
+        "path": "formSS4.incorporationState"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_22[0]",
+      "itemNumber": "9b",
+      "label": "If a corporation, name the state or foreign country (if applicable) where incorporated \u2014 Foreign country",
+      "source": {
+        "kind": "path",
+        "path": "formSS4.incorporationForeignCountry"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_4[0]",
+      "itemNumber": 10,
+      "label": "Started new business (specify type)",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.reasonForApplying",
+        "equals": "StartedNewBusiness"
+      },
+      "format": "checkbox",
+      "onValue": "/1",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum spelling unverified \u2014 guessed by convention. Only 'BankingPurpose' has been observed as an actual reasonForApplying value in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_25[0]",
+      "itemNumber": 10,
+      "label": "Started new business (specify type)",
+      "source": {
+        "kind": "path",
+        "path": "formSS4.reasonSpecify"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "low",
+      "note": "Guarded on the guessed enum spelling 'StartedNewBusiness' \u2014 unverified.",
+      "when": {
+        "path": "formSS4.reasonForApplying",
+        "equals": "StartedNewBusiness"
+      }
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_4[1]",
+      "itemNumber": 10,
+      "label": "Changed type of organization (specify new type)",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.reasonForApplying",
+        "equals": "ChangedOrganizationType"
+      },
+      "format": "checkbox",
+      "onValue": "/6",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum spelling unverified \u2014 guessed by convention. Only 'BankingPurpose' has been observed as an actual reasonForApplying value in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_27[0]",
+      "itemNumber": 10,
+      "label": "Changed type of organization (specify new type)",
+      "source": {
+        "kind": "path",
+        "path": "formSS4.reasonSpecify"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "low",
+      "note": "Guarded on the guessed enum spelling 'ChangedOrganizationType' \u2014 unverified.",
+      "when": {
+        "path": "formSS4.reasonForApplying",
+        "equals": "ChangedOrganizationType"
+      }
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_4[2]",
+      "itemNumber": 10,
+      "label": "Purchased going business",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.reasonForApplying",
+        "equals": "PurchasedGoingBusiness"
+      },
+      "format": "checkbox",
+      "onValue": "/7",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum spelling unverified \u2014 guessed by convention. Only 'BankingPurpose' has been observed as an actual reasonForApplying value in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_4[3]",
+      "itemNumber": 10,
+      "label": "Hired employees (Check the box and see line 13.)",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.reasonForApplying",
+        "equals": "HiredEmployees"
+      },
+      "format": "checkbox",
+      "onValue": "/2",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum spelling unverified \u2014 guessed by convention. Only 'BankingPurpose' has been observed as an actual reasonForApplying value in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_4[4]",
+      "itemNumber": 10,
+      "label": "Created a trust (specify type)",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.reasonForApplying",
+        "equals": "CreatedTrust"
+      },
+      "format": "checkbox",
+      "onValue": "/8",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum spelling unverified \u2014 guessed by convention. Only 'BankingPurpose' has been observed as an actual reasonForApplying value in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_28[0]",
+      "itemNumber": 10,
+      "label": "Created a trust (specify type)",
+      "source": {
+        "kind": "path",
+        "path": "formSS4.reasonSpecify"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "low",
+      "note": "Guarded on the guessed enum spelling 'CreatedTrust' \u2014 unverified.",
+      "when": {
+        "path": "formSS4.reasonForApplying",
+        "equals": "CreatedTrust"
+      }
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_4[5]",
+      "itemNumber": 10,
+      "label": "Compliance with IRS withholding regulations",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.reasonForApplying",
+        "equals": "ComplianceWithIrsWithholding"
+      },
+      "format": "checkbox",
+      "onValue": "/3",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum spelling unverified \u2014 guessed by convention. Only 'BankingPurpose' has been observed as an actual reasonForApplying value in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_4[6]",
+      "itemNumber": 10,
+      "label": "Created a pension plan (specify type)",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.reasonForApplying",
+        "equals": "CreatedPensionPlan"
+      },
+      "format": "checkbox",
+      "onValue": "/9",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum spelling unverified \u2014 guessed by convention. Only 'BankingPurpose' has been observed as an actual reasonForApplying value in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_29[0]",
+      "itemNumber": 10,
+      "label": "Created a pension plan (specify type)",
+      "source": {
+        "kind": "path",
+        "path": "formSS4.reasonSpecify"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "low",
+      "note": "Guarded on the guessed enum spelling 'CreatedPensionPlan' \u2014 unverified.",
+      "when": {
+        "path": "formSS4.reasonForApplying",
+        "equals": "CreatedPensionPlan"
+      }
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_4[7]",
+      "itemNumber": 10,
+      "label": "Other (specify)",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.reasonForApplying",
+        "equals": "Other"
+      },
+      "format": "checkbox",
+      "onValue": "/4",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum spelling unverified \u2014 guessed by convention. Only 'BankingPurpose' has been observed as an actual reasonForApplying value in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_4[8]",
+      "itemNumber": 10,
+      "label": "Banking purpose (specify purpose)",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.reasonForApplying",
+        "equals": "BankingPurpose"
+      },
+      "format": "checkbox",
+      "onValue": "/5",
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_24[0]",
+      "itemNumber": 10,
+      "label": "Banking purpose (specify purpose)",
+      "source": {
+        "kind": "path",
+        "path": "formSS4.reasonSpecify"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": {
+        "path": "formSS4.reasonForApplying",
+        "equals": "BankingPurpose"
+      }
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_30[0]",
+      "itemNumber": 10,
+      "label": "Other (specify)",
+      "source": {
+        "kind": "path",
+        "path": "formSS4.reasonSpecify"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "low",
+      "note": "Guarded on the guessed enum spelling 'Other' \u2014 unverified.",
+      "when": {
+        "path": "formSS4.reasonForApplying",
+        "equals": "Other"
+      }
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_31[0]",
+      "itemNumber": 11,
+      "label": "Date business started or acquired (month, day, year). See instructions.",
+      "source": {
+        "kind": "path",
+        "path": "formSS4.businessStartOrAcquiredDate"
+      },
+      "format": "date",
+      "onValue": null,
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_32[0]",
+      "itemNumber": 12,
+      "label": "Closing month of accounting year",
+      "source": {
+        "kind": "path",
+        "path": "formSS4.closingMonthOfAccountingYear"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_33[0]",
+      "itemNumber": 13,
+      "label": "Agricultural",
+      "source": {
+        "kind": "path",
+        "path": "formSS4.expectedEmployees.agricultural"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_34[0]",
+      "itemNumber": 13,
+      "label": "Household",
+      "source": {
+        "kind": "path",
+        "path": "formSS4.expectedEmployees.household"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_35[0]",
+      "itemNumber": 13,
+      "label": "Other",
+      "source": {
+        "kind": "path",
+        "path": "formSS4.expectedEmployees.other"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_5[0]",
+      "itemNumber": 14,
+      "label": "If you expect your employment tax liability to be $1,000 or less ... check here",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.electForm944",
+        "equals": true
+      },
+      "format": "checkbox",
+      "onValue": "/1",
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_36[0]",
+      "itemNumber": 15,
+      "label": "First date wages or annuities were paid (month, day, year).",
+      "source": {
+        "kind": "path",
+        "path": "formSS4.firstWagesPaidDate"
+      },
+      "format": "date",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_6[0]",
+      "itemNumber": 16,
+      "label": "Health care & social assistance",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.principalActivity",
+        "equals": "HealthCareSocialAssistance"
+      },
+      "format": "checkbox",
+      "onValue": "/7",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum spelling unverified \u2014 guessed by convention. Only 'Other' has been observed as an actual principalActivity value in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_6[1]",
+      "itemNumber": 16,
+      "label": "Wholesale\u2014agent/broker",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.principalActivity",
+        "equals": "WholesaleAgentBroker"
+      },
+      "format": "checkbox",
+      "onValue": "/10",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum spelling unverified \u2014 guessed by convention. Only 'Other' has been observed as an actual principalActivity value in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_6[2]",
+      "itemNumber": 16,
+      "label": "Construction",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.principalActivity",
+        "equals": "Construction"
+      },
+      "format": "checkbox",
+      "onValue": "/1",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum spelling unverified \u2014 guessed by convention. Only 'Other' has been observed as an actual principalActivity value in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_6[3]",
+      "itemNumber": 16,
+      "label": "Rental & leasing",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.principalActivity",
+        "equals": "RentalLeasing"
+      },
+      "format": "checkbox",
+      "onValue": "/3",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum spelling unverified \u2014 guessed by convention. Only 'Other' has been observed as an actual principalActivity value in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_6[4]",
+      "itemNumber": 16,
+      "label": "Transportation & warehousing",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.principalActivity",
+        "equals": "TransportationWarehousing"
+      },
+      "format": "checkbox",
+      "onValue": "/5",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum spelling unverified \u2014 guessed by convention. Only 'Other' has been observed as an actual principalActivity value in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_6[5]",
+      "itemNumber": 16,
+      "label": "Accommodation & food service",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.principalActivity",
+        "equals": "AccommodationFoodService"
+      },
+      "format": "checkbox",
+      "onValue": "/8",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum spelling unverified \u2014 guessed by convention. Only 'Other' has been observed as an actual principalActivity value in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_6[6]",
+      "itemNumber": 16,
+      "label": "Wholesale\u2014other",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.principalActivity",
+        "equals": "WholesaleOther"
+      },
+      "format": "checkbox",
+      "onValue": "/11",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum spelling unverified \u2014 guessed by convention. Only 'Other' has been observed as an actual principalActivity value in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_6[7]",
+      "itemNumber": 16,
+      "label": "Retail",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.principalActivity",
+        "equals": "Retail"
+      },
+      "format": "checkbox",
+      "onValue": "/12",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum spelling unverified \u2014 guessed by convention. Only 'Other' has been observed as an actual principalActivity value in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_6[8]",
+      "itemNumber": 16,
+      "label": "Real estate",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.principalActivity",
+        "equals": "RealEstate"
+      },
+      "format": "checkbox",
+      "onValue": "/2",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum spelling unverified \u2014 guessed by convention. Only 'Other' has been observed as an actual principalActivity value in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_6[9]",
+      "itemNumber": 16,
+      "label": "Manufacturing",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.principalActivity",
+        "equals": "Manufacturing"
+      },
+      "format": "checkbox",
+      "onValue": "/4",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum spelling unverified \u2014 guessed by convention. Only 'Other' has been observed as an actual principalActivity value in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_6[10]",
+      "itemNumber": 16,
+      "label": "Finance & insurance",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.principalActivity",
+        "equals": "FinanceInsurance"
+      },
+      "format": "checkbox",
+      "onValue": "/6",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum spelling unverified \u2014 guessed by convention. Only 'Other' has been observed as an actual principalActivity value in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_6[11]",
+      "itemNumber": 16,
+      "label": "Other (specify)",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.principalActivity",
+        "equals": "Other"
+      },
+      "format": "checkbox",
+      "onValue": "/9",
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_37[0]",
+      "itemNumber": 16,
+      "label": "Other (specify)",
+      "source": {
+        "kind": "path",
+        "path": "formSS4.principalActivityOther"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": {
+        "path": "formSS4.principalActivity",
+        "equals": "Other"
+      }
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_38[0]",
+      "itemNumber": 17,
+      "label": "Indicate principal line of merchandise sold, specific construction work done, products produced, or services provided.",
+      "source": {
+        "kind": "path",
+        "path": "formSS4.principalLineOfMerchandiseOrServices"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_7[0]",
+      "itemNumber": 18,
+      "label": "Has the applicant entity shown on line 1 ever applied for and received an EIN? \u2014 Yes",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.hasEverAppliedForEin",
+        "equals": true
+      },
+      "format": "checkbox",
+      "onValue": "/1",
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_7[1]",
+      "itemNumber": 18,
+      "label": "Has the applicant entity shown on line 1 ever applied for and received an EIN? \u2014 No",
+      "source": {
+        "kind": "condition",
+        "path": "formSS4.hasEverAppliedForEin",
+        "equals": false
+      },
+      "format": "checkbox",
+      "onValue": "/2",
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_39[0]",
+      "itemNumber": 18,
+      "label": "If \"Yes,\" write previous EIN here",
+      "source": {
+        "kind": "path",
+        "path": "formSS4.previousEin"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": {
+        "path": "formSS4.hasEverAppliedForEin",
+        "equals": true
+      }
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_44[0]",
+      "itemNumber": null,
+      "label": "Name and title (type or print clearly)",
+      "source": {
+        "kind": "path",
+        "path": "formSS4.applicant.nameAndTitle"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_45[0]",
+      "itemNumber": null,
+      "label": "Applicant's telephone number (include area code)",
+      "source": {
+        "kind": "path",
+        "path": "formSS4.applicant.phone.number"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_46[0]",
+      "itemNumber": null,
+      "label": "Applicant's fax number (include area code)",
+      "source": {
+        "kind": "path",
+        "path": "formSS4.applicant.faxNumber"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    }
+  ],
+  "unbound": [
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].PgHeader[0].f1_1[0]",
+      "label": "EIN",
+      "reason": "This box is for the IRS-assigned EIN and is left blank by the applicant on submission; it is never applicant-supplied data.",
+      "whatWouldFillIt": "None \u2014 populated by the IRS after processing, not by estate data."
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_13[0]",
+      "label": "Sole proprietor (SSN)",
+      "reason": "Only applicable when line 9a is 'Sole proprietor'; this estate's entity type is 'Estate', and the schema has no distinct sole-proprietor-SSN path.",
+      "whatWouldFillIt": "An individual applicant's own SSN, which this decedent-estate schema does not model as a distinct field."
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_15[0]",
+      "label": "Plan administrator (TIN)",
+      "reason": "Only applicable when line 9a is 'Plan administrator'; no such data exists in this decedent-estate schema.",
+      "whatWouldFillIt": "A plan administrator TIN field, not present anywhere in the estate record."
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_16[0]",
+      "label": "Corporation (enter form number to be filed)",
+      "reason": "Only applicable when line 9a is 'Corporation'; no such data exists in this decedent-estate schema.",
+      "whatWouldFillIt": "A corporate tax-form-number field (e.g. 1120), not present anywhere in the estate record."
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_17[0]",
+      "label": "Trust (TIN of grantor)",
+      "reason": "Only applicable when line 9a is 'Trust'; formSS4.entityType is 'Estate' here and the schema's separate 'trust' block is null for this record.",
+      "whatWouldFillIt": "estateEntity.trust's grantor TIN, if the entity were a trust and that block were populated."
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_18[0]",
+      "label": "Other nonprofit organization (specify)",
+      "reason": "Only applicable when line 9a is 'Other nonprofit organization'; no such data exists in this decedent-estate schema.",
+      "whatWouldFillIt": "A nonprofit-type description field, not present anywhere in the estate record."
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_19[0]",
+      "label": "Other (specify)",
+      "reason": "Only applicable when line 9a is 'Other'; no such data exists in this decedent-estate schema.",
+      "whatWouldFillIt": "A free-text entity-type description field, not present anywhere in the estate record."
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_26[0]",
+      "label": "Started new business (specify type) \u2014 continuation line",
+      "reason": "Overflow continuation line for line 10; formSS4.reasonSpecify is a single field with no separate overflow value in the schema.",
+      "whatWouldFillIt": "A second reasonSpecify string, which the schema does not carry separately from the first line."
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_40[0]",
+      "label": "Designee's name",
+      "reason": "formSS4.thirdPartyDesignee is null for this estate and every sample record, so the internal field-name shape of that object cannot be confirmed.",
+      "whatWouldFillIt": "formSS4.thirdPartyDesignee.name (path unconfirmed \u2014 no populated example exists in any sample estate)."
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_41[0]",
+      "label": "Designee's telephone number (include area code)",
+      "reason": "formSS4.thirdPartyDesignee is null for this estate and every sample record, so the internal field-name shape of that object cannot be confirmed.",
+      "whatWouldFillIt": "formSS4.thirdPartyDesignee.phone.number (path unconfirmed \u2014 no populated example exists in any sample estate)."
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_42[0]",
+      "label": "Address and ZIP code",
+      "reason": "formSS4.thirdPartyDesignee is null for this estate and every sample record, so the internal field-name shape of that object cannot be confirmed.",
+      "whatWouldFillIt": "formSS4.thirdPartyDesignee.address, templated into a single line (path unconfirmed \u2014 no populated example exists in any sample estate)."
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_43[0]",
+      "label": "Designee's fax number (include area code)",
+      "reason": "formSS4.thirdPartyDesignee is null for this estate and every sample record, so the internal field-name shape of that object cannot be confirmed.",
+      "whatWouldFillIt": "formSS4.thirdPartyDesignee.faxNumber (path unconfirmed \u2014 no populated example exists in any sample estate)."
+    }
+  ],
+  "exclusiveGroups": [
+    {
+      "label": "Is applicant an LLC (line 8a)",
+      "rule": "exactlyOne",
+      "members": [
+        "topmostSubform[0].Page1[0].c1_1[0]",
+        "topmostSubform[0].Page1[0].c1_1[1]"
+      ],
+      "when": null
+    },
+    {
+      "label": "Was the LLC organized in the United States (line 8c)",
+      "rule": "atMostOne",
+      "members": [
+        "topmostSubform[0].Page1[0].c1_2[0]",
+        "topmostSubform[0].Page1[0].c1_2[1]"
+      ],
+      "when": {
+        "path": "formSS4.isLlc",
+        "equals": true
+      }
+    },
+    {
+      "label": "Entity type (line 9a)",
+      "rule": "exactlyOne",
+      "members": [
+        "topmostSubform[0].Page1[0].c1_3[0]",
+        "topmostSubform[0].Page1[0].c1_3[1]",
+        "topmostSubform[0].Page1[0].c1_3[2]",
+        "topmostSubform[0].Page1[0].c1_3[3]",
+        "topmostSubform[0].Page1[0].c1_3[4]",
+        "topmostSubform[0].Page1[0].c1_3[5]",
+        "topmostSubform[0].Page1[0].c1_3[6]",
+        "topmostSubform[0].Page1[0].c1_3[7]",
+        "topmostSubform[0].Page1[0].c1_3[8]",
+        "topmostSubform[0].Page1[0].c1_3[9]",
+        "topmostSubform[0].Page1[0].c1_3[10]",
+        "topmostSubform[0].Page1[0].c1_3[11]",
+        "topmostSubform[0].Page1[0].c1_3[12]",
+        "topmostSubform[0].Page1[0].c1_3[13]",
+        "topmostSubform[0].Page1[0].c1_3[14]",
+        "topmostSubform[0].Page1[0].c1_3[15]"
+      ],
+      "when": null
+    },
+    {
+      "label": "Reason for applying (line 10)",
+      "rule": "exactlyOne",
+      "members": [
+        "topmostSubform[0].Page1[0].c1_4[0]",
+        "topmostSubform[0].Page1[0].c1_4[1]",
+        "topmostSubform[0].Page1[0].c1_4[2]",
+        "topmostSubform[0].Page1[0].c1_4[3]",
+        "topmostSubform[0].Page1[0].c1_4[4]",
+        "topmostSubform[0].Page1[0].c1_4[5]",
+        "topmostSubform[0].Page1[0].c1_4[6]",
+        "topmostSubform[0].Page1[0].c1_4[7]",
+        "topmostSubform[0].Page1[0].c1_4[8]"
+      ],
+      "when": null
+    },
+    {
+      "label": "Principal activity (line 16)",
+      "rule": "exactlyOne",
+      "members": [
+        "topmostSubform[0].Page1[0].c1_6[0]",
+        "topmostSubform[0].Page1[0].c1_6[1]",
+        "topmostSubform[0].Page1[0].c1_6[2]",
+        "topmostSubform[0].Page1[0].c1_6[3]",
+        "topmostSubform[0].Page1[0].c1_6[4]",
+        "topmostSubform[0].Page1[0].c1_6[5]",
+        "topmostSubform[0].Page1[0].c1_6[6]",
+        "topmostSubform[0].Page1[0].c1_6[7]",
+        "topmostSubform[0].Page1[0].c1_6[8]",
+        "topmostSubform[0].Page1[0].c1_6[9]",
+        "topmostSubform[0].Page1[0].c1_6[10]",
+        "topmostSubform[0].Page1[0].c1_6[11]"
+      ],
+      "when": null
+    },
+    {
+      "label": "Has the applicant ever applied for and received an EIN (line 18)",
+      "rule": "exactlyOne",
+      "members": [
+        "topmostSubform[0].Page1[0].c1_7[0]",
+        "topmostSubform[0].Page1[0].c1_7[1]"
+      ],
+      "when": null
+    }
+  ]
+}

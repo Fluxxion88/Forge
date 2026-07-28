@@ -1,0 +1,16 @@
+=== f8821 propose (45 fields, 1 page) — whole-form first, cap 1200s
+[propose] whole-form binding for irs-f8821 against estate-05-in-formal-probate
+[call 1] propose (attempt 1) (45 field(s)) — prev call took n/a
+wrote artifacts/bindings/irs-f8821.json
+wrote out/renders/irs-f8821/draft.pdf
+wrote out/renders/irs-f8821/draft-page-0.png
+39 bound, 6 unbound, 28 filled for estate-05-in-formal-probate, 0 guarded-off, 208.3s, 1 model call(s)
+f8821 exit=0
+=== ss4 propose (89 fields, 2 pages) — per-page, cap 1400s
+[call 1] propose page 0 (attempt 1) (89 field(s)) — prev call took n/a
+wrote artifacts/bindings/irs-ss4.json
+wrote out/renders/irs-ss4/draft.pdf
+wrote out/renders/irs-ss4/draft-page-0.png
+wrote out/renders/irs-ss4/draft-page-1.png
+77 bound, 12 unbound, 25 filled for estate-02-ca-intestate-independent-admin, 9 guarded-off, 249.5s, 1 model call(s)
+ss4 exit=0

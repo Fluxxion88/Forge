@@ -8,10 +8,10 @@ The same file, byte for byte, produced all five documents below. The data differ
 
 | estate | jurisdiction | route | authority.basis | line 1 | line 2a | line 2b | fiduciary title | filled | empty | model calls | elapsed |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| estate-01-nj-ancillary-probate | NJ/Mercer | ANCILLARY_PROBATE | `CourtAppointmentTestate` | **1a** | 05/10/2026 | — | Executor | 32 | 35 | **0** | 40 ms |
-| estate-02-ca-intestate-independent-admin | CA/Los Angeles | INDEPENDENT_ADMINISTRATION | `CourtAppointmentIntestate` | **1b** | 01/08/2026 | — | Administrator | 28 | 39 | **0** | 39 ms |
-| estate-03-oh-trust-administration | OH/Cuyahoga | TRUST_ADMINISTRATION | `ValidTrustInstrument` | **1e** | — | 06/29/2026 | Successor Trustee | 27 | 40 | **0** | 41 ms |
-| estate-04-ca-trust-and-estate | CA/Los Angeles | TRUST_ADMINISTRATION | `ValidTrustInstrument` | **1e** | — | 05/28/2026 | Successor Trustee | 25 | 42 | **0** | 39 ms |
+| estate-01-nj-ancillary-probate | NJ/Mercer | ANCILLARY_PROBATE | `CourtAppointmentTestate` | **1a** | 05/10/2026 | — | Executor | 32 | 35 | **0** | 41 ms |
+| estate-02-ca-intestate-independent-admin | CA/Los Angeles | INDEPENDENT_ADMINISTRATION | `CourtAppointmentIntestate` | **1b** | 01/08/2026 | — | Administrator | 28 | 39 | **0** | 40 ms |
+| estate-03-oh-trust-administration | OH/Cuyahoga | TRUST_ADMINISTRATION | `ValidTrustInstrument` | **1e** | — | 06/29/2026 | Successor Trustee | 27 | 40 | **0** | 40 ms |
+| estate-04-ca-trust-and-estate | CA/Los Angeles | TRUST_ADMINISTRATION | `ValidTrustInstrument` | **1e** | — | 05/28/2026 | Successor Trustee | 25 | 42 | **0** | 40 ms |
 | estate-05-in-formal-probate | IN/Marion | FORMAL_PROBATE | `CourtAppointmentTestate` | **1a** | 01/23/2026 | — | Personal Representative | 32 | 35 | **0** | 39 ms |
 
 **Model calls at fill time: 0 across all 5 estates.** Wall time 39–41 ms per estate.
@@ -29,9 +29,9 @@ The same file, byte for byte, produced all five documents below. The data differ
 | | wall time | model calls | measured how |
 |---|---|---|---|
 | Cold: first estate on an uncompiled form | **485 s** (83 s calibrate + 402 s propose) | 4 | calibrate from `out/reports/calls/` mtimes (19:54:16 → 19:55:39); propose from the wall time the command printed (402.0 s) |
-| Warm: every estate after the first | **39 ms** (range 39–41) | 0 | measured per fill, this run |
+| Warm: every estate after the first | **40 ms** (range 39–41) | 0 | measured per fill, this run |
 
-That is roughly **12,247×**. The compile cost is paid once per form, by a machine, under human review. Every estate after it is deterministic.
+That is roughly **12,125×**. The compile cost is paid once per form, by a machine, under human review. Every estate after it is deterministic.
 
 Two things this table deliberately does not hide:
 

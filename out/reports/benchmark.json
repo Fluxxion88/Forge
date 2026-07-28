@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-28T05:52:06Z",
+  "generatedAt": "2026-07-28T06:30:36Z",
   "denominators": {
     "totalFieldsAcrossForms": 272,
     "fieldsWithNoSemanticHint": "~220",
@@ -44,7 +44,7 @@
       "fieldsFilled": 32,
       "fieldsEmptyReported": 40,
       "groupViolations": [],
-      "fillMs": 41,
+      "fillMs": 42,
       "llmCallsAtRuntime": 0,
       "pdf": "out/fills/estate-01-nj-ancillary-probate-irs-f56.pdf"
     },
@@ -59,7 +59,10 @@
       "formId": "irs-f8821",
       "applicable": true,
       "skipReason": null,
-      "status": "not compiled (no approved binding)"
+      "status": "compiled, awaiting human approval",
+      "fieldsBound": 39,
+      "fieldsUnbound": 6,
+      "draft": "artifacts/bindings/irs-f8821.json"
     },
     {
       "estateId": "estate-01-nj-ancillary-probate",
@@ -79,7 +82,7 @@
       "fieldsFilled": 28,
       "fieldsEmptyReported": 44,
       "groupViolations": [],
-      "fillMs": 41,
+      "fillMs": 40,
       "llmCallsAtRuntime": 0,
       "pdf": "out/fills/estate-02-ca-intestate-independent-admin-irs-f56.pdf"
     },
@@ -88,21 +91,27 @@
       "formId": "irs-ss4",
       "applicable": true,
       "skipReason": null,
-      "status": "not compiled (no approved binding)"
+      "status": "compiled, awaiting human approval",
+      "fieldsBound": 77,
+      "fieldsUnbound": 12,
+      "draft": "artifacts/bindings/irs-ss4.json"
     },
     {
       "estateId": "estate-02-ca-intestate-independent-admin",
       "formId": "irs-f8821",
       "applicable": true,
       "skipReason": null,
-      "status": "not compiled (no approved binding)"
+      "status": "compiled, awaiting human approval",
+      "fieldsBound": 39,
+      "fieldsUnbound": 6,
+      "draft": "artifacts/bindings/irs-f8821.json"
     },
     {
       "estateId": "estate-02-ca-intestate-independent-admin",
       "formId": "ca-dmv-dl142",
       "applicable": true,
       "skipReason": null,
-      "status": "not compiled (no approved binding)"
+      "status": "not compiled (no binding at all)"
     },
     {
       "estateId": "estate-03-oh-trust-administration",
@@ -116,7 +125,7 @@
       "fieldsFilled": 27,
       "fieldsEmptyReported": 45,
       "groupViolations": [],
-      "fillMs": 39,
+      "fillMs": 40,
       "llmCallsAtRuntime": 0,
       "pdf": "out/fills/estate-03-oh-trust-administration-irs-f56.pdf"
     },
@@ -125,14 +134,20 @@
       "formId": "irs-ss4",
       "applicable": true,
       "skipReason": null,
-      "status": "not compiled (no approved binding)"
+      "status": "compiled, awaiting human approval",
+      "fieldsBound": 77,
+      "fieldsUnbound": 12,
+      "draft": "artifacts/bindings/irs-ss4.json"
     },
     {
       "estateId": "estate-03-oh-trust-administration",
       "formId": "irs-f8821",
       "applicable": true,
       "skipReason": null,
-      "status": "not compiled (no approved binding)"
+      "status": "compiled, awaiting human approval",
+      "fieldsBound": 39,
+      "fieldsUnbound": 6,
+      "draft": "artifacts/bindings/irs-f8821.json"
     },
     {
       "estateId": "estate-03-oh-trust-administration",
@@ -152,7 +167,7 @@
       "fieldsFilled": 25,
       "fieldsEmptyReported": 47,
       "groupViolations": [],
-      "fillMs": 39,
+      "fillMs": 40,
       "llmCallsAtRuntime": 0,
       "pdf": "out/fills/estate-04-ca-trust-and-estate-irs-f56.pdf"
     },
@@ -167,14 +182,17 @@
       "formId": "irs-f8821",
       "applicable": true,
       "skipReason": null,
-      "status": "not compiled (no approved binding)"
+      "status": "compiled, awaiting human approval",
+      "fieldsBound": 39,
+      "fieldsUnbound": 6,
+      "draft": "artifacts/bindings/irs-f8821.json"
     },
     {
       "estateId": "estate-04-ca-trust-and-estate",
       "formId": "ca-dmv-dl142",
       "applicable": true,
       "skipReason": null,
-      "status": "not compiled (no approved binding)"
+      "status": "not compiled (no binding at all)"
     },
     {
       "estateId": "estate-05-in-formal-probate",
@@ -203,7 +221,10 @@
       "formId": "irs-f8821",
       "applicable": true,
       "skipReason": null,
-      "status": "not compiled (no approved binding)"
+      "status": "compiled, awaiting human approval",
+      "fieldsBound": 39,
+      "fieldsUnbound": 6,
+      "draft": "artifacts/bindings/irs-f8821.json"
     },
     {
       "estateId": "estate-05-in-formal-probate",

@@ -651,17 +651,36 @@ Each binding object:
   "when": <optional guard, see below, or omit>
 }
 
-The five source kinds — NOTHING else is executable:
+The six source kinds — NOTHING else is executable:
   {"kind": "path", "path": "<estate JSON path>"}                      direct value
   {"kind": "constant", "value": <literal>}                            never varies
   {"kind": "template", "pattern": "{0}, {1}", "paths": [<p0>, <p1>]}  joined values
   {"kind": "condition", "path": <p>, "equals": <literal>}             checkbox: mark iff equal
+  {"kind": "contains", "path": <p>, "includes": <literal>}            checkbox: mark iff the
+                                                                      ARRAY at <p> contains it
   {"kind": "absent", "path": <p>}                                     checkbox: mark iff absent/null
 
-Optional guard on ANY binding: "when": {"path": <p>, "equals": <literal>} — the binding
-applies only when the guard path resolves to exactly that value. Use it for conditional
-value placement (e.g. Form 56 line 2a date-of-death applies only on the 1a/1b/1d branch;
-line 2b date-of-appointment only on the 1c/1e/1f/1g branch).
+CHOOSE BETWEEN condition AND contains BY THE SHAPE OF THE DATA, and look it up in the
+estate record below — do not guess. If the path holds an array (a "check all that
+apply" group: taxMatters.taxTypes, taxMatters.federalFormNumbers), you MUST use
+`contains`; `condition` compares with == and is never true against a list, which
+silently produces a checkbox that can never be marked on any estate. If the path
+holds a scalar, use `condition`. Likewise a `when` guard only ever compares scalars.
+
+The literal in `equals`/`includes` must be copied from a value you can SEE in the
+estate record. If the option has no corresponding value anywhere in the record (a
+tax type this estate does not have), you cannot know the enum spelling — bind it
+anyway with your best reading of the convention, set "confidence": "low", and say in
+"note" that the literal is unverified. Do not silently present a guessed enum
+spelling as high confidence.
+
+Optional guard on ANY binding, either shape:
+  "when": {"path": <p>, "equals": <literal>}          applies iff the path equals it
+  "when": {"path": <p>, "equalsAny": [<l1>, <l2>, …]}  applies iff the path is one of them
+Use it for conditional value placement. Form 56 line 2a takes the date of death on the
+1a/1b/1d branch and line 2b the date of appointment on the 1c/1e/1f/1g branch — those
+are THREE and FOUR authority values respectively, so they need equalsAny, not equals.
+A single-literal guard there silently blanks the date on every other branch.
 
 "format": "date" reformats ISO dates (2026-01-23) to MM/DD/YYYY. Checkbox bindings use
 "format": "checkbox".

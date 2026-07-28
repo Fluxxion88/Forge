@@ -43,6 +43,51 @@ def load_draft(form_id: str) -> dict[str, Any]:
     return json.loads(p.read_text(encoding="utf-8"))
 
 
+def load_for_review(form_id: str, prefer_draft: bool = False) -> tuple[dict[str, Any], Path, str]:
+    """The artifact the UI shows. APPROVED wins unless a draft is explicitly asked for.
+
+    Defaulting to the draft is how a stray version gets minted: the draft is a byte-copy
+    of the approved artifact right after approval, so an operator demoing the UI sees
+    something that looks unapproved, presses Approve, and mints a v4 that differs from
+    v3 in nothing but its timestamp. That already happened once (v1/v2). So: approved by
+    default, draft only on `?draft=1`, and `approve()` refuses a no-op.
+    """
+    versions = sorted(
+        int(m.group(1))
+        for p in APPROVED_DIR.glob(f"{form_id}.v*.json")
+        if (m := re.search(r"\.v(\d+)\.json$", p.name))
+    )
+    draft_path = BINDINGS_DIR / f"{form_id}.json"
+    if not prefer_draft and versions:
+        path = APPROVED_DIR / f"{form_id}.v{versions[-1]}.json"
+        return json.loads(path.read_text(encoding="utf-8")), path, "approved"
+    if draft_path.exists():
+        return load_draft(form_id), draft_path, "draft"
+    if versions:
+        path = APPROVED_DIR / f"{form_id}.v{versions[-1]}.json"
+        return json.loads(path.read_text(encoding="utf-8")), path, "approved"
+    raise FileNotFoundError(f"no binding for {form_id}: no approved version and no draft")
+
+
+def draft_matches_approved(form_id: str) -> bool:
+    """True when the draft would approve to an artifact identical to the newest approved
+    one — the condition under which approving again is pure noise."""
+    versions = sorted(
+        int(m.group(1))
+        for p in APPROVED_DIR.glob(f"{form_id}.v*.json")
+        if (m := re.search(r"\.v(\d+)\.json$", p.name))
+    )
+    draft_path = BINDINGS_DIR / f"{form_id}.json"
+    if not versions or not draft_path.exists():
+        return False
+    approved = json.loads(
+        (APPROVED_DIR / f"{form_id}.v{versions[-1]}.json").read_text(encoding="utf-8")
+    )
+    draft = json.loads(draft_path.read_text(encoding="utf-8"))
+    keys = ("bindings", "unbound", "exclusiveGroups")
+    return all(draft.get(k) == approved.get(k) for k in keys)
+
+
 def next_version(form_id: str) -> int:
     versions = [
         int(m.group(1))
@@ -56,6 +101,18 @@ def approve(form_id: str, approved_by: str) -> dict[str, Any]:
     """Freeze the draft: version, attribute, copy to approved/, never touch again."""
     if not approved_by or not approved_by.strip():
         raise ValueError("approvedBy is required — an unattributed artifact is not approved")
+    if draft_matches_approved(form_id):
+        versions = sorted(
+            int(m.group(1))
+            for p in APPROVED_DIR.glob(f"{form_id}.v*.json")
+            if (m := re.search(r"\.v(\d+)\.json$", p.name))
+        )
+        raise ValueError(
+            f"refusing to approve: the draft is identical to the approved "
+            f"v{versions[-1]} (same bindings, unbound list and exclusive groups). "
+            "Approving would mint a version that differs only by timestamp. Edit "
+            "something first, or there is nothing to approve."
+        )
     artifact = load_draft(form_id)
     version = next_version(form_id)
     artifact["version"] = version
@@ -183,11 +240,14 @@ def work_order_context(form_id: str, estate_id: str) -> dict[str, Any]:
     }
 
 
-def review_state(form_id: str, estate_id: str) -> dict[str, Any]:
+def review_state(
+    form_id: str, estate_id: str, prefer_draft: bool = False
+) -> dict[str, Any]:
     """Everything the page needs: rows sorted worst-first, group check, renders."""
     from .bind import load_calibration
+    from .walkthrough import STATUS_COPY
 
-    artifact = load_draft(form_id)
+    artifact, artifact_path, source = load_for_review(form_id, prefer_draft)
     estate = EstateData.load(estate_path(estate_id))
     result = resolve_all(artifact, estate)
     by_name = {f.qualified_name: f for f in result.fields}
@@ -229,6 +289,9 @@ def review_state(form_id: str, estate_id: str) -> dict[str, Any]:
                 "value": f.value if f.format != "checkbox" else ("☑" if f.checked else "☐"),
                 "reason": f.reason,
                 "note": b.get("note"),
+                "statusLabel": STATUS_COPY[status]["label"],
+                "statusHint": STATUS_COPY[status]["hint"],
+                "statusTerm": STATUS_COPY[status]["term"],
                 "reviewed": bool(b.get("reviewed")),
                 # the single path an editor may retarget; template/constant have none
                 "editablePath": b["source"].get("path"),
@@ -250,6 +313,9 @@ def review_state(form_id: str, estate_id: str) -> dict[str, Any]:
                 "value": None,
                 "reason": u.get("whatWouldFillIt") or u.get("reason"),
                 "note": u.get("reason"),
+                "statusLabel": STATUS_COPY["unbound"]["label"],
+                "statusHint": STATUS_COPY["unbound"]["hint"],
+                "statusTerm": STATUS_COPY["unbound"]["term"],
                 "reviewed": bool(u.get("reviewed")),
                 "editablePath": None,
                 "boxes": boxes_for(u.get("qualifiedName")),
@@ -282,6 +348,9 @@ def review_state(form_id: str, estate_id: str) -> dict[str, Any]:
     return {
         "formId": form_id,
         "estateId": estate_id,
+        "artifactSource": source,           # "approved" or "draft"
+        "artifactPath": rel(artifact_path),
+        "draftMatchesApproved": draft_matches_approved(form_id),
         "estates": sorted(p.stem for p in ESTATES_DIR.glob("*.json")),
         "forms": list_drafts(),
         "workOrder": work_order_context(form_id, estate_id),
@@ -370,64 +439,101 @@ def update_binding_row(form_id: str, qualified_name: str, patch: dict[str, Any])
 # ------------------------------------------------------------------ web
 
 
-PAGE = """<!doctype html>
-<html><head><meta charset="utf-8"><title>Forge review</title>
+PAGE = r"""<!doctype html>
+<html><head><meta charset="utf-8"><title>Forge — form compiler</title>
 <style>
- :root { --line:#e6e6e6; --dim:#6b6b6b; }
+ :root { --line:#e2e2e6; --dim:#666; --ink:#1a1a1a; --accent:#1657d0; }
  * { box-sizing: border-box; }
- body { font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        margin: 0; display: flex; height: 100vh; color: #1a1a1a; }
+ body { font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        margin: 0; color: var(--ink); height: 100vh; display: flex;
+        flex-direction: column; }
+ nav { flex: 0 0 auto; border-bottom: 1px solid var(--line); background: #fafafa;
+       display: flex; align-items: center; gap: 16px; padding: 0 14px; }
+ .brand { font-weight: 700; padding: 10px 0; white-space: nowrap; }
+ .brand span { font-weight: 400; color: var(--dim); font-size: 12px; margin-left: 6px; }
+ #tabs { display: flex; gap: 2px; margin-left: 8px; }
+ #tabs button { border: 0; background: none; font: inherit; font-size: 12.5px;
+   font-weight: 600; letter-spacing: .03em; padding: 12px 11px; cursor: pointer;
+   color: var(--dim); border-bottom: 3px solid transparent; }
+ #tabs button.on { color: var(--accent); border-bottom-color: var(--accent); }
+ #tabs button .n { display: inline-block; width: 17px; height: 17px; line-height: 17px;
+   border-radius: 50%; background: #ddd; color: #444; font-size: 10.5px;
+   text-align: center; margin-right: 5px; }
+ #tabs button.on .n { background: var(--accent); color: #fff; }
+ .pickers { margin-left: auto; font-size: 12px; color: var(--dim); white-space: nowrap; }
+ select { font: inherit; font-size: 12px; padding: 3px 4px; }
+ #panels { flex: 1 1 auto; overflow: hidden; position: relative; }
+ .panel { display: none; height: 100%; overflow: auto; padding: 18px 22px 40px; }
+ .panel.on { display: block; }
+ .panel.review.on { display: flex; padding: 0; }
+ h2 { font-size: 19px; margin: 0 0 4px; }
+ .thesis { font-size: 15px; line-height: 1.45; margin: 0 0 18px; padding: 11px 14px;
+   background: #eef3ff; border-left: 4px solid var(--accent); border-radius: 0 4px 4px 0;
+   max-width: 1000px; }
+ .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+   gap: 12px; max-width: 1100px; margin-bottom: 20px; }
+ .card { border: 1px solid var(--line); border-radius: 6px; padding: 11px 13px; }
+ .card .k { font-size: 11px; text-transform: uppercase; letter-spacing: .05em;
+   color: var(--dim); margin-bottom: 3px; }
+ .card .v { font-size: 16px; font-weight: 600; }
+ .card .sub { font-size: 12px; color: var(--dim); margin-top: 3px; }
+ table { border-collapse: collapse; width: 100%; max-width: 1300px; }
+ th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: .04em;
+   color: var(--dim); padding: 7px 8px; border-bottom: 1px solid #ccc;
+   position: sticky; top: 0; background: #fff; z-index: 2; }
+ td { padding: 7px 8px; border-bottom: 1px solid var(--line); vertical-align: top;
+   font-size: 13px; }
+ code { font-size: 11.5px; background: #f3f3f5; padding: 1px 4px; border-radius: 3px;
+   word-break: break-all; }
+ .mono { font-family: ui-monospace, Menlo, monospace; font-size: 11.5px; }
+ .note { color: var(--dim); font-size: 11.5px; }
+ .pill { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px;
+   border-radius: 11px; }
+ .pill.yes { background: #e2f4e6; color: #0a6b2b; }
+ .pill.no  { background: #f0f0f2; color: #555; }
+ .pill.ok  { background: #e2f4e6; color: #0a6b2b; }
+ .pill.warn{ background: #fdf0d8; color: #8a5800; }
+ .pill.bad { background: #fbe3e7; color: #a3001d; }
+ .reason { background: #fafafa; border-left: 3px solid #ccc; padding: 8px 11px;
+   margin-top: 6px; font-size: 12.5px; color: #333; max-width: 760px; }
+ img.shot { max-width: 100%; border: 1px solid var(--line); border-radius: 4px;
+   background: #fff; }
+ .sidebyside { display: flex; gap: 18px; flex-wrap: wrap; align-items: flex-start; }
+ .sidebyside > div { flex: 1 1 380px; min-width: 320px; }
+ .refusal { background: #1e1e22; color: #eaeaea; padding: 12px 14px; border-radius: 5px;
+   font-family: ui-monospace, Menlo, monospace; font-size: 12px; white-space: pre-wrap; }
+ h3 { font-size: 14.5px; margin: 22px 0 8px; }
+ .roundhdr { display: flex; align-items: baseline; gap: 10px; margin: 18px 0 6px; }
+ .roundhdr h3 { margin: 0; }
+ ul.findings { margin: 6px 0 10px; padding-left: 20px; }
+ ul.findings li { margin-bottom: 5px; font-size: 13px; }
+ /* ---- REVIEW tab: the split pane, unchanged behaviour ---- */
  #left { width: 50%; display: flex; flex-direction: column; background: #3b3b3f; }
  #pagebar { padding: 8px 12px; background: #2b2b2f; color: #eee; display: flex;
-            gap: 8px; align-items: center; flex: 0 0 auto; }
- #pagebar button { font-size: 13px; padding: 4px 12px; border-radius: 4px;
+            gap: 8px; align-items: center; flex: 0 0 auto; font-size: 12px; }
+ #pagebar button { font-size: 12px; padding: 4px 12px; border-radius: 4px;
                    border: 1px solid #666; background: #4a4a50; color: #eee; cursor: pointer; }
  #pagebar button.on { background: #eee; color: #222; font-weight: 600; }
  #pagebar a { color: #9bd; margin-left: auto; font-size: 12px; }
+ #pagebar .pin { color: #ffd479; margin-left: 10px; }
  #sheet { flex: 1 1 auto; overflow: auto; padding: 14px; }
- /* the overlay is a percentage-positioned layer exactly coincident with the image,
-    so it stays aligned at any scale — a projector resize must not break it */
  #stage { position: relative; line-height: 0; }
  #stage img { width: 100%; background: white; box-shadow: 0 2px 10px rgba(0,0,0,.55); }
  #ov { position: absolute; left: 0; top: 0; width: 100%; height: 100%;
        pointer-events: none; }
- .box { position: absolute; border-radius: 1px; transition: opacity .08s;
-        box-shadow: 0 0 0 1px rgba(255,255,255,.7); }
+ .box { position: absolute; border-radius: 1px; box-shadow: 0 0 0 1px rgba(255,255,255,.7); }
  .box.ok   { background: rgba(38,120,255,.28);  border: 1.5px solid #1657d0; }
  .box.warn { background: rgba(255,176,32,.34);  border: 1.5px solid #a86200; }
  .box.bad  { background: rgba(220,32,64,.30);   border: 1.5px solid #b00020; }
  .box.pinned { box-shadow: 0 0 0 2px rgba(255,255,255,.9), 0 0 12px rgba(0,0,0,.5); }
- #pagebar .pin { color: #ffd479; font-size: 12px; margin-left: 10px; }
  #right { width: 50%; overflow: auto; padding: 14px 16px 0; }
- h1 { font-size: 17px; margin: 0 0 2px; }
- h1 .st { font-size: 12px; font-weight: 500; color: var(--dim); }
- .chips { margin: 6px 0 8px; display: flex; flex-wrap: wrap; gap: 5px; }
- .chip { font-size: 11.5px; padding: 2px 8px; border-radius: 10px; background: #f0f0f2;
-         border: 1px solid var(--line); color: #333; }
- .chip b { font-weight: 600; }
- .chip.hi { background: #fde8e8; border-color: #f3bcbc; }
- .chip.med { background: #fff3d9; border-color: #f0dcae; }
- .counts { color: var(--dim); font-size: 12.5px; margin-bottom: 8px; }
- .banner { padding: 9px 11px; border-radius: 5px; margin: 8px 0; font-size: 13px; }
- .violation { background: #b00020; color: #fff; font-weight: 600; }
- .warn { background: #fff4d6; border: 1px solid #e8d59b; }
- table { border-collapse: collapse; width: 100%; }
- th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: .04em;
-      color: var(--dim); padding: 6px 6px; border-bottom: 1px solid #ccc;
-      position: sticky; top: 0; background: #fff; }
- td { padding: 6px; border-bottom: 1px solid var(--line); vertical-align: top;
-      font-size: 13px; }
- tr.flag td { background: #fff6f6; }
- tr.low td { background: #fffaec; }
- tr.done td { opacity: .55; }
  tbody tr { cursor: pointer; }
  tbody tr.hl td { background: #dbe8ff; box-shadow: inset 3px 0 0 #1657d0; }
  tbody tr.hl.low td { background: #fdefd0; box-shadow: inset 3px 0 0 #a86200; }
  tbody tr.hl.flag td { background: #ffdfe4; box-shadow: inset 3px 0 0 #b00020; }
- tbody tr.pin td { box-shadow: inset 4px 0 0 #111; }
- .legend { font-size: 11.5px; color: var(--dim); margin: 6px 0 2px; }
- .legend i { display: inline-block; width: 9px; height: 9px; margin: 0 3px 0 9px;
-             border-radius: 2px; vertical-align: 0; }
+ tbody tr.flag td { background: #fff6f6; }
+ tbody tr.low td { background: #fffaec; }
+ tbody tr.done td { opacity: .55; }
  .badge { display: inline-block; font-size: 10px; font-weight: 700; padding: 1px 5px;
           border-radius: 3px; margin-right: 4px; vertical-align: 1px; }
  .b-unbound { background: #b00020; color: #fff; }
@@ -438,9 +544,9 @@ PAGE = """<!doctype html>
  .s-filled { color: #0a7a2f; } .s-absent { color: #a35c00; font-weight: 600; }
  .s-condition-false { color: #666; } .s-guarded-off { color: #4a55c0; }
  .s-unbound { color: #b00020; font-weight: 700; }
- code { font-size: 11.5px; background: #f4f4f6; padding: 1px 4px; border-radius: 3px;
-        word-break: break-all; }
- .note { color: var(--dim); font-size: 11.5px; word-break: break-word; }
+ .banner { padding: 9px 11px; border-radius: 5px; margin: 8px 0; font-size: 13px; }
+ .violation { background: #b00020; color: #fff; font-weight: 600; }
+ .warnbox { background: #fff4d6; border: 1px solid #e8d59b; }
  .acts { white-space: nowrap; }
  .acts button { font-size: 11px; padding: 2px 7px; margin-right: 3px; cursor: pointer;
                 border: 1px solid #bbb; background: #fafafa; border-radius: 3px; }
@@ -452,50 +558,318 @@ PAGE = """<!doctype html>
  #footer button:disabled { background: #ddd; border-color: #ccc; color: #777;
                            cursor: not-allowed; }
  input { font: inherit; padding: 4px 6px; border: 1px solid #bbb; border-radius: 3px; }
+ .legend { font-size: 11.5px; color: var(--dim); margin: 6px 0 2px; }
+ .legend i { display: inline-block; width: 9px; height: 9px; margin: 0 3px 0 9px;
+             border-radius: 2px; }
 </style></head><body>
-<div id="left">
-  <div id="pagebar"><span>Filled form</span><span id="pagebtns"></span>
-    <span class="pin" id="pinnote"></span>
-    <a id="pdflink" href="#" target="_blank">open PDF</a></div>
-  <div id="sheet"><div id="stage"><img id="pageimg"><div id="ov"></div></div></div>
-</div>
-<div id="right">
- <h1 id="title"></h1>
- <div class="chips" id="chips"></div>
- <div class="counts" id="counts"></div>
- <div class="legend">Hover a row to find it on the form · click to pin · Esc to unpin
-   <i style="background:rgba(38,120,255,.5);border:1px solid #1657d0"></i>bound
-   <i style="background:rgba(255,176,32,.55);border:1px solid #a86200"></i>low confidence
-   <i style="background:rgba(220,32,64,.5);border:1px solid #b00020"></i>unbound</div>
- <div id="banners"></div>
- <table id="rows"><thead><tr>
-   <th>Item</th><th>Printed label</th><th>Source</th><th>Value</th><th>Status</th><th></th>
- </tr></thead><tbody></tbody></table>
- <div id="footer">
-   <label>Approved by <input id="who" placeholder="your name" size="18"></label>
-   <button id="approve"></button>
-   <div class="note" style="margin-top:7px">You are approving the <b>binding</b>, not this
-   document — one approval covers every future estate that uses this form.</div>
- </div>
+<nav>
+  <div class="brand">Forge <span>we do not fill forms with AI — we compile form-fillers, once</span></div>
+  <div id="tabs"></div>
+  <div class="pickers">
+    estate <select id="estatePick"></select>
+    form <select id="formPick"></select>
+  </div>
+</nav>
+<div id="panels">
+  <section class="panel" data-tab="estate"></section>
+  <section class="panel" data-tab="forms"></section>
+  <section class="panel review" data-tab="review">
+    <div id="left">
+      <div id="pagebar"><span>Filled form</span><span id="pagebtns"></span>
+        <span class="pin" id="pinnote"></span>
+        <a id="pdflink" href="#" target="_blank">open PDF</a></div>
+      <div id="sheet"><div id="stage"><img id="pageimg"><div id="ov"></div></div></div>
+    </div>
+    <div id="right">
+      <h2 id="rtitle"></h2>
+      <div class="note" id="rmeta"></div>
+      <div class="legend">Hover a row to find it on the form · click to pin · Esc to unpin
+        <i style="background:rgba(38,120,255,.5);border:1px solid #1657d0"></i>has a data source
+        <i style="background:rgba(255,176,32,.55);border:1px solid #a86200"></i>needs a check
+        <i style="background:rgba(220,32,64,.5);border:1px solid #b00020"></i>no data source</div>
+      <div id="banners"></div>
+      <table id="rows"><thead><tr>
+        <th>Line</th><th>What the form asks</th><th>Where the value comes from</th>
+        <th>Value</th><th>Outcome</th><th></th>
+      </tr></thead><tbody></tbody></table>
+      <div id="footer">
+        <label>Approved by <input id="who" placeholder="your name" size="16"></label>
+        <button id="approve"></button>
+        <div class="note" style="margin-top:7px">You are approving the <b>binding</b>, not
+          this document — one approval covers every future estate that uses this form.</div>
+      </div>
+    </div>
+  </section>
+  <section class="panel" data-tab="reuse"></section>
+  <section class="panel" data-tab="loop"></section>
+  <section class="panel" data-tab="anvil"></section>
 </div>
 <script>
+const TABS = [
+  ["estate", "ESTATE"], ["forms", "FORMS NEEDED"], ["review", "REVIEW"],
+  ["reuse", "REUSE"], ["loop", "SELF-CORRECTION"], ["anvil", "SPONSOR RUNTIME"],
+];
 const qs = new URLSearchParams(location.search);
-const form = qs.get('form') || 'irs-f56';
-const estate = qs.get('estate') || 'estate-05-in-formal-probate';
-let page = 0;
-let S = null;          // last state from /api/state
-let pinned = null;     // pinned row index, survives the mouse leaving
-let hovered = null;
+let form = qs.get('form') || 'irs-f56';
+let estate = qs.get('estate') || 'estate-05-in-formal-probate';
+const preferDraft = qs.get('draft') === '1';
+let tab = qs.get('tab') || 'estate';
+let S = null, W = null, page = 0, pinned = null, hovered = null;
+
 const esc = t => String(t ?? '').replace(/[&<>"]/g, c =>
   ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const asset = p => '/asset/' + String(p).split('/').map(encodeURIComponent).join('/');
+const el = t => document.querySelector(`.panel[data-tab="${t}"]`);
 
-// ---- the traceability overlay: row on the right -> box on the paper on the left
+function paintTabs() {
+  document.getElementById('tabs').innerHTML = TABS.map(([id, label], i) =>
+    `<button data-t="${id}" class="${id === tab ? 'on' : ''}">
+       <span class="n">${i + 1}</span>${label}</button>`).join('');
+  document.querySelectorAll('#tabs button').forEach(b => b.onclick = () => {
+    tab = b.dataset.t;
+    const u = new URL(location); u.searchParams.set('tab', tab);
+    history.replaceState({}, '', u);
+    paintTabs(); showTab();
+  });
+}
+function showTab() {
+  document.querySelectorAll('.panel').forEach(p =>
+    p.classList.toggle('on', p.dataset.tab === tab));
+  if (tab === 'review') { paintPage(); paintOverlay(); }
+}
+
+// ------------------------------------------------------------------ 1. ESTATE
+function paintEstate() {
+  const e = W.estate;
+  el('estate').innerHTML = `
+    <h2>${esc(e.decedentName || e.estateId)}</h2>
+    <p class="thesis">This is the record Forge was handed. Every value on every form
+      below comes from this one file — nothing is typed twice, and nothing is invented.</p>
+    <div class="grid">
+      <div class="card"><div class="k">Who died</div><div class="v">${esc(e.decedentName)}</div>
+        <div class="sub">${e.dateOfDeath ? 'died ' + esc(e.dateOfDeath) : ''}${
+          e.residence ? ' · lived in ' + esc(e.residence) : ''}</div></div>
+      <div class="card"><div class="k">Who is acting</div><div class="v">${esc(e.fiduciaryName)}</div>
+        <div class="sub">${esc(e.fiduciaryTitle || '')}</div></div>
+      <div class="card"><div class="k">Where</div><div class="v">${esc(e.jurisdictionPlain)}</div>
+        <div class="sub">${esc(e.routePlain || '')}</div></div>
+      <div class="card"><div class="k">The estate as a taxpayer</div>
+        <div class="v">${esc(e.entityName || '—')}</div>
+        <div class="sub">${esc(e.einPlain)}</div></div>
+    </div>
+    <h3>Where these facts came from</h3>
+    <table><tbody>
+      <tr><td style="width:210px">The estate record</td><td><code>${esc(e.sources.estateRecord)}</code>
+        <div class="note">Supplied by the organisers. Forge reads it; it never edits it.</div></td></tr>
+      <tr><td>The instruction to act</td><td><code>${esc(e.sources.workOrder)}</code>
+        <div class="note">Written by <b>${esc(e.sources.generatedBy)}</b> — the other half of
+          the system, which decides <i>which</i> forms are needed and why. Forge decides
+          <i>how</i> each one gets filled.</div></td></tr>
+      <tr><td>Authority to act</td><td><code>${esc(e.authorityBasis)}</code>
+        <div class="note">This single value moves a tick-box on Form 56 and swaps which
+          date line is used. You will see it do that on the REUSE tab.</div></td></tr>
+    </tbody></table>
+    <p class="note" style="margin-top:16px;max-width:760px">${esc(e.provenanceNote)}</p>`;
+}
+
+// ------------------------------------------------------------- 2. FORMS NEEDED
+function paintForms() {
+  const f = W.forms, c = f.counts;
+  const rows = f.rows.map(r => {
+    const st = r.compile;
+    let right;
+    if (r.applicable === false) {
+      right = `<span class="pill no">not needed</span>`;
+    } else if (st.status === 'approved') {
+      right = `<span class="pill ok">ready — approved v${st.highestApproved}</span>
+        <div class="note">${st.boundCount} of ${st.boundCount + st.unboundCount} boxes have a
+        data source · approved by ${esc(st.approvedBy || '')}</div>`;
+    } else if (st.status === 'draft') {
+      right = `<span class="pill warn">drafted — needs a human</span>
+        <div class="note">${st.boundCount} of ${st.boundCount + st.unboundCount} boxes have a
+        data source · nobody has approved it, so Forge will not fill it</div>`;
+    } else {
+      right = `<span class="pill bad">not compiled</span>
+        <div class="note">Forge will refuse to produce this form rather than guess</div>`;
+    }
+    return `<tr>
+      <td style="width:170px"><b>${esc(r.title)}</b>
+        <div class="note">${esc(r.filename)}</div></td>
+      <td style="width:120px">${r.applicable
+        ? `<span class="pill yes">needed</span>${r.priority ? `<div class="note">file #${r.priority}</div>` : ''}`
+        : `<span class="pill no">skipped</span>`}</td>
+      <td>${r.applicable === false
+        ? `<div class="reason">${esc(r.reason)}</div>`
+        : `${r.blastRadiusPlain ? `<div>${esc(r.blastRadiusPlain)}${
+             r.reversibilityPlain ? ' · ' + esc(r.reversibilityPlain) : ''}</div>` : ''}
+           <div class="note">Judged by ${esc(f.decidedBy)}, not by Forge</div>`}</td>
+      <td style="width:280px">${right}</td></tr>`;
+  }).join('');
+  el('forms').innerHTML = `
+    <h2>Forms needed for this estate</h2>
+    <p class="thesis">Of ${c.total} forms, ${c.needed} are needed and ${c.refused} are
+      deliberately skipped — each with a reason in writing. A system that refuses to
+      produce a document, and says why, is safer than one that produces four.</p>
+    <table><thead><tr><th>Form</th><th>Needed?</th><th>Why / how much it matters</th>
+      <th>Can Forge produce it?</th></tr></thead><tbody>${rows}</tbody></table>
+    <p class="note" style="margin-top:14px;max-width:820px">
+      The needed/skipped decision is not Forge's to make — it arrives in the work order
+      from the half of the system that reads the documents and knows the law. Forge only
+      decides how an unfamiliar form gets filled. That seam is what lets either half be
+      replaced without touching the other.</p>`;
+}
+
+// ------------------------------------------------------------------- 4. REUSE
+function paintReuse() {
+  const r = W.reuse;
+  if (!r.available) {
+    el('reuse').innerHTML = `<h2>Reuse</h2><p class="thesis">Not generated yet — run
+      <code>forge reuse-proof --binding-version 3</code>.</p>`;
+    return;
+  }
+  const rows = r.rows.map(x => `<tr>
+     <td>${esc(x.estateId.replace(/^estate-\d+-/, ''))}<div class="note">${esc(x.jurisdiction)}</div></td>
+     <td><code>${esc(x.authorityBasis)}</code></td>
+     <td><b>${esc(x.line1)}</b></td>
+     <td>${x.date2a ? esc(x.date2a) : '<span class="note">—</span>'}</td>
+     <td>${x.date2b ? esc(x.date2b) : '<span class="note">—</span>'}</td>
+     <td>${esc(x.fiduciaryTitle || '')}</td>
+     <td>${x.fieldsFilled}</td>
+     <td>${x.elapsedMs} ms</td>
+     <td><span class="pill ok">${x.llmCallsAtRuntime}</span></td>
+     <td class="mono note">${esc((r.bindingSha256 || '').slice(0, 12))}…</td></tr>`).join('');
+  el('reuse').innerHTML = `
+    <h2>One binding, five estates</h2>
+    <p class="thesis">The same approved file produced all five of these documents. The
+      data differs, the state differs, the legal route differs — the binding does not,
+      and no AI ran. That last column is the same sha256 on every row.</p>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(170px,1fr))">
+      <div class="card"><div class="k">Estates filled</div><div class="v">${r.rows.length}</div>
+        <div class="sub">from one artifact</div></div>
+      <div class="card"><div class="k">AI calls while filling</div>
+        <div class="v" style="color:#0a6b2b">${r.totalLlmCalls}</div>
+        <div class="sub">counted, not asserted</div></div>
+      <div class="card"><div class="k">Contradictions found</div><div class="v">${r.violations}</div>
+        <div class="sub">tick-box rules checked every time</div></div>
+      <div class="card"><div class="k">Time per estate</div>
+        <div class="v">${Math.min(...r.rows.map(x => x.elapsedMs))}–${
+          Math.max(...r.rows.map(x => x.elapsedMs))} ms</div>
+        <div class="sub">vs 485 s to compile the form once</div></div>
+    </div>
+    <table><thead><tr><th>Estate</th><th>Authority in the record</th><th>Line 1 box</th>
+      <th>Line 2a date of death</th><th>Line 2b date of appointment</th>
+      <th>Signing title</th><th>Boxes filled</th><th>Time</th><th>AI calls</th>
+      <th>Binding sha256</th></tr></thead><tbody>${rows}</tbody></table>
+    <p class="note" style="margin:10px 0 18px">Binding: <code>${esc(r.bindingRef)}</code>
+      · sha256 <span class="mono">${esc(r.bindingSha256)}</span></p>
+    <h3>The same region of the paper, five times</h3>
+    ${r.strip ? `<img class="shot" src="${asset(r.strip)}" alt="Section A across five estates">`
+              : '<p class="note">strip image missing</p>'}`;
+}
+
+// ---------------------------------------------------------- 5. SELF-CORRECTION
+function paintLoop() {
+  const l = W.loop;
+  if (!l.available) {
+    el('loop').innerHTML = `<h2>Self-correction</h2><p class="thesis">No loop history on
+      disk yet.</p>`;
+    return;
+  }
+  const rounds = l.history.map(h => `
+    <div class="roundhdr"><h3>Round ${h.round}</h3>
+      <span class="pill ${h.findingCount ? 'bad' : 'ok'}">${
+        h.findingCount ? h.findingCount + ' problem(s) found' : 'nothing wrong'}</span>
+      <span class="note">${h.fieldsFilled} boxes filled${
+        h.repair ? ` · ${h.repair.changed.length} binding(s) rewritten after this round` : ''}</span></div>
+    ${h.findingCount ? `<ul class="findings">${h.findings.map(f =>
+      `<li><b>${esc(f.target)}</b> — ${esc(f.problem)}</li>`).join('')}</ul>`
+      : `<p class="note">The reviewer looked at the page and found nothing to fix. This is
+         where the loop stops.</p>`}
+    <div class="sidebyside">${(h.renders || []).map(p =>
+      `<div><img class="shot" src="${asset(p)}" alt="round ${h.round}"></div>`).join('')}</div>`).join('');
+  el('loop').innerHTML = `
+    <h2>How the binding got corrected</h2>
+    <p class="thesis">A first draft of a form-filler is usually wrong somewhere. Forge
+      fills the form, renders it to an image, and asks a reviewer to look at the
+      <b>picture</b> — not at the code that made it — then fixes what it finds and repeats.
+      ${l.rounds} rounds here, and it stops when a round finds nothing.</p>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(170px,1fr))">
+      <div class="card"><div class="k">Rounds</div><div class="v">${l.rounds}</div>
+        <div class="sub">stopped when clean</div></div>
+      <div class="card"><div class="k">Problems found in round 1</div>
+        <div class="v">${l.history[0] ? l.history[0].findingCount : '—'}</div>
+        <div class="sub">read off the rendered page</div></div>
+      <div class="card"><div class="k">Build-time AI calls</div><div class="v">${l.modelCalls}</div>
+        <div class="sub">${Math.round(l.elapsedSeconds)} s, once for this form</div></div>
+      <div class="card"><div class="k">Estate used</div>
+        <div class="v" style="font-size:13px">${esc(l.estateId.replace(/^estate-\d+-/, ''))}</div>
+        <div class="sub">deliberately not the one it was calibrated on</div></div>
+    </div>
+    <p class="note" style="max-width:900px;margin-bottom:4px">This run started from a
+      deliberately naive first draft — the older, weaker instructions, with none of
+      tonight's lessons folded in — so the loop had real mistakes to catch. Showing it
+      converge on a pre-corrected draft would prove nothing.</p>
+    ${rounds}`;
+}
+
+// -------------------------------------------------------------- 6. SPONSOR RUNTIME
+function paintAnvil() {
+  const a = W.anvil;
+  if (!a.available) {
+    el('anvil').innerHTML = `<h2>Sponsor runtime</h2><p class="thesis">No drift report on
+      disk yet.</p>`;
+    return;
+  }
+  el('anvil').innerHTML = `
+    <h2>The failure that looks like success</h2>
+    <p class="thesis">The same approved binding also drives Anvil, the sponsor's filling
+      service — including on the hardest of the four forms. But its fill endpoint drops a
+      value it does not recognise <b>without saying so</b>: you get a finished-looking PDF
+      with one box empty. Forge checks first and refuses.</p>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(170px,1fr))">
+      <div class="card"><div class="k">Boxes Anvil recognised</div>
+        <div class="v">${a.detectedFieldCount ?? '—'}</div>
+        <div class="sub">on a two-layer PDF that defeats most tools</div></div>
+      <div class="card"><div class="k">Values we meant to send</div><div class="v">${a.valuesIntended}</div></div>
+      <div class="card"><div class="k">Values that arrived</div>
+        <div class="v" style="color:#a3001d">${a.valuesActuallySent}</div>
+        <div class="sub">one was dropped in silence</div></div>
+      <div class="card"><div class="k">What came back</div>
+        <div class="v">${Math.round(a.beforeBytes / 1024)} KB</div>
+        <div class="sub">valid PDF, HTTP 200, no warning</div></div>
+    </div>
+    <p style="max-width:900px">The scenario is the ordinary one: <b>the tax authority
+      renames a field</b>. Our approved binding still asks for
+      <code>${esc((a.renamedFrom || '').split('.').pop())}</code>; the service now calls it
+      <code>${esc((a.renamedTo || '').split('.').pop())}</code>. Nothing errors.</p>
+    <div class="sidebyside">
+      <div>
+        <h3>Without the check — a hole in the page</h3>
+        ${a.holeImage ? `<img class="shot" src="${asset(a.holeImage)}" alt="the hole">` : ''}
+        <p class="note">Line 2a — the date of death, on a filing that establishes who may
+          act for the estate — is blank. Everything around it is correct, which is exactly
+          why nobody would catch it.</p>
+      </div>
+      <div>
+        <h3>With the check — it refuses</h3>
+        <div class="refusal">${esc(a.afterError || '')}</div>
+        <table style="margin-top:12px"><tbody>
+          <tr><td>Requests actually sent</td><td><b>${a.fillRequestsSentAfter}</b>
+            <div class="note">not sent-then-discarded — never sent</div></td></tr>
+          <tr><td>File written</td><td><b>${a.afterPdfExists ? 'yes' : 'no'}</b>
+            <div class="note">nothing that looks finished but is not</div></td></tr>
+          <tr><td>Cast on file</td><td class="mono">${esc(a.castEid || '—')}</td></tr>
+        </tbody></table>
+      </div>
+    </div>`;
+}
+
+// ------------------------------------------------------------------ 3. REVIEW
 function boxClass(row) {
   if (row.status === 'unbound') return 'bad';
   if (row.confidence === 'low') return 'warn';
   return 'ok';
 }
-
 function paintPage() {
   const img = document.getElementById('pageimg');
   const want = S.pages.length ? `/render/${S.pages[page]}?t=${S.renderToken}` : '';
@@ -503,7 +877,6 @@ function paintPage() {
   document.querySelectorAll('#pagebtns button').forEach(b =>
     b.classList.toggle('on', +b.dataset.p === page));
 }
-
 function paintOverlay() {
   const ov = document.getElementById('ov');
   const idx = pinned !== null ? pinned : hovered;
@@ -522,148 +895,108 @@ function paintOverlay() {
        style="left:${b.left}%;top:${b.top}%;width:${b.width}%;height:${b.height}%"></div>`)
     .join('');
 }
-
-/** Highlight a row's field, switching page first if the field is elsewhere. */
 function focusRow(idx) {
-  const row = S.rows[idx];
-  const boxes = (row.boxes || []).filter(b => !b.unsupported);
+  const boxes = (S.rows[idx].boxes || []).filter(b => !b.unsupported);
   if (boxes.length && !boxes.some(b => b.page === page)) {
-    page = boxes[0].page;      // the field is on another page: go there, then draw
+    page = boxes[0].page;
     paintPage();
   }
   paintOverlay();
 }
-
 document.addEventListener('keydown', ev => {
   if (ev.key === 'Escape' && pinned !== null) { pinned = null; paintOverlay(); }
 });
-
 function sourceCell(r) {
-  if (!r.source) return '<code>unbound</code>';
+  if (!r.source) return '<span class="note">nothing in the record matches this box</span>';
   const k = r.source.kind;
   let main;
   if (k === 'path') main = `<code>${esc(r.source.path)}</code>`;
-  else if (k === 'constant') main = `constant <code>${esc(JSON.stringify(r.source.value))}</code>`;
+  else if (k === 'constant') main = `always <code>${esc(JSON.stringify(r.source.value))}</code>`;
   else if (k === 'template')
     main = `<code>${esc(r.source.pattern)}</code><div class="note">${
       (r.source.paths||[]).map(esc).join(' · ')}</div>`;
   else if (k === 'condition')
-    main = `<code>${esc(r.source.path)}</code><div class="note">== ${
-      esc(JSON.stringify(r.source.equals))}</div>`;
-  else if (k === 'absent') main = `absent(<code>${esc(r.source.path)}</code>)`;
+    main = `tick when <code>${esc(r.source.path)}</code> is ${
+      esc(JSON.stringify(r.source.equals))}`;
+  else if (k === 'contains')
+    main = `tick when <code>${esc(r.source.path)}</code> includes ${
+      esc(JSON.stringify(r.source.includes))}`;
+  else if (k === 'absent') main = `tick when <code>${esc(r.source.path)}</code> is missing`;
   else main = `<code>${esc(JSON.stringify(r.source))}</code>`;
-  const g = r.when ? `<div class="note">when <code>${esc(r.when.path)}</code> == ${
-    esc(JSON.stringify(r.when.equals))}</div>` : '';
-  return `<div class="note">${esc(k)}</div>${main}${g}`;
-}
-
-const STATUS_TEXT = {
-  'filled': 'filled',
-  'absent': 'empty — DATA ABSENT',
-  'condition-false': 'clear — fact says no',
-  'guarded-off': 'empty — guard false',
-  'unbound': 'UNBOUND',
-};
-
-async function act(qn, patch) {
-  const r = await fetch('/api/row', {method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({form, qualifiedName: qn, patch})});
-  if (!r.ok) alert('Refused: ' + ((await r.json()).detail || r.status));
-  load();
-}
-
-async function load() {
-  const res = await fetch(`/api/state?form=${form}&estate=${estate}`);
-  if (!res.ok) {
-    document.getElementById('right').innerHTML =
-      `<h1>No draft binding for ${esc(form)}</h1><p class="note">${
-        esc((await res.json()).detail)}</p>`;
-    return;
+  let g = '';
+  if (r.when) {
+    const want = r.when.equalsAny
+      ? 'one of ' + esc(JSON.stringify(r.when.equalsAny))
+      : esc(JSON.stringify(r.when.equals));
+    g = `<div class="note">only when <code>${esc(r.when.path)}</code> is ${want}</div>`;
   }
-  S = await res.json();
-  S.renderToken = Date.now();  // cache-bust the image once per load, not per paint
+  return main + g;
+}
+function paintReview() {
   const s = S;
-  const w = s.workOrder || {};
-
-  document.getElementById('title').innerHTML =
-    `${esc(s.formId)} <span class="st">— draft, would freeze as v${s.nextVersion}</span>`;
-
-  const chips = [];
-  chips.push(`<span class="chip">estate <b>${esc(s.estateId)}</b></span>`);
-  if (w.available) {
-    if (w.jurisdiction)
-      chips.push(`<span class="chip">jurisdiction <b>${esc(w.jurisdiction.state)}${
-        w.jurisdiction.county ? ' / ' + esc(w.jurisdiction.county) : ''}</b></span>`);
-    if (w.route) chips.push(`<span class="chip">route <b>${esc(w.route)}</b></span>`);
-    if (w.priority != null) chips.push(`<span class="chip">filing order <b>${w.priority}</b></span>`);
-    if (w.blastRadius) chips.push(`<span class="chip ${w.blastRadius==='high'?'hi':
-      (w.blastRadius==='medium'?'med':'')}">blast radius <b>${esc(w.blastRadius)}</b></span>`);
-    if (w.reversibility) chips.push(`<span class="chip ${
-      w.reversibility==='irreversible'?'hi':''}">
-      <b>${esc(w.reversibility)}</b></span>`);
-  } else {
-    chips.push('<span class="chip med">no work order — Warrant context unavailable</span>');
-  }
-  chips.push(...s.estates.map(e => `<span class="chip"><a href="?form=${form}&estate=${e}">${
-    esc(e)}</a></span>`));
-  document.getElementById('chips').innerHTML = chips.join('');
-
+  document.getElementById('rtitle').textContent =
+    `${s.formId} — ${s.artifactSource === 'approved'
+      ? 'approved v' + s.version : 'draft, not yet approved'}`;
   const c = s.counts;
-  document.getElementById('counts').textContent =
-    `${c.bound} of ${c.total} fields bound · ${c.filled} filled for this estate · ` +
-    `${c.guardedOff} empty by guard · ${c.conditionFalse} correctly clear · ` +
-    `${c.absent} empty for want of data · ${c.unbound} unbound · ` +
-    `${c.lowConfidence} low confidence · ${c.reviewed} row(s) approved`;
+  document.getElementById('rmeta').innerHTML =
+    `<code>${esc(s.artifactPath)}</code> · estate <b>${esc(s.estateId)}</b><br>` +
+    `${c.filled} boxes filled · ${c.conditionFalse} correctly blank (answer is no) · ` +
+    `${c.guardedOff} correctly blank (line does not apply) · ` +
+    `${c.absent} blank for want of data · ${c.unbound} with no data source`;
+  const b = [];
+  s.groupViolations.forEach(g => b.push(`<div class="banner violation">⚠ ${esc(g)}</div>`));
+  if (s.requiredUnbound.length)
+    b.push(`<div class="banner violation">Cannot approve — no data source for: ${
+      s.requiredUnbound.map(esc).join(', ')}</div>`);
+  if (s.requiredAbsent.length)
+    b.push(`<div class="banner warnbox">${s.requiredAbsent.length} required line(s) are
+      blank for <b>${esc(s.estateId)}</b> because this record has no value for them. The
+      binding is right; the record is short. Does not block approval.</div>`);
+  if (s.renderStale)
+    b.push(`<div class="banner warnbox">The picture is older than the binding — re-run
+      <code>forge propose ${esc(form)} --estate ${esc(s.estateId)} --from-draft</code>.</div>`);
+  if (s.artifactSource === 'approved')
+    b.push(`<div class="banner warnbox">Showing the <b>approved</b> artifact, which is
+      frozen and cannot be edited. Add <code>&draft=1</code> to the URL to review a draft.</div>`);
+  else if (s.draftMatchesApproved)
+    b.push(`<div class="banner warnbox">This draft is identical to the approved version —
+      approving it again would create a version that differs only by its timestamp, so
+      approval is blocked.</div>`);
+  document.getElementById('banners').innerHTML = b.join('');
 
-  // left: one page at a time
   page = Math.min(page, Math.max(0, s.pages.length - 1));
   document.getElementById('pagebtns').innerHTML = s.pages.length
     ? s.pages.map((p, i) => `<button data-p="${i}">Page ${i+1}</button>`).join('')
     : '<span class="note" style="color:#ddd">no render on disk</span>';
-  document.querySelectorAll('#pagebtns button').forEach(b =>
-    b.onclick = () => { page = +b.dataset.p; paintPage(); paintOverlay(); });
+  document.querySelectorAll('#pagebtns button').forEach(bt =>
+    bt.onclick = () => { page = +bt.dataset.p; paintPage(); paintOverlay(); });
   document.getElementById('pdflink').href = `/render/${form}/draft.pdf`;
-
-  const b = [];
-  s.groupViolations.forEach(g => b.push(`<div class="banner violation">⚠ ${esc(g)}</div>`));
-  if (s.requiredUnbound.length)
-    b.push(`<div class="banner violation">Approval blocked — required field(s) unbound: ${
-      s.requiredUnbound.map(esc).join(', ')}</div>`);
-  if (s.requiredAbsent.length)
-    b.push(`<div class="banner warn">${s.requiredAbsent.length} required field(s) are bound but
-      empty for <b>${esc(s.estateId)}</b>: the record is short, the binding is not wrong.
-      This does not block approval.</div>`);
-  if (s.renderStale)
-    b.push(`<div class="banner warn">The binding has changed since these images were
-      rendered — the table is live, the picture is not. Re-run
-      <code>forge propose ${esc(form)} --estate ${esc(s.estateId)}</code> before approving.</div>`);
-  document.getElementById('banners').innerHTML = b.join('');
 
   document.querySelector('#rows tbody').innerHTML = s.rows.map((r, i) => {
     const cls = [r.status === 'unbound' ? 'flag' : (r.confidence === 'low' ? 'low' : ''),
                  r.reviewed ? 'done' : ''].filter(Boolean).join(' ');
-    const badges = (r.status === 'unbound' ? '<span class="badge b-unbound">UNBOUND</span>' : '')
-      + (r.confidence === 'low' ? '<span class="badge b-low">LOW</span>' : '')
-      + (r.required ? '<span class="badge b-req">REQ</span>' : '');
+    const badges = (r.status === 'unbound' ? '<span class="badge b-unbound">NO SOURCE</span>' : '')
+      + (r.confidence === 'low' ? '<span class="badge b-low">CHECK ME</span>' : '')
+      + (r.required ? '<span class="badge b-req">REQUIRED</span>' : '');
+    const editable = s.artifactSource === 'draft';
     return `<tr class="${cls}" data-idx="${i}">
       <td class="item">${esc(r.itemNumber ?? '—')}</td>
       <td>${badges}${esc(r.label)}<div class="note">${esc(r.qualifiedName)}</div></td>
       <td>${sourceCell(r)}</td>
       <td><span class="val">${esc(r.value ?? '')}</span>${
         r.reason ? `<div class="note">${esc(r.reason)}</div>` : ''}</td>
-      <td class="s-${r.status}">${esc(STATUS_TEXT[r.status] || r.status)}</td>
-      <td class="acts">
+      <td class="s-${r.status}" title="${esc(r.statusHint)} (${esc(r.statusTerm)})">${
+        esc(r.statusLabel)}</td>
+      <td class="acts">${editable ? `
         <button class="${r.reviewed ? 'ok' : ''}" data-a="rev" data-q="${esc(r.qualifiedName)}"
-          data-v="${r.reviewed ? 0 : 1}">${r.reviewed ? '✓' : 'approve'}</button>
+          data-v="${r.reviewed ? 0 : 1}">${r.reviewed ? '✓' : 'looks right'}</button>
         ${r.editablePath ? `<button data-a="edit" data-q="${esc(r.qualifiedName)}"
-          data-p="${esc(r.editablePath)}">edit</button>` : ''}
+          data-p="${esc(r.editablePath)}">change source</button>` : ''}
         ${r.status !== 'unbound' ? `<button data-a="unbind"
-          data-q="${esc(r.qualifiedName)}">unbind</button>` : ''}
+          data-q="${esc(r.qualifiedName)}">no source</button>` : ''}` : ''}
       </td></tr>`;
   }).join('');
 
-  // hover to trace, click to pin — the row is the handle, so the whole <tr> listens
   document.querySelectorAll('#rows tbody tr').forEach(tr => {
     const idx = +tr.dataset.idx;
     tr.onmouseenter = () => { hovered = idx; if (pinned === null) focusRow(idx); };
@@ -673,24 +1006,26 @@ async function load() {
       if (pinned !== null) focusRow(idx); else paintOverlay();
     };
   });
-
   document.querySelectorAll('.acts button').forEach(btn => btn.onclick = ev => {
-    ev.stopPropagation();  // an action is not a request to pin the row
+    ev.stopPropagation();
     const q = btn.dataset.q, a = btn.dataset.a;
     if (a === 'rev') return act(q, {reviewed: btn.dataset.v === '1'});
     if (a === 'edit') {
-      const p = prompt(`Source path for ${q}`, btn.dataset.p);
+      const p = prompt(`Which value should fill "${q}"?`, btn.dataset.p);
       if (p && p !== btn.dataset.p) return act(q, {path: p});
       return;
     }
-    const note = prompt(`Why is ${q} unbound? (what would fill it)`, '');
+    const note = prompt(`Why has this box no data source? (what would fill it)`, '');
     if (note !== null) return act(q, {markUnbound: true, note});
   });
 
   const ap = document.getElementById('approve');
-  ap.textContent = s.approveBlocked ? 'Approval blocked'
-    : `Approve binding as v${s.nextVersion}`;
-  ap.disabled = s.approveBlocked;
+  const frozen = s.artifactSource === 'approved';
+  const noop = s.draftMatchesApproved;
+  ap.textContent = frozen ? 'Already approved — frozen'
+    : (noop ? 'Nothing to approve' : (s.approveBlocked ? 'Cannot approve yet'
+      : `Approve this binding as v${s.nextVersion}`));
+  ap.disabled = frozen || noop || s.approveBlocked;
   ap.onclick = async () => {
     const r = await fetch('/api/approve', {method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -699,9 +1034,51 @@ async function load() {
     alert(r.ok ? `Approved: ${j.path}` : `Refused: ${j.detail}`);
     load();
   };
+}
+async function act(qn, patch) {
+  const r = await fetch('/api/row', {method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({form, qualifiedName: qn, patch})});
+  if (!r.ok) alert('Refused: ' + ((await r.json()).detail || r.status));
+  load();
+}
 
-  paintPage();
-  paintOverlay();
+// ------------------------------------------------------------------ boot
+function paintPickers() {
+  const eSel = document.getElementById('estatePick');
+  eSel.innerHTML = (S.estates || []).map(e =>
+    `<option value="${e}"${e === estate ? ' selected' : ''}>${
+      e.replace(/^estate-\d+-/, '')}</option>`).join('');
+  eSel.onchange = () => { estate = eSel.value; navigate(); };
+  const fSel = document.getElementById('formPick');
+  const forms = (W.forms.rows || []).map(r => r.formId);
+  fSel.innerHTML = forms.map(f =>
+    `<option value="${f}"${f === form ? ' selected' : ''}>${f}</option>`).join('');
+  fSel.onchange = () => { form = fSel.value; navigate(); };
+}
+function navigate() {
+  const u = new URL(location);
+  u.searchParams.set('form', form); u.searchParams.set('estate', estate);
+  u.searchParams.set('tab', tab);
+  location.href = u.toString();
+}
+async function load() {
+  const wres = await fetch(`/api/walkthrough?estate=${estate}&form=${form}`);
+  W = await wres.json();
+  const sres = await fetch(
+    `/api/state?form=${form}&estate=${estate}${preferDraft ? '&draft=1' : ''}`);
+  if (sres.ok) {
+    S = await sres.json();
+    S.renderToken = Date.now();
+    paintReview();
+  } else {
+    S = {estates: W.estates || [], rows: [], pages: []};
+    document.getElementById('right').innerHTML =
+      `<h2>${esc(form)} is not compiled</h2><p class="thesis">No approved binding and no
+       draft for this form, so Forge will not fill it. See the FORMS NEEDED tab.</p>`;
+  }
+  paintEstate(); paintForms(); paintReuse(); paintLoop(); paintAnvil();
+  paintPickers(); paintTabs(); showTab();
 }
 load();
 </script></body></html>"""
@@ -718,9 +1095,26 @@ def build_app():
         return PAGE
 
     @app.get("/api/state")
-    def state(form: str, estate: str) -> dict[str, Any]:
+    def state(form: str, estate: str, draft: int = 0) -> dict[str, Any]:
         try:
-            return review_state(form, estate)
+            return review_state(form, estate, prefer_draft=bool(draft))
+        except FileNotFoundError as exc:
+            raise HTTPException(404, str(exc))
+
+    @app.get("/api/walkthrough")
+    def walkthrough_data(estate: str, form: str = "irs-f56") -> dict[str, Any]:
+        from . import walkthrough as wt
+        from .registry import ESTATES_DIR as ED
+
+        try:
+            return {
+                "estate": wt.estate_panel(estate),
+                "forms": wt.forms_panel(estate),
+                "reuse": wt.reuse_panel(),
+                "loop": wt.loop_panel(),
+                "anvil": wt.anvil_panel(),
+                "estates": sorted(q.stem for q in ED.glob("*.json")),
+            }
         except FileNotFoundError as exc:
             raise HTTPException(404, str(exc))
 
@@ -744,6 +1138,19 @@ def build_app():
         target = (RENDERS_DIR / path).resolve()
         if not str(target).startswith(str(RENDERS_DIR.resolve())) or not target.exists():
             raise HTTPException(404, "no such render")
+        return FileResponse(target)
+
+    @app.get("/asset/{path:path}")
+    def asset(path: str) -> Any:
+        """Serve demo assets by their repo-relative path (out/demo/..., out/renders/...).
+
+        Confined to out/ — the walkthrough panels reference generated evidence, and
+        nothing outside the output tree is ever servable."""
+        from .registry import OUT, ROOT
+
+        target = (ROOT / path).resolve()
+        if not str(target).startswith(str(OUT.resolve())) or not target.is_file():
+            raise HTTPException(404, "no such asset")
         return FileResponse(target)
 
     return app

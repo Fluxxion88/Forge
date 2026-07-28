@@ -195,3 +195,48 @@ Format: timestamp UTC · fork · decision · reason.
   `--binding-version 3` so approving a v4 cannot change what the demo does. All nine steps plus
   the regeneration section were executed in order from a cold shell (`env -u PYTHONPATH`,
   `source .venv/bin/activate`): all pass.
+
+## Session 4 — the remaining two forms, and the UI as walkthrough
+
+- 2026-07-28T00:40Z · **No recalibration needed** · irs-f8821 (45 fields) and irs-ss4 (89) were
+  already at 100% labelled with page geometry and per-widget rects backfilled, so both went
+  straight to proposal. f8821 took 208s in ONE whole-form call (45 fields, single page); ss4
+  took 250s, also one call, because all 89 fillable fields sit on page 0. Neither came close to
+  the 3x-f56 kill threshold.
+- 2026-07-28T00:45Z · **`contains` and `equalsAny` were not used, and that is correct** · The
+  operator asked for all six kinds. Verified rather than assumed: the only scalar-array paths in
+  the corpus are `taxMatters.taxTypes` and `taxMatters.federalFormNumbers`, which are Form 56
+  items 3 and 4 — questions SS-4 and 8821 do not ask. `unbind_dead_bindings` found 0 dead
+  bindings on both forms, which is the same fact from the other direction: no `condition` is
+  pointed at an array. SS-4's 14 `when` guards are all single-literal, which is right for its
+  conditional lines. Forcing `contains` onto scalar data would have created the exact
+  provably-unmarkable box the pass exists to catch.
+- 2026-07-28T00:50Z · **bench now separates two states it was blurring** · The goal was "bench
+  stops reporting 9 pairs as not compiled", but `forge fill` must never fall back to a draft
+  (docs/02 §4) and the two new bindings are drafts awaiting the operator's approval — so filling
+  them tonight was not an option, and self-approving would violate rule 7 and the session's
+  guardrails. Instead bench now distinguishes **"compiled, awaiting human approval"** (binding
+  exists, a person must sign it) from **"not compiled (no binding at all)"**, and prints the
+  bound/unbound counts for the former. Result: 9 undifferentiated "not compiled" became 7
+  awaiting-approval and 2 genuinely uncompiled (DL 142, which was not in tonight's scope).
+- 2026-07-28T01:00Z · **UI reads the approved artifact by default** · The review pane used to
+  load the draft unconditionally. Right after approval the draft is a byte-copy of the approved
+  artifact, so an operator demoing the UI saw something that looked unapproved, pressed Approve,
+  and minted a version differing only by timestamp — which is precisely how v1 and v2 both
+  exist. Now: approved wins, `?draft=1` opts into the draft, the Approve button is disabled on
+  an approved artifact, and `approve()` refuses outright when the draft matches the newest
+  approved version. The old test asserting "approve twice gives v1 then v2" encoded the bug and
+  was rewritten to assert the refusal, plus a new case proving an *edited* draft still versions
+  to v2.
+- 2026-07-28T01:00Z · **Six-tab walkthrough, plain English in every visible label** · The panels
+  are ESTATE / FORMS NEEDED / REVIEW / REUSE / SELF-CORRECTION / SPONSOR RUNTIME, sharing one
+  server and one data fetch. Jargon is mapped at the boundary: "unbound" → "no data source
+  found", "guarded-off" → "correctly blank — this line does not apply", "condition-false" →
+  "correctly blank — the record says no", blastRadius → "a mistake here is serious". The
+  technical term survives in the cell's tooltip so an engineer can still see it. Panel data
+  lives in a new `walkthrough.py`; review.py keeps the split pane and the hover overlay
+  untouched.
+- 2026-07-28T01:00Z · **New `/asset/` route, confined to out/** · The story panels embed
+  generated evidence (the reuse strip, three loop renders, the anvil hole). `/render/` only
+  serves out/renders/, so a sibling route serves repo-relative paths under out/ with a
+  containment check; `GET /asset/CLAUDE.md` returns 404.
