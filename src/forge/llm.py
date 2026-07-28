@@ -140,6 +140,15 @@ def extract_json_array(text: str) -> list[Any]:
     return json.loads(text[start : end + 1])
 
 
+def extract_json_object(text: str) -> dict[str, Any]:
+    """Pull the outermost JSON object out of a model reply, tolerating code fences."""
+    text = re.sub(r"```(?:json)?", "", text)
+    start, end = text.find("{"), text.rfind("}")
+    if start == -1 or end <= start:
+        raise ModelCallFailed(f"no JSON object in model reply: {text[:200]!r}")
+    return json.loads(text[start : end + 1])
+
+
 client = CountedModelClient()
 
 

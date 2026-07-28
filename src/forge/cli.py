@@ -66,19 +66,47 @@ def cmd_calibrate(args: argparse.Namespace) -> int:
 
 
 def cmd_bind(args: argparse.Namespace) -> int:
-    return _not_built("bind")
+    from .loop import run_loop
+
+    return run_loop(args.form, args.estate, from_draft=args.from_draft)
 
 
 def cmd_fill(args: argparse.Namespace) -> int:
-    return _not_built("fill")
+    from .fill import run_fill
+
+    return run_fill(args.form, args.estate, via=args.via)
+
+
+def cmd_anvil_register(args: argparse.Namespace) -> int:
+    import json
+
+    from . import anvil
+    from .registry import BINDINGS_DIR, rel
+
+    draft_path = BINDINGS_DIR / f"{args.form}.json"
+    if not draft_path.exists():
+        print(f"no draft binding at {rel(draft_path)}; run forge bind first", file=sys.stderr)
+        return 1
+    artifact = json.loads(draft_path.read_text(encoding="utf-8"))
+    transport = anvil.HttpTransport()
+    cast = anvil.register_cast(args.form, artifact, transport)
+    drift = anvil.reconcile(artifact, cast)
+    artifact["anvilCastEid"] = cast["eid"]
+    draft_path.write_text(json.dumps(artifact, indent=2) + "\n", encoding="utf-8")
+    print(f"cast {cast['eid']} registered; drift: {json.dumps(drift)}")
+    return 0 if not drift["boundButMissingFromCast"] else 1
 
 
 def cmd_review(args: argparse.Namespace) -> int:
-    return _not_built("review")
+    from .review import serve
+
+    return serve(port=args.port)
 
 
 def cmd_bench(args: argparse.Namespace) -> int:
-    return _not_built("bench")
+    from .bench import run_bench
+
+    return run_bench()
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -104,6 +132,10 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("bind", help="synthesise binding; run the convergence loop")
     p.add_argument("form")
     p.add_argument("--estate", required=True)
+    p.add_argument(
+        "--from-draft", action="store_true",
+        help="skip proposal; stress the existing draft binding against this estate",
+    )
     p.set_defaults(func=cmd_bind)
 
     p = sub.add_parser("fill", help="fill using an approved binding; asserts zero model calls")
@@ -111,6 +143,14 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--estate", required=True)
     p.add_argument("--via", choices=("local", "anvil"), default="local")
     p.set_defaults(func=cmd_fill)
+
+    p = sub.add_parser(
+        "anvil-register",
+        help="create/refresh the Anvil cast for a form's DRAFT binding (before approval "
+        "— approved artifacts are immutable, and anvilCastEid is part of the compiled output)",
+    )
+    p.add_argument("form")
+    p.set_defaults(func=cmd_anvil_register)
 
     p = sub.add_parser("review", help="serve the approval UI on localhost")
     p.add_argument("--port", type=int, default=8000)

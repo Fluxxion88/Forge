@@ -1,0 +1,22 @@
+# Decisions — autonomous run per docs/05-AUTONOMOUS-RUN.md
+
+Format: timestamp UTC · fork · decision · reason.
+
+- 2026-07-28T03:20Z · **Demo estate** · Demo assets (6.6) built around
+  `estate-03-oh-trust-administration`, not estate-05 · Operator directive: estate-05 is the
+  calibration estate, so demoing it proves nothing about reuse; estate-03 takes the opposite
+  2a/2b branch, ticks 1e not 1a, trustee not executor.
+- 2026-07-28T03:20Z · **Concurrency** · Total model-call concurrency ≈4 across ALL agents,
+  not per-agent · Operator directive; parallel image uploads already cost 15 minutes tonight.
+- 2026-07-28T03:21Z · **Anvil credential** · `ANVIL_API_KEY` is not in `.env` (only
+  `OPEN_AI_KEY` is present). Per §5 item 2 this is an ask; per §6.3 the ask is surfaced in
+  the final report while the Anvil client is built and tested against a recorded-shape stub
+  so a key drop makes it live without code changes.
+- 2026-07-28T03:21Z · **Vision fallback** · OpenAI fallback (operator-authorised, $10 hard
+  cap in code) is NOT activated — `claude -p` vision transport is working; the only repeated
+  timeouts so far are the text-only propose call, which halving image batches would not
+  affect. Fallback stays dormant unless vision calls start failing repeatedly.
+- 2026-07-28T03:55Z · **Propose timeout** · Whole-form propose (72 fields + full estate
+  JSON) timed out twice at 420s. Per §2 "halve the batch": added per-page proposal
+  fallback (merge of page-scoped proposals), firing after ONE whole-form attempt since
+  the failure is reproducible. Evidence: out/reports/calls/00{1,2}-bind-irs-f56-propose.error.txt.

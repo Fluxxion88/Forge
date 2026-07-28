@@ -1,0 +1,683 @@
+You are compiling a reusable form-filler for government form irs-f8821
+(inputs/forms/Form 8821 Jan 2021.pdf). Map estate-data JSON paths onto the form's fields.
+
+The calibrated fields (name, type, page, printed item number, caption, meaning):
+topmostSubform[0].Page1[0].Pg1Header[0].f1_1[0]  text  page=0  item=None  label='Received by:'  meaning='IRS employee name who received the form (For IRS Use Only box).'
+topmostSubform[0].Page1[0].Pg1Header[0].f1_2[0]  text  page=0  item=None  label='Name'  meaning="IRS employee's name who received the form (For IRS Use Only box)."
+topmostSubform[0].Page1[0].Pg1Header[0].f1_3[0]  text  page=0  item=None  label='Telephone'  meaning="IRS employee's telephone number (For IRS Use Only box)."
+topmostSubform[0].Page1[0].Pg1Header[0].f1_4[0]  text  page=0  item=None  label='Function'  meaning="IRS employee's function/department (For IRS Use Only box)."
+topmostSubform[0].Page1[0].Pg1Header[0].f1_5[0]  text  page=0  item=None  label='Date'  meaning='Date the form was received by the IRS (For IRS Use Only box).'
+topmostSubform[0].Page1[0].f1_6[0]  text  page=0  item=None  label='Taxpayer name and address'  meaning="Taxpayer's full name and mailing address."
+topmostSubform[0].Page1[0].f1_7[0]  text  page=0  item=None  label='Taxpayer identification number(s)'  meaning="Taxpayer's SSN, ITIN, or EIN."
+topmostSubform[0].Page1[0].f1_8[0]  text  page=0  item=None  label='Daytime telephone number'  meaning="Taxpayer's daytime telephone number."
+topmostSubform[0].Page1[0].f1_9[0]  text  page=0  item=None  label='Plan number (if applicable)'  meaning='Employee plan number, if the authorization concerns a specific benefit plan.'
+topmostSubform[0].Page1[0].c1_1[0]  button  page=0  item=2  label='Check here if a list of additional designees is attached'  meaning='Checked if more than two designees are named on an attached list.'  onValue=/1
+topmostSubform[0].Page1[0].f1_10[0]  text  page=0  item=None  label='Name and address'  meaning="First designee's name and mailing address."
+topmostSubform[0].Page1[0].c1_2[0]  button  page=0  item=None  label='Check if to be sent copies of notices and communications'  meaning='Checked if the first designee should receive copies of notices and communications.'  onValue=/1
+topmostSubform[0].Page1[0].f1_11[0]  text  page=0  item=None  label='CAF No.'  meaning="First designee's Centralized Authorization File number."
+topmostSubform[0].Page1[0].f1_12[0]  text  page=0  item=None  label='PTIN'  meaning="First designee's Preparer Tax Identification Number."  maxLen=11
+topmostSubform[0].Page1[0].f1_13[0]  text  page=0  item=None  label='Telephone No.'  meaning="First designee's telephone number."
+topmostSubform[0].Page1[0].f1_14[0]  text  page=0  item=None  label='Fax No.'  meaning="First designee's fax number."
+topmostSubform[0].Page1[0].c1_3[0]  button  page=0  item=None  label='Check if new: Address'  meaning="Checked if the first designee's address is new since last CAF filing."  onValue=/1
+topmostSubform[0].Page1[0].c1_4[0]  button  page=0  item=None  label='Check if new: Telephone No.'  meaning="Checked if the first designee's telephone number is new since last CAF filing."  onValue=/1
+topmostSubform[0].Page1[0].c1_5[0]  button  page=0  item=None  label='Check if new: Fax No.'  meaning="Checked if the first designee's fax number is new since last CAF filing."  onValue=/1
+topmostSubform[0].Page1[0].f1_15[0]  text  page=0  item=None  label='Name and address'  meaning="Second designee's name and mailing address."
+topmostSubform[0].Page1[0].c1_6[0]  button  page=0  item=None  label='Check if to be sent copies of notices and communications'  meaning='Checked if the second designee should receive copies of notices and communications.'  onValue=/1
+topmostSubform[0].Page1[0].f1_16[0]  text  page=0  item=None  label='CAF No.'  meaning="Second designee's Centralized Authorization File number."
+topmostSubform[0].Page1[0].f1_17[0]  text  page=0  item=None  label='PTIN'  meaning="Second designee's Preparer Tax Identification Number."  maxLen=11
+topmostSubform[0].Page1[0].f1_18[0]  text  page=0  item=None  label='Telephone No.'  meaning="Second designee's telephone number."
+topmostSubform[0].Page1[0].f1_19[0]  text  page=0  item=None  label='Fax No.'  meaning="Second designee's fax number."
+topmostSubform[0].Page1[0].c1_7[0]  button  page=0  item=None  label='Check if new: Address'  meaning="Checked if the second designee's address is new since last CAF filing."  onValue=/1
+topmostSubform[0].Page1[0].c1_8[0]  button  page=0  item=None  label='Check if new: Telephone No.'  meaning="Checked if the second designee's telephone number is new since last CAF filing."  onValue=/1
+topmostSubform[0].Page1[0].c1_9[0]  button  page=0  item=None  label='Check if new: Fax No.'  meaning="Checked if the second designee's fax number is new since last CAF filing."  onValue=/1
+topmostSubform[0].Page1[0].c1_10[0]  button  page=0  item=3  label='By checking here, I authorize access to my IRS records via an Intermediate Service Provider.'  meaning='Checked to authorize designee access to IRS records through an Intermediate Service Provider.'  onValue=/1
+topmostSubform[0].Page1[0].Table_Line3[0].BodyRow1[0].f1_20[0]  text  page=0  item=3a  label='Type of Tax Information'  meaning='Row 1: type of tax information (e.g., Income, Employment, Estate) covered by the authorization.'
+topmostSubform[0].Page1[0].Table_Line3[0].BodyRow1[0].f1_21[0]  text  page=0  item=3b  label='Tax Form Number'  meaning='Row 1: tax form number (e.g., 1040, 941, 720) covered by the authorization.'
+topmostSubform[0].Page1[0].Table_Line3[0].BodyRow1[0].f1_22[0]  text  page=0  item=3c  label='Year(s) or Period(s)'  meaning='Row 1: tax year(s) or period(s) covered by the authorization.'
+topmostSubform[0].Page1[0].Table_Line3[0].BodyRow1[0].f1_23[0]  text  page=0  item=3d  label='Specific Tax Matters'  meaning='Row 1: specific tax matters the authorization covers.'
+topmostSubform[0].Page1[0].Table_Line3[0].BodyRow2[0].f1_24[0]  text  page=0  item=3a  label='Type of Tax Information'  meaning='Row 2: type of tax information (e.g., Income, Employment, Estate) covered by the authorization.'
+topmostSubform[0].Page1[0].Table_Line3[0].BodyRow2[0].f1_25[0]  text  page=0  item=3b  label='Tax Form Number'  meaning='Row 2: tax form number (e.g., 1040, 941, 720) covered by the authorization.'
+topmostSubform[0].Page1[0].Table_Line3[0].BodyRow2[0].f1_26[0]  text  page=0  item=3c  label='Year(s) or Period(s)'  meaning='Row 2: tax year(s) or period(s) covered by the authorization.'
+topmostSubform[0].Page1[0].Table_Line3[0].BodyRow2[0].f1_27[0]  text  page=0  item=3d  label='Specific Tax Matters'  meaning='Row 2: specific tax matters the authorization covers.'
+topmostSubform[0].Page1[0].Table_Line3[0].BodyRow3[0].f1_28[0]  text  page=0  item=3a  label='Type of Tax Information'  meaning='Row 3: type of tax information (e.g., Income, Employment, Estate) covered by the authorization.'
+topmostSubform[0].Page1[0].Table_Line3[0].BodyRow3[0].f1_29[0]  text  page=0  item=3b  label='Tax Form Number'  meaning='Row 3: tax form number (e.g., 1040, 941, 720) covered by the authorization.'
+topmostSubform[0].Page1[0].Table_Line3[0].BodyRow3[0].f1_30[0]  text  page=0  item=3c  label='Year(s) or Period(s)'  meaning='Row 3: tax year(s) or period(s) covered by the authorization.'
+topmostSubform[0].Page1[0].Table_Line3[0].BodyRow3[0].f1_31[0]  text  page=0  item=3d  label='Specific Tax Matters'  meaning='Row 3: specific tax matters the authorization covers.'
+topmostSubform[0].Page1[0].c1_11[0]  button  page=0  item=4  label='Specific use not recorded on the Centralized Authorization File (CAF)'  meaning='Checked if this authorization is for a specific use that will not be recorded on the CAF system.'  onValue=/1
+topmostSubform[0].Page1[0].c1_12[0]  button  page=0  item=5  label='Retention/revocation of prior tax information authorizations'  meaning='Checked to retain prior tax information authorizations (with a copy attached) instead of having them auto-revoked.'  onValue=/1
+topmostSubform[0].Page1[0].f1_32[0]  text  page=0  item=None  label='Signature'  meaning="Taxpayer's handwritten signature authorizing the form."
+topmostSubform[0].Page1[0].f1_33[0]  text  page=0  item=None  label='Date'  meaning='Date the taxpayer signed the form.'
+
+The estate record this binding will first be tested against (estate-05-in-formal-probate) — bind to its
+PATHS, not its values; the same binding must work for every future estate:
+{
+ "$schema": "./estate-form-data.schema.json",
+ "meta": {
+  "recordId": "estate-05-in-formal-probate",
+  "schemaVersion": "1.0.0",
+  "label": "Indiana formal probate with letters of administration already issued. Most complete court record in the set: docket number, letters date, county of venue, bond disposition and an EIN. Two attorneys on the matter, so both Form 8821 designee slots are used. One contact address is truncated in the source and is preserved as-is.",
+  "anonymized": true,
+  "sourceSystem": "alix-estate-manager",
+  "generatedAt": "2026-07-27T00:00:00Z"
+ },
+ "decedent": {
+  "name": {
+   "first": "Walter",
+   "middle": "Dean",
+   "last": "Prescott",
+   "suffix": null,
+   "full": "Walter Dean Prescott"
+  },
+  "aliases": [],
+  "ssn": "957-22-1064",
+  "dateOfBirth": "1946-03-06",
+  "dateOfDeath": "2026-01-23",
+  "sex": "MALE",
+  "maritalStatus": "Widowed",
+  "citizenship": "USA",
+  "wasVeteran": false,
+  "email": null,
+  "phones": [],
+  "residenceAddress": {
+   "line1": "3204 Adams Street",
+   "line2": null,
+   "city": "Indianapolis",
+   "county": "Marion",
+   "state": "IN",
+   "zip": "46221",
+   "country": "USA",
+   "isPoBox": false
+  },
+  "placeOfDeath": null,
+  "birthplace": null,
+  "identifications": [
+   {
+    "type": "DriversLicense",
+    "number": "4821-96-3057",
+    "issuingState": "IN",
+    "issuingCountry": "USA",
+    "expirationDate": null
+   }
+  ]
+ },
+ "estateEntity": {
+  "legalName": "Estate of Walter Dean Prescott",
+  "tradeName": null,
+  "careOfName": "Sharon Prescott",
+  "entityKind": "DecedentEstate",
+  "ein": "35-6082714",
+  "identifyingNumber": "35-6082714",
+  "mailingAddress": {
+   "line1": "3204 Adams Street",
+   "line2": null,
+   "city": "Indianapolis",
+   "county": "Marion",
+   "state": "IN",
+   "zip": "46221",
+   "country": "USA",
+   "isPoBox": false
+  },
+  "physicalAddress": {
+   "line1": "3204 Adams Street",
+   "line2": null,
+   "city": "Indianapolis",
+   "county": "Marion",
+   "state": "IN",
+   "zip": "46221",
+   "country": "USA",
+   "isPoBox": false
+  },
+  "physicalAddressDiffersFromMailing": false,
+  "principalCounty": "Marion",
+  "principalState": "IN",
+  "daytimePhone": {
+   "number": "(317) 555-0154",
+   "countryCode": "+1",
+   "type": "Mobile",
+   "primary": true
+  },
+  "planNumber": null,
+  "trust": null
+ },
+ "fiduciary": {
+  "name": {
+   "first": "Sharon",
+   "middle": null,
+   "last": "Prescott",
+   "suffix": null,
+   "full": "Sharon Prescott"
+  },
+  "title": "Personal Representative",
+  "isIndividual": true,
+  "ssn": null,
+  "ein": null,
+  "responsiblePartyTin": null,
+  "dateOfBirth": "1961-12-05",
+  "address": {
+   "line1": "3204 Adams Street",
+   "line2": null,
+   "city": "Indianapolis",
+   "county": "Marion",
+   "state": "IN",
+   "zip": "46221",
+   "country": "USA",
+   "isPoBox": false
+  },
+  "phone": {
+   "number": "(317) 555-0154",
+   "countryCode": "+1",
+   "type": "Mobile",
+   "primary": true
+  },
+  "faxNumber": null,
+  "email": "s.prescott@example.com",
+  "identifications": [],
+  "relationshipToDecedent": "Daughter",
+  "signatureDate": "2026-08-03"
+ },
+ "authority": {
+  "basis": "CourtAppointmentTestate",
+  "basisOtherDescription": null,
+  "dateOfDeath": "2026-01-23",
+  "dateOfAppointment": "2026-07-28",
+  "assetsUnderCourtControl": null,
+  "transferredAssetsDescription": null,
+  "authorityStatus": "LettersOfAdministrationObtained",
+  "administrationPath": "FORMAL_PROBATE",
+  "hasWill": true,
+  "hasTrust": false,
+  "bondRequired": "Not Required",
+  "bondAmount": null,
+  "proceeding": {
+   "courtName": "Marion Superior Court, Probate Division \u2014 State of Indiana",
+   "isCourtProceeding": true,
+   "dateProceedingInitiated": "2026-07-28",
+   "courtAddress": {
+    "line1": "200 E Washington St",
+    "line2": null,
+    "city": "Indianapolis",
+    "county": "Marion",
+    "state": "IN",
+    "zip": "46204",
+    "country": "USA",
+    "isPoBox": false
+   },
+   "courtRoomOrSuite": "W-122",
+   "docketNumber": "49D08-2601-EU-004192",
+   "hearingDate": null,
+   "hearingTime": null,
+   "hearingTimeMeridiem": null,
+   "placeOfOtherProceedings": null,
+   "courtPhone": null,
+   "courtHours": null,
+   "lettersIssuedDate": "2026-07-28",
+   "closureDate": null,
+   "attorneyOfRecord": null
+  }
+ },
+ "taxMatters": {
+  "taxTypes": [
+   "Income",
+   "Estate"
+  ],
+  "taxTypeOtherDescription": null,
+  "federalFormNumbers": [
+   "1040_or_1040SR",
+   "1041"
+  ],
+  "federalFormOtherList": null,
+  "authorityLimitedToSpecificPeriods": true,
+  "specificPeriods": "Tax year 2025 through the close of estate administration",
+  "authorizationRows": [
+   {
+    "typeOfTaxInformation": "Income",
+    "taxFormNumber": "1040",
+    "yearsOrPeriods": "2024, 2025, 2026",
+    "specificTaxMatters": "Final individual return of the decedent"
+   },
+   {
+    "typeOfTaxInformation": "Income",
+    "taxFormNumber": "1041",
+    "yearsOrPeriods": "2026",
+    "specificTaxMatters": "Fiduciary income tax for the estate"
+   },
+   {
+    "typeOfTaxInformation": "Civil Penalty",
+    "taxFormNumber": "1040",
+    "yearsOrPeriods": "2024, 2025",
+    "specificTaxMatters": "Resolution of an outstanding balance-due notice"
+   }
+  ]
+ },
+ "form56": {
+  "isNewNotice": true,
+  "totalRevocation": {
+   "revokeAllPriorNotices": false,
+   "reason": null,
+   "reasonOtherDescription": null
+  },
+  "partialRevocation": {
+   "revokeEarlierNotices": false,
+   "grantedToDateAndAddress": null
+  },
+  "substituteFiduciary": {
+   "hasSubstitute": false,
+   "namesAndAddresses": null
+  },
+  "signature": {
+   "signerName": "Sharon Prescott",
+   "title": "Personal Representative",
+   "date": "2026-08-03"
+  }
+ },
+ "form8821": {
+  "taxpayerNameAndAddressBlock": "Estate of Walter Dean Prescott\nc/o Sharon Prescott, Personal Representative\n3204 Adams Street\nIndianapolis, IN 46221",
+  "taxpayerIdentificationNumbers": "35-6082714",
+  "designees": [
+   {
+    "name": "Marguerite T. Holloway",
+    "firmName": "Holloway Estate Law LLC",
+    "address": {
+     "line1": "151 N",
+     "line2": null,
+     "city": "Indianapolis",
+     "county": null,
+     "state": "IN",
+     "zip": "46221",
+     "country": "USA",
+     "isPoBox": false
+    },
+    "cafNumber": "2871-40119R",
+    "ptin": "P00583612",
+    "phone": {
+     "number": "(317) 555-0108",
+     "countryCode": "+1",
+     "type": "Work",
+     "primary": true
+    },
+    "faxNumber": null,
+    "sendCopiesOfNotices": true,
+    "isNewAddress": false,
+    "isNewPhone": false,
+    "isNewFax": false
+   },
+   {
+    "name": "Curtis Alan Reddick",
+    "firmName": "Reddick & Associates",
+    "address": {
+     "line1": "1450 W. Meade Road 210",
+     "line2": "Suite 210",
+     "city": "Morgantown",
+     "county": null,
+     "state": "IN",
+     "zip": "46160",
+     "country": "USA",
+     "isPoBox": false
+    },
+    "cafNumber": "2871-55207R",
+    "ptin": "P01120884",
+    "phone": {
+     "number": "(812) 555-0143",
+     "countryCode": "+1",
+     "type": "Work",
+     "primary": true
+    },
+    "faxNumber": "(812) 555-0144",
+    "sendCopiesOfNotices": false,
+    "isNewAddress": true,
+    "isNewPhone": false,
+    "isNewFax": false
+   }
+  ],
+  "additionalDesigneesAttached": false,
+  "authorizeIntermediateServiceProvider": false,
+  "specificUseNotRecordedOnCaf": false,
+  "retainPriorAuthorizations": true,
+  "signature": {
+   "printName": "Sharon Prescott",
+   "title": "Personal Representative",
+   "date": "2026-08-03"
+  },
+  "irsUseOnly": null
+ },
+ "formSS4": {
+  "isLlc": false,
+  "llcMemberCount": null,
+  "llcOrganizedInUs": null,
+  "entityType": "Estate",
+  "entityTypeQualifier": "957-22-1064",
+  "groupExemptionNumber": null,
+  "incorporationState": null,
+  "incorporationForeignCountry": null,
+  "reasonForApplying": "BankingPurpose",
+  "reasonSpecify": "To open an estate checking account for the sale proceeds of the residence and vehicle",
+  "businessStartOrAcquiredDate": "2026-01-23",
+  "closingMonthOfAccountingYear": "December",
+  "expectedEmployees": {
+   "agricultural": 0,
+   "household": 0,
+   "other": 0
+  },
+  "electForm944": false,
+  "firstWagesPaidDate": null,
+  "principalActivity": "Other",
+  "principalActivityOther": "Estate administration",
+  "principalLineOfMerchandiseOrServices": "Administration and distribution of a decedent's estate, including sale of one residential property and one motor vehicle. No trade or business activity.",
+  "hasEverAppliedForEin": false,
+  "previousEin": null,
+  "thirdPartyDesignee": {
+   "name": "Marguerite T. Holloway",
+   "address": {
+    "line1": "151 N",
+    "line2": null,
+    "city": "Indianapolis",
+    "county": null,
+    "state": "IN",
+    "zip": "46221",
+    "country": "USA",
+    "isPoBox": false
+   },
+   "phone": {
+    "number": "(317) 555-0108",
+    "countryCode": "+1",
+    "type": "Work",
+    "primary": true
+   },
+   "faxNumber": null
+  },
+  "applicant": {
+   "nameAndTitle": "Sharon Prescott, Personal Representative",
+   "phone": {
+    "number": "(317) 555-0154",
+    "countryCode": "+1",
+    "type": "Mobile",
+    "primary": true
+   },
+   "faxNumber": null,
+   "signatureDate": "2026-08-03"
+  }
+ },
+ "formDL142": {
+  "applicable": false,
+  "notApplicableReason": "The decedent held an Indiana driver licence. DL 142 is a California Department of Motor Vehicles form and cannot be used to cancel an out-of-state licence; the Indiana BMV equivalent is required. The licence data is carried here so the sibling state form can be driven from the same record.",
+  "documentHolderName": "Walter Dean Prescott",
+  "documentHolderAddress": {
+   "line1": "3204 Adams Street",
+   "line2": null,
+   "city": "Indianapolis",
+   "county": "Marion",
+   "state": "IN",
+   "zip": "46221",
+   "country": "USA",
+   "isPoBox": false
+  },
+  "documentNumber": "4821-96-3057",
+  "documentType": "DriverLicense",
+  "dateOfBirth": "1946-03-06",
+  "locationOfLicense": "Attached",
+  "locationOfLicenseOtherExplanation": null,
+  "reasonForCancellation": "Licence holder is deceased. Date of death 01/23/2026. Surrendered by the court-appointed personal representative.",
+  "minorSection": null,
+  "completedBy": {
+   "printedName": "Sharon Prescott",
+   "address": {
+    "line1": "3204 Adams Street",
+    "line2": null,
+    "city": "Indianapolis",
+    "county": "Marion",
+    "state": "IN",
+    "zip": "46221",
+    "country": "USA",
+    "isPoBox": false
+   },
+   "signatureDate": null
+  },
+  "dmvUseOnly": null
+ },
+ "relatedParties": [
+  {
+   "name": {
+    "first": "Sharon",
+    "middle": null,
+    "last": "Prescott",
+    "suffix": null,
+    "full": "Sharon Prescott"
+   },
+   "roles": [
+    "EXECUTOR"
+   ],
+   "contactType": "Individual",
+   "organizationName": null,
+   "isAttorneyOfRecord": false,
+   "isDeceased": false,
+   "dateOfBirth": "1961-12-05",
+   "ssn": null,
+   "sex": "FEMALE",
+   "citizenship": null,
+   "email": "s.prescott@example.com",
+   "phone": {
+    "number": "(317) 555-0154",
+    "countryCode": "+1",
+    "type": "Mobile",
+    "primary": true
+   },
+   "address": {
+    "line1": "3204 Adams Street",
+    "line2": null,
+    "city": "Indianapolis",
+    "county": "Marion",
+    "state": "IN",
+    "zip": "46221",
+    "country": "USA",
+    "isPoBox": false
+   },
+   "identifications": []
+  },
+  {
+   "name": {
+    "first": "Marguerite",
+    "middle": "T",
+    "last": "Holloway",
+    "suffix": null,
+    "full": "Marguerite T. Holloway"
+   },
+   "roles": [
+    "LAWYER"
+   ],
+   "contactType": "Individual",
+   "organizationName": "Holloway Estate Law LLC",
+   "isAttorneyOfRecord": false,
+   "isDeceased": false,
+   "dateOfBirth": null,
+   "ssn": null,
+   "sex": null,
+   "citizenship": "USA",
+   "email": null,
+   "phone": {
+    "number": "(317) 555-0108",
+    "countryCode": "+1",
+    "type": "Work",
+    "primary": true
+   },
+   "address": {
+    "line1": "151 N",
+    "line2": null,
+    "city": "Indianapolis",
+    "county": null,
+    "state": "IN",
+    "zip": "46221",
+    "country": "USA",
+    "isPoBox": false
+   },
+   "identifications": []
+  },
+  {
+   "name": {
+    "first": "Curtis",
+    "middle": "Alan",
+    "last": "Reddick",
+    "suffix": null,
+    "full": "Curtis Alan Reddick"
+   },
+   "roles": [
+    "LAWYER"
+   ],
+   "contactType": "Individual",
+   "organizationName": "Reddick & Associates",
+   "isAttorneyOfRecord": false,
+   "isDeceased": false,
+   "dateOfBirth": null,
+   "ssn": null,
+   "sex": "MALE",
+   "citizenship": null,
+   "email": "c.reddick@example.com",
+   "phone": {
+    "number": "(812) 555-0143",
+    "countryCode": "+1",
+    "type": "Work",
+    "primary": true
+   },
+   "address": {
+    "line1": "1450 W. Meade Road 210",
+    "line2": "Suite 210",
+    "city": "Morgantown",
+    "county": null,
+    "state": "IN",
+    "zip": "46160",
+    "country": "USA",
+    "isPoBox": false
+   },
+   "identifications": []
+  },
+  {
+   "name": {
+    "first": "Louise",
+    "middle": "Margaret",
+    "last": "Prescott",
+    "suffix": null,
+    "full": "Louise Margaret Prescott"
+   },
+   "roles": [
+    "FAMILY_MEMBER"
+   ],
+   "contactType": "Individual",
+   "organizationName": null,
+   "isAttorneyOfRecord": false,
+   "isDeceased": true,
+   "dateOfBirth": null,
+   "ssn": null,
+   "sex": "FEMALE",
+   "citizenship": "USA",
+   "email": null,
+   "phone": null,
+   "address": null,
+   "identifications": []
+  }
+ ],
+ "assets": [
+  {
+   "category": "RealEstate",
+   "subcategory": "PrimaryResidence",
+   "count": 1,
+   "totalEstimatedValue": 173000.0,
+   "totalDateOfDeathValue": null,
+   "institutions": []
+  },
+  {
+   "category": "Vehicle",
+   "subcategory": "Car",
+   "count": 1,
+   "totalEstimatedValue": 8800.0,
+   "totalDateOfDeathValue": null,
+   "institutions": []
+  },
+  {
+   "category": "BankAccount",
+   "subcategory": "Other",
+   "count": 1,
+   "totalEstimatedValue": 4310.97,
+   "totalDateOfDeathValue": null,
+   "institutions": [
+    "PNC Bank"
+   ]
+  }
+ ],
+ "provenance": {
+  "sourceEstateScanBoxId": "00000182",
+  "authorityTypeInSource": "Estate_LawyerRequired",
+  "anonymizationMethod": "Structure-preserving synthesis. Only shape data left the production database: presence flags, enum values, dates, city/county/state/ZIP, and character-class patterns for identifiers. Names, street lines, emails, phone numbers and all identifier digits were generated fresh against those patterns.",
+  "dateJitterDays": 19,
+  "fieldsSynthesized": [
+   "all personal names",
+   "law firm names",
+   "all street address line1 values (generated to match the source character-class pattern)",
+   "all email addresses",
+   "all phone numbers",
+   "SSNs (900-block, never issued by SSA)",
+   "EIN",
+   "docket number",
+   "driver licence number",
+   "CAF numbers",
+   "PTINs",
+   "court room number"
+  ],
+  "fieldsPreservedFromSource": [
+   "date intervals (all dates shifted by a single constant offset)",
+   "city / county / state / ZIP",
+   "sex, marital status, citizenship, veteran status",
+   "identification document type",
+   "identifier character-class patterns including the Indiana 9999-99-9999 licence format and the 99A99-9999-AA-999999 docket format",
+   "authority type and administration path",
+   "proceeding status and bond disposition (Not Required)",
+   "asset category / subcategory / count / value",
+   "institution names",
+   "debt count (1)",
+   "the truncated street address on the first attorney contact"
+  ],
+  "notes": "The first attorney's street address is literally '151 N' in the source \u2014 a truncated entry \u2014 and is reproduced verbatim so that form-fill behaviour against incomplete addresses can be exercised. probateEstateValue in the source (173,000) equals the estimated value of the residence alone, which is why it is not restated as a separate field here."
+ }
+}
+
+Each binding object:
+{
+  "qualifiedName": "<must be a calibrated field's qualifiedName, verbatim>",
+  "itemNumber": <copy from calibration>,
+  "label": <copy from calibration>,
+  "source": <one of the five kinds below>,
+  "format": "text" | "date" | "checkbox",
+  "required": true|false,
+  "confidence": "high" | "medium" | "low",
+  "note": <string or null>,
+  "when": <optional guard, see below, or omit>
+}
+
+The five source kinds — NOTHING else is executable:
+  {"kind": "path", "path": "<estate JSON path>"}                      direct value
+  {"kind": "constant", "value": <literal>}                            never varies
+  {"kind": "template", "pattern": "{0}, {1}", "paths": [<p0>, <p1>]}  joined values
+  {"kind": "condition", "path": <p>, "equals": <literal>}             checkbox: mark iff equal
+  {"kind": "absent", "path": <p>}                                     checkbox: mark iff absent/null
+
+Optional guard on ANY binding: "when": {"path": <p>, "equals": <literal>} — the binding
+applies only when the guard path resolves to exactly that value. Use it for conditional
+value placement (e.g. Form 56 line 2a date-of-death applies only on the 1a/1b/1d branch;
+line 2b date-of-appointment only on the 1c/1e/1f/1g branch).
+
+"format": "date" reformats ISO dates (2026-01-23) to MM/DD/YYYY. Checkbox bindings use
+"format": "checkbox".
+
+Rules:
+- Prefer generic estate paths (decedent.*, fiduciary.*, authority.*, estateEntity.*) over
+  the per-form block where both hold the same value; use the form-specific block
+  (form56.*) for answers only that form asks.
+- UNKNOWN IS NOT FALSE. A field with no supporting estate data goes in "unbound":
+  {"qualifiedName": ..., "label": ..., "reason": ..., "whatWouldFillIt": ...}.
+  Never invent a value. Never bind a guess.
+- Mutually exclusive checkbox sets go in "exclusiveGroups":
+  {"label": ..., "rule": "exactlyOne"|"atMostOne", "members": [qualifiedNames], "when": null}
+  Use exactlyOne when the form demands a choice; atMostOne inside sections that may not
+  apply to a given estate.
+- Do not bind pushbuttons (Print/Clear).
+
+Answer with ONLY a JSON object:
+{"bindings": [...], "unbound": [...], "exclusiveGroups": [...]}

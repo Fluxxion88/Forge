@@ -185,6 +185,41 @@ Supported `source.kind`:
 Nothing else. If a field needs logic beyond these five, it does not get bound — it goes into
 `unbound` with a description. Arbitrary expressions are how a data artifact quietly becomes code.
 
+**Conditional values: the `when` guard.** Any binding, whatever its `source.kind`, may carry an
+optional guard:
+
+```json
+"when": { "path": "authority.basis", "equals": "CourtAppointmentTestate" }
+```
+
+If the guard path does not resolve to exactly that value, the binding is skipped and the field is
+left empty, recorded as guarded-off rather than absent. This exists because which text field gets
+a value can depend on another field's answer: Form 56 line 2a takes the date of death only when
+box 1a, 1b or 1d is checked; line 2b takes the date of appointment on the opposite branch
+(1c/1e/1f/1g). estate-05 (testate probate) and estate-03 (trust instrument) take opposite
+branches of that pair. One path, one literal, equality only — the guard stays data, not code.
+
+**Mutually exclusive checkbox groups.** The artifact carries a top-level `exclusiveGroups`:
+
+```json
+"exclusiveGroups": [
+  {
+    "label": "Line 1 — authority for fiduciary relationship",
+    "rule": "exactlyOne",
+    "members": ["topmostSubform[0].Page1[0].c1_1[0]", "…c1_1[1]", "…", "…c1_1[6]"],
+    "when": null
+  }
+]
+```
+
+`rule` is `exactlyOne` or `atMostOne` (for groups inside sections that may legitimately not
+apply, e.g. the Form 56 line 6b/6c/6d revocation-reason group). An optional `when` guard, same
+shape as above, scopes enforcement. The PDF renders these as independent checkboxes — nothing in
+the file stops three of them being ticked, and a filing with three authority boxes marked is
+rejected on sight. Therefore: the fill records a group violation whenever a group breaks its
+rule, **the convergence loop fails any round containing a violation**, and the review UI must
+display violations prominently (a phase 3 obligation, recorded here so it is not lost).
+
 ### 2.2 The loop
 
 For a chosen calibration estate (use `estate-05-in-formal-probate`, the most complete record):
@@ -209,6 +244,8 @@ Findings to ask for explicitly:
 - text overflowing its rectangle
 - a date rendered in a format the form does not use
 - a checkbox marked that contradicts the estate's facts, or an option group with none marked
+- an exclusive group with no box, or more than one box, marked (also checked deterministically
+  from `exclusiveGroups` — a violation fails the round even if the critique misses it)
 - a name or address split across the wrong lines
 
 Every round writes `out/renders/<formId>/round-<n>-page-<p>.png` and appends to

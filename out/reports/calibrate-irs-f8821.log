@@ -1,0 +1,6 @@
+sentinel renders: 1 text page(s), 1 button page(s)
+[call 1] page-pass page 0 (attempt 1) (45 field(s)) — prev call took n/a
+escalating 0/45 field(s) via caption crops
+wrote artifacts/calibration/irs-f8821.json
+irs-f8821: 45/45 fields labelled (100.0%), 0 unresolved, 1 model call(s)
+PASS

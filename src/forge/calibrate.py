@@ -8,6 +8,10 @@ each of the field's widget rectangles, extended ~120pt to the left and ~40pt
 vertically so the printed caption is in frame, and re-query in small batches. A null
 `itemNumber` alone never escalates — many forms number nothing. A field that still
 resolves to nothing lands in `unresolved` — a first-class output, not an error.
+
+STATUS NOTE (2026-07-27): the escalation path has never completed end to end — both
+DL 142 runs that exercised it timed out, and after the predicate fix neither DL 142
+nor Form 56 fired it. Treat it as untested; SS-4 or 8821 will exercise it first.
 """
 
 from __future__ import annotations
@@ -62,15 +66,15 @@ class _Progress:
             with self._lock:
                 self._last_elapsed = time.monotonic() - t0
 
-    def call_with_retry(self, label: str, fields: int, fn) -> str | None:
-        """One retry on failure; a second failure skips the batch rather than
+    def call_with_retry(self, label: str, fields: int, fn, attempts: int = 2) -> str | None:
+        """Retries on failure; exhausting attempts skips the batch rather than
         killing the run — the affected fields surface in `unresolved`."""
-        for attempt in (1, 2):
+        for attempt in range(1, attempts + 1):
             try:
                 return self.timed_call(f"{label} (attempt {attempt})", fields, fn)
             except llm.ModelCallFailed as exc:
                 print(f"  WARN {label} attempt {attempt} failed: {exc}", flush=True)
-        print(f"  WARN {label} skipped after 2 attempts; fields stay unresolved", flush=True)
+        print(f"  WARN {label} skipped after {attempts} attempt(s)", flush=True)
         return None
 
 
