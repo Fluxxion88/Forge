@@ -217,9 +217,8 @@ FORM_SUMMARY_KEYS: dict[str, list[str]] = {
         "formSS4.hasEverAppliedForEin", "formSS4.previousEin",
         "formSS4.thirdPartyDesignee.name", "formSS4.thirdPartyDesignee.phone.number",
         "formSS4.thirdPartyDesignee.faxNumber",
-        "formSS4.applicant.printedName", "formSS4.applicant.title",
-        "formSS4.applicant.phone.number", "formSS4.applicant.faxNumber",
-        "formSS4.applicant.signatureDate",
+        "formSS4.applicant.nameAndTitle", "formSS4.applicant.phone.number",
+        "formSS4.applicant.faxNumber", "formSS4.applicant.signatureDate",
     ],
 }
 
