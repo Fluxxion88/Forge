@@ -1,0 +1,28 @@
+{
+  "renamedFrom": "topmostSubform[0].Page1[0].f1_19[0]",
+  "renamedTo": "topmostSubform[0].Page1[0].f1_19a[0]",
+  "valuesIntended": 32,
+  "valuesActuallySent": 31,
+  "silentlyDropped": [
+    "topmostSubform[0].Page1[0].f1_19a[0]"
+  ],
+  "beforeBytes": 156345,
+  "beforeLooksValid": true,
+  "afterRefused": true,
+  "afterError": "refusing to fill: the cast does not have these fields we would write (their values would be SILENTLY dropped and the returned PDF would look complete): ['f1_19a[0]']",
+  "fillRequestsSentAfter": 0,
+  "afterPdfExists": false,
+  "drift": {
+    "boundButMissingFromCast": [
+      "f1_19a[0]"
+    ],
+    "inCastButNeverBound": [
+      "c2_2[0]",
+      "c2_2[1]",
+      "c2_2[2]",
+      "c2_5[0]",
+      "c2_5[1]",
+      "f1_19[0]"
+    ]
+  }
+}

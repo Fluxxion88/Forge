@@ -75,43 +75,43 @@ topmostSubform[0].Page2[0].Time_ReadOrder[0].c2_5[1]  button  page=1  item=None 
 topmostSubform[0].Page2[0].f2_14[0]  text  page=1  item=None  label='Place of other proceedings'  meaning='Location/place of the proceeding if not a standard court proceeding.'
 topmostSubform[0].Page2[0].f2_15[0]  text  page=1  item=None  label='Title, if applicable'  meaning="The fiduciary's title (e.g., executor, trustee), if applicable, entered next to the signature."
 
-The estate record this binding will first be tested against (estate-05-in-formal-probate) — bind to its
+The estate record this binding will first be tested against (estate-03-oh-trust-administration) — bind to its
 PATHS, not its values; the same binding must work for every future estate:
 {
  "$schema": "./estate-form-data.schema.json",
  "meta": {
-  "recordId": "estate-05-in-formal-probate",
+  "recordId": "estate-03-oh-trust-administration",
   "schemaVersion": "1.0.0",
-  "label": "Indiana formal probate with letters of administration already issued. Most complete court record in the set: docket number, letters date, county of venue, bond disposition and an EIN. Two attorneys on the matter, so both Form 8821 designee slots are used. One contact address is truncated in the source and is preserved as-is.",
+  "label": "Ohio revocable-trust administration with a small companion probate for a non-trust asset. Fiduciary is an out-of-state successor trustee, so Form 56 authority is the trust instrument (box 1e) and the appointment date rather than the date of death drives line 2b.",
   "anonymized": true,
   "sourceSystem": "alix-estate-manager",
   "generatedAt": "2026-07-27T00:00:00Z"
  },
  "decedent": {
   "name": {
-   "first": "Walter",
-   "middle": "Dean",
-   "last": "Prescott",
+   "first": "Rosalind",
+   "middle": null,
+   "last": "Kellerman",
    "suffix": null,
-   "full": "Walter Dean Prescott"
+   "full": "Rosalind Kellerman"
   },
   "aliases": [],
-  "ssn": "957-22-1064",
-  "dateOfBirth": "1946-03-06",
-  "dateOfDeath": "2026-01-23",
-  "sex": "MALE",
-  "maritalStatus": "Widowed",
+  "ssn": "903-56-8172",
+  "dateOfBirth": "1944-11-08",
+  "dateOfDeath": "2026-06-16",
+  "sex": "FEMALE",
+  "maritalStatus": "Unknown",
   "citizenship": "USA",
   "wasVeteran": false,
   "email": null,
   "phones": [],
   "residenceAddress": {
-   "line1": "3204 Adams Street",
+   "line1": "612 Lakeshore Drive",
    "line2": null,
-   "city": "Indianapolis",
-   "county": "Marion",
-   "state": "IN",
-   "zip": "46221",
+   "city": "Bay Village",
+   "county": "Cuyahoga",
+   "state": "OH",
+   "zip": "44140",
    "country": "USA",
    "isPoBox": false
   },
@@ -120,132 +120,145 @@ PATHS, not its values; the same binding must work for every future estate:
   "identifications": [
    {
     "type": "DriversLicense",
-    "number": "4821-96-3057",
-    "issuingState": "IN",
+    "number": "RT418205",
+    "issuingState": "OH",
     "issuingCountry": "USA",
     "expirationDate": null
    }
   ]
  },
  "estateEntity": {
-  "legalName": "Estate of Walter Dean Prescott",
-  "tradeName": null,
-  "careOfName": "Sharon Prescott",
-  "entityKind": "DecedentEstate",
-  "ein": "35-6082714",
-  "identifyingNumber": "35-6082714",
+  "legalName": "Rosalind Kellerman Revocable Living Trust",
+  "tradeName": "Estate of Rosalind Kellerman",
+  "careOfName": "Paula Kellerman Vance",
+  "entityKind": "Trust",
+  "ein": null,
+  "identifyingNumber": "903-56-8172",
   "mailingAddress": {
-   "line1": "3204 Adams Street",
+   "line1": "3308 Elder Crossing",
    "line2": null,
-   "city": "Indianapolis",
-   "county": "Marion",
-   "state": "IN",
-   "zip": "46221",
+   "city": "Coppell",
+   "county": "Dallas",
+   "state": "TX",
+   "zip": "75019",
    "country": "USA",
    "isPoBox": false
   },
   "physicalAddress": {
-   "line1": "3204 Adams Street",
+   "line1": "612 Lakeshore Drive",
    "line2": null,
-   "city": "Indianapolis",
-   "county": "Marion",
-   "state": "IN",
-   "zip": "46221",
+   "city": "Bay Village",
+   "county": "Cuyahoga",
+   "state": "OH",
+   "zip": "44140",
    "country": "USA",
    "isPoBox": false
   },
-  "physicalAddressDiffersFromMailing": false,
-  "principalCounty": "Marion",
-  "principalState": "IN",
+  "physicalAddressDiffersFromMailing": true,
+  "principalCounty": "Cuyahoga",
+  "principalState": "OH",
   "daytimePhone": {
-   "number": "(317) 555-0154",
+   "number": "(972) 555-0146",
    "countryCode": "+1",
    "type": "Mobile",
    "primary": true
   },
   "planNumber": null,
-  "trust": null
+  "trust": {
+   "name": "Rosalind Kellerman Revocable Living Trust",
+   "dateOfTrust": null,
+   "trusteeName": "Paula Kellerman Vance",
+   "grantorTin": "903-56-8172",
+   "isRevocableAtDeath": true
+  }
  },
  "fiduciary": {
   "name": {
-   "first": "Sharon",
-   "middle": null,
-   "last": "Prescott",
+   "first": "Paula",
+   "middle": "Kellerman",
+   "last": "Vance",
    "suffix": null,
-   "full": "Sharon Prescott"
+   "full": "Paula Kellerman Vance"
   },
-  "title": "Personal Representative",
+  "title": "Successor Trustee",
   "isIndividual": true,
   "ssn": null,
   "ein": null,
   "responsiblePartyTin": null,
-  "dateOfBirth": "1961-12-05",
+  "dateOfBirth": "1975-12-10",
   "address": {
-   "line1": "3204 Adams Street",
+   "line1": "3308 Elder Crossing",
    "line2": null,
-   "city": "Indianapolis",
-   "county": "Marion",
-   "state": "IN",
-   "zip": "46221",
+   "city": "Coppell",
+   "county": "Dallas",
+   "state": "TX",
+   "zip": "75019",
    "country": "USA",
    "isPoBox": false
   },
   "phone": {
-   "number": "(317) 555-0154",
+   "number": "(972) 555-0146",
    "countryCode": "+1",
    "type": "Mobile",
    "primary": true
   },
   "faxNumber": null,
-  "email": "s.prescott@example.com",
-  "identifications": [],
+  "email": "p.vance@example.com",
+  "identifications": [
+   {
+    "type": "DriversLicense",
+    "number": "V400-183-75-902-0",
+    "issuingState": "FL",
+    "issuingCountry": "USA",
+    "expirationDate": null
+   }
+  ],
   "relationshipToDecedent": "Daughter",
-  "signatureDate": "2026-08-03"
+  "signatureDate": "2026-07-09"
  },
  "authority": {
-  "basis": "CourtAppointmentTestate",
+  "basis": "ValidTrustInstrument",
   "basisOtherDescription": null,
-  "dateOfDeath": "2026-01-23",
-  "dateOfAppointment": "2026-07-28",
+  "dateOfDeath": "2026-06-16",
+  "dateOfAppointment": "2026-06-29",
   "assetsUnderCourtControl": null,
   "transferredAssetsDescription": null,
-  "authorityStatus": "LettersOfAdministrationObtained",
-  "administrationPath": "FORMAL_PROBATE",
+  "authorityStatus": "InProcess",
+  "administrationPath": "TRUST_ADMINISTRATION",
   "hasWill": true,
-  "hasTrust": false,
-  "bondRequired": "Not Required",
+  "hasTrust": true,
+  "bondRequired": null,
   "bondAmount": null,
   "proceeding": {
-   "courtName": "Marion Superior Court, Probate Division \u2014 State of Indiana",
+   "courtName": "Cuyahoga County Court of Common Pleas, Probate Division",
    "isCourtProceeding": true,
-   "dateProceedingInitiated": "2026-07-28",
+   "dateProceedingInitiated": null,
    "courtAddress": {
-    "line1": "200 E Washington St",
+    "line1": "1 W Lakeside Ave",
     "line2": null,
-    "city": "Indianapolis",
-    "county": "Marion",
-    "state": "IN",
-    "zip": "46204",
+    "city": "Cleveland",
+    "county": "Cuyahoga",
+    "state": "OH",
+    "zip": "44113",
     "country": "USA",
     "isPoBox": false
    },
-   "courtRoomOrSuite": "W-122",
-   "docketNumber": "49D08-2601-EU-004192",
+   "courtRoomOrSuite": null,
+   "docketNumber": null,
    "hearingDate": null,
    "hearingTime": null,
    "hearingTimeMeridiem": null,
-   "placeOfOtherProceedings": null,
+   "placeOfOtherProceedings": "Trust administration is conducted out of court. The probate filing covers a single vehicle that was never retitled into the trust.",
    "courtPhone": null,
    "courtHours": null,
-   "lettersIssuedDate": "2026-07-28",
+   "lettersIssuedDate": null,
    "closureDate": null,
    "attorneyOfRecord": null
   }
  },
  "taxMatters": {
   "taxTypes": [
-   "Income",
-   "Estate"
+   "Income"
   ],
   "taxTypeOtherDescription": null,
   "federalFormNumbers": [
@@ -253,26 +266,26 @@ PATHS, not its values; the same binding must work for every future estate:
    "1041"
   ],
   "federalFormOtherList": null,
-  "authorityLimitedToSpecificPeriods": true,
-  "specificPeriods": "Tax year 2025 through the close of estate administration",
+  "authorityLimitedToSpecificPeriods": false,
+  "specificPeriods": null,
   "authorizationRows": [
    {
     "typeOfTaxInformation": "Income",
     "taxFormNumber": "1040",
     "yearsOrPeriods": "2024, 2025, 2026",
-    "specificTaxMatters": "Final individual return of the decedent"
+    "specificTaxMatters": "Final individual return of the grantor"
    },
    {
     "typeOfTaxInformation": "Income",
     "taxFormNumber": "1041",
-    "yearsOrPeriods": "2026",
-    "specificTaxMatters": "Fiduciary income tax for the estate"
+    "yearsOrPeriods": "2026, 2027",
+    "specificTaxMatters": "Fiduciary income tax for the trust after the grantor's death"
    },
    {
-    "typeOfTaxInformation": "Civil Penalty",
-    "taxFormNumber": "1040",
-    "yearsOrPeriods": "2024, 2025",
-    "specificTaxMatters": "Resolution of an outstanding balance-due notice"
+    "typeOfTaxInformation": "Income",
+    "taxFormNumber": "1099",
+    "yearsOrPeriods": "2025, 2026",
+    "specificTaxMatters": "Wage and income transcripts for asset discovery"
    }
   ]
  },
@@ -292,78 +305,78 @@ PATHS, not its values; the same binding must work for every future estate:
    "namesAndAddresses": null
   },
   "signature": {
-   "signerName": "Sharon Prescott",
-   "title": "Personal Representative",
-   "date": "2026-08-03"
+   "signerName": "Paula Kellerman Vance",
+   "title": "Successor Trustee",
+   "date": "2026-07-09"
   }
  },
  "form8821": {
-  "taxpayerNameAndAddressBlock": "Estate of Walter Dean Prescott\nc/o Sharon Prescott, Personal Representative\n3204 Adams Street\nIndianapolis, IN 46221",
-  "taxpayerIdentificationNumbers": "35-6082714",
+  "taxpayerNameAndAddressBlock": "Rosalind Kellerman Revocable Living Trust\nc/o Paula Kellerman Vance, Successor Trustee\n3308 Elder Crossing\nCoppell, TX 75019",
+  "taxpayerIdentificationNumbers": "903-56-8172 (grantor SSN \u2014 trust EIN not yet issued)",
   "designees": [
    {
-    "name": "Marguerite T. Holloway",
-    "firmName": "Holloway Estate Law LLC",
+    "name": "Paula Kellerman Vance",
+    "firmName": null,
     "address": {
-     "line1": "151 N",
+     "line1": "3308 Elder Crossing",
      "line2": null,
-     "city": "Indianapolis",
-     "county": null,
-     "state": "IN",
-     "zip": "46221",
+     "city": "Coppell",
+     "county": "Dallas",
+     "state": "TX",
+     "zip": "75019",
      "country": "USA",
      "isPoBox": false
     },
-    "cafNumber": "2871-40119R",
-    "ptin": "P00583612",
+    "cafNumber": "NONE",
+    "ptin": null,
     "phone": {
-     "number": "(317) 555-0108",
+     "number": "(972) 555-0146",
      "countryCode": "+1",
-     "type": "Work",
+     "type": "Mobile",
      "primary": true
     },
     "faxNumber": null,
     "sendCopiesOfNotices": true,
-    "isNewAddress": false,
+    "isNewAddress": true,
     "isNewPhone": false,
     "isNewFax": false
    },
    {
-    "name": "Curtis Alan Reddick",
-    "firmName": "Reddick & Associates",
+    "name": "Vision Financial Management",
+    "firmName": "Vision Financial Management",
     "address": {
-     "line1": "1450 W. Meade Road 210",
-     "line2": "Suite 210",
-     "city": "Morgantown",
-     "county": null,
-     "state": "IN",
-     "zip": "46160",
+     "line1": "1400 Superior Ave E",
+     "line2": "Suite 900",
+     "city": "Cleveland",
+     "county": "Cuyahoga",
+     "state": "OH",
+     "zip": "44114",
      "country": "USA",
      "isPoBox": false
     },
-    "cafNumber": "2871-55207R",
-    "ptin": "P01120884",
+    "cafNumber": "3104-88213R",
+    "ptin": "P01947725",
     "phone": {
-     "number": "(812) 555-0143",
+     "number": "(216) 555-0121",
      "countryCode": "+1",
      "type": "Work",
      "primary": true
     },
-    "faxNumber": "(812) 555-0144",
+    "faxNumber": "(216) 555-0122",
     "sendCopiesOfNotices": false,
-    "isNewAddress": true,
+    "isNewAddress": false,
     "isNewPhone": false,
     "isNewFax": false
    }
   ],
   "additionalDesigneesAttached": false,
-  "authorizeIntermediateServiceProvider": false,
+  "authorizeIntermediateServiceProvider": true,
   "specificUseNotRecordedOnCaf": false,
-  "retainPriorAuthorizations": true,
+  "retainPriorAuthorizations": false,
   "signature": {
-   "printName": "Sharon Prescott",
-   "title": "Personal Representative",
-   "date": "2026-08-03"
+   "printName": "Paula Kellerman Vance",
+   "title": "Successor Trustee",
+   "date": "2026-07-09"
   },
   "irsUseOnly": null
  },
@@ -371,14 +384,14 @@ PATHS, not its values; the same binding must work for every future estate:
   "isLlc": false,
   "llcMemberCount": null,
   "llcOrganizedInUs": null,
-  "entityType": "Estate",
-  "entityTypeQualifier": "957-22-1064",
+  "entityType": "Trust",
+  "entityTypeQualifier": "903-56-8172",
   "groupExemptionNumber": null,
   "incorporationState": null,
   "incorporationForeignCountry": null,
-  "reasonForApplying": "BankingPurpose",
-  "reasonSpecify": "To open an estate checking account for the sale proceeds of the residence and vehicle",
-  "businessStartOrAcquiredDate": "2026-01-23",
+  "reasonForApplying": "CreatedATrust",
+  "reasonSpecify": "Irrevocable at the grantor's death \u2014 revocable living trust",
+  "businessStartOrAcquiredDate": "2026-06-16",
   "closingMonthOfAccountingYear": "December",
   "expectedEmployees": {
    "agricultural": 0,
@@ -388,72 +401,72 @@ PATHS, not its values; the same binding must work for every future estate:
   "electForm944": false,
   "firstWagesPaidDate": null,
   "principalActivity": "Other",
-  "principalActivityOther": "Estate administration",
-  "principalLineOfMerchandiseOrServices": "Administration and distribution of a decedent's estate, including sale of one residential property and one motor vehicle. No trade or business activity.",
+  "principalActivityOther": "Trust administration",
+  "principalLineOfMerchandiseOrServices": "Administration and distribution of a decedent's revocable living trust. No trade or business activity.",
   "hasEverAppliedForEin": false,
   "previousEin": null,
   "thirdPartyDesignee": {
-   "name": "Marguerite T. Holloway",
+   "name": "Vision Financial Management",
    "address": {
-    "line1": "151 N",
-    "line2": null,
-    "city": "Indianapolis",
-    "county": null,
-    "state": "IN",
-    "zip": "46221",
+    "line1": "1400 Superior Ave E",
+    "line2": "Suite 900",
+    "city": "Cleveland",
+    "county": "Cuyahoga",
+    "state": "OH",
+    "zip": "44114",
     "country": "USA",
     "isPoBox": false
    },
    "phone": {
-    "number": "(317) 555-0108",
+    "number": "(216) 555-0121",
     "countryCode": "+1",
     "type": "Work",
     "primary": true
    },
-   "faxNumber": null
+   "faxNumber": "(216) 555-0122"
   },
   "applicant": {
-   "nameAndTitle": "Sharon Prescott, Personal Representative",
+   "nameAndTitle": "Paula Kellerman Vance, Successor Trustee",
    "phone": {
-    "number": "(317) 555-0154",
+    "number": "(972) 555-0146",
     "countryCode": "+1",
     "type": "Mobile",
     "primary": true
    },
    "faxNumber": null,
-   "signatureDate": "2026-08-03"
+   "signatureDate": "2026-07-09"
   }
  },
  "formDL142": {
   "applicable": false,
-  "notApplicableReason": "The decedent held an Indiana driver licence. DL 142 is a California Department of Motor Vehicles form and cannot be used to cancel an out-of-state licence; the Indiana BMV equivalent is required. The licence data is carried here so the sibling state form can be driven from the same record.",
-  "documentHolderName": "Walter Dean Prescott",
+  "notApplicableReason": "The decedent held an Ohio driver licence. DL 142 is a California Department of Motor Vehicles form and cannot be used to cancel an out-of-state licence; the Ohio BMV equivalent is required. The licence data is carried here so the sibling state form can be driven from the same record.",
+  "documentHolderName": "Rosalind Kellerman",
   "documentHolderAddress": {
-   "line1": "3204 Adams Street",
+   "line1": "612 Lakeshore Drive",
    "line2": null,
-   "city": "Indianapolis",
-   "county": "Marion",
-   "state": "IN",
-   "zip": "46221",
+   "city": "Bay Village",
+   "county": "Cuyahoga",
+   "state": "OH",
+   "zip": "44140",
    "country": "USA",
    "isPoBox": false
   },
-  "documentNumber": "4821-96-3057",
+  "documentNumber": "RT418205",
   "documentType": "DriverLicense",
-  "dateOfBirth": "1946-03-06",
-  "locationOfLicense": "Attached",
+  "dateOfBirth": "1944-11-08",
+  "locationOfLicense": "LostOrDestroyed",
   "locationOfLicenseOtherExplanation": null,
-  "reasonForCancellation": "Licence holder is deceased. Date of death 01/23/2026. Surrendered by the court-appointed personal representative.",
+  "reasonForCancellation": "Licence holder is deceased. Date of death 06/16/2026.",
   "minorSection": null,
   "completedBy": {
-   "printedName": "Sharon Prescott",
+   "printedName": "Paula Kellerman Vance",
    "address": {
-    "line1": "3204 Adams Street",
+    "line1": "3308 Elder Crossing",
     "line2": null,
-    "city": "Indianapolis",
-    "county": "Marion",
-    "state": "IN",
-    "zip": "46221",
+    "city": "Coppell",
+    "county": "Dallas",
+    "state": "TX",
+    "zip": "75019",
     "country": "USA",
     "isPoBox": false
    },
@@ -464,137 +477,51 @@ PATHS, not its values; the same binding must work for every future estate:
  "relatedParties": [
   {
    "name": {
-    "first": "Sharon",
+    "first": "Gregory",
     "middle": null,
-    "last": "Prescott",
+    "last": "Kellerman",
     "suffix": null,
-    "full": "Sharon Prescott"
+    "full": "Gregory Kellerman"
    },
    "roles": [
-    "EXECUTOR"
-   ],
-   "contactType": "Individual",
-   "organizationName": null,
-   "isAttorneyOfRecord": false,
-   "isDeceased": false,
-   "dateOfBirth": "1961-12-05",
-   "ssn": null,
-   "sex": "FEMALE",
-   "citizenship": null,
-   "email": "s.prescott@example.com",
-   "phone": {
-    "number": "(317) 555-0154",
-    "countryCode": "+1",
-    "type": "Mobile",
-    "primary": true
-   },
-   "address": {
-    "line1": "3204 Adams Street",
-    "line2": null,
-    "city": "Indianapolis",
-    "county": "Marion",
-    "state": "IN",
-    "zip": "46221",
-    "country": "USA",
-    "isPoBox": false
-   },
-   "identifications": []
-  },
-  {
-   "name": {
-    "first": "Marguerite",
-    "middle": "T",
-    "last": "Holloway",
-    "suffix": null,
-    "full": "Marguerite T. Holloway"
-   },
-   "roles": [
-    "LAWYER"
-   ],
-   "contactType": "Individual",
-   "organizationName": "Holloway Estate Law LLC",
-   "isAttorneyOfRecord": false,
-   "isDeceased": false,
-   "dateOfBirth": null,
-   "ssn": null,
-   "sex": null,
-   "citizenship": "USA",
-   "email": null,
-   "phone": {
-    "number": "(317) 555-0108",
-    "countryCode": "+1",
-    "type": "Work",
-    "primary": true
-   },
-   "address": {
-    "line1": "151 N",
-    "line2": null,
-    "city": "Indianapolis",
-    "county": null,
-    "state": "IN",
-    "zip": "46221",
-    "country": "USA",
-    "isPoBox": false
-   },
-   "identifications": []
-  },
-  {
-   "name": {
-    "first": "Curtis",
-    "middle": "Alan",
-    "last": "Reddick",
-    "suffix": null,
-    "full": "Curtis Alan Reddick"
-   },
-   "roles": [
-    "LAWYER"
-   ],
-   "contactType": "Individual",
-   "organizationName": "Reddick & Associates",
-   "isAttorneyOfRecord": false,
-   "isDeceased": false,
-   "dateOfBirth": null,
-   "ssn": null,
-   "sex": "MALE",
-   "citizenship": null,
-   "email": "c.reddick@example.com",
-   "phone": {
-    "number": "(812) 555-0143",
-    "countryCode": "+1",
-    "type": "Work",
-    "primary": true
-   },
-   "address": {
-    "line1": "1450 W. Meade Road 210",
-    "line2": "Suite 210",
-    "city": "Morgantown",
-    "county": null,
-    "state": "IN",
-    "zip": "46160",
-    "country": "USA",
-    "isPoBox": false
-   },
-   "identifications": []
-  },
-  {
-   "name": {
-    "first": "Louise",
-    "middle": "Margaret",
-    "last": "Prescott",
-    "suffix": null,
-    "full": "Louise Margaret Prescott"
-   },
-   "roles": [
+    "BENEFICIARY",
+    "HEIR",
     "FAMILY_MEMBER"
    ],
    "contactType": "Individual",
    "organizationName": null,
    "isAttorneyOfRecord": false,
-   "isDeceased": true,
-   "dateOfBirth": null,
+   "isDeceased": false,
+   "dateOfBirth": "1973-01-21",
+   "ssn": null,
+   "sex": "MALE",
+   "citizenship": null,
+   "email": null,
+   "phone": null,
+   "address": null,
+   "identifications": []
+  },
+  {
+   "name": {
+    "first": "Alison",
+    "middle": null,
+    "last": "Kellerman",
+    "suffix": null,
+    "full": "Alison Kellerman"
+   },
+   "roles": [
+    "BENEFICIARY",
+    "HEIR",
+    "FAMILY_MEMBER"
+   ],
+   "contactType": "Individual",
+   "organizationName": null,
+   "isAttorneyOfRecord": false,
+   "isDeceased": false,
+   "dateOfBirth": "1974-02-20",
    "ssn": null,
    "sex": "FEMALE",
-   "citizenship": "USA",
+   "citizenship": null,
    "email": null,
    "phone": null,
    "address": null,
@@ -606,62 +533,97 @@ PATHS, not its values; the same binding must work for every future estate:
    "category": "RealEstate",
    "subcategory": "PrimaryResidence",
    "count": 1,
-   "totalEstimatedValue": 173000.0,
-   "totalDateOfDeathValue": null,
-   "institutions": []
-  },
-  {
-   "category": "Vehicle",
-   "subcategory": "Car",
-   "count": 1,
-   "totalEstimatedValue": 8800.0,
+   "totalEstimatedValue": 1793300.0,
    "totalDateOfDeathValue": null,
    "institutions": []
   },
   {
    "category": "BankAccount",
-   "subcategory": "Other",
-   "count": 1,
-   "totalEstimatedValue": 4310.97,
+   "subcategory": "Checking",
+   "count": 3,
+   "totalEstimatedValue": 173385.06,
    "totalDateOfDeathValue": null,
    "institutions": [
+    "Fifth Third Bank",
     "PNC Bank"
    ]
+  },
+  {
+   "category": "Vehicle",
+   "subcategory": "Car",
+   "count": 1,
+   "totalEstimatedValue": 9000.0,
+   "totalDateOfDeathValue": null,
+   "institutions": []
+  },
+  {
+   "category": "Investment",
+   "subcategory": "Brokerage",
+   "count": 2,
+   "totalEstimatedValue": 500.98,
+   "totalDateOfDeathValue": null,
+   "institutions": [
+    "LPL Financial",
+    "TIAA"
+   ]
+  },
+  {
+   "category": "Investment",
+   "subcategory": "Other",
+   "count": 1,
+   "totalEstimatedValue": null,
+   "totalDateOfDeathValue": null,
+   "institutions": [
+    "Vision Financial Management"
+   ]
+  },
+  {
+   "category": "PersonalProperty",
+   "subcategory": null,
+   "count": 1,
+   "totalEstimatedValue": 203.93,
+   "totalDateOfDeathValue": null,
+   "institutions": []
+  },
+  {
+   "category": "UnclaimedProperty",
+   "subcategory": null,
+   "count": 6,
+   "totalEstimatedValue": 140.0,
+   "totalDateOfDeathValue": null,
+   "institutions": []
   }
  ],
  "provenance": {
-  "sourceEstateScanBoxId": "00000182",
-  "authorityTypeInSource": "Estate_LawyerRequired",
+  "sourceEstateScanBoxId": "000001ef",
+  "authorityTypeInSource": "Trust",
   "anonymizationMethod": "Structure-preserving synthesis. Only shape data left the production database: presence flags, enum values, dates, city/county/state/ZIP, and character-class patterns for identifiers. Names, street lines, emails, phone numbers and all identifier digits were generated fresh against those patterns.",
-  "dateJitterDays": 19,
+  "dateJitterDays": 51,
   "fieldsSynthesized": [
    "all personal names",
-   "law firm names",
+   "trust name",
    "all street address line1 values (generated to match the source character-class pattern)",
    "all email addresses",
    "all phone numbers",
    "SSNs (900-block, never issued by SSA)",
-   "EIN",
-   "docket number",
-   "driver licence number",
-   "CAF numbers",
-   "PTINs",
-   "court room number"
+   "driver licence numbers",
+   "CAF number",
+   "PTIN",
+   "designee firm address"
   ],
   "fieldsPreservedFromSource": [
    "date intervals (all dates shifted by a single constant offset)",
    "city / county / state / ZIP",
    "sex, marital status, citizenship, veteran status",
    "identification document type",
-   "identifier character-class patterns including the Indiana 9999-99-9999 licence format and the 99A99-9999-AA-999999 docket format",
+   "identifier character-class patterns",
    "authority type and administration path",
-   "proceeding status and bond disposition (Not Required)",
+   "proceeding status",
    "asset category / subcategory / count / value",
    "institution names",
-   "debt count (1)",
-   "the truncated street address on the first attorney contact"
+   "debt count (9)"
   ],
-  "notes": "The first attorney's street address is literally '151 N' in the source \u2014 a truncated entry \u2014 and is reproduced verbatim so that form-fill behaviour against incomplete addresses can be exercised. probateEstateValue in the source (173,000) equals the estimated value of the residence alone, which is why it is not restated as a separate field here."
+  "notes": "The successor trustee's licence pattern in the source record is 'A999-999-99-999-9' \u2014 a Florida-format licence held by a Texas-resident fiduciary. The pattern is preserved verbatim rather than normalised to Texas, because that mismatch is real data and an auto-fill needs to survive it. Vision Financial Management appears in the source as an asset institution and is reused here as the professional designee, which is why it carries a CAF number and PTIN the source does not store."
  }
 }
 
@@ -686,25 +648,26 @@ The five source kinds — NOTHING else is executable:
   {"kind": "absent", "path": <p>}                                     checkbox: mark iff absent/null
 
 Optional guard on ANY binding: "when": {"path": <p>, "equals": <literal>} — the binding
-applies only when the guard path resolves to exactly that value. Use it for conditional
-value placement (e.g. Form 56 line 2a date-of-death applies only on the 1a/1b/1d branch;
-line 2b date-of-appointment only on the 1c/1e/1f/1g branch).
+applies only when the guard path resolves to exactly that value.
 
 "format": "date" reformats ISO dates (2026-01-23) to MM/DD/YYYY. Checkbox bindings use
 "format": "checkbox".
 
 Rules:
 - Prefer generic estate paths (decedent.*, fiduciary.*, authority.*, estateEntity.*) over
-  the per-form block where both hold the same value; use the form-specific block
-  (form56.*) for answers only that form asks.
+  the per-form block where both hold the same value.
 - UNKNOWN IS NOT FALSE. A field with no supporting estate data goes in "unbound":
   {"qualifiedName": ..., "label": ..., "reason": ..., "whatWouldFillIt": ...}.
-  Never invent a value. Never bind a guess.
 - Mutually exclusive checkbox sets go in "exclusiveGroups":
   {"label": ..., "rule": "exactlyOne"|"atMostOne", "members": [qualifiedNames], "when": null}
-  Use exactlyOne when the form demands a choice; atMostOne inside sections that may not
-  apply to a given estate.
 - Do not bind pushbuttons (Print/Clear).
+(This proposal is deliberately run WITHOUT the accumulated guidance about array-shaped
+paths, enum spellings and multi-value branches. The convergence loop exists to catch
+what a first pass gets wrong; feeding it a pre-corrected proposal would prove nothing.)
+
 
 Answer with ONLY a JSON object:
 {"bindings": [...], "unbound": [...], "exclusiveGroups": [...]}
+Your ENTIRE reply must be that JSON object and nothing else — no prose, no
+explanation. Do not attempt to read or edit any file; a non-JSON reply is
+discarded unread.

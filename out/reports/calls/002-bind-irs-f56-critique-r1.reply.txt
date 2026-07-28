@@ -1,0 +1,8 @@
+```json
+[
+  {"target": "Identifying number", "problem": "Filled with the decedent's SSN (903-56-8172), duplicating the adjacent 'Decedent's social security no.' box, when this field should hold the trust entity's own EIN (estateEntity.ein), which is unknown and should have been left blank.", "mustFix": true},
+  {"target": "item 2a", "problem": "Date of death (06/16/2026) is entered even though its printed condition requires box 1a, 1b, or 1d to be checked, and only 1e is checked, so this field should have been left blank.", "mustFix": true},
+  {"target": "item 4e", "problem": "The '1040 or 1040-SR' checkbox is left unmarked even though taxMatters.authorizationRows[0].taxFormNumber = '1040' clearly supports checking it.", "mustFix": true},
+  {"target": "Place of other proceedings", "problem": "Contains unrelated, clipped text ('Trust administration is o...') that does not describe a location and is inconsistent with the box's purpose, especially since an actual court proceeding is already named above.", "mustFix": true}
+]
+```

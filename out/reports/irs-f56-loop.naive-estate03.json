@@ -1,0 +1,103 @@
+{
+  "formId": "irs-f56",
+  "estateId": "estate-03-oh-trust-administration",
+  "converged": true,
+  "rounds": 3,
+  "elapsedSeconds": 661.3,
+  "modelCalls": 6,
+  "draft": "out/reports/irs-f56-naive-estate03.draft.json",
+  "history": [
+    {
+      "round": 1,
+      "renders": [
+        "out/renders/irs-f56/naive-estate03/round-1-page-0.png",
+        "out/renders/irs-f56/naive-estate03/round-1-page-1.png"
+      ],
+      "deterministicFindings": [],
+      "modelFindings": [
+        {
+          "target": "Identifying number",
+          "problem": "Filled with the decedent's SSN (903-56-8172), duplicating the adjacent 'Decedent's social security no.' box, when this field should hold the trust entity's own EIN (estateEntity.ein), which is unknown and should have been left blank.",
+          "mustFix": true
+        },
+        {
+          "target": "item 2a",
+          "problem": "Date of death (06/16/2026) is entered even though its printed condition requires box 1a, 1b, or 1d to be checked, and only 1e is checked, so this field should have been left blank.",
+          "mustFix": true
+        },
+        {
+          "target": "item 4e",
+          "problem": "The '1040 or 1040-SR' checkbox is left unmarked even though taxMatters.authorizationRows[0].taxFormNumber = '1040' clearly supports checking it.",
+          "mustFix": true
+        },
+        {
+          "target": "Place of other proceedings",
+          "problem": "Contains unrelated, clipped text ('Trust administration is o...') that does not describe a location and is inconsistent with the box's purpose, especially since an actual court proceeding is already named above.",
+          "mustFix": true
+        }
+      ],
+      "fieldsFilled": 25,
+      "fieldsEmpty": 47,
+      "diffFromPreviousRound": {
+        "added": [],
+        "removed": [
+          "topmostSubform[0].Page1[0].f1_02[0]",
+          "topmostSubform[0].Page2[0].f2_14[0]"
+        ],
+        "changed": [
+          "topmostSubform[0].Page1[0].c1_10[0]",
+          "topmostSubform[0].Page1[0].c1_11[0]",
+          "topmostSubform[0].Page1[0].c1_12[0]",
+          "topmostSubform[0].Page1[0].c1_13[0]",
+          "topmostSubform[0].Page1[0].c1_14[0]",
+          "topmostSubform[0].Page1[0].c1_15[0]",
+          "topmostSubform[0].Page1[0].c1_16[0]",
+          "topmostSubform[0].Page1[0].c1_17[0]",
+          "topmostSubform[0].Page1[0].c1_3[0]",
+          "topmostSubform[0].Page1[0].c1_4[0]",
+          "topmostSubform[0].Page1[0].c1_5[0]",
+          "topmostSubform[0].Page1[0].c1_6[0]",
+          "topmostSubform[0].Page1[0].c1_7[0]",
+          "topmostSubform[0].Page1[0].c1_8[0]",
+          "topmostSubform[0].Page1[0].c1_9[0]",
+          "topmostSubform[0].Page1[0].f1_19[0]",
+          "topmostSubform[0].Page1[0].f1_20[0]"
+        ]
+      }
+    },
+    {
+      "round": 2,
+      "renders": [
+        "out/renders/irs-f56/naive-estate03/round-2-page-0.png",
+        "out/renders/irs-f56/naive-estate03/round-2-page-1.png"
+      ],
+      "deterministicFindings": [],
+      "modelFindings": [
+        {
+          "target": "item 4f (1041)",
+          "problem": "The '1041' checkbox is checked but the only verified tax form number is '1040', which is already reflected by the checked 4e (1040 or 1040-SR) box; 4f has no supporting data and should not be checked.",
+          "mustFix": true
+        }
+      ],
+      "fieldsFilled": 25,
+      "fieldsEmpty": 45,
+      "diffFromPreviousRound": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      }
+    },
+    {
+      "round": 3,
+      "renders": [
+        "out/renders/irs-f56/naive-estate03/round-3-page-0.png",
+        "out/renders/irs-f56/naive-estate03/round-3-page-1.png"
+      ],
+      "deterministicFindings": [],
+      "modelFindings": [],
+      "fieldsFilled": 25,
+      "fieldsEmpty": 45,
+      "diffFromPreviousRound": null
+    }
+  ]
+}

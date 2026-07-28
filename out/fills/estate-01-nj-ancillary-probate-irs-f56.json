@@ -1,0 +1,259 @@
+{
+  "estateId": "estate-01-nj-ancillary-probate",
+  "formId": "irs-f56",
+  "via": "local",
+  "bindingVersion": 1,
+  "bindingPath": "artifacts/approved/irs-f56.v1.json",
+  "fieldsTotal": 72,
+  "fieldsFilled": 32,
+  "fieldsEmpty": 40,
+  "empty": [
+    {
+      "itemNumber": "4b",
+      "label": "709 series",
+      "whatWouldFillIt": null,
+      "guardedOff": false
+    },
+    {
+      "itemNumber": "4c",
+      "label": "940",
+      "whatWouldFillIt": null,
+      "guardedOff": false
+    },
+    {
+      "itemNumber": "4d",
+      "label": "941, 943, 944",
+      "whatWouldFillIt": null,
+      "guardedOff": false
+    },
+    {
+      "itemNumber": "4g",
+      "label": "1120",
+      "whatWouldFillIt": null,
+      "guardedOff": false
+    },
+    {
+      "itemNumber": "4h",
+      "label": "Other (list):",
+      "whatWouldFillIt": null,
+      "guardedOff": false
+    },
+    {
+      "itemNumber": "1b",
+      "label": "Court appointment of intestate estate (no valid will exists)",
+      "whatWouldFillIt": null,
+      "guardedOff": false
+    },
+    {
+      "itemNumber": "1c",
+      "label": "Court appointment as guardian or conservator",
+      "whatWouldFillIt": null,
+      "guardedOff": false
+    },
+    {
+      "itemNumber": "1d",
+      "label": "Fiduciary of intestate estate",
+      "whatWouldFillIt": null,
+      "guardedOff": false
+    },
+    {
+      "itemNumber": "1e",
+      "label": "Valid trust instrument and amendments",
+      "whatWouldFillIt": null,
+      "guardedOff": false
+    },
+    {
+      "itemNumber": "1f",
+      "label": "Bankruptcy, appointment of receiver/fiduciary, or assignment for the benefit of creditors",
+      "whatWouldFillIt": null,
+      "guardedOff": false
+    },
+    {
+      "itemNumber": "1g",
+      "label": "Other. Describe:",
+      "whatWouldFillIt": null,
+      "guardedOff": false
+    },
+    {
+      "itemNumber": "2c",
+      "label": "Yes",
+      "whatWouldFillIt": "guard failed: authority.basis != 'BankruptcyOrReceivership'",
+      "guardedOff": true
+    },
+    {
+      "itemNumber": "2c",
+      "label": "No",
+      "whatWouldFillIt": "guard failed: authority.basis != 'BankruptcyOrReceivership'",
+      "guardedOff": true
+    },
+    {
+      "itemNumber": "3b",
+      "label": "Gift",
+      "whatWouldFillIt": null,
+      "guardedOff": false
+    },
+    {
+      "itemNumber": "3d",
+      "label": "Generation-skipping transfer",
+      "whatWouldFillIt": null,
+      "guardedOff": false
+    },
+    {
+      "itemNumber": "3e",
+      "label": "Employment",
+      "whatWouldFillIt": null,
+      "guardedOff": false
+    },
+    {
+      "itemNumber": "3f",
+      "label": "Excise",
+      "whatWouldFillIt": null,
+      "guardedOff": false
+    },
+    {
+      "itemNumber": "3g",
+      "label": "Other",
+      "whatWouldFillIt": null,
+      "guardedOff": false
+    },
+    {
+      "itemNumber": null,
+      "label": "Room or suite no.",
+      "whatWouldFillIt": "estateEntity.mailingAddress.line2 is empty",
+      "guardedOff": false
+    },
+    {
+      "itemNumber": null,
+      "label": "Room or suite no.",
+      "whatWouldFillIt": "fiduciary.address.line2 is empty",
+      "guardedOff": false
+    },
+    {
+      "itemNumber": "1g",
+      "label": "Other. Describe:",
+      "whatWouldFillIt": "guard failed: authority.basis != 'Other'",
+      "guardedOff": true
+    },
+    {
+      "itemNumber": "2b",
+      "label": "If box 1c, 1e, 1f, or 1g is checked, enter the date of appointment, taking office, or assignment or transfer of assets:",
+      "whatWouldFillIt": "guard failed: authority.basis != 'CourtAppointmentGuardianOrConservator'",
+      "guardedOff": true
+    },
+    {
+      "itemNumber": "2d",
+      "label": "If \"No\" to line 2c, list the assets that were transferred:",
+      "whatWouldFillIt": "guard failed: authority.assetsUnderCourtControl != False",
+      "guardedOff": true
+    },
+    {
+      "itemNumber": "3g",
+      "label": "Other (describe):",
+      "whatWouldFillIt": "taxMatters.taxTypeOtherDescription is empty",
+      "guardedOff": false
+    },
+    {
+      "itemNumber": "4h",
+      "label": "Other (list):",
+      "whatWouldFillIt": "taxMatters.federalFormOtherList is empty",
+      "guardedOff": false
+    },
+    {
+      "itemNumber": null,
+      "label": "Time",
+      "whatWouldFillIt": "authority.proceeding.hearingTime is empty",
+      "guardedOff": false
+    },
+    {
+      "itemNumber": "6a",
+      "label": "Check this box if you are revoking or terminating all prior notices concerning fiduciary relationships on file with the Internal Revenue Service for the same tax matters and years or periods covered by this notice concerning fiduciary relationship",
+      "whatWouldFillIt": null,
+      "guardedOff": false
+    },
+    {
+      "itemNumber": "7a",
+      "label": "Check this box if you are revoking earlier notices concerning fiduciary relationships on file with the Internal Revenue Service for the same tax matters and years or periods covered by this notice concerning fiduciary relationship",
+      "whatWouldFillIt": null,
+      "guardedOff": false
+    },
+    {
+      "itemNumber": "8",
+      "label": "Check this box if a new fiduciary or fiduciaries have been or will be substituted for the revoking or terminating fiduciary and specify the name(s) and address(es), including ZIP code(s), of the new fiduciary(ies)",
+      "whatWouldFillIt": null,
+      "guardedOff": false
+    },
+    {
+      "itemNumber": "6d",
+      "label": "Other. Describe:",
+      "whatWouldFillIt": "form56.totalRevocation.reasonOtherDescription is empty",
+      "guardedOff": false
+    },
+    {
+      "itemNumber": "7b",
+      "label": "Specify to whom granted, date, and address, including ZIP code.",
+      "whatWouldFillIt": "form56.partialRevocation.grantedToDateAndAddress is empty",
+      "guardedOff": false
+    },
+    {
+      "itemNumber": "8",
+      "label": "specify the name(s) and address(es), including ZIP code(s), of the new fiduciary(ies)",
+      "whatWouldFillIt": "form56.substituteFiduciary.namesAndAddresses is empty",
+      "guardedOff": false
+    },
+    {
+      "itemNumber": null,
+      "label": "Room or suite no.",
+      "whatWouldFillIt": "authority.proceeding.courtRoomOrSuite is empty",
+      "guardedOff": false
+    },
+    {
+      "itemNumber": null,
+      "label": "Date",
+      "whatWouldFillIt": "authority.proceeding.hearingDate is empty",
+      "guardedOff": false
+    },
+    {
+      "itemNumber": null,
+      "label": "Place of other proceedings",
+      "whatWouldFillIt": "authority.proceeding.placeOfOtherProceedings is empty",
+      "guardedOff": false
+    },
+    {
+      "itemNumber": null,
+      "label": "Court order revoking fiduciary authority",
+      "whatWouldFillIt": "The exact literal string form56.totalRevocation.reason takes for a court-order termination (e.g. from the schema file referenced at estate JSON $schema, or from an estate that actually exercises this branch).",
+      "guardedOff": false
+    },
+    {
+      "itemNumber": null,
+      "label": "Certificate of dissolution or termination of a business entity",
+      "whatWouldFillIt": "The exact literal string form56.totalRevocation.reason takes for a dissolution-certificate termination.",
+      "guardedOff": false
+    },
+    {
+      "itemNumber": null,
+      "label": "Other. Describe:",
+      "whatWouldFillIt": "The exact literal string form56.totalRevocation.reason takes for the 'other' branch.",
+      "guardedOff": false
+    },
+    {
+      "itemNumber": null,
+      "label": "a.m.",
+      "whatWouldFillIt": "The exact literal string authority.proceeding.hearingTimeMeridiem takes for morning hearings.",
+      "guardedOff": false
+    },
+    {
+      "itemNumber": null,
+      "label": "p.m.",
+      "whatWouldFillIt": "The exact literal string authority.proceeding.hearingTimeMeridiem takes for afternoon/evening hearings.",
+      "guardedOff": false
+    }
+  ],
+  "groupViolations": [],
+  "llmCallsAtRuntime": 0,
+  "elapsedMs": 384,
+  "renders": [
+    "out/renders/fills/estate-01-nj-ancillary-probate-irs-f56-page-0.png",
+    "out/renders/fills/estate-01-nj-ancillary-probate-irs-f56-page-1.png"
+  ]
+}

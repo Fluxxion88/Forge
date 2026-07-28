@@ -1,0 +1,23 @@
+{
+  "estateId": "estate-05-in-formal-probate",
+  "jurisdiction": "IN/Marion",
+  "route": "FORMAL_PROBATE",
+  "authorityBasis": "CourtAppointmentTestate",
+  "line1Ticked": [
+    "1a"
+  ],
+  "date2a": "01/23/2026",
+  "date2b": null,
+  "fiduciaryTitle": "Personal Representative",
+  "fieldsFilled": 32,
+  "fieldsEmpty": 35,
+  "guardedOff": 5,
+  "groupViolations": [],
+  "llmCallsAtRuntime": 0,
+  "elapsedMs": 40,
+  "pdf": "out/demo/reuse-v1/estate-05-in-formal-probate.pdf",
+  "renders": [
+    "out/demo/reuse-v1/estate-05-in-formal-probate-page-0.png",
+    "out/demo/reuse-v1/estate-05-in-formal-probate-page-1.png"
+  ]
+}

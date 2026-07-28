@@ -1,4 +1,4 @@
-"""The deterministic fill semantics: five kinds, when-guards, exclusive groups."""
+"""The deterministic fill semantics: six kinds, when-guards, exclusive groups."""
 
 from __future__ import annotations
 
@@ -12,6 +12,7 @@ ESTATE = {
     "authority": {"basis": "CourtAppointmentTestate", "dateOfAppointment": "2026-07-28"},
     "estateEntity": {"ein": None},
     "addr": {"city": "Indianapolis", "state": "IN", "zip": None},
+    "taxMatters": {"taxTypes": ["Income", "Estate"], "scalarType": "Income"},
 }
 
 
@@ -136,3 +137,65 @@ def test_group_when_guard_scopes_enforcement():
 def test_unknown_kind_raises():
     with pytest.raises(ValueError):
         resolve_one(_b(source={"kind": "lambda", "code": "x"}), _estate())
+
+
+# --- the sixth kind: contains (docs/02-SPEC.md §2.1)
+
+
+def test_contains_marks_when_array_holds_the_literal():
+    r = resolve_one(
+        _b(source={"kind": "contains", "path": "taxMatters.taxTypes", "includes": "Estate"},
+           format="checkbox"),
+        _estate(),
+    )
+    assert r.checked and r.present
+
+
+def test_contains_leaves_clear_when_array_lacks_the_literal():
+    r = resolve_one(
+        _b(source={"kind": "contains", "path": "taxMatters.taxTypes", "includes": "Gift"},
+           format="checkbox"),
+        _estate(),
+    )
+    assert not r.checked and r.present  # present: the answer exists and it is "no"
+
+
+def test_contains_on_a_scalar_is_not_a_silent_no():
+    """A shape mismatch must report itself, not render as an unticked box."""
+    r = resolve_one(
+        _b(source={"kind": "contains", "path": "taxMatters.scalarType", "includes": "Income"},
+           format="checkbox"),
+        _estate(),
+    )
+    assert not r.checked and not r.present and "not a list" in r.reason
+
+
+def test_condition_against_an_array_can_never_match():
+    """The bug `contains` exists to fix: equality against a list is always false."""
+    r = resolve_one(
+        _b(source={"kind": "condition", "path": "taxMatters.taxTypes", "equals": "Income"},
+           format="checkbox"),
+        _estate(),
+    )
+    assert not r.checked
+
+
+def test_unbind_dead_bindings_catches_both_shape_mismatches():
+    from forge.bind import unbind_dead_bindings
+
+    artifact = {
+        "bindings": [
+            _b("dead_eq", source={"kind": "condition", "path": "taxMatters.taxTypes",
+                                  "equals": "Income"}, format="checkbox"),
+            _b("dead_in", source={"kind": "contains", "path": "taxMatters.scalarType",
+                                  "includes": "Income"}, format="checkbox"),
+            _b("alive", source={"kind": "contains", "path": "taxMatters.taxTypes",
+                                "includes": "Income"}, format="checkbox"),
+        ],
+        "unbound": [],
+    }
+    moved = unbind_dead_bindings(artifact, _estate())
+    assert len(moved) == 2
+    assert [b["qualifiedName"] for b in artifact["bindings"]] == ["alive"]
+    reasons = " ".join(u["whatWouldFillIt"] for u in artifact["unbound"])
+    assert "contains" in reasons and "condition" in reasons

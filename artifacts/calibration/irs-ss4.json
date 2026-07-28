@@ -1,0 +1,2900 @@
+{
+  "formId": "irs-ss4",
+  "sourceFile": "inputs/forms/Form SS-4 Dec 2025.pdf",
+  "sourceSha256": "23d295529950b05979596cf58d559db6c433a4ec852407b1820265c117cb3ca2",
+  "calibratedAt": "2026-07-28T03:59:29Z",
+  "model": "sonnet",
+  "modelCalls": 1,
+  "dpi": 150,
+  "pageCount": 2,
+  "fields": [
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].PgHeader[0].f1_1[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        440.2,
+        707.969,
+        576.0,
+        734.072
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": 10,
+      "tooltip": null,
+      "sentinel": "Z003",
+      "itemNumber": null,
+      "printedLabel": "EIN",
+      "meaning": "The employer identification number box (blank on the application; filled in once the IRS assigns one).",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            440.2,
+            707.969,
+            576.0,
+            734.072
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_2[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        51.4,
+        683.968,
+        576.0,
+        697.969
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z004",
+      "itemNumber": "1",
+      "printedLabel": "Legal name of entity (or individual) for whom the EIN is being requested",
+      "meaning": "The legal name of the entity or individual applying for the EIN.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            51.4,
+            683.968,
+            576.0,
+            697.969
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_3[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        51.4,
+        659.967,
+        294.45,
+        673.968
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z005",
+      "itemNumber": "2",
+      "printedLabel": "Trade name of business (if different from name on line 1)",
+      "meaning": "The trade name (DBA) of the business, if different from the legal name.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            51.4,
+            659.967,
+            294.45,
+            673.968
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_4[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        296.2,
+        659.967,
+        576.0,
+        673.968
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z006",
+      "itemNumber": "3",
+      "printedLabel": "Executor, administrator, trustee, \"care of\" name",
+      "meaning": "The name of the executor, administrator, trustee, or other 'care of' party.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            296.2,
+            659.967,
+            576.0,
+            673.968
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].Line4ReadOrder[0].f1_5[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        51.4,
+        635.966,
+        294.45,
+        649.967
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z008",
+      "itemNumber": "4a",
+      "printedLabel": "Mailing address (room, apt., suite no. and street, or P.O. box)",
+      "meaning": "The mailing address street line for the entity.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            51.4,
+            635.966,
+            294.45,
+            649.967
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].Line4ReadOrder[0].f1_6[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        51.4,
+        611.968,
+        294.45,
+        625.969
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z009",
+      "itemNumber": "4b",
+      "printedLabel": "City, state, and ZIP code (if foreign, see instructions)",
+      "meaning": "The city, state, and ZIP code of the mailing address.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            51.4,
+            611.968,
+            294.45,
+            625.969
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_7[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        296.2,
+        635.966,
+        576.0,
+        649.967
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z010",
+      "itemNumber": "5a",
+      "printedLabel": "Street address (if different) (Don't enter a P.O. box.)",
+      "meaning": "The physical street address, if different from the mailing address.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            296.2,
+            635.966,
+            576.0,
+            649.967
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_8[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        296.2,
+        611.968,
+        576.0,
+        625.969
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z011",
+      "itemNumber": "5b",
+      "printedLabel": "City, state, and ZIP code (if foreign, see instructions)",
+      "meaning": "The city, state, and ZIP code of the physical street address.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            296.2,
+            611.968,
+            576.0,
+            625.969
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_9[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        51.4,
+        587.967,
+        576.0,
+        601.968
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z012",
+      "itemNumber": "6",
+      "printedLabel": "County and state where principal business is located",
+      "meaning": "The county and state of the entity's principal place of business.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            51.4,
+            587.967,
+            576.0,
+            601.968
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_10[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        51.4,
+        563.966,
+        330.45,
+        577.967
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z013",
+      "itemNumber": "7a",
+      "printedLabel": "Name of responsible party",
+      "meaning": "The name of the responsible party for the entity.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            51.4,
+            563.966,
+            330.45,
+            577.967
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_11[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        332.2,
+        563.966,
+        576.0,
+        577.967
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": 11,
+      "tooltip": null,
+      "sentinel": "Z014",
+      "itemNumber": "7b",
+      "printedLabel": "SSN, ITIN, or EIN",
+      "meaning": "The responsible party's SSN, ITIN, or EIN.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            332.2,
+            563.966,
+            576.0,
+            577.967
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_1[0]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        255.2,
+        542.469,
+        263.2,
+        550.469
+      ],
+      "onValue": "/1",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B0",
+      "itemNumber": "8a",
+      "printedLabel": "Is this application for a limited liability company (LLC) (or a foreign equivalent)? \u2014 Yes",
+      "meaning": "Check to indicate the applicant is an LLC or foreign equivalent.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            255.2,
+            542.469,
+            263.2,
+            550.469
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_1[1]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        298.4,
+        542.469,
+        306.4,
+        550.469
+      ],
+      "onValue": "/2",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B1",
+      "itemNumber": "8a",
+      "printedLabel": "Is this application for a limited liability company (LLC) (or a foreign equivalent)? \u2014 No",
+      "meaning": "Check to indicate the applicant is not an LLC.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            298.4,
+            542.469,
+            306.4,
+            550.469
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_12[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        496.8,
+        539.968,
+        576.0,
+        551.967
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z017",
+      "itemNumber": "8b",
+      "printedLabel": "If 8a is \"Yes,\" enter the number of LLC members",
+      "meaning": "The number of members in the LLC.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            496.8,
+            539.968,
+            576.0,
+            551.967
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_2[0]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        492.8,
+        529.969,
+        500.8,
+        537.969
+      ],
+      "onValue": "/1",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B2",
+      "itemNumber": "8c",
+      "printedLabel": "If 8a is \"Yes,\" was the LLC organized in the United States? \u2014 Yes",
+      "meaning": "Check if the LLC was organized in the United States.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            492.8,
+            529.969,
+            500.8,
+            537.969
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_2[1]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        543.2,
+        529.969,
+        551.2,
+        537.969
+      ],
+      "onValue": "/2",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B3",
+      "itemNumber": "8c",
+      "printedLabel": "If 8a is \"Yes,\" was the LLC organized in the United States? \u2014 No",
+      "meaning": "Check if the LLC was not organized in the United States.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            543.2,
+            529.969,
+            551.2,
+            537.969
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_3[0]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        60.8,
+        505.968,
+        68.8,
+        513.968
+      ],
+      "onValue": "/1",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B4",
+      "itemNumber": "9a",
+      "printedLabel": "Sole proprietor (SSN)",
+      "meaning": "Check if the entity type is a sole proprietorship.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            60.8,
+            505.968,
+            68.8,
+            513.968
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_13[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        158.4,
+        503.968,
+        259.2,
+        515.967
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": 11,
+      "tooltip": null,
+      "sentinel": "Z021",
+      "itemNumber": "9a",
+      "printedLabel": "Sole proprietor (SSN)",
+      "meaning": "The SSN of the sole proprietor.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            158.4,
+            503.968,
+            259.2,
+            515.967
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_3[1]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        334.4,
+        505.968,
+        342.4,
+        513.968
+      ],
+      "onValue": "/8",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B5",
+      "itemNumber": "9a",
+      "printedLabel": "Estate (SSN of decedent)",
+      "meaning": "Check if the entity type is an estate.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            334.4,
+            505.968,
+            342.4,
+            513.968
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_14[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        446.4,
+        503.968,
+        576.0,
+        515.967
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": 11,
+      "tooltip": null,
+      "sentinel": "Z023",
+      "itemNumber": "9a",
+      "printedLabel": "Estate (SSN of decedent)",
+      "meaning": "The SSN of the decedent for an estate entity.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            446.4,
+            503.968,
+            576.0,
+            515.967
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_3[2]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        60.8,
+        493.969,
+        68.8,
+        501.969
+      ],
+      "onValue": "/2",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B6",
+      "itemNumber": "9a",
+      "printedLabel": "Partnership",
+      "meaning": "Check if the entity type is a partnership.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            60.8,
+            493.969,
+            68.8,
+            501.969
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_3[3]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        334.4,
+        493.969,
+        342.4,
+        501.969
+      ],
+      "onValue": "/9",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B7",
+      "itemNumber": "9a",
+      "printedLabel": "Plan administrator (TIN)",
+      "meaning": "Check if the entity type is a plan administrator.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            334.4,
+            493.969,
+            342.4,
+            501.969
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_15[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        439.2,
+        491.969,
+        576.0,
+        503.968
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": 11,
+      "tooltip": null,
+      "sentinel": "Z026",
+      "itemNumber": "9a",
+      "printedLabel": "Plan administrator (TIN)",
+      "meaning": "The TIN of the plan administrator.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            439.2,
+            491.969,
+            576.0,
+            503.968
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_3[4]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        60.8,
+        481.97,
+        68.8,
+        489.97
+      ],
+      "onValue": "/3",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B8",
+      "itemNumber": "9a",
+      "printedLabel": "Corporation (enter form number to be filed)",
+      "meaning": "Check if the entity type is a corporation.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            60.8,
+            481.97,
+            68.8,
+            489.97
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_16[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        237.6,
+        479.97,
+        324.0,
+        491.969
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z028",
+      "itemNumber": "9a",
+      "printedLabel": "Corporation (enter form number to be filed)",
+      "meaning": "The tax form number the corporation will file (e.g. 1120, 1120S).",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            237.6,
+            479.97,
+            324.0,
+            491.969
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_3[5]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        334.4,
+        481.97,
+        342.4,
+        489.97
+      ],
+      "onValue": "/10",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B9",
+      "itemNumber": "9a",
+      "printedLabel": "Trust (TIN of grantor)",
+      "meaning": "Check if the entity type is a trust.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            334.4,
+            481.97,
+            342.4,
+            489.97
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_17[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        432.0,
+        479.97,
+        576.0,
+        491.969
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": 11,
+      "tooltip": null,
+      "sentinel": "Z030",
+      "itemNumber": "9a",
+      "printedLabel": "Trust (TIN of grantor)",
+      "meaning": "The TIN of the trust's grantor.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            432.0,
+            479.97,
+            576.0,
+            491.969
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_3[6]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        60.8,
+        469.968,
+        68.8,
+        477.968
+      ],
+      "onValue": "/4",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B10",
+      "itemNumber": "9a",
+      "printedLabel": "Personal service corporation",
+      "meaning": "Check if the entity type is a personal service corporation.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            60.8,
+            469.968,
+            68.8,
+            477.968
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_3[7]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        334.4,
+        469.968,
+        342.4,
+        477.968
+      ],
+      "onValue": "/11",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B11",
+      "itemNumber": "9a",
+      "printedLabel": "Military/National Guard",
+      "meaning": "Check if the entity type is Military/National Guard.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            334.4,
+            469.968,
+            342.4,
+            477.968
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_3[8]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        442.4,
+        469.968,
+        450.4,
+        477.968
+      ],
+      "onValue": "/14",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B12",
+      "itemNumber": "9a",
+      "printedLabel": "State/local government",
+      "meaning": "Check if the entity type is a state/local government.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            442.4,
+            469.968,
+            450.4,
+            477.968
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_3[9]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        60.8,
+        457.969,
+        68.8,
+        465.969
+      ],
+      "onValue": "/5",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B13",
+      "itemNumber": "9a",
+      "printedLabel": "Church or church-controlled organization",
+      "meaning": "Check if the entity type is a church or church-controlled organization.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            60.8,
+            457.969,
+            68.8,
+            465.969
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_3[10]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        334.4,
+        457.969,
+        342.4,
+        465.969
+      ],
+      "onValue": "/12",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B14",
+      "itemNumber": "9a",
+      "printedLabel": "Farmers' cooperative",
+      "meaning": "Check if the entity type is a farmers' cooperative.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            334.4,
+            457.969,
+            342.4,
+            465.969
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_3[11]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        442.4,
+        457.969,
+        450.4,
+        465.969
+      ],
+      "onValue": "/15",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B15",
+      "itemNumber": "9a",
+      "printedLabel": "Federal government",
+      "meaning": "Check if the entity type is the federal government.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            442.4,
+            457.969,
+            450.4,
+            465.969
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_3[12]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        60.8,
+        445.97,
+        68.8,
+        453.97
+      ],
+      "onValue": "/6",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B16",
+      "itemNumber": "9a",
+      "printedLabel": "Other nonprofit organization (specify)",
+      "meaning": "Check if the entity type is another nonprofit organization.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            60.8,
+            445.97,
+            68.8,
+            453.97
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_18[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        216.0,
+        443.97,
+        324.0,
+        455.969
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z038",
+      "itemNumber": "9a",
+      "printedLabel": "Other nonprofit organization (specify)",
+      "meaning": "The specific type of nonprofit organization.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            216.0,
+            443.97,
+            324.0,
+            455.969
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_3[13]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        334.4,
+        445.97,
+        342.4,
+        453.97
+      ],
+      "onValue": "/13",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B17",
+      "itemNumber": "9a",
+      "printedLabel": "REMIC",
+      "meaning": "Check if the entity type is a REMIC.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            334.4,
+            445.97,
+            342.4,
+            453.97
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_3[14]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        442.4,
+        445.97,
+        450.4,
+        453.97
+      ],
+      "onValue": "/16",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B18",
+      "itemNumber": "9a",
+      "printedLabel": "Indian tribal governments/enterprises",
+      "meaning": "Check if the entity type is an Indian tribal government or enterprise.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            442.4,
+            445.97,
+            450.4,
+            453.97
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_3[15]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        60.8,
+        433.968,
+        68.8,
+        441.968
+      ],
+      "onValue": "/7",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B19",
+      "itemNumber": "9a",
+      "printedLabel": "Other (specify)",
+      "meaning": "Check if the entity type is something else not listed above.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            60.8,
+            433.968,
+            68.8,
+            441.968
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_19[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        144.0,
+        431.968,
+        324.0,
+        443.967
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z042",
+      "itemNumber": "9a",
+      "printedLabel": "Other (specify)",
+      "meaning": "The description of the other entity type.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            144.0,
+            431.968,
+            324.0,
+            443.967
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_20[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        472.968,
+        431.968,
+        576.0,
+        443.967
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z043",
+      "itemNumber": "9a",
+      "printedLabel": "Group Exemption Number (GEN) if any",
+      "meaning": "The group exemption number, if applicable.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            472.968,
+            431.968,
+            576.0,
+            443.967
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_21[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        274.6,
+        407.967,
+        402.45,
+        421.968
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z044",
+      "itemNumber": "9b",
+      "printedLabel": "If a corporation, name the state or foreign country (if applicable) where incorporated \u2014 State",
+      "meaning": "The U.S. state where the corporation was incorporated.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            274.6,
+            407.967,
+            402.45,
+            421.968
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_22[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        404.2,
+        407.967,
+        576.0,
+        421.968
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z045",
+      "itemNumber": "9b",
+      "printedLabel": "If a corporation, name the state or foreign country (if applicable) where incorporated \u2014 Foreign country",
+      "meaning": "The foreign country where the corporation was incorporated, if applicable.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            404.2,
+            407.967,
+            576.0,
+            421.968
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_4[0]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        60.8,
+        385.969,
+        68.8,
+        393.969
+      ],
+      "onValue": "/1",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B20",
+      "itemNumber": "10",
+      "printedLabel": "Started new business (specify type)",
+      "meaning": "Check if the reason for applying is starting a new business.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            60.8,
+            385.969,
+            68.8,
+            393.969
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_25[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        208.8,
+        383.969,
+        266.4,
+        395.968
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z047",
+      "itemNumber": "10",
+      "printedLabel": "Started new business (specify type)",
+      "meaning": "The type of new business being started.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            208.8,
+            383.969,
+            266.4,
+            395.968
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_26[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        57.6,
+        371.97,
+        266.4,
+        383.969
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z048",
+      "itemNumber": "10",
+      "printedLabel": "Started new business (specify type) \u2014 continuation line",
+      "meaning": "Overflow line for describing the new business type when the first line is not enough space.",
+      "confidence": "medium",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            57.6,
+            371.97,
+            266.4,
+            383.969
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_4[1]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        276.8,
+        384.969,
+        284.8,
+        392.969
+      ],
+      "onValue": "/6",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B21",
+      "itemNumber": "10",
+      "printedLabel": "Changed type of organization (specify new type)",
+      "meaning": "Check if the reason for applying is a change in organization type.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            276.8,
+            384.969,
+            284.8,
+            392.969
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_27[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        468.0,
+        383.969,
+        576.0,
+        395.968
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z050",
+      "itemNumber": "10",
+      "printedLabel": "Changed type of organization (specify new type)",
+      "meaning": "The new type of organization after the change.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            468.0,
+            383.969,
+            576.0,
+            395.968
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_4[2]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        276.8,
+        372.97,
+        284.8,
+        380.97
+      ],
+      "onValue": "/7",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B22",
+      "itemNumber": "10",
+      "printedLabel": "Purchased going business",
+      "meaning": "Check if the reason for applying is purchasing an existing business.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            276.8,
+            372.97,
+            284.8,
+            380.97
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_4[3]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        60.8,
+        360.968,
+        68.8,
+        368.968
+      ],
+      "onValue": "/2",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B23",
+      "itemNumber": "10",
+      "printedLabel": "Hired employees (Check the box and see line 13.)",
+      "meaning": "Check if the reason for applying is hiring employees.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            60.8,
+            360.968,
+            68.8,
+            368.968
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_4[4]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        276.8,
+        360.968,
+        284.8,
+        368.968
+      ],
+      "onValue": "/8",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B24",
+      "itemNumber": "10",
+      "printedLabel": "Created a trust (specify type)",
+      "meaning": "Check if the reason for applying is creating a trust.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            276.8,
+            360.968,
+            284.8,
+            368.968
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_28[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        403.2,
+        359.968,
+        576.0,
+        371.967
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z054",
+      "itemNumber": "10",
+      "printedLabel": "Created a trust (specify type)",
+      "meaning": "The type of trust created.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            403.2,
+            359.968,
+            576.0,
+            371.967
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_4[5]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        60.8,
+        348.969,
+        68.8,
+        356.969
+      ],
+      "onValue": "/3",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B25",
+      "itemNumber": "10",
+      "printedLabel": "Compliance with IRS withholding regulations",
+      "meaning": "Check if the reason for applying is compliance with IRS withholding regulations.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            60.8,
+            348.969,
+            68.8,
+            356.969
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_4[6]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        276.8,
+        348.969,
+        284.8,
+        356.969
+      ],
+      "onValue": "/9",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B26",
+      "itemNumber": "10",
+      "printedLabel": "Created a pension plan (specify type)",
+      "meaning": "Check if the reason for applying is creating a pension plan.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            276.8,
+            348.969,
+            284.8,
+            356.969
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_29[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        432.0,
+        347.969,
+        576.0,
+        359.968
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z057",
+      "itemNumber": "10",
+      "printedLabel": "Created a pension plan (specify type)",
+      "meaning": "The type of pension plan created.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            432.0,
+            347.969,
+            576.0,
+            359.968
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_4[7]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        60.8,
+        337.97,
+        68.8,
+        345.97
+      ],
+      "onValue": "/4",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B27",
+      "itemNumber": "10",
+      "printedLabel": "Other (specify)",
+      "meaning": "Check if the reason for applying is something else not listed.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            60.8,
+            337.97,
+            68.8,
+            345.97
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_4[8]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        276.8,
+        396.968,
+        284.8,
+        404.968
+      ],
+      "onValue": "/5",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B28",
+      "itemNumber": "10",
+      "printedLabel": "Banking purpose (specify purpose)",
+      "meaning": "Check if the reason for applying is a banking purpose.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            276.8,
+            396.968,
+            284.8,
+            404.968
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_24[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        424.8,
+        395.968,
+        576.0,
+        407.967
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z060",
+      "itemNumber": "10",
+      "printedLabel": "Banking purpose (specify purpose)",
+      "meaning": "The specific banking purpose for applying.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            424.8,
+            395.968,
+            576.0,
+            407.967
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_30[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        136.8,
+        335.97,
+        576.0,
+        347.969
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z061",
+      "itemNumber": "10",
+      "printedLabel": "Other (specify)",
+      "meaning": "The description of the other reason for applying.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            136.8,
+            335.97,
+            576.0,
+            347.969
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_31[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        57.6,
+        311.966,
+        331.2,
+        325.967
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z062",
+      "itemNumber": "11",
+      "printedLabel": "Date business started or acquired (month, day, year). See instructions.",
+      "meaning": "The date the business was started or acquired.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            57.6,
+            311.966,
+            331.2,
+            325.967
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_32[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        353.6,
+        311.966,
+        576.0,
+        326.764
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z063",
+      "itemNumber": "12",
+      "printedLabel": "Closing month of accounting year",
+      "meaning": "The last month of the entity's accounting/fiscal year.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            353.6,
+            311.966,
+            576.0,
+            326.764
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_33[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        57.6,
+        251.968,
+        144.0,
+        265.969
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z064",
+      "itemNumber": "13",
+      "printedLabel": "Agricultural",
+      "meaning": "Highest number of agricultural employees expected in the next 12 months.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            57.6,
+            251.968,
+            144.0,
+            265.969
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_34[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        144.0,
+        251.968,
+        230.4,
+        265.969
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z065",
+      "itemNumber": "13",
+      "printedLabel": "Household",
+      "meaning": "Highest number of household employees expected in the next 12 months.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            144.0,
+            251.968,
+            230.4,
+            265.969
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_35[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        230.4,
+        251.968,
+        331.2,
+        265.969
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z066",
+      "itemNumber": "13",
+      "printedLabel": "Other",
+      "meaning": "Highest number of other employees expected in the next 12 months.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            230.4,
+            251.968,
+            331.2,
+            265.969
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_5[0]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        563.599,
+        253.968,
+        571.599,
+        261.968
+      ],
+      "onValue": "/1",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B29",
+      "itemNumber": "14",
+      "printedLabel": "If you expect your employment tax liability to be $1,000 or less ... check here",
+      "meaning": "Check to elect to file Form 944 annually instead of Form 941 quarterly.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            563.599,
+            253.968,
+            571.599,
+            261.968
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_36[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        396.0,
+        227.97,
+        576.0,
+        239.969
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z068",
+      "itemNumber": "15",
+      "printedLabel": "First date wages or annuities were paid (month, day, year).",
+      "meaning": "The date wages or annuities were first paid, or income first paid to a nonresident alien.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            396.0,
+            227.97,
+            576.0,
+            239.969
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_6[0]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        320.0,
+        217.968,
+        328.0,
+        225.968
+      ],
+      "onValue": "/7",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B30",
+      "itemNumber": "16",
+      "printedLabel": "Health care & social assistance",
+      "meaning": "Check if this describes the principal activity of the business.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            320.0,
+            217.968,
+            328.0,
+            225.968
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_6[1]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        449.6,
+        217.968,
+        457.6,
+        225.968
+      ],
+      "onValue": "/10",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B31",
+      "itemNumber": "16",
+      "printedLabel": "Wholesale\u2014agent/broker",
+      "meaning": "Check if this describes the principal activity of the business.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            449.6,
+            217.968,
+            457.6,
+            225.968
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_6[2]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        60.8,
+        205.969,
+        68.8,
+        213.969
+      ],
+      "onValue": "/1",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B32",
+      "itemNumber": "16",
+      "printedLabel": "Construction",
+      "meaning": "Check if this describes the principal activity of the business.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            60.8,
+            205.969,
+            68.8,
+            213.969
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_6[3]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        125.6,
+        205.969,
+        133.6,
+        213.969
+      ],
+      "onValue": "/3",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B33",
+      "itemNumber": "16",
+      "printedLabel": "Rental & leasing",
+      "meaning": "Check if this describes the principal activity of the business.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            125.6,
+            205.969,
+            133.6,
+            213.969
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_6[4]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        204.8,
+        205.969,
+        212.8,
+        213.969
+      ],
+      "onValue": "/5",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B34",
+      "itemNumber": "16",
+      "printedLabel": "Transportation & warehousing",
+      "meaning": "Check if this describes the principal activity of the business.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            204.8,
+            205.969,
+            212.8,
+            213.969
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_6[5]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        320.0,
+        205.969,
+        328.0,
+        213.969
+      ],
+      "onValue": "/8",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B35",
+      "itemNumber": "16",
+      "printedLabel": "Accommodation & food service",
+      "meaning": "Check if this describes the principal activity of the business.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            320.0,
+            205.969,
+            328.0,
+            213.969
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_6[6]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        449.6,
+        205.969,
+        457.6,
+        213.969
+      ],
+      "onValue": "/11",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B36",
+      "itemNumber": "16",
+      "printedLabel": "Wholesale\u2014other",
+      "meaning": "Check if this describes the principal activity of the business.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            449.6,
+            205.969,
+            457.6,
+            213.969
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_6[7]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        536.0,
+        205.969,
+        544.0,
+        213.969
+      ],
+      "onValue": "/12",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B37",
+      "itemNumber": "16",
+      "printedLabel": "Retail",
+      "meaning": "Check if this describes the principal activity of the business.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            536.0,
+            205.969,
+            544.0,
+            213.969
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_6[8]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        60.8,
+        193.97,
+        68.8,
+        201.97
+      ],
+      "onValue": "/2",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B38",
+      "itemNumber": "16",
+      "printedLabel": "Real estate",
+      "meaning": "Check if this describes the principal activity of the business.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            60.8,
+            193.97,
+            68.8,
+            201.97
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_6[9]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        125.6,
+        193.97,
+        133.6,
+        201.97
+      ],
+      "onValue": "/4",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B39",
+      "itemNumber": "16",
+      "printedLabel": "Manufacturing",
+      "meaning": "Check if this describes the principal activity of the business.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            125.6,
+            193.97,
+            133.6,
+            201.97
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_6[10]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        204.8,
+        193.97,
+        212.8,
+        201.97
+      ],
+      "onValue": "/6",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B40",
+      "itemNumber": "16",
+      "printedLabel": "Finance & insurance",
+      "meaning": "Check if this describes the principal activity of the business.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            204.8,
+            193.97,
+            212.8,
+            201.97
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_6[11]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        320.0,
+        193.97,
+        328.0,
+        201.97
+      ],
+      "onValue": "/9",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B41",
+      "itemNumber": "16",
+      "printedLabel": "Other (specify)",
+      "meaning": "Check if the principal activity is something else not listed.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            320.0,
+            193.97,
+            328.0,
+            201.97
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_37[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        396.0,
+        191.97,
+        576.0,
+        203.969
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z081",
+      "itemNumber": "16",
+      "printedLabel": "Other (specify)",
+      "meaning": "The description of the other principal business activity.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            396.0,
+            191.97,
+            576.0,
+            203.969
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_38[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        57.6,
+        167.966,
+        576.0,
+        181.967
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z082",
+      "itemNumber": "17",
+      "printedLabel": "Indicate principal line of merchandise sold, specific construction work done, products produced, or services provided.",
+      "meaning": "A description of the principal goods or services of the business.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            57.6,
+            167.966,
+            576.0,
+            181.967
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_7[0]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        356.0,
+        157.97,
+        364.0,
+        165.97
+      ],
+      "onValue": "/1",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B42",
+      "itemNumber": "18",
+      "printedLabel": "Has the applicant entity shown on line 1 ever applied for and received an EIN? \u2014 Yes",
+      "meaning": "Check if the entity has previously received an EIN.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            356.0,
+            157.97,
+            364.0,
+            165.97
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_7[1]",
+      "type": "button",
+      "page": 0,
+      "rect": [
+        399.2,
+        157.97,
+        407.2,
+        165.97
+      ],
+      "onValue": "/2",
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "B43",
+      "itemNumber": "18",
+      "printedLabel": "Has the applicant entity shown on line 1 ever applied for and received an EIN? \u2014 No",
+      "meaning": "Check if the entity has never previously received an EIN.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            399.2,
+            157.97,
+            407.2,
+            165.97
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_39[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        177.055,
+        143.968,
+        280.8,
+        155.967
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": 10,
+      "tooltip": null,
+      "sentinel": "Z085",
+      "itemNumber": "18",
+      "printedLabel": "If \"Yes,\" write previous EIN here",
+      "meaning": "The entity's previously issued EIN, if applicable.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            177.055,
+            143.968,
+            280.8,
+            155.967
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_40[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        87.4,
+        107.968,
+        431.25,
+        121.969
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z086",
+      "itemNumber": null,
+      "printedLabel": "Designee's name",
+      "meaning": "The name of the third-party designee authorized to receive the EIN and discuss the form.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            87.4,
+            107.968,
+            431.25,
+            121.969
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_41[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        433.0,
+        107.968,
+        576.0,
+        121.969
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z087",
+      "itemNumber": null,
+      "printedLabel": "Designee's telephone number (include area code)",
+      "meaning": "The third-party designee's telephone number.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            433.0,
+            107.968,
+            576.0,
+            121.969
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_42[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        87.4,
+        83.967,
+        431.25,
+        97.968
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z088",
+      "itemNumber": null,
+      "printedLabel": "Address and ZIP code",
+      "meaning": "The third-party designee's address and ZIP code.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            87.4,
+            83.967,
+            431.25,
+            97.968
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_43[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        433.0,
+        83.967,
+        576.0,
+        97.968
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z089",
+      "itemNumber": null,
+      "printedLabel": "Designee's fax number (include area code)",
+      "meaning": "The third-party designee's fax number.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            433.0,
+            83.967,
+            576.0,
+            97.968
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_44[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        150.992,
+        59.969,
+        431.25,
+        71.968
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z090",
+      "itemNumber": null,
+      "printedLabel": "Name and title (type or print clearly)",
+      "meaning": "The name and title of the person signing the application under penalties of perjury.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            150.992,
+            59.969,
+            431.25,
+            71.968
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_45[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        433.0,
+        59.966,
+        576.0,
+        73.967
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z091",
+      "itemNumber": null,
+      "printedLabel": "Applicant's telephone number (include area code)",
+      "meaning": "The applicant's telephone number.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            433.0,
+            59.966,
+            576.0,
+            73.967
+          ]
+        }
+      ]
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_46[0]",
+      "type": "text",
+      "page": 0,
+      "rect": [
+        433.0,
+        35.968,
+        576.0,
+        49.969
+      ],
+      "onValue": null,
+      "isPushbutton": false,
+      "maxLen": null,
+      "tooltip": null,
+      "sentinel": "Z092",
+      "itemNumber": null,
+      "printedLabel": "Applicant's fax number (include area code)",
+      "meaning": "The applicant's fax number.",
+      "confidence": "high",
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            433.0,
+            35.968,
+            576.0,
+            49.969
+          ]
+        }
+      ]
+    }
+  ],
+  "unresolved": [],
+  "pages": [
+    {
+      "index": 0,
+      "cropBox": [
+        0.0,
+        0.0,
+        611.976,
+        791.968
+      ],
+      "mediaBox": [
+        0.0,
+        0.0,
+        611.976,
+        791.968
+      ],
+      "widthPt": 611.976,
+      "heightPt": 791.968,
+      "rotate": 0
+    },
+    {
+      "index": 1,
+      "cropBox": [
+        0.0,
+        0.0,
+        612.0,
+        828.0
+      ],
+      "mediaBox": [
+        0.0,
+        0.0,
+        612.0,
+        828.0
+      ],
+      "widthPt": 612.0,
+      "heightPt": 828.0,
+      "rotate": 0
+    }
+  ],
+  "geometryBackfilledAt": "2026-07-28T04:38:49Z"
+}

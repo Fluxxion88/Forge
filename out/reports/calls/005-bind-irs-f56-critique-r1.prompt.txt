@@ -1,0 +1,155 @@
+You are auditing a filled government form irs-f56 (round 1).
+FIRST use the Read tool to view every rendered page:
+- page 0: /Users/fluxxion/untitled folder/Work_projects/Hackothons/Alix Hackathoon/forge/out/renders/irs-f56/round-1-page-0.png
+- page 1: /Users/fluxxion/untitled folder/Work_projects/Hackothons/Alix Hackathoon/forge/out/renders/irs-f56/round-1-page-1.png
+
+What each box on this form is FOR, from a separate calibration of the BLANK form:
+- page 0, unnumbered (text box): "Name of person for whom you're acting (as shown on the tax return)" — Legal name of the person or entity the fiduciary is acting for.
+- page 0, unnumbered (text box): "Identifying number" — Taxpayer identifying number (SSN or EIN) of the person the fiduciary is acting for.
+- page 0, unnumbered (text box): "Decedent's social security no." — Social security number of the decedent.
+- page 0, unnumbered (text box): "Address of person for whom you're acting (number and street). If you have a P.O. box, see instructions." — Street address of the person the fiduciary is acting for.
+- page 0, unnumbered (text box): "Room or suite no." — Room or suite number for that address.
+- page 0, unnumbered (text box): "City or town" — City or town of the person the fiduciary is acting for.
+- page 0, unnumbered (text box): "State or province" — State or province of that address.
+- page 0, unnumbered (text box): "Country" — Country of that address.
+- page 0, unnumbered (text box): "ZIP or foreign postal code" — ZIP or foreign postal code of that address.
+- page 0, unnumbered (text box): "Fiduciary's name" — Name of the fiduciary filing the notice.
+- page 0, unnumbered (text box): "Telephone no." — Fiduciary's telephone number.
+- page 0, unnumbered (text box): "Address of fiduciary (number and street). If you have a P.O. box, see instructions." — Street address of the fiduciary.
+- page 0, unnumbered (text box): "Room or suite no." — Room or suite number for the fiduciary's address.
+- page 0, unnumbered (text box): "City or town" — City or town of the fiduciary's address.
+- page 0, unnumbered (text box): "State or province" — State or province of the fiduciary's address.
+- page 0, unnumbered (text box): "Country" — Country of the fiduciary's address.
+- page 0, unnumbered (text box): "ZIP or foreign postal code" — ZIP or foreign postal code of the fiduciary's address.
+- page 0, item 1a (checkbox): "Court appointment of testate estate (valid will exists)" — Check if authority is a court appointment for a testate estate.
+- page 0, item 1b (checkbox): "Court appointment of intestate estate (no valid will exists)" — Check if authority is a court appointment for an intestate estate.
+- page 0, item 1c (checkbox): "Court appointment as guardian or conservator" — Check if authority is a court appointment as guardian or conservator.
+- page 0, item 1d (checkbox): "Fiduciary of intestate estate" — Check if acting as fiduciary of an intestate estate.
+- page 0, item 1e (checkbox): "Valid trust instrument and amendments" — Check if authority derives from a valid trust instrument and amendments.
+- page 0, item 1f (checkbox): "Bankruptcy, appointment of receiver/fiduciary, or assignment for the benefit of creditors" — Check if authority is from bankruptcy, receiver/fiduciary appointment, or assignment for creditors.
+- page 0, item 1g (checkbox): "Other. Describe:" — Check if authority is some other basis, described in the adjacent text field.
+- page 0, item 1g (text box): "Other. Describe:" — Free-text description of the other basis of authority when box 1g is checked.
+- page 0, item 2a (text box): "If box 1a, 1b, or 1d is checked, enter the date of death:" — Decedent's date of death, required when box 1a, 1b, or 1d is checked.
+- page 0, item 2b (text box): "If box 1c, 1e, 1f, or 1g is checked, enter the date of appointment, taking office, or assignment or transfer of assets:" — Date of appointment, taking office, or asset assignment/transfer, required when box 1c, 1e, 1f, or 1g is checked.
+- page 0, item 2c (checkbox): "Yes" — Check Yes if all or substantially all of the taxpayer's assets are in the control or custody of the court (appointment of receiver/fiduciary under box 1f).
+- page 0, item 2c (checkbox): "No" — Check No if not all or substantially all of the taxpayer's assets are in the control or custody of the court.
+- page 0, item 2d (text box): "If "No" to line 2c, list the assets that were transferred:" — List of assets that were transferred, required if 2c is answered No.
+- page 0, item 3a (checkbox): "Income" — Check if the type of tax liability is income tax.
+- page 0, item 3b (checkbox): "Gift" — Check if the type of tax liability is gift tax.
+- page 0, item 3c (checkbox): "Estate" — Check if the type of tax liability is estate tax.
+- page 0, item 3d (checkbox): "Generation-skipping transfer" — Check if the type of tax liability is generation-skipping transfer tax.
+- page 0, item 3e (checkbox): "Employment" — Check if the type of tax liability is employment tax.
+- page 0, item 3f (checkbox): "Excise" — Check if the type of tax liability is excise tax.
+- page 0, item 3g (checkbox): "Other" — Check if the type of tax liability is some other tax, described in the adjacent text field.
+- page 0, item 3g (text box): "Other (describe):" — Free-text description of the other type of tax when box 3g is checked.
+- page 0, item 4a (checkbox): "706 series" — Check if the federal tax form is a 706 series form.
+- page 0, item 4b (checkbox): "709 series" — Check if the federal tax form is a 709 series form.
+- page 0, item 4c (checkbox): "940" — Check if the federal tax form is Form 940.
+- page 0, item 4d (checkbox): "941, 943, 944" — Check if the federal tax form is Form 941, 943, or 944.
+- page 0, item 4e (checkbox): "1040 or 1040-SR" — Check if the federal tax form is Form 1040 or 1040-SR.
+- page 0, item 4f (checkbox): "1041" — Check if the federal tax form is Form 1041.
+- page 0, item 4g (checkbox): "1120" — Check if the federal tax form is Form 1120.
+- page 0, item 4h (checkbox): "Other (list):" — Check if the federal tax form is some other form, listed in the adjacent text field.
+- page 0, item 4h (text box): "Other (list):" — Free-text list of the other federal tax form number when box 4h is checked.
+- page 0, item 5a (checkbox): "If your authority as a fiduciary does not cover all years or tax periods, check here" — Check if the fiduciary's authority does not cover all tax years or periods.
+- page 0, item 5b (text box): "If you checked line 5a, list the specific years or periods within your authority:" — List of the specific years or periods within the fiduciary's authority, required if 5a is checked.
+- page 1, item 6a (checkbox): "Check this box if you are revoking or terminating all prior notices concerning fiduciary relationships on file with the Internal Revenue Service for the same tax matters and years or periods covered by this notice concerning fiduciary relationship" — Check if this notice revokes/terminates all prior fiduciary relationship notices on file for the same tax matters and years/periods.
+- page 1, item 6b (checkbox): "Court order revoking fiduciary authority" — Check if the reason for termination is a court order revoking fiduciary authority.
+- page 1, item 6c (checkbox): "Certificate of dissolution or termination of a business entity" — Check if the reason for termination is a certificate of dissolution or termination of a business entity.
+- page 1, item 6d (checkbox): "Other. Describe:" — Check if the reason for termination is some other reason, to be described in the field below.
+- page 1, item 6d (text box): "Other. Describe:" — Free-text description of the other reason for termination of the fiduciary relationship.
+- page 1, item 7a (checkbox): "Check this box if you are revoking earlier notices concerning fiduciary relationships on file with the Internal Revenue Service for the same tax matters and years or periods covered by this notice concerning fiduciary relationship" — Check if this notice partially revokes earlier fiduciary relationship notices on file for the same tax matters and years/periods.
+- page 1, item 7b (text box): "Specify to whom granted, date, and address, including ZIP code." — Name, date, and address (with ZIP code) of the party to whom the fiduciary authority being partially revoked was originally granted.
+- page 1, item 8 (checkbox): "Check this box if a new fiduciary or fiduciaries have been or will be substituted for the revoking or terminating fiduciary and specify the name(s) and address(es), including ZIP code(s), of the new fiduciary(ies)" — Check if a substitute fiduciary has been or will be appointed in place of the revoking/terminating fiduciary.
+- page 1, item 8 (text box): "specify the name(s) and address(es), including ZIP code(s), of the new fiduciary(ies)" — Name(s) and address(es) (with ZIP code(s)) of the substitute fiduciary or fiduciaries.
+- page 1, unnumbered (text box): "Name of court (if other than a court proceeding, identify the type of proceeding and name of agency)" — Name of the court handling the proceeding, or if not a court proceeding, the type of proceeding and name of the agency.
+- page 1, unnumbered (text box): "Date proceeding initiated" — Date the court or administrative proceeding was initiated.
+- page 1, unnumbered (text box): "Address of court (number and street)" — Street address (number and street) of the court.
+- page 1, unnumbered (text box): "Room or suite no." — Room or suite number of the court address.
+- page 1, unnumbered (text box): "Docket number of proceeding" — Docket number assigned to the court or administrative proceeding.
+- page 1, unnumbered (text box): "City or town" — City or town of the court's address.
+- page 1, unnumbered (text box): "State" — State of the court's address.
+- page 1, unnumbered (text box): "ZIP code" — ZIP code of the court's address.
+- page 1, unnumbered (text box): "Date" — Date associated with the proceeding (in the court address/details row).
+- page 1, unnumbered (text box): "Time" — Time of the proceeding, paired with the a.m./p.m. checkboxes.
+- page 1, unnumbered (checkbox): "a.m." — Check if the proceeding time entered is a.m.
+- page 1, unnumbered (checkbox): "p.m." — Check if the proceeding time entered is p.m.
+- page 1, unnumbered (text box): "Place of other proceedings" — Location/place of the proceeding if not a standard court proceeding.
+- page 1, unnumbered (text box): "Title, if applicable" — The fiduciary's title (e.g., executor, trustee), if applicable, entered next to the signature.
+
+Verified estate facts this filling must agree with:
+- decedent.name.full = 'Walter Dean Prescott'
+- decedent.ssn = '957-22-1064'
+- decedent.dateOfDeath = '2026-01-23'
+- decedent.residenceAddress.line1 = '3204 Adams Street'
+- decedent.residenceAddress.city = 'Indianapolis'
+- decedent.residenceAddress.state = 'IN'
+- decedent.residenceAddress.zip = '46221'
+- fiduciary.name.full = 'Sharon Prescott'
+- fiduciary.title = 'Personal Representative'
+- fiduciary.address.line1 = '3204 Adams Street'
+- fiduciary.address.city = 'Indianapolis'
+- fiduciary.address.state = 'IN'
+- fiduciary.address.zip = '46221'
+- estateEntity.legalName = 'Estate of Walter Dean Prescott'
+- estateEntity.ein = '35-6082714'
+- authority.basis = 'CourtAppointmentTestate'
+- authority.hasWill = True
+- authority.dateOfAppointment = '2026-07-28'
+- authority.proceeding.courtName = 'Marion Superior Court, Probate Division — State of Indiana'
+- authority.proceeding.docketNumber = '49D08-2601-EU-004192'
+- authority.proceeding.courtAddress.line1 = '200 E Washington St'
+- authority.proceeding.courtAddress.city = 'Indianapolis'
+- authority.proceeding.courtAddress.state = 'IN'
+- authority.proceeding.courtAddress.zip = '46204'
+- form56.signature.title = 'Personal Representative'
+- taxMatters.authorizationRows[0].taxFormNumber = '1040'
+
+Boxes the filler left empty on purpose (flag one only if the facts above clearly
+support filling it):
+- Room or suite no.: estateEntity.mailingAddress.line2 is empty
+- Room or suite no.: fiduciary.address.line2 is empty
+- item 1b: no supporting data
+- item 1c: no supporting data
+- item 1d: no supporting data
+- item 1e: no supporting data
+- item 1f: no supporting data
+- item 1g: no supporting data
+- item 1g: authority.basisOtherDescription is empty
+- item 2b: guard failed: authority.basis != 'ValidTrustInstrument'
+- item 2c: no supporting data
+- item 2c: no supporting data
+- item 2d: authority.transferredAssetsDescription is empty
+- item 3g: taxMatters.taxTypeOtherDescription is empty
+- item 4h: taxMatters.federalFormOtherList is empty
+- item 6a: no supporting data
+- item 6b: no supporting data
+- item 6c: no supporting data
+- item 6d: no supporting data
+- item 6d: form56.totalRevocation.reasonOtherDescription is empty
+- item 7a: no supporting data
+- item 7b: form56.partialRevocation.grantedToDateAndAddress is empty
+- item 8: no supporting data
+- item 8: form56.substituteFiduciary.namesAndAddresses is empty
+- Date: authority.proceeding.hearingDate is empty
+- Time: authority.proceeding.hearingTime is empty
+- a.m.: no supporting data
+- p.m.: no supporting data
+- Place of other proceedings: authority.proceeding.placeOfOtherProceedings is empty
+
+Judge the IMAGE against each box's printed purpose and the estate
+facts. Report ONLY genuine problems, as a JSON array (empty array [] if the page is
+correct). Each finding: {"target": "<item number or printed label>",
+"problem": "<one sentence>", "mustFix": true|false}. Look for:
+- content in a box that does not match that box's printed purpose (e.g. the
+  decedent's name where the caption says fiduciary, a city in a street-address box)
+- content that contradicts the estate facts listed above
+- a value in the wrong box, or shifted by one row/column
+- text overflowing its rectangle or clipped
+- a date rendered in a format the form does not use (this form wants MM/DD/YYYY)
+- a checkbox marked that contradicts the estate facts, or a choice group with no mark
+- a name or address split across the wrong lines
+- a box left EMPTY — even one on the deliberately-empty list — whose printed purpose
+  clearly has supporting data among the estate facts; name the data
+An empty box with no available supporting data is correct, not a finding. Do not
+invent problems on a correct page.

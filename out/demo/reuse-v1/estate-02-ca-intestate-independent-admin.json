@@ -1,0 +1,23 @@
+{
+  "estateId": "estate-02-ca-intestate-independent-admin",
+  "jurisdiction": "CA/Los Angeles",
+  "route": "INDEPENDENT_ADMINISTRATION",
+  "authorityBasis": "CourtAppointmentIntestate",
+  "line1Ticked": [
+    "1b"
+  ],
+  "date2a": null,
+  "date2b": null,
+  "fiduciaryTitle": "Administrator",
+  "fieldsFilled": 27,
+  "fieldsEmpty": 40,
+  "guardedOff": 7,
+  "groupViolations": [],
+  "llmCallsAtRuntime": 0,
+  "elapsedMs": 40,
+  "pdf": "out/demo/reuse-v1/estate-02-ca-intestate-independent-admin.pdf",
+  "renders": [
+    "out/demo/reuse-v1/estate-02-ca-intestate-independent-admin-page-0.png",
+    "out/demo/reuse-v1/estate-02-ca-intestate-independent-admin-page-1.png"
+  ]
+}

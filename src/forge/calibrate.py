@@ -29,7 +29,7 @@ from pypdf import PdfReader
 
 from . import llm
 from .fillwriter import render_pages, write_filled
-from .pdfmeta import FieldRecord, read_form
+from .pdfmeta import FieldRecord, page_boxes, read_form
 from .registry import CALIBRATION_DIR, RENDERS_DIR, get_form, rel, sha256_of
 
 DPI = 150
@@ -283,6 +283,65 @@ def _render_crops(
     return crops
 
 
+def backfill_geometry(form_id: str) -> int:
+    """Add measured page geometry and per-widget rectangles to an EXISTING calibration.
+
+    No model call, nothing semantic touched. This exists because the labels in
+    artifacts/calibration/ were checked by a human at 72/72 and 28/28; re-running the
+    whole semantic pass to acquire two numbers per page would spend model calls and
+    risk that verified work. Geometry is measured from the PDF, so it is exactly as
+    trustworthy read now as it would have been read then — provided the file has not
+    changed, which is asserted below.
+    """
+    form = get_form(form_id)
+    path = CALIBRATION_DIR / f"{form_id}.json"
+    if not path.exists():
+        print(f"FAIL: no calibration at {rel(path)}")
+        return 1
+    art = json.loads(path.read_text(encoding="utf-8"))
+    actual = sha256_of(form.path)
+    if art.get("sourceSha256") != actual:
+        print(
+            f"FAIL: {rel(path)} was calibrated against a different {form.filename}\n"
+            f"  artifact: {art.get('sourceSha256')}\n  on disk:  {actual}"
+        )
+        return 1
+
+    info = read_form(form.path)
+    widgets_by_name = {
+        r.qualified_name: [
+            {"page": w.page, "rect": w.rect} for w in r.widgets if w.rect is not None
+        ]
+        for r in info.fields
+    }
+    art["pages"] = page_boxes(form.path)
+    updated = 0
+    missing: list[str] = []
+    for f in art["fields"]:
+        w = widgets_by_name.get(f["qualifiedName"])
+        if w is None:
+            missing.append(f["qualifiedName"])
+            continue
+        f["widgets"] = w
+        updated += 1
+    art["geometryBackfilledAt"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    path.write_text(json.dumps(art, indent=2) + "\n", encoding="utf-8")
+
+    multi = sum(1 for f in art["fields"] if len(f.get("widgets") or []) > 1)
+    print(f"wrote {rel(path)}")
+    for p in art["pages"]:
+        print(
+            f"  page {p['index']}: cropBox {p['cropBox']} -> "
+            f"{p['widthPt']} x {p['heightPt']} pt, rotate {p['rotate']}"
+        )
+    print(f"{updated}/{len(art['fields'])} fields given widget rectangles; {multi} multi-widget")
+    if missing:
+        print(f"FAIL: {len(missing)} calibrated field(s) not found in the PDF: {missing[:3]}")
+        return 1
+    print("PASS")
+    return 0
+
+
 def calibrate(form_id: str) -> int:
     form = get_form(form_id)
     info = read_form(form.path)
@@ -379,12 +438,22 @@ def calibrate(form_id: str) -> int:
         "modelCalls": llm.client.count - calls_before,
         "dpi": DPI,
         "pageCount": info.page_count,
+        # measured page geometry — the review UI maps widget rectangles onto the
+        # rendered PNG with this, and pdftoppm renders the CropBox (see pdfmeta)
+        "pages": page_boxes(form.path),
         "fields": [
             {
                 "qualifiedName": e.rec.qualified_name,
                 "type": e.rec.type,
                 "page": e.rec.page,
                 "rect": e.rec.rect,
+                # every widget, not just the first: DL 142 prints the same form twice
+                # on one page, so 24 of its fields have two rectangles
+                "widgets": [
+                    {"page": w.page, "rect": w.rect}
+                    for w in e.rec.widgets
+                    if w.rect is not None
+                ],
                 "onValue": e.rec.on_value if e.rec.type == "button" else None,
                 "isPushbutton": e.rec.is_pushbutton if e.rec.type == "button" else False,
                 "maxLen": e.rec.max_len,

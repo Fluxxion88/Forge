@@ -27,7 +27,18 @@
       "printedLabel": "Print",
       "meaning": "Button that prints the form; not a data field.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            189.198,
+            4.33777,
+            257.207,
+            27.2193
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "Clear Form",
@@ -48,7 +59,18 @@
       "printedLabel": "Clear Form",
       "meaning": "Button that clears all form fields; not a data field.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            258.703,
+            4.33777,
+            326.712,
+            27.2193
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "Address person DL/ID to be cancel.0",
@@ -69,7 +91,27 @@
       "printedLabel": "ADDRESS",
       "meaning": "Street address of the person whose license or ID card is being cancelled.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            122.51,
+            661.93,
+            350.691,
+            679.092
+          ]
+        },
+        {
+          "page": 0,
+          "rect": [
+            123.312,
+            269.167,
+            351.493,
+            286.329
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "City person DL/ID to be cancel.0",
@@ -90,7 +132,27 @@
       "printedLabel": "CITY",
       "meaning": "City of the person whose license or ID card is being cancelled.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            351.962,
+            661.93,
+            496.896,
+            678.456
+          ]
+        },
+        {
+          "page": 0,
+          "rect": [
+            352.764,
+            269.167,
+            499.268,
+            285.693
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "state.0",
@@ -111,7 +173,27 @@
       "printedLabel": "STATE",
       "meaning": "State of the person whose license or ID card is being cancelled.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            498.784,
+            661.275,
+            527.829,
+            678.437
+          ]
+        },
+        {
+          "page": 0,
+          "rect": [
+            500.764,
+            269.167,
+            530.594,
+            286.329
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "Zip person DL/ID to be cancel.0",
@@ -132,7 +214,27 @@
       "printedLabel": "ZIP CODE",
       "meaning": "Zip code of the person whose license or ID card is being cancelled.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            529.084,
+            661.93,
+            589.114,
+            678.456
+          ]
+        },
+        {
+          "page": 0,
+          "rect": [
+            531.98,
+            269.167,
+            589.251,
+            285.693
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "Lic/ID no to be cancel.0",
@@ -153,7 +255,27 @@
       "printedLabel": "LICENSE OR ID CARD NUMBER TO BE CANCELLED",
       "meaning": "The license or ID card number being cancelled or surrendered.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            121.875,
+            637.413,
+            295.176,
+            653.939
+          ]
+        },
+        {
+          "page": 0,
+          "rect": [
+            122.677,
+            245.65,
+            295.455,
+            262.176
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "Date of Birth.0",
@@ -174,7 +296,27 @@
       "printedLabel": "DATE OF BIRTH",
       "meaning": "Date of birth of the person whose license or ID card is being cancelled.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            298.181,
+            637.778,
+            356.241,
+            654.303
+          ]
+        },
+        {
+          "page": 0,
+          "rect": [
+            298.078,
+            245.015,
+            354.043,
+            261.54
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "Lost/Destroyed.0",
@@ -195,7 +337,27 @@
       "printedLabel": "Lost/destroyed",
       "meaning": "Check if the license/ID card is lost or destroyed.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            358.326,
+            641.591,
+            366.589,
+            649.854
+          ]
+        },
+        {
+          "page": 0,
+          "rect": [
+            359.128,
+            249.828,
+            367.391,
+            258.091
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "Attached.0",
@@ -216,7 +378,27 @@
       "printedLabel": "Attached",
       "meaning": "Check if the license/ID card is attached to this form.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            429.242,
+            641.591,
+            437.505,
+            649.854
+          ]
+        },
+        {
+          "page": 0,
+          "rect": [
+            429.044,
+            249.828,
+            437.307,
+            258.091
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "Other.0",
@@ -237,7 +419,27 @@
       "printedLabel": "Other (explain on reverse)",
       "meaning": "Check if the license/ID card's location is something else, explained on the back of the form.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            480.729,
+            641.591,
+            488.349,
+            649.854
+          ]
+        },
+        {
+          "page": 0,
+          "rect": [
+            480.531,
+            249.828,
+            488.151,
+            258.091
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "Cancel-DL.0",
@@ -258,7 +460,27 @@
       "printedLabel": "Driver License (DL)",
       "meaning": "Check to voluntarily surrender and request cancellation of the driver license.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            360.131,
+            626.794,
+            368.394,
+            635.057
+          ]
+        },
+        {
+          "page": 0,
+          "rect": [
+            359.933,
+            235.031,
+            368.196,
+            243.294
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "Cancel-ID.0",
@@ -279,7 +501,27 @@
       "printedLabel": "Identification Card (ID)",
       "meaning": "Check to voluntarily surrender and request cancellation of the identification card.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            470.089,
+            626.794,
+            478.349,
+            635.057
+          ]
+        },
+        {
+          "page": 0,
+          "rect": [
+            469.891,
+            235.031,
+            478.151,
+            243.294
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "Cancel/Susp.0",
@@ -300,7 +542,27 @@
       "printedLabel": "Reason for the cancellation or surrender:",
       "meaning": "Free-text explanation of why the license or ID is being cancelled or surrendered.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            292.58,
+            606.548,
+            575.908,
+            617.989
+          ]
+        },
+        {
+          "page": 0,
+          "rect": [
+            291.382,
+            214.785,
+            576.411,
+            226.226
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "Yes-1.0",
@@ -321,7 +583,27 @@
       "printedLabel": "Yes",
       "meaning": "Check yes if the license is in the minor's possession.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            299.288,
+            591.023,
+            308.225,
+            599.631
+          ]
+        },
+        {
+          "page": 0,
+          "rect": [
+            300.399,
+            199.26,
+            308.027,
+            206.887
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "No-1.0",
@@ -342,7 +624,27 @@
       "printedLabel": "No",
       "meaning": "Check no if the license is not in the minor's possession.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            338.098,
+            591.023,
+            346.36,
+            598.65
+          ]
+        },
+        {
+          "page": 0,
+          "rect": [
+            337.9,
+            199.26,
+            346.162,
+            206.887
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "Yes-2.0",
@@ -363,7 +665,27 @@
       "printedLabel": "Yes",
       "meaning": "Check yes if there is a change in custody of the minor.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            299.615,
+            578.216,
+            308.225,
+            587.48
+          ]
+        },
+        {
+          "page": 0,
+          "rect": [
+            300.399,
+            187.09,
+            308.027,
+            194.717
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "No-2.0",
@@ -384,7 +706,27 @@
       "printedLabel": "No",
       "meaning": "Check no if there is no change in custody of the minor.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            338.098,
+            579.198,
+            346.36,
+            587.48
+          ]
+        },
+        {
+          "page": 0,
+          "rect": [
+            337.9,
+            187.09,
+            346.162,
+            194.717
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "Signed minor app for lic.0",
@@ -405,7 +747,27 @@
       "printedLabel": "I signed the minor's application for a license.",
       "meaning": "Check if the person completing the form signed the minor's license application.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            160.324,
+            546.794,
+            169.325,
+            556.692
+          ]
+        },
+        {
+          "page": 0,
+          "rect": [
+            161.5,
+            155.031,
+            169.127,
+            163.293
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "Did not sign app-gav written consent.0",
@@ -426,7 +788,27 @@
       "printedLabel": "I did not sign the application but I gave written consent to the issuance of the minor's license.",
       "meaning": "Check if the person did not sign the application but gave written consent to the minor's license.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            160.698,
+            534.989,
+            169.962,
+            543.597
+          ]
+        },
+        {
+          "page": 0,
+          "rect": [
+            161.5,
+            143.226,
+            169.127,
+            150.853
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "Did not sign app-now custody.0",
@@ -447,7 +829,27 @@
       "printedLabel": "I did not sign the application but now have custody of the minor.",
       "meaning": "Check if the person did not sign the application but now has custody of the minor.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            160.698,
+            520.837,
+            170.289,
+            530.082
+          ]
+        },
+        {
+          "page": 0,
+          "rect": [
+            162.024,
+            130.056,
+            169.127,
+            138.319
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "Print Name.0",
@@ -468,7 +870,27 @@
       "printedLabel": "PRINT YOUR NAME",
       "meaning": "Printed name of the person completing the form.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            122.51,
+            490.203,
+            586.886,
+            509.271
+          ]
+        },
+        {
+          "page": 0,
+          "rect": [
+            122.312,
+            98.8176,
+            588.881,
+            117.886
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "Address.0",
@@ -489,7 +911,27 @@
       "printedLabel": "ADDRESS",
       "meaning": "Address of the person completing the form.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            122.51,
+            442.547,
+            588.032,
+            459.708
+          ]
+        },
+        {
+          "page": 0,
+          "rect": [
+            122.312,
+            51.7838,
+            588.881,
+            68.9449
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "Office No.0",
@@ -510,7 +952,27 @@
       "printedLabel": "OFFICE NUMBER",
       "meaning": "DMV office number of the employee signing the form.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            410.341,
+            420.03,
+            506.159,
+            435.208
+          ]
+        },
+        {
+          "page": 0,
+          "rect": [
+            409.147,
+            28.2668,
+            515.961,
+            43.4457
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "Signature Date.0",
@@ -531,7 +993,27 @@
       "printedLabel": "DATE",
       "meaning": "Date the DMV employee signed the form.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            508.239,
+            420.03,
+            587.689,
+            436.555
+          ]
+        },
+        {
+          "page": 0,
+          "rect": [
+            516.943,
+            28.2668,
+            587.491,
+            44.7919
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "Name person DL/ID to be cancel",
@@ -552,7 +1034,27 @@
       "printedLabel": "NAME OF PERSON AS SHOWN ON THE LICENSE OR IDENTIFICATION CARD TO BE CANCELLED",
       "meaning": "Full name as it appears on the license or ID card being cancelled.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            121.875,
+            685.448,
+            588.674,
+            702.609
+          ]
+        },
+        {
+          "page": 0,
+          "rect": [
+            122.677,
+            292.685,
+            588.834,
+            309.846
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "Text1",
@@ -573,7 +1075,18 @@
       "printedLabel": "DATE",
       "meaning": "Date the person completing the form signed it (top copy of the form).",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            510.246,
+            465.754,
+            589.556,
+            483.041
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "Text2",
@@ -594,8 +1107,40 @@
       "printedLabel": "DATE",
       "meaning": "Date the person completing the form signed it (bottom tear-off copy of the form).",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            511.703,
+            74.0694,
+            588.394,
+            91.7058
+          ]
+        }
+      ]
     }
   ],
-  "unresolved": []
+  "unresolved": [],
+  "pages": [
+    {
+      "index": 0,
+      "cropBox": [
+        0.0,
+        3.55556,
+        612.0,
+        792.0
+      ],
+      "mediaBox": [
+        0.0,
+        0.0,
+        1224.0,
+        792.0
+      ],
+      "widthPt": 612.0,
+      "heightPt": 788.44444,
+      "rotate": 0
+    }
+  ],
+  "geometryBackfilledAt": "2026-07-28T04:34:03Z"
 }

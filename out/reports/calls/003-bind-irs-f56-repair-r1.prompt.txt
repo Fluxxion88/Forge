@@ -1,0 +1,1843 @@
+You are repairing the binding for government form irs-f56. Round
+1 produced these findings against the rendered page:
+[
+ {
+  "target": "Identifying number",
+  "problem": "Filled with the decedent's SSN (903-56-8172), duplicating the adjacent 'Decedent's social security no.' box, when this field should hold the trust entity's own EIN (estateEntity.ein), which is unknown and should have been left blank.",
+  "mustFix": true
+ },
+ {
+  "target": "item 2a",
+  "problem": "Date of death (06/16/2026) is entered even though its printed condition requires box 1a, 1b, or 1d to be checked, and only 1e is checked, so this field should have been left blank.",
+  "mustFix": true
+ },
+ {
+  "target": "item 4e",
+  "problem": "The '1040 or 1040-SR' checkbox is left unmarked even though taxMatters.authorizationRows[0].taxFormNumber = '1040' clearly supports checking it.",
+  "mustFix": true
+ },
+ {
+  "target": "Place of other proceedings",
+  "problem": "Contains unrelated, clipped text ('Trust administration is o...') that does not describe a location and is inconsistent with the box's purpose, especially since an actual court proceeding is already named above.",
+  "mustFix": true
+ }
+]
+
+The current binding artifact body:
+{
+ "bindings": [
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_01[0]",
+   "itemNumber": null,
+   "label": "Name of person for whom you're acting (as shown on the tax return)",
+   "source": {
+    "kind": "path",
+    "path": "estateEntity.legalName"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": true,
+   "confidence": "high",
+   "note": "Trust is the taxpayer on whose behalf the fiduciary acts; prefer estateEntity.legalName over form-specific blocks.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_02[0]",
+   "itemNumber": null,
+   "label": "Identifying number",
+   "source": {
+    "kind": "path",
+    "path": "estateEntity.identifyingNumber"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": true,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_03[0]",
+   "itemNumber": null,
+   "label": "Decedent's social security no.",
+   "source": {
+    "kind": "path",
+    "path": "decedent.ssn"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": true,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_04[0]",
+   "itemNumber": null,
+   "label": "Address of person for whom you're acting (number and street). If you have a P.O. box, see instructions.",
+   "source": {
+    "kind": "path",
+    "path": "estateEntity.mailingAddress.line1"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": true,
+   "confidence": "medium",
+   "note": "physicalAddressDiffersFromMailing is true in sample data; mailing address chosen as the correspondence address, but physicalAddress.line1 is a plausible alternative.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_05[0]",
+   "itemNumber": null,
+   "label": "Room or suite no.",
+   "source": {
+    "kind": "path",
+    "path": "estateEntity.mailingAddress.line2"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "medium",
+   "note": "line2 used as room/suite; not a dedicated schema field.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_06[0]",
+   "itemNumber": null,
+   "label": "City or town",
+   "source": {
+    "kind": "path",
+    "path": "estateEntity.mailingAddress.city"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": true,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_07[0]",
+   "itemNumber": null,
+   "label": "State or province",
+   "source": {
+    "kind": "path",
+    "path": "estateEntity.mailingAddress.state"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": true,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_08[0]",
+   "itemNumber": null,
+   "label": "Country",
+   "source": {
+    "kind": "path",
+    "path": "estateEntity.mailingAddress.country"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": true,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_09[0]",
+   "itemNumber": null,
+   "label": "ZIP or foreign postal code",
+   "source": {
+    "kind": "path",
+    "path": "estateEntity.mailingAddress.zip"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": true,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_10[0]",
+   "itemNumber": null,
+   "label": "Fiduciary's name",
+   "source": {
+    "kind": "path",
+    "path": "fiduciary.name.full"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": true,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_11[0]",
+   "itemNumber": null,
+   "label": "Telephone no.",
+   "source": {
+    "kind": "path",
+    "path": "fiduciary.phone.number"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_12[0]",
+   "itemNumber": null,
+   "label": "Address of fiduciary (number and street). If you have a P.O. box, see instructions.",
+   "source": {
+    "kind": "path",
+    "path": "fiduciary.address.line1"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": true,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_13[0]",
+   "itemNumber": null,
+   "label": "Room or suite no.",
+   "source": {
+    "kind": "path",
+    "path": "fiduciary.address.line2"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "medium",
+   "note": "line2 used as room/suite; not a dedicated schema field.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_14[0]",
+   "itemNumber": null,
+   "label": "City or town",
+   "source": {
+    "kind": "path",
+    "path": "fiduciary.address.city"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": true,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_15[0]",
+   "itemNumber": null,
+   "label": "State or province",
+   "source": {
+    "kind": "path",
+    "path": "fiduciary.address.state"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": true,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_16[0]",
+   "itemNumber": null,
+   "label": "Country",
+   "source": {
+    "kind": "path",
+    "path": "fiduciary.address.country"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": true,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_17[0]",
+   "itemNumber": null,
+   "label": "ZIP or foreign postal code",
+   "source": {
+    "kind": "path",
+    "path": "fiduciary.address.zip"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": true,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_1[0]",
+   "itemNumber": "1a",
+   "label": "Court appointment of testate estate (valid will exists)",
+   "source": {
+    "kind": "condition",
+    "path": "authority.basis",
+    "equals": "CourtAppointmentTestate"
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "low",
+   "note": "Enum spelling for authority.basis guessed; not confirmed against schema enum.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_1[1]",
+   "itemNumber": "1b",
+   "label": "Court appointment of intestate estate (no valid will exists)",
+   "source": {
+    "kind": "condition",
+    "path": "authority.basis",
+    "equals": "CourtAppointmentIntestate"
+   },
+   "format": "checkbox",
+   "onValue": "/2",
+   "required": false,
+   "confidence": "low",
+   "note": "Enum spelling for authority.basis guessed; not confirmed against schema enum.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_1[2]",
+   "itemNumber": "1c",
+   "label": "Court appointment as guardian or conservator",
+   "source": {
+    "kind": "condition",
+    "path": "authority.basis",
+    "equals": "CourtAppointmentGuardianOrConservator"
+   },
+   "format": "checkbox",
+   "onValue": "/3",
+   "required": false,
+   "confidence": "low",
+   "note": "Enum spelling for authority.basis guessed; not confirmed against schema enum.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_1[3]",
+   "itemNumber": "1d",
+   "label": "Fiduciary of intestate estate",
+   "source": {
+    "kind": "condition",
+    "path": "authority.basis",
+    "equals": "FiduciaryOfIntestateEstate"
+   },
+   "format": "checkbox",
+   "onValue": "/4",
+   "required": false,
+   "confidence": "low",
+   "note": "Enum spelling for authority.basis guessed; not confirmed against schema enum.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_1[4]",
+   "itemNumber": "1e",
+   "label": "Valid trust instrument and amendments",
+   "source": {
+    "kind": "condition",
+    "path": "authority.basis",
+    "equals": "ValidTrustInstrument"
+   },
+   "format": "checkbox",
+   "onValue": "/5",
+   "required": false,
+   "confidence": "medium",
+   "note": "Matches sample estate-03 value verbatim; other enum members guessed by analogy.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_1[5]",
+   "itemNumber": "1f",
+   "label": "Bankruptcy, appointment of receiver/fiduciary, or assignment for the benefit of creditors",
+   "source": {
+    "kind": "condition",
+    "path": "authority.basis",
+    "equals": "BankruptcyOrReceiverOrAssignment"
+   },
+   "format": "checkbox",
+   "onValue": "/6",
+   "required": false,
+   "confidence": "low",
+   "note": "Enum spelling for authority.basis guessed; not confirmed against schema enum.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_1[6]",
+   "itemNumber": "1g",
+   "label": "Other. Describe:",
+   "source": {
+    "kind": "condition",
+    "path": "authority.basis",
+    "equals": "Other"
+   },
+   "format": "checkbox",
+   "onValue": "/7",
+   "required": false,
+   "confidence": "low",
+   "note": "Enum spelling for authority.basis guessed; not confirmed against schema enum.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_18[0]",
+   "itemNumber": "1g",
+   "label": "Other. Describe:",
+   "source": {
+    "kind": "path",
+    "path": "authority.basisOtherDescription"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "medium",
+   "note": null,
+   "when": {
+    "path": "authority.basis",
+    "equals": "Other"
+   }
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_19[0]",
+   "itemNumber": "2a",
+   "label": "If box 1a, 1b, or 1d is checked, enter the date of death:",
+   "source": {
+    "kind": "path",
+    "path": "authority.dateOfDeath"
+   },
+   "format": "date",
+   "onValue": null,
+   "required": false,
+   "confidence": "medium",
+   "note": "Applies only when 1a/1b/1d checked; the 'when' guard supports a single equality so the three-way OR could not be expressed. In estate-03 (basis=trust, box 1e) this field should not print \u2014 convergence loop should catch this.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_20[0]",
+   "itemNumber": "2b",
+   "label": "If box 1c, 1e, 1f, or 1g is checked, enter the date of appointment, taking office, or assignment or transfer of assets:",
+   "source": {
+    "kind": "path",
+    "path": "authority.dateOfAppointment"
+   },
+   "format": "date",
+   "onValue": null,
+   "required": false,
+   "confidence": "medium",
+   "note": "Applies only when 1c/1e/1f/1g checked; the 'when' guard supports a single equality so the four-way OR could not be expressed.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_2[0]",
+   "itemNumber": "2c",
+   "label": "Yes",
+   "source": {
+    "kind": "condition",
+    "path": "authority.assetsUnderCourtControl",
+    "equals": true
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "medium",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_2[1]",
+   "itemNumber": "2c",
+   "label": "No",
+   "source": {
+    "kind": "condition",
+    "path": "authority.assetsUnderCourtControl",
+    "equals": false
+   },
+   "format": "checkbox",
+   "onValue": "/2",
+   "required": false,
+   "confidence": "medium",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_21[0]",
+   "itemNumber": "2d",
+   "label": "If \"No\" to line 2c, list the assets that were transferred:",
+   "source": {
+    "kind": "path",
+    "path": "authority.transferredAssetsDescription"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "medium",
+   "note": null,
+   "when": {
+    "path": "authority.assetsUnderCourtControl",
+    "equals": false
+   }
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_3[0]",
+   "itemNumber": "3a",
+   "label": "Income",
+   "source": {
+    "kind": "condition",
+    "path": "taxMatters.taxTypes",
+    "equals": "Income"
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "low",
+   "note": "taxMatters.taxTypes is array-shaped; condition against a scalar equality on an array path is a known gap for the convergence loop to fix.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_4[0]",
+   "itemNumber": "3b",
+   "label": "Gift",
+   "source": {
+    "kind": "condition",
+    "path": "taxMatters.taxTypes",
+    "equals": "Gift"
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "low",
+   "note": "taxMatters.taxTypes is array-shaped; see note on 3a.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_5[0]",
+   "itemNumber": "3c",
+   "label": "Estate",
+   "source": {
+    "kind": "condition",
+    "path": "taxMatters.taxTypes",
+    "equals": "Estate"
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "low",
+   "note": "taxMatters.taxTypes is array-shaped; see note on 3a.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_6[0]",
+   "itemNumber": "3d",
+   "label": "Generation-skipping transfer",
+   "source": {
+    "kind": "condition",
+    "path": "taxMatters.taxTypes",
+    "equals": "GenerationSkippingTransfer"
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "low",
+   "note": "taxMatters.taxTypes is array-shaped; see note on 3a.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_7[0]",
+   "itemNumber": "3e",
+   "label": "Employment",
+   "source": {
+    "kind": "condition",
+    "path": "taxMatters.taxTypes",
+    "equals": "Employment"
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "low",
+   "note": "taxMatters.taxTypes is array-shaped; see note on 3a.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_8[0]",
+   "itemNumber": "3f",
+   "label": "Excise",
+   "source": {
+    "kind": "condition",
+    "path": "taxMatters.taxTypes",
+    "equals": "Excise"
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "low",
+   "note": "taxMatters.taxTypes is array-shaped; see note on 3a.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_9[0]",
+   "itemNumber": "3g",
+   "label": "Other",
+   "source": {
+    "kind": "condition",
+    "path": "taxMatters.taxTypes",
+    "equals": "Other"
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "low",
+   "note": "taxMatters.taxTypes is array-shaped; see note on 3a.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_22[0]",
+   "itemNumber": "3g",
+   "label": "Other (describe):",
+   "source": {
+    "kind": "path",
+    "path": "taxMatters.taxTypeOtherDescription"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "medium",
+   "note": null,
+   "when": {
+    "path": "taxMatters.taxTypes",
+    "equals": "Other"
+   }
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_10[0]",
+   "itemNumber": "4a",
+   "label": "706 series",
+   "source": {
+    "kind": "condition",
+    "path": "taxMatters.federalFormNumbers",
+    "equals": "706"
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "low",
+   "note": "taxMatters.federalFormNumbers is array-shaped; same gap as tax-type checkboxes above.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_11[0]",
+   "itemNumber": "4b",
+   "label": "709 series",
+   "source": {
+    "kind": "condition",
+    "path": "taxMatters.federalFormNumbers",
+    "equals": "709"
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "low",
+   "note": "taxMatters.federalFormNumbers is array-shaped.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_12[0]",
+   "itemNumber": "4c",
+   "label": "940",
+   "source": {
+    "kind": "condition",
+    "path": "taxMatters.federalFormNumbers",
+    "equals": "940"
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "low",
+   "note": "taxMatters.federalFormNumbers is array-shaped.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_13[0]",
+   "itemNumber": "4d",
+   "label": "941, 943, 944",
+   "source": {
+    "kind": "condition",
+    "path": "taxMatters.federalFormNumbers",
+    "equals": "941"
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "low",
+   "note": "taxMatters.federalFormNumbers is array-shaped; also collapses three form numbers (941/943/944) onto one equality check.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_14[0]",
+   "itemNumber": "4e",
+   "label": "1040 or 1040-SR",
+   "source": {
+    "kind": "condition",
+    "path": "taxMatters.federalFormNumbers",
+    "equals": "1040_or_1040SR"
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "low",
+   "note": "taxMatters.federalFormNumbers is array-shaped; matches the literal enum value seen in sample data.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_15[0]",
+   "itemNumber": "4f",
+   "label": "1041",
+   "source": {
+    "kind": "condition",
+    "path": "taxMatters.federalFormNumbers",
+    "equals": "1041"
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "low",
+   "note": "taxMatters.federalFormNumbers is array-shaped; matches the literal enum value seen in sample data.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_16[0]",
+   "itemNumber": "4g",
+   "label": "1120",
+   "source": {
+    "kind": "condition",
+    "path": "taxMatters.federalFormNumbers",
+    "equals": "1120"
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "low",
+   "note": "taxMatters.federalFormNumbers is array-shaped.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_17[0]",
+   "itemNumber": "4h",
+   "label": "Other (list):",
+   "source": {
+    "kind": "condition",
+    "path": "taxMatters.federalFormNumbers",
+    "equals": "Other"
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "low",
+   "note": "taxMatters.federalFormNumbers is array-shaped.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_23[0]",
+   "itemNumber": "4h",
+   "label": "Other (list):",
+   "source": {
+    "kind": "path",
+    "path": "taxMatters.federalFormOtherList"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "medium",
+   "note": null,
+   "when": {
+    "path": "taxMatters.federalFormNumbers",
+    "equals": "Other"
+   }
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_18[0]",
+   "itemNumber": "5a",
+   "label": "If your authority as a fiduciary does not cover all years or tax periods, check here",
+   "source": {
+    "kind": "condition",
+    "path": "taxMatters.authorityLimitedToSpecificPeriods",
+    "equals": true
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_24[0]",
+   "itemNumber": "5b",
+   "label": "If you checked line 5a, list the specific years or periods within your authority:",
+   "source": {
+    "kind": "path",
+    "path": "taxMatters.specificPeriods"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": {
+    "path": "taxMatters.authorityLimitedToSpecificPeriods",
+    "equals": true
+   }
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page2[0].c2_1[0]",
+   "itemNumber": "6a",
+   "label": "Check this box if you are revoking or terminating all prior notices concerning fiduciary relationships on file with the Internal Revenue Service for the same tax matters and years or periods covered by this notice concerning fiduciary relationship",
+   "source": {
+    "kind": "condition",
+    "path": "form56.totalRevocation.revokeAllPriorNotices",
+    "equals": true
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page2[0].c2_2[0]",
+   "itemNumber": "6b",
+   "label": "Court order revoking fiduciary authority",
+   "source": {
+    "kind": "condition",
+    "path": "form56.totalRevocation.reason",
+    "equals": "CourtOrder"
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "low",
+   "note": "Enum spelling for form56.totalRevocation.reason guessed; not confirmed against schema enum.",
+   "when": {
+    "path": "form56.totalRevocation.revokeAllPriorNotices",
+    "equals": true
+   }
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page2[0].c2_2[1]",
+   "itemNumber": "6c",
+   "label": "Certificate of dissolution or termination of a business entity",
+   "source": {
+    "kind": "condition",
+    "path": "form56.totalRevocation.reason",
+    "equals": "CertificateOfDissolution"
+   },
+   "format": "checkbox",
+   "onValue": "/2",
+   "required": false,
+   "confidence": "low",
+   "note": "Enum spelling for form56.totalRevocation.reason guessed; not confirmed against schema enum.",
+   "when": {
+    "path": "form56.totalRevocation.revokeAllPriorNotices",
+    "equals": true
+   }
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page2[0].c2_2[2]",
+   "itemNumber": "6d",
+   "label": "Other. Describe:",
+   "source": {
+    "kind": "condition",
+    "path": "form56.totalRevocation.reason",
+    "equals": "Other"
+   },
+   "format": "checkbox",
+   "onValue": "/3",
+   "required": false,
+   "confidence": "low",
+   "note": "Enum spelling for form56.totalRevocation.reason guessed; not confirmed against schema enum.",
+   "when": {
+    "path": "form56.totalRevocation.revokeAllPriorNotices",
+    "equals": true
+   }
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page2[0].f2_01[0]",
+   "itemNumber": "6d",
+   "label": "Other. Describe:",
+   "source": {
+    "kind": "path",
+    "path": "form56.totalRevocation.reasonOtherDescription"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "medium",
+   "note": null,
+   "when": {
+    "path": "form56.totalRevocation.reason",
+    "equals": "Other"
+   }
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page2[0].c2_3[0]",
+   "itemNumber": "7a",
+   "label": "Check this box if you are revoking earlier notices concerning fiduciary relationships on file with the Internal Revenue Service for the same tax matters and years or periods covered by this notice concerning fiduciary relationship",
+   "source": {
+    "kind": "condition",
+    "path": "form56.partialRevocation.revokeEarlierNotices",
+    "equals": true
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page2[0].f2_02[0]",
+   "itemNumber": "7b",
+   "label": "Specify to whom granted, date, and address, including ZIP code.",
+   "source": {
+    "kind": "path",
+    "path": "form56.partialRevocation.grantedToDateAndAddress"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": {
+    "path": "form56.partialRevocation.revokeEarlierNotices",
+    "equals": true
+   }
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page2[0].c2_4[0]",
+   "itemNumber": "8",
+   "label": "Check this box if a new fiduciary or fiduciaries have been or will be substituted for the revoking or terminating fiduciary and specify the name(s) and address(es), including ZIP code(s), of the new fiduciary(ies)",
+   "source": {
+    "kind": "condition",
+    "path": "form56.substituteFiduciary.hasSubstitute",
+    "equals": true
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page2[0].f2_03[0]",
+   "itemNumber": "8",
+   "label": "specify the name(s) and address(es), including ZIP code(s), of the new fiduciary(ies)",
+   "source": {
+    "kind": "path",
+    "path": "form56.substituteFiduciary.namesAndAddresses"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": {
+    "path": "form56.substituteFiduciary.hasSubstitute",
+    "equals": true
+   }
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page2[0].f2_04[0]",
+   "itemNumber": null,
+   "label": "Name of court (if other than a court proceeding, identify the type of proceeding and name of agency)",
+   "source": {
+    "kind": "path",
+    "path": "authority.proceeding.courtName"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page2[0].f2_05[0]",
+   "itemNumber": null,
+   "label": "Date proceeding initiated",
+   "source": {
+    "kind": "path",
+    "path": "authority.proceeding.dateProceedingInitiated"
+   },
+   "format": "date",
+   "onValue": null,
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page2[0].f2_06[0]",
+   "itemNumber": null,
+   "label": "Address of court (number and street)",
+   "source": {
+    "kind": "path",
+    "path": "authority.proceeding.courtAddress.line1"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page2[0].f2_07[0]",
+   "itemNumber": null,
+   "label": "Room or suite no.",
+   "source": {
+    "kind": "path",
+    "path": "authority.proceeding.courtRoomOrSuite"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page2[0].f2_08[0]",
+   "itemNumber": null,
+   "label": "Docket number of proceeding",
+   "source": {
+    "kind": "path",
+    "path": "authority.proceeding.docketNumber"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page2[0].f2_09[0]",
+   "itemNumber": null,
+   "label": "City or town",
+   "source": {
+    "kind": "path",
+    "path": "authority.proceeding.courtAddress.city"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page2[0].f2_10[0]",
+   "itemNumber": null,
+   "label": "State",
+   "source": {
+    "kind": "path",
+    "path": "authority.proceeding.courtAddress.state"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page2[0].f2_11[0]",
+   "itemNumber": null,
+   "label": "ZIP code",
+   "source": {
+    "kind": "path",
+    "path": "authority.proceeding.courtAddress.zip"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page2[0].f2_12[0]",
+   "itemNumber": null,
+   "label": "Date",
+   "source": {
+    "kind": "path",
+    "path": "authority.proceeding.hearingDate"
+   },
+   "format": "date",
+   "onValue": null,
+   "required": false,
+   "confidence": "medium",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page2[0].Time_ReadOrder[0].f2_13[0]",
+   "itemNumber": null,
+   "label": "Time",
+   "source": {
+    "kind": "path",
+    "path": "authority.proceeding.hearingTime"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "medium",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page2[0].Time_ReadOrder[0].c2_5[0]",
+   "itemNumber": null,
+   "label": "a.m.",
+   "source": {
+    "kind": "condition",
+    "path": "authority.proceeding.hearingTimeMeridiem",
+    "equals": "AM"
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "low",
+   "note": "Enum spelling guessed.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page2[0].Time_ReadOrder[0].c2_5[1]",
+   "itemNumber": null,
+   "label": "p.m.",
+   "source": {
+    "kind": "condition",
+    "path": "authority.proceeding.hearingTimeMeridiem",
+    "equals": "PM"
+   },
+   "format": "checkbox",
+   "onValue": "/2",
+   "required": false,
+   "confidence": "low",
+   "note": "Enum spelling guessed.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page2[0].f2_14[0]",
+   "itemNumber": null,
+   "label": "Place of other proceedings",
+   "source": {
+    "kind": "path",
+    "path": "authority.proceeding.placeOfOtherProceedings"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page2[0].f2_15[0]",
+   "itemNumber": null,
+   "label": "Title, if applicable",
+   "source": {
+    "kind": "path",
+    "path": "fiduciary.title"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "high",
+   "note": "Prefer generic fiduciary.title over form56.signature.title per equal-value rule.",
+   "when": null
+  }
+ ],
+ "unbound": [],
+ "exclusiveGroups": [
+  {
+   "label": "Basis for fiduciary authority (line 1a-1g)",
+   "rule": "exactlyOne",
+   "members": [
+    "topmostSubform[0].Page1[0].c1_1[0]",
+    "topmostSubform[0].Page1[0].c1_1[1]",
+    "topmostSubform[0].Page1[0].c1_1[2]",
+    "topmostSubform[0].Page1[0].c1_1[3]",
+    "topmostSubform[0].Page1[0].c1_1[4]",
+    "topmostSubform[0].Page1[0].c1_1[5]",
+    "topmostSubform[0].Page1[0].c1_1[6]"
+   ],
+   "when": null
+  },
+  {
+   "label": "Assets under court control (line 2c)",
+   "rule": "atMostOne",
+   "members": [
+    "topmostSubform[0].Page1[0].c1_2[0]",
+    "topmostSubform[0].Page1[0].c1_2[1]"
+   ],
+   "when": null
+  },
+  {
+   "label": "Reason for total revocation/termination (line 6b-6d)",
+   "rule": "atMostOne",
+   "members": [
+    "topmostSubform[0].Page2[0].c2_2[0]",
+    "topmostSubform[0].Page2[0].c2_2[1]",
+    "topmostSubform[0].Page2[0].c2_2[2]"
+   ],
+   "when": {
+    "path": "form56.totalRevocation.revokeAllPriorNotices",
+    "equals": true
+   }
+  },
+  {
+   "label": "Proceeding time meridiem",
+   "rule": "atMostOne",
+   "members": [
+    "topmostSubform[0].Page2[0].Time_ReadOrder[0].c2_5[0]",
+    "topmostSubform[0].Page2[0].Time_ReadOrder[0].c2_5[1]"
+   ],
+   "when": null
+  }
+ ]
+}
+
+The estate record (bind to PATHS, not values):
+{
+ "$schema": "./estate-form-data.schema.json",
+ "meta": {
+  "recordId": "estate-03-oh-trust-administration",
+  "schemaVersion": "1.0.0",
+  "label": "Ohio revocable-trust administration with a small companion probate for a non-trust asset. Fiduciary is an out-of-state successor trustee, so Form 56 authority is the trust instrument (box 1e) and the appointment date rather than the date of death drives line 2b.",
+  "anonymized": true,
+  "sourceSystem": "alix-estate-manager",
+  "generatedAt": "2026-07-27T00:00:00Z"
+ },
+ "decedent": {
+  "name": {
+   "first": "Rosalind",
+   "middle": null,
+   "last": "Kellerman",
+   "suffix": null,
+   "full": "Rosalind Kellerman"
+  },
+  "aliases": [],
+  "ssn": "903-56-8172",
+  "dateOfBirth": "1944-11-08",
+  "dateOfDeath": "2026-06-16",
+  "sex": "FEMALE",
+  "maritalStatus": "Unknown",
+  "citizenship": "USA",
+  "wasVeteran": false,
+  "email": null,
+  "phones": [],
+  "residenceAddress": {
+   "line1": "612 Lakeshore Drive",
+   "line2": null,
+   "city": "Bay Village",
+   "county": "Cuyahoga",
+   "state": "OH",
+   "zip": "44140",
+   "country": "USA",
+   "isPoBox": false
+  },
+  "placeOfDeath": null,
+  "birthplace": null,
+  "identifications": [
+   {
+    "type": "DriversLicense",
+    "number": "RT418205",
+    "issuingState": "OH",
+    "issuingCountry": "USA",
+    "expirationDate": null
+   }
+  ]
+ },
+ "estateEntity": {
+  "legalName": "Rosalind Kellerman Revocable Living Trust",
+  "tradeName": "Estate of Rosalind Kellerman",
+  "careOfName": "Paula Kellerman Vance",
+  "entityKind": "Trust",
+  "ein": null,
+  "identifyingNumber": "903-56-8172",
+  "mailingAddress": {
+   "line1": "3308 Elder Crossing",
+   "line2": null,
+   "city": "Coppell",
+   "county": "Dallas",
+   "state": "TX",
+   "zip": "75019",
+   "country": "USA",
+   "isPoBox": false
+  },
+  "physicalAddress": {
+   "line1": "612 Lakeshore Drive",
+   "line2": null,
+   "city": "Bay Village",
+   "county": "Cuyahoga",
+   "state": "OH",
+   "zip": "44140",
+   "country": "USA",
+   "isPoBox": false
+  },
+  "physicalAddressDiffersFromMailing": true,
+  "principalCounty": "Cuyahoga",
+  "principalState": "OH",
+  "daytimePhone": {
+   "number": "(972) 555-0146",
+   "countryCode": "+1",
+   "type": "Mobile",
+   "primary": true
+  },
+  "planNumber": null,
+  "trust": {
+   "name": "Rosalind Kellerman Revocable Living Trust",
+   "dateOfTrust": null,
+   "trusteeName": "Paula Kellerman Vance",
+   "grantorTin": "903-56-8172",
+   "isRevocableAtDeath": true
+  }
+ },
+ "fiduciary": {
+  "name": {
+   "first": "Paula",
+   "middle": "Kellerman",
+   "last": "Vance",
+   "suffix": null,
+   "full": "Paula Kellerman Vance"
+  },
+  "title": "Successor Trustee",
+  "isIndividual": true,
+  "ssn": null,
+  "ein": null,
+  "responsiblePartyTin": null,
+  "dateOfBirth": "1975-12-10",
+  "address": {
+   "line1": "3308 Elder Crossing",
+   "line2": null,
+   "city": "Coppell",
+   "county": "Dallas",
+   "state": "TX",
+   "zip": "75019",
+   "country": "USA",
+   "isPoBox": false
+  },
+  "phone": {
+   "number": "(972) 555-0146",
+   "countryCode": "+1",
+   "type": "Mobile",
+   "primary": true
+  },
+  "faxNumber": null,
+  "email": "p.vance@example.com",
+  "identifications": [
+   {
+    "type": "DriversLicense",
+    "number": "V400-183-75-902-0",
+    "issuingState": "FL",
+    "issuingCountry": "USA",
+    "expirationDate": null
+   }
+  ],
+  "relationshipToDecedent": "Daughter",
+  "signatureDate": "2026-07-09"
+ },
+ "authority": {
+  "basis": "ValidTrustInstrument",
+  "basisOtherDescription": null,
+  "dateOfDeath": "2026-06-16",
+  "dateOfAppointment": "2026-06-29",
+  "assetsUnderCourtControl": null,
+  "transferredAssetsDescription": null,
+  "authorityStatus": "InProcess",
+  "administrationPath": "TRUST_ADMINISTRATION",
+  "hasWill": true,
+  "hasTrust": true,
+  "bondRequired": null,
+  "bondAmount": null,
+  "proceeding": {
+   "courtName": "Cuyahoga County Court of Common Pleas, Probate Division",
+   "isCourtProceeding": true,
+   "dateProceedingInitiated": null,
+   "courtAddress": {
+    "line1": "1 W Lakeside Ave",
+    "line2": null,
+    "city": "Cleveland",
+    "county": "Cuyahoga",
+    "state": "OH",
+    "zip": "44113",
+    "country": "USA",
+    "isPoBox": false
+   },
+   "courtRoomOrSuite": null,
+   "docketNumber": null,
+   "hearingDate": null,
+   "hearingTime": null,
+   "hearingTimeMeridiem": null,
+   "placeOfOtherProceedings": "Trust administration is conducted out of court. The probate filing covers a single vehicle that was never retitled into the trust.",
+   "courtPhone": null,
+   "courtHours": null,
+   "lettersIssuedDate": null,
+   "closureDate": null,
+   "attorneyOfRecord": null
+  }
+ },
+ "taxMatters": {
+  "taxTypes": [
+   "Income"
+  ],
+  "taxTypeOtherDescription": null,
+  "federalFormNumbers": [
+   "1040_or_1040SR",
+   "1041"
+  ],
+  "federalFormOtherList": null,
+  "authorityLimitedToSpecificPeriods": false,
+  "specificPeriods": null,
+  "authorizationRows": [
+   {
+    "typeOfTaxInformation": "Income",
+    "taxFormNumber": "1040",
+    "yearsOrPeriods": "2024, 2025, 2026",
+    "specificTaxMatters": "Final individual return of the grantor"
+   },
+   {
+    "typeOfTaxInformation": "Income",
+    "taxFormNumber": "1041",
+    "yearsOrPeriods": "2026, 2027",
+    "specificTaxMatters": "Fiduciary income tax for the trust after the grantor's death"
+   },
+   {
+    "typeOfTaxInformation": "Income",
+    "taxFormNumber": "1099",
+    "yearsOrPeriods": "2025, 2026",
+    "specificTaxMatters": "Wage and income transcripts for asset discovery"
+   }
+  ]
+ },
+ "form56": {
+  "isNewNotice": true,
+  "totalRevocation": {
+   "revokeAllPriorNotices": false,
+   "reason": null,
+   "reasonOtherDescription": null
+  },
+  "partialRevocation": {
+   "revokeEarlierNotices": false,
+   "grantedToDateAndAddress": null
+  },
+  "substituteFiduciary": {
+   "hasSubstitute": false,
+   "namesAndAddresses": null
+  },
+  "signature": {
+   "signerName": "Paula Kellerman Vance",
+   "title": "Successor Trustee",
+   "date": "2026-07-09"
+  }
+ },
+ "form8821": {
+  "taxpayerNameAndAddressBlock": "Rosalind Kellerman Revocable Living Trust\nc/o Paula Kellerman Vance, Successor Trustee\n3308 Elder Crossing\nCoppell, TX 75019",
+  "taxpayerIdentificationNumbers": "903-56-8172 (grantor SSN \u2014 trust EIN not yet issued)",
+  "designees": [
+   {
+    "name": "Paula Kellerman Vance",
+    "firmName": null,
+    "address": {
+     "line1": "3308 Elder Crossing",
+     "line2": null,
+     "city": "Coppell",
+     "county": "Dallas",
+     "state": "TX",
+     "zip": "75019",
+     "country": "USA",
+     "isPoBox": false
+    },
+    "cafNumber": "NONE",
+    "ptin": null,
+    "phone": {
+     "number": "(972) 555-0146",
+     "countryCode": "+1",
+     "type": "Mobile",
+     "primary": true
+    },
+    "faxNumber": null,
+    "sendCopiesOfNotices": true,
+    "isNewAddress": true,
+    "isNewPhone": false,
+    "isNewFax": false
+   },
+   {
+    "name": "Vision Financial Management",
+    "firmName": "Vision Financial Management",
+    "address": {
+     "line1": "1400 Superior Ave E",
+     "line2": "Suite 900",
+     "city": "Cleveland",
+     "county": "Cuyahoga",
+     "state": "OH",
+     "zip": "44114",
+     "country": "USA",
+     "isPoBox": false
+    },
+    "cafNumber": "3104-88213R",
+    "ptin": "P01947725",
+    "phone": {
+     "number": "(216) 555-0121",
+     "countryCode": "+1",
+     "type": "Work",
+     "primary": true
+    },
+    "faxNumber": "(216) 555-0122",
+    "sendCopiesOfNotices": false,
+    "isNewAddress": false,
+    "isNewPhone": false,
+    "isNewFax": false
+   }
+  ],
+  "additionalDesigneesAttached": false,
+  "authorizeIntermediateServiceProvider": true,
+  "specificUseNotRecordedOnCaf": false,
+  "retainPriorAuthorizations": false,
+  "signature": {
+   "printName": "Paula Kellerman Vance",
+   "title": "Successor Trustee",
+   "date": "2026-07-09"
+  },
+  "irsUseOnly": null
+ },
+ "formSS4": {
+  "isLlc": false,
+  "llcMemberCount": null,
+  "llcOrganizedInUs": null,
+  "entityType": "Trust",
+  "entityTypeQualifier": "903-56-8172",
+  "groupExemptionNumber": null,
+  "incorporationState": null,
+  "incorporationForeignCountry": null,
+  "reasonForApplying": "CreatedATrust",
+  "reasonSpecify": "Irrevocable at the grantor's death \u2014 revocable living trust",
+  "businessStartOrAcquiredDate": "2026-06-16",
+  "closingMonthOfAccountingYear": "December",
+  "expectedEmployees": {
+   "agricultural": 0,
+   "household": 0,
+   "other": 0
+  },
+  "electForm944": false,
+  "firstWagesPaidDate": null,
+  "principalActivity": "Other",
+  "principalActivityOther": "Trust administration",
+  "principalLineOfMerchandiseOrServices": "Administration and distribution of a decedent's revocable living trust. No trade or business activity.",
+  "hasEverAppliedForEin": false,
+  "previousEin": null,
+  "thirdPartyDesignee": {
+   "name": "Vision Financial Management",
+   "address": {
+    "line1": "1400 Superior Ave E",
+    "line2": "Suite 900",
+    "city": "Cleveland",
+    "county": "Cuyahoga",
+    "state": "OH",
+    "zip": "44114",
+    "country": "USA",
+    "isPoBox": false
+   },
+   "phone": {
+    "number": "(216) 555-0121",
+    "countryCode": "+1",
+    "type": "Work",
+    "primary": true
+   },
+   "faxNumber": "(216) 555-0122"
+  },
+  "applicant": {
+   "nameAndTitle": "Paula Kellerman Vance, Successor Trustee",
+   "phone": {
+    "number": "(972) 555-0146",
+    "countryCode": "+1",
+    "type": "Mobile",
+    "primary": true
+   },
+   "faxNumber": null,
+   "signatureDate": "2026-07-09"
+  }
+ },
+ "formDL142": {
+  "applicable": false,
+  "notApplicableReason": "The decedent held an Ohio driver licence. DL 142 is a California Department of Motor Vehicles form and cannot be used to cancel an out-of-state licence; the Ohio BMV equivalent is required. The licence data is carried here so the sibling state form can be driven from the same record.",
+  "documentHolderName": "Rosalind Kellerman",
+  "documentHolderAddress": {
+   "line1": "612 Lakeshore Drive",
+   "line2": null,
+   "city": "Bay Village",
+   "county": "Cuyahoga",
+   "state": "OH",
+   "zip": "44140",
+   "country": "USA",
+   "isPoBox": false
+  },
+  "documentNumber": "RT418205",
+  "documentType": "DriverLicense",
+  "dateOfBirth": "1944-11-08",
+  "locationOfLicense": "LostOrDestroyed",
+  "locationOfLicenseOtherExplanation": null,
+  "reasonForCancellation": "Licence holder is deceased. Date of death 06/16/2026.",
+  "minorSection": null,
+  "completedBy": {
+   "printedName": "Paula Kellerman Vance",
+   "address": {
+    "line1": "3308 Elder Crossing",
+    "line2": null,
+    "city": "Coppell",
+    "county": "Dallas",
+    "state": "TX",
+    "zip": "75019",
+    "country": "USA",
+    "isPoBox": false
+   },
+   "signatureDate": null
+  },
+  "dmvUseOnly": null
+ },
+ "relatedParties": [
+  {
+   "name": {
+    "first": "Gregory",
+    "middle": null,
+    "last": "Kellerman",
+    "suffix": null,
+    "full": "Gregory Kellerman"
+   },
+   "roles": [
+    "BENEFICIARY",
+    "HEIR",
+    "FAMILY_MEMBER"
+   ],
+   "contactType": "Individual",
+   "organizationName": null,
+   "isAttorneyOfRecord": false,
+   "isDeceased": false,
+   "dateOfBirth": "1973-01-21",
+   "ssn": null,
+   "sex": "MALE",
+   "citizenship": null,
+   "email": null,
+   "phone": null,
+   "address": null,
+   "identifications": []
+  },
+  {
+   "name": {
+    "first": "Alison",
+    "middle": null,
+    "last": "Kellerman",
+    "suffix": null,
+    "full": "Alison Kellerman"
+   },
+   "roles": [
+    "BENEFICIARY",
+    "HEIR",
+    "FAMILY_MEMBER"
+   ],
+   "contactType": "Individual",
+   "organizationName": null,
+   "isAttorneyOfRecord": false,
+   "isDeceased": false,
+   "dateOfBirth": "1974-02-20",
+   "ssn": null,
+   "sex": "FEMALE",
+   "citizenship": null,
+   "email": null,
+   "phone": null,
+   "address": null,
+   "identifications": []
+  }
+ ],
+ "assets": [
+  {
+   "category": "RealEstate",
+   "subcategory": "PrimaryResidence",
+   "count": 1,
+   "totalEstimatedValue": 1793300.0,
+   "totalDateOfDeathValue": null,
+   "institutions": []
+  },
+  {
+   "category": "BankAccount",
+   "subcategory": "Checking",
+   "count": 3,
+   "totalEstimatedValue": 173385.06,
+   "totalDateOfDeathValue": null,
+   "institutions": [
+    "Fifth Third Bank",
+    "PNC Bank"
+   ]
+  },
+  {
+   "category": "Vehicle",
+   "subcategory": "Car",
+   "count": 1,
+   "totalEstimatedValue": 9000.0,
+   "totalDateOfDeathValue": null,
+   "institutions": []
+  },
+  {
+   "category": "Investment",
+   "subcategory": "Brokerage",
+   "count": 2,
+   "totalEstimatedValue": 500.98,
+   "totalDateOfDeathValue": null,
+   "institutions": [
+    "LPL Financial",
+    "TIAA"
+   ]
+  },
+  {
+   "category": "Investment",
+   "subcategory": "Other",
+   "count": 1,
+   "totalEstimatedValue": null,
+   "totalDateOfDeathValue": null,
+   "institutions": [
+    "Vision Financial Management"
+   ]
+  },
+  {
+   "category": "PersonalProperty",
+   "subcategory": null,
+   "count": 1,
+   "totalEstimatedValue": 203.93,
+   "totalDateOfDeathValue": null,
+   "institutions": []
+  },
+  {
+   "category": "UnclaimedProperty",
+   "subcategory": null,
+   "count": 6,
+   "totalEstimatedValue": 140.0,
+   "totalDateOfDeathValue": null,
+   "institutions": []
+  }
+ ],
+ "provenance": {
+  "sourceEstateScanBoxId": "000001ef",
+  "authorityTypeInSource": "Trust",
+  "anonymizationMethod": "Structure-preserving synthesis. Only shape data left the production database: presence flags, enum values, dates, city/county/state/ZIP, and character-class patterns for identifiers. Names, street lines, emails, phone numbers and all identifier digits were generated fresh against those patterns.",
+  "dateJitterDays": 51,
+  "fieldsSynthesized": [
+   "all personal names",
+   "trust name",
+   "all street address line1 values (generated to match the source character-class pattern)",
+   "all email addresses",
+   "all phone numbers",
+   "SSNs (900-block, never issued by SSA)",
+   "driver licence numbers",
+   "CAF number",
+   "PTIN",
+   "designee firm address"
+  ],
+  "fieldsPreservedFromSource": [
+   "date intervals (all dates shifted by a single constant offset)",
+   "city / county / state / ZIP",
+   "sex, marital status, citizenship, veteran status",
+   "identification document type",
+   "identifier character-class patterns",
+   "authority type and administration path",
+   "proceeding status",
+   "asset category / subcategory / count / value",
+   "institution names",
+   "debt count (9)"
+  ],
+  "notes": "The successor trustee's licence pattern in the source record is 'A999-999-99-999-9' \u2014 a Florida-format licence held by a Texas-resident fiduciary. The pattern is preserved verbatim rather than normalised to Texas, because that mismatch is real data and an auto-fill needs to survive it. Vision Financial Management appears in the source as an asset institution and is reused here as the professional designee, which is why it carries a CAF number and PTIN the source does not store."
+ }
+}
+
+Each binding object:
+{
+  "qualifiedName": "<must be a calibrated field's qualifiedName, verbatim>",
+  "itemNumber": <copy from calibration>,
+  "label": <copy from calibration>,
+  "source": <one of the five kinds below>,
+  "format": "text" | "date" | "checkbox",
+  "required": true|false,
+  "confidence": "high" | "medium" | "low",
+  "note": <string or null>,
+  "when": <optional guard, see below, or omit>
+}
+
+The six source kinds — NOTHING else is executable:
+  {"kind": "path", "path": "<estate JSON path>"}                      direct value
+  {"kind": "constant", "value": <literal>}                            never varies
+  {"kind": "template", "pattern": "{0}, {1}", "paths": [<p0>, <p1>]}  joined values
+  {"kind": "condition", "path": <p>, "equals": <literal>}             checkbox: mark iff equal
+  {"kind": "contains", "path": <p>, "includes": <literal>}            checkbox: mark iff the
+                                                                      ARRAY at <p> contains it
+  {"kind": "absent", "path": <p>}                                     checkbox: mark iff absent/null
+
+CHOOSE BETWEEN condition AND contains BY THE SHAPE OF THE DATA, and look it up in the
+estate record below — do not guess. If the path holds an array (a "check all that
+apply" group: taxMatters.taxTypes, taxMatters.federalFormNumbers), you MUST use
+`contains`; `condition` compares with == and is never true against a list, which
+silently produces a checkbox that can never be marked on any estate. If the path
+holds a scalar, use `condition`. Likewise a `when` guard only ever compares scalars.
+
+The literal in `equals`/`includes` must be copied from a value you can SEE in the
+estate record. If the option has no corresponding value anywhere in the record (a
+tax type this estate does not have), you cannot know the enum spelling — bind it
+anyway with your best reading of the convention, set "confidence": "low", and say in
+"note" that the literal is unverified. Do not silently present a guessed enum
+spelling as high confidence.
+
+Optional guard on ANY binding, either shape:
+  "when": {"path": <p>, "equals": <literal>}          applies iff the path equals it
+  "when": {"path": <p>, "equalsAny": [<l1>, <l2>, …]}  applies iff the path is one of them
+Use it for conditional value placement. Form 56 line 2a takes the date of death on the
+1a/1b/1d branch and line 2b the date of appointment on the 1c/1e/1f/1g branch — those
+are THREE and FOUR authority values respectively, so they need equalsAny, not equals.
+A single-literal guard there silently blanks the date on every other branch.
+
+"format": "date" reformats ISO dates (2026-01-23) to MM/DD/YYYY. Checkbox bindings use
+"format": "checkbox".
+
+Rules:
+- Prefer generic estate paths (decedent.*, fiduciary.*, authority.*, estateEntity.*) over
+  the per-form block where both hold the same value; use the form-specific block
+  (form56.*) for answers only that form asks.
+- UNKNOWN IS NOT FALSE. A field with no supporting estate data goes in "unbound":
+  {"qualifiedName": ..., "label": ..., "reason": ..., "whatWouldFillIt": ...}.
+  Never invent a value. Never bind a guess.
+- Mutually exclusive checkbox sets go in "exclusiveGroups":
+  {"label": ..., "rule": "exactlyOne"|"atMostOne", "members": [qualifiedNames], "when": null}
+  Use exactlyOne when the form demands a choice; atMostOne inside sections that may not
+  apply to a given estate.
+- Do not bind pushbuttons (Print/Clear).
+
+Revise the binding to address every finding. Keep everything that is correct. If a
+finding cannot be fixed with the five source kinds plus when-guards, move that field
+to "unbound" with an explanation — never approximate.
+Answer with ONLY a JSON object: {"bindings": [...], "unbound": [...], "exclusiveGroups": [...]}
+Your ENTIRE reply must be that JSON object and nothing else — no prose, no
+explanation. Do not attempt to read or edit any file; a non-JSON reply is
+discarded unread.

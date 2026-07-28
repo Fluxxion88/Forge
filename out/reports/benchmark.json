@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-28T03:58:14Z",
+  "generatedAt": "2026-07-28T05:52:06Z",
   "denominators": {
     "totalFieldsAcrossForms": 272,
     "fieldsWithNoSemanticHint": "~220",
@@ -26,7 +26,10 @@
       "loopSeconds": 532.8,
       "loopModelCalls": 4
     },
-    "irs-ss4": {}
+    "irs-ss4": {
+      "calibrationModelCalls": 1,
+      "fields": 89
+    }
   },
   "rows": [
     {
@@ -34,7 +37,16 @@
       "formId": "irs-f56",
       "applicable": true,
       "skipReason": null,
-      "status": "not compiled (no approved binding)"
+      "status": "filled",
+      "bindingVersion": 3,
+      "fieldsBound": 67,
+      "fieldsUnbound": 5,
+      "fieldsFilled": 32,
+      "fieldsEmptyReported": 40,
+      "groupViolations": [],
+      "fillMs": 41,
+      "llmCallsAtRuntime": 0,
+      "pdf": "out/fills/estate-01-nj-ancillary-probate-irs-f56.pdf"
     },
     {
       "estateId": "estate-01-nj-ancillary-probate",
@@ -60,7 +72,16 @@
       "formId": "irs-f56",
       "applicable": true,
       "skipReason": null,
-      "status": "not compiled (no approved binding)"
+      "status": "filled",
+      "bindingVersion": 3,
+      "fieldsBound": 67,
+      "fieldsUnbound": 5,
+      "fieldsFilled": 28,
+      "fieldsEmptyReported": 44,
+      "groupViolations": [],
+      "fillMs": 41,
+      "llmCallsAtRuntime": 0,
+      "pdf": "out/fills/estate-02-ca-intestate-independent-admin-irs-f56.pdf"
     },
     {
       "estateId": "estate-02-ca-intestate-independent-admin",
@@ -88,7 +109,16 @@
       "formId": "irs-f56",
       "applicable": true,
       "skipReason": null,
-      "status": "not compiled (no approved binding)"
+      "status": "filled",
+      "bindingVersion": 3,
+      "fieldsBound": 67,
+      "fieldsUnbound": 5,
+      "fieldsFilled": 27,
+      "fieldsEmptyReported": 45,
+      "groupViolations": [],
+      "fillMs": 39,
+      "llmCallsAtRuntime": 0,
+      "pdf": "out/fills/estate-03-oh-trust-administration-irs-f56.pdf"
     },
     {
       "estateId": "estate-03-oh-trust-administration",
@@ -115,7 +145,16 @@
       "formId": "irs-f56",
       "applicable": true,
       "skipReason": null,
-      "status": "not compiled (no approved binding)"
+      "status": "filled",
+      "bindingVersion": 3,
+      "fieldsBound": 67,
+      "fieldsUnbound": 5,
+      "fieldsFilled": 25,
+      "fieldsEmptyReported": 47,
+      "groupViolations": [],
+      "fillMs": 39,
+      "llmCallsAtRuntime": 0,
+      "pdf": "out/fills/estate-04-ca-trust-and-estate-irs-f56.pdf"
     },
     {
       "estateId": "estate-04-ca-trust-and-estate",
@@ -142,7 +181,16 @@
       "formId": "irs-f56",
       "applicable": true,
       "skipReason": null,
-      "status": "not compiled (no approved binding)"
+      "status": "filled",
+      "bindingVersion": 3,
+      "fieldsBound": 67,
+      "fieldsUnbound": 5,
+      "fieldsFilled": 32,
+      "fieldsEmptyReported": 40,
+      "groupViolations": [],
+      "fillMs": 40,
+      "llmCallsAtRuntime": 0,
+      "pdf": "out/fills/estate-05-in-formal-probate-irs-f56.pdf"
     },
     {
       "estateId": "estate-05-in-formal-probate",

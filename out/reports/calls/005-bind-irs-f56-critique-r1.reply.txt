@@ -1,0 +1,18 @@
+I reviewed both rendered pages against the calibration and the verified estate facts.
+
+```json
+[
+  {
+    "target": "item 4",
+    "problem": "None of the federal tax form checkboxes (4a-4h) are checked, but taxMatters.authorizationRows[0].taxFormNumber = '1040' clearly indicates item 4e ('1040 or 1040-SR') should be checked.",
+    "mustFix": true
+  },
+  {
+    "target": "Room or suite no. (Part III, court address)",
+    "problem": "Filled with 'W-122' but no estate fact provides a suite/room number for authority.proceeding.courtAddress — this value has no traceable source and appears fabricated.",
+    "mustFix": true
+  }
+]
+```
+
+Everything else checks out: identification block, decedent/fiduciary names and addresses, SSN/EIN, 1a checkbox and date of death, 5a/5b, and all of Part III/IV on page 1 (court name, docket number, address, title) correctly match the estate facts, use MM/DD/YYYY formatting, and correctly-empty boxes (2b–2d, 6a–8, hearing date/time) match the deliberately-empty list with no supporting data being ignored.

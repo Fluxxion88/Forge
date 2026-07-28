@@ -248,14 +248,32 @@ def _estate_summary(estate: EstateData, form_id: str | None = None) -> str:
     return "\n".join(lines)
 
 
-def run_loop(form_id: str, estate_id: str, from_draft: bool = False) -> int:
+def run_loop(
+    form_id: str,
+    estate_id: str,
+    from_draft: bool = False,
+    max_rounds: int = MAX_ROUNDS,
+    label: str | None = None,
+    naive: bool = False,
+) -> int:
+    """`label` isolates a run's outputs: renders under out/renders/<form>/<label>/, the
+    draft written to out/reports/<form>-<label>.draft.json instead of
+    artifacts/bindings/<form>.json. A labelled run therefore cannot clobber the draft a
+    human is reviewing, nor anything under artifacts/approved/ (which is read-only in
+    any case). `naive` strips the accumulated hard-won guidance from the propose prompt
+    so the loop has something real to correct — the point of keeping the history."""
     form = get_form(form_id)
     cal = bind.load_calibration(form_id)
     estate = EstateData.load(estate_path(estate_id))
     estate_json = json.dumps(estate.data, indent=1)
     # a from-draft stress run keeps its own renders and report; the original
     # loop history is part of the demo and must never be overwritten
-    render_dir = RENDERS_DIR / form_id / estate_id if from_draft else RENDERS_DIR / form_id
+    if label:
+        render_dir = RENDERS_DIR / form_id / label
+    elif from_draft:
+        render_dir = RENDERS_DIR / form_id / estate_id
+    else:
+        render_dir = RENDERS_DIR / form_id
     render_dir.mkdir(parents=True, exist_ok=True)
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
     progress = _Progress()
@@ -277,7 +295,7 @@ def run_loop(form_id: str, estate_id: str, from_draft: bool = False) -> int:
         print(f"[propose] drafting binding for {form_id} against {estate_id}", flush=True)
         proposal = progress.call_with_retry(
             "propose", len(cal["fields"]),
-            lambda: bind.propose(form_id, cal, estate_json, estate_id),
+            lambda: bind.propose(form_id, cal, estate_json, estate_id, naive=naive),
             attempts=1,  # a whole-form timeout repeats; fall back to pages fast
         )
         if proposal is None:
@@ -290,7 +308,7 @@ def run_loop(form_id: str, estate_id: str, from_draft: bool = False) -> int:
                 part = progress.call_with_retry(
                     f"propose page {page}", n,
                     lambda page=page: bind.propose_one_page(
-                        form_id, cal, page, estate_json, estate_id
+                        form_id, cal, page, estate_json, estate_id, naive=naive
                     ),
                 )
                 if part:
@@ -307,7 +325,7 @@ def run_loop(form_id: str, estate_id: str, from_draft: bool = False) -> int:
     rounds_used = 0
     converged = False
 
-    for round_no in range(1, MAX_ROUNDS + 1):
+    for round_no in range(1, max_rounds + 1):
         rounds_used = round_no
         round_pdf = render_dir / f"round-{round_no}.pdf"
         result = fill_pdf(artifact, estate, form.path, round_pdf)
@@ -366,7 +384,7 @@ def run_loop(form_id: str, estate_id: str, from_draft: bool = False) -> int:
             break
         prev_findings_key = findings_key
 
-        if round_no == MAX_ROUNDS:
+        if round_no == max_rounds:
             break
 
         revised = _repair(form_id, round_no, artifact, findings, estate_json, progress)
@@ -377,7 +395,13 @@ def run_loop(form_id: str, estate_id: str, from_draft: bool = False) -> int:
         history[-1]["diffFromPreviousRound"] = _diff(artifact, new_body)
         artifact = bind.make_artifact(form_id, cal, new_body)
 
-    draft_path = bind.write_draft(artifact)
+    if label:
+        # a labelled run is demo history, not a candidate for approval
+        out = REPORTS_DIR / f"{form_id}-{label}.draft.json"
+        out.write_text(json.dumps(artifact, indent=2) + "\n", encoding="utf-8")
+        draft_path = rel(out)
+    else:
+        draft_path = bind.write_draft(artifact)
     report = {
         "formId": form_id,
         "estateId": estate_id,
@@ -389,7 +413,8 @@ def run_loop(form_id: str, estate_id: str, from_draft: bool = False) -> int:
         "history": history,
     }
     report_path = REPORTS_DIR / (
-        f"{form_id}-loop.{estate_id}.json" if from_draft else f"{form_id}-loop.json"
+        f"{form_id}-loop.{label}.json" if label
+        else (f"{form_id}-loop.{estate_id}.json" if from_draft else f"{form_id}-loop.json")
     )
     report_path.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
 

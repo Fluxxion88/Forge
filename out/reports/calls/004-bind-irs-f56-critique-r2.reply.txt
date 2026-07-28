@@ -1,0 +1,9 @@
+```json
+[
+  {
+    "target": "item 4f (1041)",
+    "problem": "The '1041' checkbox is checked but the only verified tax form number is '1040', which is already reflected by the checked 4e (1040 or 1040-SR) box; 4f has no supporting data and should not be checked.",
+    "mustFix": true
+  }
+]
+```

@@ -1,6 +1,1 @@
-Two genuine problems found on this filled `irs-f56` (round 1):
-
-1. **Item 4e ("1040 or 1040-SR")** left unchecked, even though `taxMatters.authorizationRows[0].taxFormNumber = '1040'` is exactly the data that box asks for.
-2. **Part III "Room or suite no." (court address)** contains `W-122` — a value with no source in the verified estate facts (`authority.proceeding.courtAddress` only supplies line1/city/state/zip). This looks invented rather than derived from data.
-
-Everything else — identification block, authority checkbox 1a, dates (MM/DD/YYYY format), docket number, EIN/SSN placement, signature title, and the deliberately-empty boxes — matches the printed captions and the verified facts correctly.
+Findings reported: 3 confirmed issues on the round-1 IRS Form 56 fill — item 4e (1040 form) not checked despite matching data, an unsupported tax-year restriction in 5a/5b, and a fabricated court suite number "W-122" on page 2.

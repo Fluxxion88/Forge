@@ -1,0 +1,12 @@
+[call 1] propose page 0 (attempt 1) (49 field(s)) — prev call took n/a
+[call 2] propose page 1 (attempt 1) (23 field(s)) — prev call took 146.9s
+  validation: duplicate binding for topmostSubform[0].Page1[0].f1_19[0] dropped
+  validation: duplicate binding for topmostSubform[0].Page1[0].f1_19[0] dropped
+  validation: duplicate binding for topmostSubform[0].Page1[0].f1_20[0] dropped
+  validation: duplicate binding for topmostSubform[0].Page1[0].f1_20[0] dropped
+  validation: duplicate binding for topmostSubform[0].Page1[0].f1_20[0] dropped
+wrote artifacts/bindings/irs-f56.json
+wrote out/renders/irs-f56/draft.pdf
+wrote out/renders/irs-f56/draft-page-0.png
+wrote out/renders/irs-f56/draft-page-1.png
+67 bound, 5 unbound, 28 filled for estate-05-in-formal-probate, 7 guarded-off, 402.0s, 2 model call(s)

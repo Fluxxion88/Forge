@@ -1,0 +1,644 @@
+You are compiling a reusable form-filler for government form irs-ss4
+(inputs/forms/Form SS-4 Dec 2025.pdf). Map estate-data JSON paths onto the form's fields.
+
+The calibrated fields (name, type, page, printed item number, caption, meaning):
+topmostSubform[0].Page1[0].PgHeader[0].f1_1[0]  text  page=0  item=None  label='EIN'  meaning='The employer identification number box (blank on the application; filled in once the IRS assigns one).'  maxLen=10
+topmostSubform[0].Page1[0].f1_2[0]  text  page=0  item=1  label='Legal name of entity (or individual) for whom the EIN is being requested'  meaning='The legal name of the entity or individual applying for the EIN.'
+topmostSubform[0].Page1[0].f1_3[0]  text  page=0  item=2  label='Trade name of business (if different from name on line 1)'  meaning='The trade name (DBA) of the business, if different from the legal name.'
+topmostSubform[0].Page1[0].f1_4[0]  text  page=0  item=3  label='Executor, administrator, trustee, "care of" name'  meaning="The name of the executor, administrator, trustee, or other 'care of' party."
+topmostSubform[0].Page1[0].Line4ReadOrder[0].f1_5[0]  text  page=0  item=4a  label='Mailing address (room, apt., suite no. and street, or P.O. box)'  meaning='The mailing address street line for the entity.'
+topmostSubform[0].Page1[0].Line4ReadOrder[0].f1_6[0]  text  page=0  item=4b  label='City, state, and ZIP code (if foreign, see instructions)'  meaning='The city, state, and ZIP code of the mailing address.'
+topmostSubform[0].Page1[0].f1_7[0]  text  page=0  item=5a  label="Street address (if different) (Don't enter a P.O. box.)"  meaning='The physical street address, if different from the mailing address.'
+topmostSubform[0].Page1[0].f1_8[0]  text  page=0  item=5b  label='City, state, and ZIP code (if foreign, see instructions)'  meaning='The city, state, and ZIP code of the physical street address.'
+topmostSubform[0].Page1[0].f1_9[0]  text  page=0  item=6  label='County and state where principal business is located'  meaning="The county and state of the entity's principal place of business."
+topmostSubform[0].Page1[0].f1_10[0]  text  page=0  item=7a  label='Name of responsible party'  meaning='The name of the responsible party for the entity.'
+topmostSubform[0].Page1[0].f1_11[0]  text  page=0  item=7b  label='SSN, ITIN, or EIN'  meaning="The responsible party's SSN, ITIN, or EIN."  maxLen=11
+topmostSubform[0].Page1[0].c1_1[0]  button  page=0  item=8a  label='Is this application for a limited liability company (LLC) (or a foreign equivalent)? — Yes'  meaning='Check to indicate the applicant is an LLC or foreign equivalent.'  onValue=/1
+topmostSubform[0].Page1[0].c1_1[1]  button  page=0  item=8a  label='Is this application for a limited liability company (LLC) (or a foreign equivalent)? — No'  meaning='Check to indicate the applicant is not an LLC.'  onValue=/2
+topmostSubform[0].Page1[0].f1_12[0]  text  page=0  item=8b  label='If 8a is "Yes," enter the number of LLC members'  meaning='The number of members in the LLC.'
+topmostSubform[0].Page1[0].c1_2[0]  button  page=0  item=8c  label='If 8a is "Yes," was the LLC organized in the United States? — Yes'  meaning='Check if the LLC was organized in the United States.'  onValue=/1
+topmostSubform[0].Page1[0].c1_2[1]  button  page=0  item=8c  label='If 8a is "Yes," was the LLC organized in the United States? — No'  meaning='Check if the LLC was not organized in the United States.'  onValue=/2
+topmostSubform[0].Page1[0].c1_3[0]  button  page=0  item=9a  label='Sole proprietor (SSN)'  meaning='Check if the entity type is a sole proprietorship.'  onValue=/1
+topmostSubform[0].Page1[0].f1_13[0]  text  page=0  item=9a  label='Sole proprietor (SSN)'  meaning='The SSN of the sole proprietor.'  maxLen=11
+topmostSubform[0].Page1[0].c1_3[1]  button  page=0  item=9a  label='Estate (SSN of decedent)'  meaning='Check if the entity type is an estate.'  onValue=/8
+topmostSubform[0].Page1[0].f1_14[0]  text  page=0  item=9a  label='Estate (SSN of decedent)'  meaning='The SSN of the decedent for an estate entity.'  maxLen=11
+topmostSubform[0].Page1[0].c1_3[2]  button  page=0  item=9a  label='Partnership'  meaning='Check if the entity type is a partnership.'  onValue=/2
+topmostSubform[0].Page1[0].c1_3[3]  button  page=0  item=9a  label='Plan administrator (TIN)'  meaning='Check if the entity type is a plan administrator.'  onValue=/9
+topmostSubform[0].Page1[0].f1_15[0]  text  page=0  item=9a  label='Plan administrator (TIN)'  meaning='The TIN of the plan administrator.'  maxLen=11
+topmostSubform[0].Page1[0].c1_3[4]  button  page=0  item=9a  label='Corporation (enter form number to be filed)'  meaning='Check if the entity type is a corporation.'  onValue=/3
+topmostSubform[0].Page1[0].f1_16[0]  text  page=0  item=9a  label='Corporation (enter form number to be filed)'  meaning='The tax form number the corporation will file (e.g. 1120, 1120S).'
+topmostSubform[0].Page1[0].c1_3[5]  button  page=0  item=9a  label='Trust (TIN of grantor)'  meaning='Check if the entity type is a trust.'  onValue=/10
+topmostSubform[0].Page1[0].f1_17[0]  text  page=0  item=9a  label='Trust (TIN of grantor)'  meaning="The TIN of the trust's grantor."  maxLen=11
+topmostSubform[0].Page1[0].c1_3[6]  button  page=0  item=9a  label='Personal service corporation'  meaning='Check if the entity type is a personal service corporation.'  onValue=/4
+topmostSubform[0].Page1[0].c1_3[7]  button  page=0  item=9a  label='Military/National Guard'  meaning='Check if the entity type is Military/National Guard.'  onValue=/11
+topmostSubform[0].Page1[0].c1_3[8]  button  page=0  item=9a  label='State/local government'  meaning='Check if the entity type is a state/local government.'  onValue=/14
+topmostSubform[0].Page1[0].c1_3[9]  button  page=0  item=9a  label='Church or church-controlled organization'  meaning='Check if the entity type is a church or church-controlled organization.'  onValue=/5
+topmostSubform[0].Page1[0].c1_3[10]  button  page=0  item=9a  label="Farmers' cooperative"  meaning="Check if the entity type is a farmers' cooperative."  onValue=/12
+topmostSubform[0].Page1[0].c1_3[11]  button  page=0  item=9a  label='Federal government'  meaning='Check if the entity type is the federal government.'  onValue=/15
+topmostSubform[0].Page1[0].c1_3[12]  button  page=0  item=9a  label='Other nonprofit organization (specify)'  meaning='Check if the entity type is another nonprofit organization.'  onValue=/6
+topmostSubform[0].Page1[0].f1_18[0]  text  page=0  item=9a  label='Other nonprofit organization (specify)'  meaning='The specific type of nonprofit organization.'
+topmostSubform[0].Page1[0].c1_3[13]  button  page=0  item=9a  label='REMIC'  meaning='Check if the entity type is a REMIC.'  onValue=/13
+topmostSubform[0].Page1[0].c1_3[14]  button  page=0  item=9a  label='Indian tribal governments/enterprises'  meaning='Check if the entity type is an Indian tribal government or enterprise.'  onValue=/16
+topmostSubform[0].Page1[0].c1_3[15]  button  page=0  item=9a  label='Other (specify)'  meaning='Check if the entity type is something else not listed above.'  onValue=/7
+topmostSubform[0].Page1[0].f1_19[0]  text  page=0  item=9a  label='Other (specify)'  meaning='The description of the other entity type.'
+topmostSubform[0].Page1[0].f1_20[0]  text  page=0  item=9a  label='Group Exemption Number (GEN) if any'  meaning='The group exemption number, if applicable.'
+topmostSubform[0].Page1[0].f1_21[0]  text  page=0  item=9b  label='If a corporation, name the state or foreign country (if applicable) where incorporated — State'  meaning='The U.S. state where the corporation was incorporated.'
+topmostSubform[0].Page1[0].f1_22[0]  text  page=0  item=9b  label='If a corporation, name the state or foreign country (if applicable) where incorporated — Foreign country'  meaning='The foreign country where the corporation was incorporated, if applicable.'
+topmostSubform[0].Page1[0].c1_4[0]  button  page=0  item=10  label='Started new business (specify type)'  meaning='Check if the reason for applying is starting a new business.'  onValue=/1
+topmostSubform[0].Page1[0].f1_25[0]  text  page=0  item=10  label='Started new business (specify type)'  meaning='The type of new business being started.'
+topmostSubform[0].Page1[0].f1_26[0]  text  page=0  item=10  label='Started new business (specify type) — continuation line'  meaning='Overflow line for describing the new business type when the first line is not enough space.'
+topmostSubform[0].Page1[0].c1_4[1]  button  page=0  item=10  label='Changed type of organization (specify new type)'  meaning='Check if the reason for applying is a change in organization type.'  onValue=/6
+topmostSubform[0].Page1[0].f1_27[0]  text  page=0  item=10  label='Changed type of organization (specify new type)'  meaning='The new type of organization after the change.'
+topmostSubform[0].Page1[0].c1_4[2]  button  page=0  item=10  label='Purchased going business'  meaning='Check if the reason for applying is purchasing an existing business.'  onValue=/7
+topmostSubform[0].Page1[0].c1_4[3]  button  page=0  item=10  label='Hired employees (Check the box and see line 13.)'  meaning='Check if the reason for applying is hiring employees.'  onValue=/2
+topmostSubform[0].Page1[0].c1_4[4]  button  page=0  item=10  label='Created a trust (specify type)'  meaning='Check if the reason for applying is creating a trust.'  onValue=/8
+topmostSubform[0].Page1[0].f1_28[0]  text  page=0  item=10  label='Created a trust (specify type)'  meaning='The type of trust created.'
+topmostSubform[0].Page1[0].c1_4[5]  button  page=0  item=10  label='Compliance with IRS withholding regulations'  meaning='Check if the reason for applying is compliance with IRS withholding regulations.'  onValue=/3
+topmostSubform[0].Page1[0].c1_4[6]  button  page=0  item=10  label='Created a pension plan (specify type)'  meaning='Check if the reason for applying is creating a pension plan.'  onValue=/9
+topmostSubform[0].Page1[0].f1_29[0]  text  page=0  item=10  label='Created a pension plan (specify type)'  meaning='The type of pension plan created.'
+topmostSubform[0].Page1[0].c1_4[7]  button  page=0  item=10  label='Other (specify)'  meaning='Check if the reason for applying is something else not listed.'  onValue=/4
+topmostSubform[0].Page1[0].c1_4[8]  button  page=0  item=10  label='Banking purpose (specify purpose)'  meaning='Check if the reason for applying is a banking purpose.'  onValue=/5
+topmostSubform[0].Page1[0].f1_24[0]  text  page=0  item=10  label='Banking purpose (specify purpose)'  meaning='The specific banking purpose for applying.'
+topmostSubform[0].Page1[0].f1_30[0]  text  page=0  item=10  label='Other (specify)'  meaning='The description of the other reason for applying.'
+topmostSubform[0].Page1[0].f1_31[0]  text  page=0  item=11  label='Date business started or acquired (month, day, year). See instructions.'  meaning='The date the business was started or acquired.'
+topmostSubform[0].Page1[0].f1_32[0]  text  page=0  item=12  label='Closing month of accounting year'  meaning="The last month of the entity's accounting/fiscal year."
+topmostSubform[0].Page1[0].f1_33[0]  text  page=0  item=13  label='Agricultural'  meaning='Highest number of agricultural employees expected in the next 12 months.'
+topmostSubform[0].Page1[0].f1_34[0]  text  page=0  item=13  label='Household'  meaning='Highest number of household employees expected in the next 12 months.'
+topmostSubform[0].Page1[0].f1_35[0]  text  page=0  item=13  label='Other'  meaning='Highest number of other employees expected in the next 12 months.'
+topmostSubform[0].Page1[0].c1_5[0]  button  page=0  item=14  label='If you expect your employment tax liability to be $1,000 or less ... check here'  meaning='Check to elect to file Form 944 annually instead of Form 941 quarterly.'  onValue=/1
+topmostSubform[0].Page1[0].f1_36[0]  text  page=0  item=15  label='First date wages or annuities were paid (month, day, year).'  meaning='The date wages or annuities were first paid, or income first paid to a nonresident alien.'
+topmostSubform[0].Page1[0].c1_6[0]  button  page=0  item=16  label='Health care & social assistance'  meaning='Check if this describes the principal activity of the business.'  onValue=/7
+topmostSubform[0].Page1[0].c1_6[1]  button  page=0  item=16  label='Wholesale—agent/broker'  meaning='Check if this describes the principal activity of the business.'  onValue=/10
+topmostSubform[0].Page1[0].c1_6[2]  button  page=0  item=16  label='Construction'  meaning='Check if this describes the principal activity of the business.'  onValue=/1
+topmostSubform[0].Page1[0].c1_6[3]  button  page=0  item=16  label='Rental & leasing'  meaning='Check if this describes the principal activity of the business.'  onValue=/3
+topmostSubform[0].Page1[0].c1_6[4]  button  page=0  item=16  label='Transportation & warehousing'  meaning='Check if this describes the principal activity of the business.'  onValue=/5
+topmostSubform[0].Page1[0].c1_6[5]  button  page=0  item=16  label='Accommodation & food service'  meaning='Check if this describes the principal activity of the business.'  onValue=/8
+topmostSubform[0].Page1[0].c1_6[6]  button  page=0  item=16  label='Wholesale—other'  meaning='Check if this describes the principal activity of the business.'  onValue=/11
+topmostSubform[0].Page1[0].c1_6[7]  button  page=0  item=16  label='Retail'  meaning='Check if this describes the principal activity of the business.'  onValue=/12
+topmostSubform[0].Page1[0].c1_6[8]  button  page=0  item=16  label='Real estate'  meaning='Check if this describes the principal activity of the business.'  onValue=/2
+topmostSubform[0].Page1[0].c1_6[9]  button  page=0  item=16  label='Manufacturing'  meaning='Check if this describes the principal activity of the business.'  onValue=/4
+topmostSubform[0].Page1[0].c1_6[10]  button  page=0  item=16  label='Finance & insurance'  meaning='Check if this describes the principal activity of the business.'  onValue=/6
+topmostSubform[0].Page1[0].c1_6[11]  button  page=0  item=16  label='Other (specify)'  meaning='Check if the principal activity is something else not listed.'  onValue=/9
+topmostSubform[0].Page1[0].f1_37[0]  text  page=0  item=16  label='Other (specify)'  meaning='The description of the other principal business activity.'
+topmostSubform[0].Page1[0].f1_38[0]  text  page=0  item=17  label='Indicate principal line of merchandise sold, specific construction work done, products produced, or services provided.'  meaning='A description of the principal goods or services of the business.'
+topmostSubform[0].Page1[0].c1_7[0]  button  page=0  item=18  label='Has the applicant entity shown on line 1 ever applied for and received an EIN? — Yes'  meaning='Check if the entity has previously received an EIN.'  onValue=/1
+topmostSubform[0].Page1[0].c1_7[1]  button  page=0  item=18  label='Has the applicant entity shown on line 1 ever applied for and received an EIN? — No'  meaning='Check if the entity has never previously received an EIN.'  onValue=/2
+topmostSubform[0].Page1[0].f1_39[0]  text  page=0  item=18  label='If "Yes," write previous EIN here'  meaning="The entity's previously issued EIN, if applicable."  maxLen=10
+topmostSubform[0].Page1[0].f1_40[0]  text  page=0  item=None  label="Designee's name"  meaning='The name of the third-party designee authorized to receive the EIN and discuss the form.'
+topmostSubform[0].Page1[0].f1_41[0]  text  page=0  item=None  label="Designee's telephone number (include area code)"  meaning="The third-party designee's telephone number."
+topmostSubform[0].Page1[0].f1_42[0]  text  page=0  item=None  label='Address and ZIP code'  meaning="The third-party designee's address and ZIP code."
+topmostSubform[0].Page1[0].f1_43[0]  text  page=0  item=None  label="Designee's fax number (include area code)"  meaning="The third-party designee's fax number."
+topmostSubform[0].Page1[0].f1_44[0]  text  page=0  item=None  label='Name and title (type or print clearly)'  meaning='The name and title of the person signing the application under penalties of perjury.'
+topmostSubform[0].Page1[0].f1_45[0]  text  page=0  item=None  label="Applicant's telephone number (include area code)"  meaning="The applicant's telephone number."
+topmostSubform[0].Page1[0].f1_46[0]  text  page=0  item=None  label="Applicant's fax number (include area code)"  meaning="The applicant's fax number."
+
+The estate record this binding will first be tested against (estate-02-ca-intestate-independent-admin) — bind to its
+PATHS, not its values; the same binding must work for every future estate:
+{
+ "$schema": "./estate-form-data.schema.json",
+ "meta": {
+  "recordId": "estate-02-ca-intestate-independent-admin",
+  "schemaVersion": "1.0.0",
+  "label": "California intestate estate under independent administration. No will, no EIN yet (SS-4 is the live application), decedent held a California driver licence so DL 142 applies in full.",
+  "anonymized": true,
+  "sourceSystem": "alix-estate-manager",
+  "generatedAt": "2026-07-27T00:00:00Z"
+ },
+ "decedent": {
+  "name": {
+   "first": "Anthony",
+   "middle": "Robert",
+   "last": "Cordell",
+   "suffix": null,
+   "full": "Anthony Robert Cordell"
+  },
+  "aliases": [],
+  "ssn": "944-07-2913",
+  "dateOfBirth": "1963-05-07",
+  "dateOfDeath": "2026-01-08",
+  "sex": "MALE",
+  "maritalStatus": "Unknown",
+  "citizenship": "USA",
+  "wasVeteran": false,
+  "email": null,
+  "phones": [],
+  "residenceAddress": {
+   "line1": "2841 Westgate Boulevard",
+   "line2": null,
+   "city": "Los Angeles",
+   "county": "Los Angeles",
+   "state": "CA",
+   "zip": "90064",
+   "country": "USA",
+   "isPoBox": false
+  },
+  "placeOfDeath": null,
+  "birthplace": null,
+  "identifications": [
+   {
+    "type": "DriversLicense",
+    "number": "D7418205",
+    "issuingState": "CA",
+    "issuingCountry": "USA",
+    "expirationDate": null
+   }
+  ]
+ },
+ "estateEntity": {
+  "legalName": "Estate of Anthony Robert Cordell",
+  "tradeName": null,
+  "careOfName": "Marcus Elijah Cordell",
+  "entityKind": "DecedentEstate",
+  "ein": null,
+  "identifyingNumber": "944-07-2913",
+  "mailingAddress": {
+   "line1": "1204 Hillcrest Dr Apt B",
+   "line2": "Apt B",
+   "city": "INGLEWOOD",
+   "county": "Los Angeles",
+   "state": "CA",
+   "zip": "90301",
+   "country": "USA",
+   "isPoBox": false
+  },
+  "physicalAddress": {
+   "line1": "2841 Westgate Boulevard",
+   "line2": null,
+   "city": "Los Angeles",
+   "county": "Los Angeles",
+   "state": "CA",
+   "zip": "90064",
+   "country": "USA",
+   "isPoBox": false
+  },
+  "physicalAddressDiffersFromMailing": true,
+  "principalCounty": "Los Angeles",
+  "principalState": "CA",
+  "daytimePhone": {
+   "number": "(310) 555-0132",
+   "countryCode": "+1",
+   "type": "Mobile",
+   "primary": true
+  },
+  "planNumber": null,
+  "trust": null
+ },
+ "fiduciary": {
+  "name": {
+   "first": "Marcus",
+   "middle": "Elijah",
+   "last": "Cordell",
+   "suffix": null,
+   "full": "Marcus Elijah Cordell"
+  },
+  "title": "Administrator",
+  "isIndividual": true,
+  "ssn": "926-18-4470",
+  "ein": null,
+  "responsiblePartyTin": "926-18-4470",
+  "dateOfBirth": "1979-12-14",
+  "address": {
+   "line1": "1204 Hillcrest Dr Apt B",
+   "line2": "Apt B",
+   "city": "INGLEWOOD",
+   "county": "Los Angeles",
+   "state": "CA",
+   "zip": "90301",
+   "country": "USA",
+   "isPoBox": false
+  },
+  "phone": {
+   "number": "(310) 555-0132",
+   "countryCode": "+1",
+   "type": "Mobile",
+   "primary": true
+  },
+  "faxNumber": null,
+  "email": "m.cordell@example.com",
+  "identifications": [
+   {
+    "type": "DriversLicense",
+    "number": "F2960483",
+    "issuingState": "CA",
+    "issuingCountry": "USA",
+    "expirationDate": null
+   }
+  ],
+  "relationshipToDecedent": "Son",
+  "signatureDate": "2026-04-24"
+ },
+ "authority": {
+  "basis": "CourtAppointmentIntestate",
+  "basisOtherDescription": null,
+  "dateOfDeath": "2026-01-08",
+  "dateOfAppointment": null,
+  "assetsUnderCourtControl": null,
+  "transferredAssetsDescription": null,
+  "authorityStatus": "InProcess",
+  "administrationPath": "INDEPENDENT_ADMINISTRATION",
+  "hasWill": false,
+  "hasTrust": false,
+  "bondRequired": null,
+  "bondAmount": null,
+  "proceeding": {
+   "courtName": "Superior Court of California, County of Los Angeles \u2014 Probate Division",
+   "isCourtProceeding": true,
+   "dateProceedingInitiated": null,
+   "courtAddress": {
+    "line1": "111 N Hill St",
+    "line2": null,
+    "city": "Los Angeles",
+    "county": "Los Angeles",
+    "state": "CA",
+    "zip": "90012",
+    "country": "USA",
+    "isPoBox": false
+   },
+   "courtRoomOrSuite": null,
+   "docketNumber": null,
+   "hearingDate": null,
+   "hearingTime": null,
+   "hearingTimeMeridiem": null,
+   "placeOfOtherProceedings": null,
+   "courtPhone": null,
+   "courtHours": null,
+   "lettersIssuedDate": null,
+   "closureDate": null,
+   "attorneyOfRecord": null
+  }
+ },
+ "taxMatters": {
+  "taxTypes": [
+   "Income"
+  ],
+  "taxTypeOtherDescription": null,
+  "federalFormNumbers": [
+   "1040_or_1040SR",
+   "1041"
+  ],
+  "federalFormOtherList": null,
+  "authorityLimitedToSpecificPeriods": false,
+  "specificPeriods": null,
+  "authorizationRows": [
+   {
+    "typeOfTaxInformation": "Income",
+    "taxFormNumber": "1040",
+    "yearsOrPeriods": "2023, 2024, 2025, 2026",
+    "specificTaxMatters": "Transcripts and final individual return of the decedent"
+   },
+   {
+    "typeOfTaxInformation": "Income",
+    "taxFormNumber": "1041",
+    "yearsOrPeriods": "2026",
+    "specificTaxMatters": "Fiduciary income tax for the estate"
+   },
+   {
+    "typeOfTaxInformation": "Civil Penalty",
+    "taxFormNumber": "1040",
+    "yearsOrPeriods": "2023, 2024, 2025",
+    "specificTaxMatters": "Penalty and interest notices issued to the decedent"
+   }
+  ]
+ },
+ "form56": {
+  "isNewNotice": true,
+  "totalRevocation": {
+   "revokeAllPriorNotices": false,
+   "reason": null,
+   "reasonOtherDescription": null
+  },
+  "partialRevocation": {
+   "revokeEarlierNotices": false,
+   "grantedToDateAndAddress": null
+  },
+  "substituteFiduciary": {
+   "hasSubstitute": false,
+   "namesAndAddresses": null
+  },
+  "signature": {
+   "signerName": "Marcus Elijah Cordell",
+   "title": "Administrator",
+   "date": "2026-04-24"
+  }
+ },
+ "form8821": {
+  "taxpayerNameAndAddressBlock": "Estate of Anthony Robert Cordell\nc/o Marcus Elijah Cordell, Administrator\n1204 Hillcrest Dr Apt B\nInglewood, CA 90301",
+  "taxpayerIdentificationNumbers": "944-07-2913 (decedent SSN \u2014 estate EIN not yet issued)",
+  "designees": [
+   {
+    "name": "Marcus Elijah Cordell",
+    "firmName": null,
+    "address": {
+     "line1": "1204 Hillcrest Dr Apt B",
+     "line2": "Apt B",
+     "city": "INGLEWOOD",
+     "county": "Los Angeles",
+     "state": "CA",
+     "zip": "90301",
+     "country": "USA",
+     "isPoBox": false
+    },
+    "cafNumber": "NONE",
+    "ptin": null,
+    "phone": {
+     "number": "(310) 555-0132",
+     "countryCode": "+1",
+     "type": "Mobile",
+     "primary": true
+    },
+    "faxNumber": null,
+    "sendCopiesOfNotices": true,
+    "isNewAddress": true,
+    "isNewPhone": false,
+    "isNewFax": false
+   }
+  ],
+  "additionalDesigneesAttached": false,
+  "authorizeIntermediateServiceProvider": false,
+  "specificUseNotRecordedOnCaf": false,
+  "retainPriorAuthorizations": false,
+  "signature": {
+   "printName": "Marcus Elijah Cordell",
+   "title": "Administrator",
+   "date": "2026-04-24"
+  },
+  "irsUseOnly": null
+ },
+ "formSS4": {
+  "isLlc": false,
+  "llcMemberCount": null,
+  "llcOrganizedInUs": null,
+  "entityType": "Estate",
+  "entityTypeQualifier": "944-07-2913",
+  "groupExemptionNumber": null,
+  "incorporationState": null,
+  "incorporationForeignCountry": null,
+  "reasonForApplying": "BankingPurpose",
+  "reasonSpecify": "To open an estate account and claim unclaimed property held by the State of California",
+  "businessStartOrAcquiredDate": "2026-01-08",
+  "closingMonthOfAccountingYear": "December",
+  "expectedEmployees": {
+   "agricultural": 0,
+   "household": 0,
+   "other": 0
+  },
+  "electForm944": false,
+  "firstWagesPaidDate": null,
+  "principalActivity": "Other",
+  "principalActivityOther": "Estate administration",
+  "principalLineOfMerchandiseOrServices": "Administration and distribution of a decedent's estate. No trade or business activity.",
+  "hasEverAppliedForEin": false,
+  "previousEin": null,
+  "thirdPartyDesignee": null,
+  "applicant": {
+   "nameAndTitle": "Marcus Elijah Cordell, Administrator",
+   "phone": {
+    "number": "(310) 555-0132",
+    "countryCode": "+1",
+    "type": "Mobile",
+    "primary": true
+   },
+   "faxNumber": null,
+   "signatureDate": "2026-04-24"
+  }
+ },
+ "formDL142": {
+  "applicable": true,
+  "notApplicableReason": null,
+  "documentHolderName": "Anthony Robert Cordell",
+  "documentHolderAddress": {
+   "line1": "2841 Westgate Boulevard",
+   "line2": null,
+   "city": "Los Angeles",
+   "county": "Los Angeles",
+   "state": "CA",
+   "zip": "90064",
+   "country": "USA",
+   "isPoBox": false
+  },
+  "documentNumber": "D7418205",
+  "documentType": "DriverLicense",
+  "dateOfBirth": "1963-05-07",
+  "locationOfLicense": "Attached",
+  "locationOfLicenseOtherExplanation": null,
+  "reasonForCancellation": "Licence holder is deceased. Date of death 01/08/2026. Surrendered by the court-appointed administrator of the estate.",
+  "minorSection": null,
+  "completedBy": {
+   "printedName": "Marcus Elijah Cordell",
+   "address": {
+    "line1": "1204 Hillcrest Dr Apt B",
+    "line2": "Apt B",
+    "city": "INGLEWOOD",
+    "county": "Los Angeles",
+    "state": "CA",
+    "zip": "90301",
+    "country": "USA",
+    "isPoBox": false
+   },
+   "signatureDate": "2026-04-24"
+  },
+  "dmvUseOnly": null
+ },
+ "relatedParties": [
+  {
+   "name": {
+    "first": "Tania",
+    "middle": null,
+    "last": "Cordell",
+    "suffix": null,
+    "full": "Tania Cordell"
+   },
+   "roles": [
+    "HEIR",
+    "FAMILY_MEMBER"
+   ],
+   "contactType": "Individual",
+   "organizationName": null,
+   "isAttorneyOfRecord": false,
+   "isDeceased": false,
+   "dateOfBirth": "1983-08-14",
+   "ssn": null,
+   "sex": null,
+   "citizenship": null,
+   "email": "t.cordell@example.com",
+   "phone": {
+    "number": "(424) 555-0198",
+    "countryCode": "+1",
+    "type": "Mobile",
+    "primary": true
+   },
+   "address": {
+    "line1": "18402 Bonanova Ave",
+    "line2": null,
+    "city": "Carson",
+    "county": null,
+    "state": "CA",
+    "zip": "90746",
+    "country": "USA",
+    "isPoBox": false
+   },
+   "identifications": []
+  },
+  {
+   "name": {
+    "first": "Yvonne",
+    "middle": null,
+    "last": "Cordell",
+    "suffix": null,
+    "full": "Yvonne Cordell"
+   },
+   "roles": [
+    "HEIR",
+    "FAMILY_MEMBER"
+   ],
+   "contactType": "Individual",
+   "organizationName": null,
+   "isAttorneyOfRecord": false,
+   "isDeceased": false,
+   "dateOfBirth": "1988-12-15",
+   "ssn": null,
+   "sex": null,
+   "citizenship": null,
+   "email": "y.cordell@example.com",
+   "phone": null,
+   "address": {
+    "line1": "8317 West 104th Terrace",
+    "line2": null,
+    "city": "Los Angeles",
+    "county": "Los Angeles",
+    "state": "CA",
+    "zip": "90047",
+    "country": "USA",
+    "isPoBox": false
+   },
+   "identifications": []
+  },
+  {
+   "name": {
+    "first": "Eleanor",
+    "middle": "Faye",
+    "last": "Cordell",
+    "suffix": null,
+    "full": "Eleanor Faye Cordell"
+   },
+   "roles": [
+    "FAMILY_MEMBER"
+   ],
+   "contactType": "Individual",
+   "organizationName": null,
+   "isAttorneyOfRecord": false,
+   "isDeceased": true,
+   "dateOfBirth": "1942-05-13",
+   "ssn": null,
+   "sex": null,
+   "citizenship": null,
+   "email": null,
+   "phone": null,
+   "address": {
+    "line1": "8319 West Century Boulevard",
+    "line2": null,
+    "city": "Los Angeles",
+    "county": "Los Angeles",
+    "state": "CA",
+    "zip": "90047",
+    "country": "USA",
+    "isPoBox": false
+   },
+   "identifications": []
+  }
+ ],
+ "assets": [
+  {
+   "category": "BankAccount",
+   "subcategory": "Checking",
+   "count": 1,
+   "totalEstimatedValue": 536305.62,
+   "totalDateOfDeathValue": null,
+   "institutions": [
+    "Chase Bank"
+   ]
+  },
+  {
+   "category": "UnclaimedProperty",
+   "subcategory": null,
+   "count": 1,
+   "totalEstimatedValue": 28.74,
+   "totalDateOfDeathValue": null,
+   "institutions": []
+  }
+ ],
+ "provenance": {
+  "sourceEstateScanBoxId": "000001ee",
+  "authorityTypeInSource": "Estate_Probate",
+  "anonymizationMethod": "Structure-preserving synthesis. Only shape data left the production database: presence flags, enum values, dates, city/county/state/ZIP, and character-class patterns for identifiers. Names, street lines, emails, phone numbers and all identifier digits were generated fresh against those patterns.",
+  "dateJitterDays": -23,
+  "fieldsSynthesized": [
+   "all personal names",
+   "all street address line1 values (generated to match the source character-class pattern)",
+   "all email addresses",
+   "all phone numbers",
+   "SSNs (900-block, never issued by SSA)",
+   "driver licence numbers"
+  ],
+  "fieldsPreservedFromSource": [
+   "date intervals (all dates shifted by a single constant offset)",
+   "city / county / state / ZIP",
+   "sex, marital status, citizenship, veteran status",
+   "identification document type",
+   "identifier character-class patterns",
+   "authority type and administration path",
+   "proceeding status",
+   "asset category / subcategory / count / value",
+   "institution names",
+   "the ALL-CAPS city casing as stored"
+  ],
+  "notes": "The source estate has no court record, no docket number and no EIN \u2014 the court name and address here are the public venue implied by the decedent's county of residence and are marked as such by the absence of a docket number. hasWill is false in the source, which is why Form 56 box 1b (intestate) is selected and the fiduciary title is Administrator rather than Executor."
+ }
+}
+
+Each binding object:
+{
+  "qualifiedName": "<must be a calibrated field's qualifiedName, verbatim>",
+  "itemNumber": <copy from calibration>,
+  "label": <copy from calibration>,
+  "source": <one of the five kinds below>,
+  "format": "text" | "date" | "checkbox",
+  "required": true|false,
+  "confidence": "high" | "medium" | "low",
+  "note": <string or null>,
+  "when": <optional guard, see below, or omit>
+}
+
+The five source kinds — NOTHING else is executable:
+  {"kind": "path", "path": "<estate JSON path>"}                      direct value
+  {"kind": "constant", "value": <literal>}                            never varies
+  {"kind": "template", "pattern": "{0}, {1}", "paths": [<p0>, <p1>]}  joined values
+  {"kind": "condition", "path": <p>, "equals": <literal>}             checkbox: mark iff equal
+  {"kind": "absent", "path": <p>}                                     checkbox: mark iff absent/null
+
+Optional guard on ANY binding: "when": {"path": <p>, "equals": <literal>} — the binding
+applies only when the guard path resolves to exactly that value. Use it for conditional
+value placement (e.g. Form 56 line 2a date-of-death applies only on the 1a/1b/1d branch;
+line 2b date-of-appointment only on the 1c/1e/1f/1g branch).
+
+"format": "date" reformats ISO dates (2026-01-23) to MM/DD/YYYY. Checkbox bindings use
+"format": "checkbox".
+
+Rules:
+- Prefer generic estate paths (decedent.*, fiduciary.*, authority.*, estateEntity.*) over
+  the per-form block where both hold the same value; use the form-specific block
+  (form56.*) for answers only that form asks.
+- UNKNOWN IS NOT FALSE. A field with no supporting estate data goes in "unbound":
+  {"qualifiedName": ..., "label": ..., "reason": ..., "whatWouldFillIt": ...}.
+  Never invent a value. Never bind a guess.
+- Mutually exclusive checkbox sets go in "exclusiveGroups":
+  {"label": ..., "rule": "exactlyOne"|"atMostOne", "members": [qualifiedNames], "when": null}
+  Use exactlyOne when the form demands a choice; atMostOne inside sections that may not
+  apply to a given estate.
+- Do not bind pushbuttons (Print/Clear).
+
+Answer with ONLY a JSON object:
+{"bindings": [...], "unbound": [...], "exclusiveGroups": [...]}
+Your ENTIRE reply must be that JSON object and nothing else — no prose, no
+explanation. Do not attempt to read or edit any file; a non-JSON reply is
+discarded unread.

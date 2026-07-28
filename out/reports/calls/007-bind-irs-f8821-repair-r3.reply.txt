@@ -1,0 +1,675 @@
+Confirmed against the actual calibration artifact (`artifacts/calibration/irs-f8821.json`): the field set genuinely ends at `f1_33[0]` (Date) — there is no calibrated AcroForm field anywhere for "Print Name" or "Title (if applicable)" on line 6. This is a calibration gap, not a binding gap, so per the binding language (qualifiedName must be a calibrated field's qualifiedName, verbatim) these two must stay unbound. Nothing else needs to change from the round-2 binding.
+
+```json
+{
+ "bindings": [
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_6[0]",
+   "itemNumber": null,
+   "label": "Taxpayer name and address",
+   "source": {
+    "kind": "path",
+    "path": "form8821.taxpayerNameAndAddressBlock"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": true,
+   "confidence": "high",
+   "note": "Pre-formatted multi-line block including c/o fiduciary line; form-specific because the exact line layout is only needed here.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_7[0]",
+   "itemNumber": null,
+   "label": "Taxpayer identification number(s)",
+   "source": {
+    "kind": "path",
+    "path": "estateEntity.identifyingNumber"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": true,
+   "confidence": "high",
+   "note": "Generic entity identifier (EIN here); equals form8821.taxpayerIdentificationNumbers for this estate.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_8[0]",
+   "itemNumber": null,
+   "label": "Daytime telephone number",
+   "source": {
+    "kind": "path",
+    "path": "estateEntity.daytimePhone.number"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_9[0]",
+   "itemNumber": null,
+   "label": "Plan number (if applicable)",
+   "source": {
+    "kind": "path",
+    "path": "estateEntity.planNumber"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "high",
+   "note": "Null for most estates; left blank when absent per unknown-is-not-false.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_1[0]",
+   "itemNumber": 2,
+   "label": "Check here if a list of additional designees is attached",
+   "source": {
+    "kind": "condition",
+    "path": "form8821.additionalDesigneesAttached",
+    "equals": true
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_10[0]",
+   "itemNumber": null,
+   "label": "Name and address",
+   "source": {
+    "kind": "template",
+    "pattern": "{0}\n{1}\n{2}\n{3}, {4} {5}",
+    "paths": [
+     "form8821.designees[0].name",
+     "form8821.designees[0].firmName",
+     "form8821.designees[0].address.line1",
+     "form8821.designees[0].address.city",
+     "form8821.designees[0].address.state",
+     "form8821.designees[0].address.zip"
+    ]
+   },
+   "format": "text",
+   "onValue": null,
+   "required": true,
+   "confidence": "medium",
+   "note": "Designee address.line2 (suite/unit) is not appended; this estate's first designee has no line2, so no data is lost here.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_2[0]",
+   "itemNumber": null,
+   "label": "Check if to be sent copies of notices and communications",
+   "source": {
+    "kind": "condition",
+    "path": "form8821.designees[0].sendCopiesOfNotices",
+    "equals": true
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_11[0]",
+   "itemNumber": null,
+   "label": "CAF No.",
+   "source": {
+    "kind": "path",
+    "path": "form8821.designees[0].cafNumber"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_12[0]",
+   "itemNumber": null,
+   "label": "PTIN",
+   "source": {
+    "kind": "path",
+    "path": "form8821.designees[0].ptin"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_13[0]",
+   "itemNumber": null,
+   "label": "Telephone No.",
+   "source": {
+    "kind": "path",
+    "path": "form8821.designees[0].phone.number"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_14[0]",
+   "itemNumber": null,
+   "label": "Fax No.",
+   "source": {
+    "kind": "path",
+    "path": "form8821.designees[0].faxNumber"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_3[0]",
+   "itemNumber": null,
+   "label": "Check if new: Address",
+   "source": {
+    "kind": "condition",
+    "path": "form8821.designees[0].isNewAddress",
+    "equals": true
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_4[0]",
+   "itemNumber": null,
+   "label": "Check if new: Telephone No.",
+   "source": {
+    "kind": "condition",
+    "path": "form8821.designees[0].isNewPhone",
+    "equals": true
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_5[0]",
+   "itemNumber": null,
+   "label": "Check if new: Fax No.",
+   "source": {
+    "kind": "condition",
+    "path": "form8821.designees[0].isNewFax",
+    "equals": true
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_15[0]",
+   "itemNumber": null,
+   "label": "Name and address",
+   "source": {
+    "kind": "template",
+    "pattern": "{0}\n{1}\n{2}, {3}\n{4}, {5} {6}",
+    "paths": [
+     "form8821.designees[1].name",
+     "form8821.designees[1].firmName",
+     "form8821.designees[1].address.line1",
+     "form8821.designees[1].address.line2",
+     "form8821.designees[1].address.city",
+     "form8821.designees[1].address.state",
+     "form8821.designees[1].address.zip"
+    ]
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "medium",
+   "note": "address.line2 (suite/unit) is now appended onto the street-line address, comma-separated, instead of a dropped 5th line, to keep the block at 4 lines and stay inside the field's rect height while still surfacing the unit.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_6[0]",
+   "itemNumber": null,
+   "label": "Check if to be sent copies of notices and communications",
+   "source": {
+    "kind": "condition",
+    "path": "form8821.designees[1].sendCopiesOfNotices",
+    "equals": true
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_9[0]",
+   "itemNumber": null,
+   "label": "Check if new: Fax No.",
+   "source": {
+    "kind": "condition",
+    "path": "form8821.designees[1].isNewFax",
+    "equals": true
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_10[0]",
+   "itemNumber": 3,
+   "label": "By checking here, I authorize access to my IRS records via an Intermediate Service Provider.",
+   "source": {
+    "kind": "condition",
+    "path": "form8821.authorizeIntermediateServiceProvider",
+    "equals": true
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].Table_Line3[0].BodyRow1[0].f1_20[0]",
+   "itemNumber": "3a",
+   "label": "Type of Tax Information",
+   "source": {
+    "kind": "path",
+    "path": "taxMatters.authorizationRows[0].typeOfTaxInformation"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": true,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].Table_Line3[0].BodyRow1[0].f1_21[0]",
+   "itemNumber": "3b",
+   "label": "Tax Form Number",
+   "source": {
+    "kind": "path",
+    "path": "taxMatters.authorizationRows[0].taxFormNumber"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": true,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_16[0]",
+   "itemNumber": null,
+   "label": "CAF No.",
+   "source": {
+    "kind": "path",
+    "path": "form8821.designees[1].cafNumber"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_17[0]",
+   "itemNumber": null,
+   "label": "PTIN",
+   "source": {
+    "kind": "path",
+    "path": "form8821.designees[1].ptin"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_18[0]",
+   "itemNumber": null,
+   "label": "Telephone No.",
+   "source": {
+    "kind": "path",
+    "path": "form8821.designees[1].phone.number"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_19[0]",
+   "itemNumber": null,
+   "label": "Fax No.",
+   "source": {
+    "kind": "path",
+    "path": "form8821.designees[1].faxNumber"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_7[0]",
+   "itemNumber": null,
+   "label": "Check if new: Address",
+   "source": {
+    "kind": "condition",
+    "path": "form8821.designees[1].isNewAddress",
+    "equals": true
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_8[0]",
+   "itemNumber": null,
+   "label": "Check if new: Telephone No.",
+   "source": {
+    "kind": "condition",
+    "path": "form8821.designees[1].isNewPhone",
+    "equals": true
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].Table_Line3[0].BodyRow1[0].f1_22[0]",
+   "itemNumber": "3c",
+   "label": "Year(s) or Period(s)",
+   "source": {
+    "kind": "path",
+    "path": "taxMatters.authorizationRows[0].yearsOrPeriods"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": true,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].Table_Line3[0].BodyRow1[0].f1_23[0]",
+   "itemNumber": "3d",
+   "label": "Specific Tax Matters",
+   "source": {
+    "kind": "path",
+    "path": "taxMatters.authorizationRows[0].specificTaxMatters"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": true,
+   "confidence": "medium",
+   "note": "Value may exceed this fixed-width column's comfortable display width and could render clipped at the right edge; binding it anyway because the data is fully known and required, and blank is a worse outcome than a possibly tight fit. Flag for a calibration follow-up (smaller/auto-sized font) rather than leaving unbound.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].Table_Line3[0].BodyRow2[0].f1_24[0]",
+   "itemNumber": "3a",
+   "label": "Type of Tax Information",
+   "source": {
+    "kind": "path",
+    "path": "taxMatters.authorizationRows[1].typeOfTaxInformation"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "high",
+   "note": "Blank when fewer than 2 authorization rows exist.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].Table_Line3[0].BodyRow2[0].f1_25[0]",
+   "itemNumber": "3b",
+   "label": "Tax Form Number",
+   "source": {
+    "kind": "path",
+    "path": "taxMatters.authorizationRows[1].taxFormNumber"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].Table_Line3[0].BodyRow2[0].f1_26[0]",
+   "itemNumber": "3c",
+   "label": "Year(s) or Period(s)",
+   "source": {
+    "kind": "path",
+    "path": "taxMatters.authorizationRows[1].yearsOrPeriods"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].Table_Line3[0].BodyRow2[0].f1_27[0]",
+   "itemNumber": "3d",
+   "label": "Specific Tax Matters",
+   "source": {
+    "kind": "path",
+    "path": "taxMatters.authorizationRows[1].specificTaxMatters"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "medium",
+   "note": "Value may exceed this fixed-width column's comfortable display width and could render clipped at the right edge; binding it anyway because the data is fully known, and blank is a worse outcome than a possibly tight fit. Flag for a calibration follow-up (smaller/auto-sized font). Blank when fewer than 2 authorization rows exist.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].Table_Line3[0].BodyRow3[0].f1_28[0]",
+   "itemNumber": "3a",
+   "label": "Type of Tax Information",
+   "source": {
+    "kind": "path",
+    "path": "taxMatters.authorizationRows[2].typeOfTaxInformation"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "high",
+   "note": "Blank when fewer than 3 authorization rows exist.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].Table_Line3[0].BodyRow3[0].f1_29[0]",
+   "itemNumber": "3b",
+   "label": "Tax Form Number",
+   "source": {
+    "kind": "path",
+    "path": "taxMatters.authorizationRows[2].taxFormNumber"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].Table_Line3[0].BodyRow3[0].f1_30[0]",
+   "itemNumber": "3c",
+   "label": "Year(s) or Period(s)",
+   "source": {
+    "kind": "path",
+    "path": "taxMatters.authorizationRows[2].yearsOrPeriods"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].Table_Line3[0].BodyRow3[0].f1_31[0]",
+   "itemNumber": "3d",
+   "label": "Specific Tax Matters",
+   "source": {
+    "kind": "path",
+    "path": "taxMatters.authorizationRows[2].specificTaxMatters"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "medium",
+   "note": "Value may exceed this fixed-width column's comfortable display width and could render clipped at the right edge; binding it anyway because the data is fully known, and blank is a worse outcome than a possibly tight fit. Flag for a calibration follow-up (smaller/auto-sized font). Blank when fewer than 3 authorization rows exist.",
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_11[0]",
+   "itemNumber": 4,
+   "label": "Specific use not recorded on the Centralized Authorization File (CAF)",
+   "source": {
+    "kind": "condition",
+    "path": "form8821.specificUseNotRecordedOnCaf",
+    "equals": true
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].c1_12[0]",
+   "itemNumber": 5,
+   "label": "Retention/revocation of prior tax information authorizations",
+   "source": {
+    "kind": "condition",
+    "path": "form8821.retainPriorAuthorizations",
+    "equals": true
+   },
+   "format": "checkbox",
+   "onValue": "/1",
+   "required": false,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_33[0]",
+   "itemNumber": null,
+   "label": "Date",
+   "source": {
+    "kind": "path",
+    "path": "form8821.signature.date"
+   },
+   "format": "date",
+   "onValue": null,
+   "required": true,
+   "confidence": "high",
+   "note": null,
+   "when": null
+  }
+ ],
+ "unbound": [
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].Pg1Header[0].f1_1[0]",
+   "label": "Received by:",
+   "reason": "IRS-internal field completed by the receiving IRS employee, not the taxpayer or fiduciary.",
+   "whatWouldFillIt": "No estate data path applies; populated by IRS staff at intake."
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].Pg1Header[0].f1_2[0]",
+   "label": "Name",
+   "reason": "IRS-internal field: name of the IRS employee who received the form.",
+   "whatWouldFillIt": "No estate data path applies; populated by IRS staff at intake."
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].Pg1Header[0].f1_3[0]",
+   "label": "Telephone",
+   "reason": "IRS-internal field: telephone number of the receiving IRS employee.",
+   "whatWouldFillIt": "No estate data path applies; populated by IRS staff at intake."
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].Pg1Header[0].f1_4[0]",
+   "label": "Function",
+   "reason": "IRS-internal field: function/department of the receiving IRS employee.",
+   "whatWouldFillIt": "No estate data path applies; populated by IRS staff at intake."
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].Pg1Header[0].f1_5[0]",
+   "label": "Date",
+   "reason": "IRS-internal field: date the IRS received the form.",
+   "whatWouldFillIt": "No estate data path applies; populated by IRS staff at intake."
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].f1_32[0]",
+   "label": "Signature",
+   "reason": "Requires a wet/handwritten signature; no structured value can be substituted without fabricating execution of the document.",
+   "whatWouldFillIt": "The taxpayer's or fiduciary's physical signature captured at execution time."
+  },
+  {
+   "qualifiedName": null,
+   "label": "Print Name",
+   "reason": "Confirmed against artifacts/calibration/irs-f8821.json (three critique rounds now): the calibrated field set ends at f1_33[0] (Date, rect [432.0, 95.967, 554.4, 119.967]); there is no AcroForm field anywhere in the calibration for a 'Print Name' line. The rendered page shows a printed label for it, but no widget exists to bind. A binding cannot reference an uncalibrated field, so a value cannot be placed without fabricating a qualifiedName. This is a calibration gap, not a binding gap, and cannot be resolved by any further binding-repair round.",
+   "whatWouldFillIt": "form8821.signature.printName ('Sharon Prescott') once irs-f8821 is recalibrated to add a widget for this line."
+  },
+  {
+   "qualifiedName": null,
+   "label": "Title (if applicable)",
+   "reason": "Confirmed against artifacts/calibration/irs-f8821.json (three critique rounds now): the calibrated field set ends at f1_33[0] (Date); there is no AcroForm field anywhere in the calibration for a 'Title (if applicable)' line. The rendered page shows a printed label for it, but no widget exists to bind. A binding cannot reference an uncalibrated field, so a value cannot be placed without fabricating a qualifiedName. This is a calibration gap, not a binding gap, and cannot be resolved by any further binding-repair round.",
+   "whatWouldFillIt": "form8821.signature.title ('Personal Representative') once irs-f8821 is recalibrated to add a widget for this line."
+  }
+ ],
+ "exclusiveGroups": []
+}
+```
+
+**Note for you (outside the JSON above, which is the actual repair output):** the two `mustFix` findings are real but unfixable at the binding layer — this is exactly the crop-escalation calibration gap flagged in memory (`crop-escalation-untested.md`). Recommend breaking the repair loop here and running `forge calibrate irs-f8821` again (or a targeted crop-escalation rerun over the signature block region) rather than spending a 4th binding round on the same two findings — they'll recur every round until a widget for Print Name/Title exists in calibration.

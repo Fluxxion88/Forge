@@ -1,0 +1,1143 @@
+{
+  "formId": "irs-f56",
+  "version": 1,
+  "status": "approved",
+  "sourceFormSha256": "ef82ec5a7dc8c11399103a6354820eb9d6fa75a019493a6bbb9a34aea96cd93f",
+  "calibrationRef": "artifacts/calibration/irs-f56.json",
+  "createdAt": "2026-07-28T04:30:50Z",
+  "approvedBy": "Egor",
+  "approvedAt": "2026-07-28T04:41:36Z",
+  "anvilCastEid": null,
+  "bindings": [
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_10[0]",
+      "itemNumber": "4a",
+      "label": "706 series",
+      "source": {
+        "kind": "contains",
+        "path": "taxMatters.federalFormNumbers",
+        "includes": "706Series"
+      },
+      "format": "checkbox",
+      "onValue": "/1",
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_11[0]",
+      "itemNumber": "4b",
+      "label": "709 series",
+      "source": {
+        "kind": "contains",
+        "path": "taxMatters.federalFormNumbers",
+        "includes": "709Series"
+      },
+      "format": "checkbox",
+      "onValue": "/1",
+      "required": false,
+      "confidence": "low",
+      "note": "Enum literal unverified: this option is not exercised by any estate in inputs/estates/, and the referenced schema ./estate-form-data.schema.json is not present in the repository. Spelling follows the convention observed in the corpus (706Series, 1040_or_1040SR). A reviewer must confirm it against the schema.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_12[0]",
+      "itemNumber": "4c",
+      "label": "940",
+      "source": {
+        "kind": "contains",
+        "path": "taxMatters.federalFormNumbers",
+        "includes": "940"
+      },
+      "format": "checkbox",
+      "onValue": "/1",
+      "required": false,
+      "confidence": "low",
+      "note": "Enum literal unverified: this option is not exercised by any estate in inputs/estates/, and the referenced schema ./estate-form-data.schema.json is not present in the repository. Spelling follows the convention observed in the corpus (706Series, 1040_or_1040SR). A reviewer must confirm it against the schema.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_13[0]",
+      "itemNumber": "4d",
+      "label": "941, 943, 944",
+      "source": {
+        "kind": "contains",
+        "path": "taxMatters.federalFormNumbers",
+        "includes": "941_943_944"
+      },
+      "format": "checkbox",
+      "onValue": "/1",
+      "required": false,
+      "confidence": "low",
+      "note": "Enum literal unverified: this option is not exercised by any estate in inputs/estates/, and the referenced schema ./estate-form-data.schema.json is not present in the repository. Spelling follows the convention observed in the corpus (706Series, 1040_or_1040SR). A reviewer must confirm it against the schema.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_14[0]",
+      "itemNumber": "4e",
+      "label": "1040 or 1040-SR",
+      "source": {
+        "kind": "contains",
+        "path": "taxMatters.federalFormNumbers",
+        "includes": "1040_or_1040SR"
+      },
+      "format": "checkbox",
+      "onValue": "/1",
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_15[0]",
+      "itemNumber": "4f",
+      "label": "1041",
+      "source": {
+        "kind": "contains",
+        "path": "taxMatters.federalFormNumbers",
+        "includes": "1041"
+      },
+      "format": "checkbox",
+      "onValue": "/1",
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_16[0]",
+      "itemNumber": "4g",
+      "label": "1120",
+      "source": {
+        "kind": "contains",
+        "path": "taxMatters.federalFormNumbers",
+        "includes": "1120"
+      },
+      "format": "checkbox",
+      "onValue": "/1",
+      "required": false,
+      "confidence": "low",
+      "note": "Enum literal unverified: this option is not exercised by any estate in inputs/estates/, and the referenced schema ./estate-form-data.schema.json is not present in the repository. Spelling follows the convention observed in the corpus (706Series, 1040_or_1040SR). A reviewer must confirm it against the schema.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_17[0]",
+      "itemNumber": "4h",
+      "label": "Other (list):",
+      "source": {
+        "kind": "contains",
+        "path": "taxMatters.federalFormNumbers",
+        "includes": "Other"
+      },
+      "format": "checkbox",
+      "onValue": "/1",
+      "required": false,
+      "confidence": "low",
+      "note": "Enum literal unverified: this option is not exercised by any estate in inputs/estates/, and the referenced schema ./estate-form-data.schema.json is not present in the repository. Spelling follows the convention observed in the corpus (706Series, 1040_or_1040SR). A reviewer must confirm it against the schema.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_18[0]",
+      "itemNumber": "5a",
+      "label": "If your authority as a fiduciary does not cover all years or tax periods, check here",
+      "source": {
+        "kind": "condition",
+        "path": "taxMatters.authorityLimitedToSpecificPeriods",
+        "equals": true
+      },
+      "format": "checkbox",
+      "onValue": "/1",
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_1[0]",
+      "itemNumber": "1a",
+      "label": "Court appointment of testate estate (valid will exists)",
+      "source": {
+        "kind": "condition",
+        "path": "authority.basis",
+        "equals": "CourtAppointmentTestate"
+      },
+      "format": "checkbox",
+      "onValue": "/1",
+      "required": true,
+      "confidence": "high",
+      "note": "Value confirmed present verbatim in this estate record.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_1[1]",
+      "itemNumber": "1b",
+      "label": "Court appointment of intestate estate (no valid will exists)",
+      "source": {
+        "kind": "condition",
+        "path": "authority.basis",
+        "equals": "CourtAppointmentIntestate"
+      },
+      "format": "checkbox",
+      "onValue": "/2",
+      "required": true,
+      "confidence": "medium",
+      "note": "Enum string inferred from sibling value 'CourtAppointmentTestate'; not directly observed in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_1[2]",
+      "itemNumber": "1c",
+      "label": "Court appointment as guardian or conservator",
+      "source": {
+        "kind": "condition",
+        "path": "authority.basis",
+        "equals": "CourtAppointmentGuardianOrConservator"
+      },
+      "format": "checkbox",
+      "onValue": "/3",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum string inferred, not observed in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_1[3]",
+      "itemNumber": "1d",
+      "label": "Fiduciary of intestate estate",
+      "source": {
+        "kind": "condition",
+        "path": "authority.basis",
+        "equals": "FiduciaryIntestateEstate"
+      },
+      "format": "checkbox",
+      "onValue": "/4",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum string inferred, not observed in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_1[4]",
+      "itemNumber": "1e",
+      "label": "Valid trust instrument and amendments",
+      "source": {
+        "kind": "condition",
+        "path": "authority.basis",
+        "equals": "TrustInstrument"
+      },
+      "format": "checkbox",
+      "onValue": "/5",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum string inferred, not observed in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_1[5]",
+      "itemNumber": "1f",
+      "label": "Bankruptcy, appointment of receiver/fiduciary, or assignment for the benefit of creditors",
+      "source": {
+        "kind": "condition",
+        "path": "authority.basis",
+        "equals": "BankruptcyOrReceivership"
+      },
+      "format": "checkbox",
+      "onValue": "/6",
+      "required": true,
+      "confidence": "low",
+      "note": "Enum string inferred, not observed in any sample estate.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_1[6]",
+      "itemNumber": "1g",
+      "label": "Other. Describe:",
+      "source": {
+        "kind": "condition",
+        "path": "authority.basis",
+        "equals": "Other"
+      },
+      "format": "checkbox",
+      "onValue": "/7",
+      "required": true,
+      "confidence": "medium",
+      "note": "Enum string inferred by analogy with the confirmed 'Other' literal used elsewhere in this schema (taxTypes, federalFormNumbers).",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_2[0]",
+      "itemNumber": "2c",
+      "label": "Yes",
+      "source": {
+        "kind": "condition",
+        "path": "authority.assetsUnderCourtControl",
+        "equals": true
+      },
+      "format": "checkbox",
+      "onValue": "/1",
+      "required": false,
+      "confidence": "medium",
+      "note": "Line 2c only applies under the 1f (receiver/fiduciary) branch per instructions; guard depends on inferred 1f enum literal. This estate's assetsUnderCourtControl is null so neither Yes nor No fires, correctly leaving the line blank.",
+      "when": {
+        "path": "authority.basis",
+        "equals": "BankruptcyOrReceivership"
+      }
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_2[1]",
+      "itemNumber": "2c",
+      "label": "No",
+      "source": {
+        "kind": "condition",
+        "path": "authority.assetsUnderCourtControl",
+        "equals": false
+      },
+      "format": "checkbox",
+      "onValue": "/2",
+      "required": false,
+      "confidence": "medium",
+      "note": "See c1_2[0] note.",
+      "when": {
+        "path": "authority.basis",
+        "equals": "BankruptcyOrReceivership"
+      }
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_3[0]",
+      "itemNumber": "3a",
+      "label": "Income",
+      "source": {
+        "kind": "contains",
+        "path": "taxMatters.taxTypes",
+        "includes": "Income"
+      },
+      "format": "checkbox",
+      "onValue": "/1",
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_4[0]",
+      "itemNumber": "3b",
+      "label": "Gift",
+      "source": {
+        "kind": "contains",
+        "path": "taxMatters.taxTypes",
+        "includes": "Gift"
+      },
+      "format": "checkbox",
+      "onValue": "/1",
+      "required": false,
+      "confidence": "low",
+      "note": "Enum literal unverified: this option is not exercised by any estate in inputs/estates/, and the referenced schema ./estate-form-data.schema.json is not present in the repository. Spelling follows the convention observed in the corpus (706Series, 1040_or_1040SR). A reviewer must confirm it against the schema.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_5[0]",
+      "itemNumber": "3c",
+      "label": "Estate",
+      "source": {
+        "kind": "contains",
+        "path": "taxMatters.taxTypes",
+        "includes": "Estate"
+      },
+      "format": "checkbox",
+      "onValue": "/1",
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_6[0]",
+      "itemNumber": "3d",
+      "label": "Generation-skipping transfer",
+      "source": {
+        "kind": "contains",
+        "path": "taxMatters.taxTypes",
+        "includes": "GenerationSkippingTransfer"
+      },
+      "format": "checkbox",
+      "onValue": "/1",
+      "required": false,
+      "confidence": "low",
+      "note": "Enum literal unverified: this option is not exercised by any estate in inputs/estates/, and the referenced schema ./estate-form-data.schema.json is not present in the repository. Spelling follows the convention observed in the corpus (706Series, 1040_or_1040SR). A reviewer must confirm it against the schema.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_7[0]",
+      "itemNumber": "3e",
+      "label": "Employment",
+      "source": {
+        "kind": "contains",
+        "path": "taxMatters.taxTypes",
+        "includes": "Employment"
+      },
+      "format": "checkbox",
+      "onValue": "/1",
+      "required": false,
+      "confidence": "low",
+      "note": "Enum literal unverified: this option is not exercised by any estate in inputs/estates/, and the referenced schema ./estate-form-data.schema.json is not present in the repository. Spelling follows the convention observed in the corpus (706Series, 1040_or_1040SR). A reviewer must confirm it against the schema.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_8[0]",
+      "itemNumber": "3f",
+      "label": "Excise",
+      "source": {
+        "kind": "contains",
+        "path": "taxMatters.taxTypes",
+        "includes": "Excise"
+      },
+      "format": "checkbox",
+      "onValue": "/1",
+      "required": false,
+      "confidence": "low",
+      "note": "Enum literal unverified: this option is not exercised by any estate in inputs/estates/, and the referenced schema ./estate-form-data.schema.json is not present in the repository. Spelling follows the convention observed in the corpus (706Series, 1040_or_1040SR). A reviewer must confirm it against the schema.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].c1_9[0]",
+      "itemNumber": "3g",
+      "label": "Other",
+      "source": {
+        "kind": "contains",
+        "path": "taxMatters.taxTypes",
+        "includes": "Other"
+      },
+      "format": "checkbox",
+      "onValue": "/1",
+      "required": false,
+      "confidence": "low",
+      "note": "Enum literal unverified: this option is not exercised by any estate in inputs/estates/, and the referenced schema ./estate-form-data.schema.json is not present in the repository. Spelling follows the convention observed in the corpus (706Series, 1040_or_1040SR). A reviewer must confirm it against the schema.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_01[0]",
+      "itemNumber": null,
+      "label": "Name of person for whom you're acting (as shown on the tax return)",
+      "source": {
+        "kind": "path",
+        "path": "estateEntity.legalName"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_02[0]",
+      "itemNumber": null,
+      "label": "Identifying number",
+      "source": {
+        "kind": "path",
+        "path": "estateEntity.identifyingNumber"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_03[0]",
+      "itemNumber": null,
+      "label": "Decedent's social security no.",
+      "source": {
+        "kind": "path",
+        "path": "decedent.ssn"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_04[0]",
+      "itemNumber": null,
+      "label": "Address of person for whom you're acting (number and street). If you have a P.O. box, see instructions.",
+      "source": {
+        "kind": "path",
+        "path": "estateEntity.mailingAddress.line1"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_05[0]",
+      "itemNumber": null,
+      "label": "Room or suite no.",
+      "source": {
+        "kind": "path",
+        "path": "estateEntity.mailingAddress.line2"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "medium",
+      "note": "line2 is null for this estate; field will render empty, which is correct.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_06[0]",
+      "itemNumber": null,
+      "label": "City or town",
+      "source": {
+        "kind": "path",
+        "path": "estateEntity.mailingAddress.city"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_07[0]",
+      "itemNumber": null,
+      "label": "State or province",
+      "source": {
+        "kind": "path",
+        "path": "estateEntity.mailingAddress.state"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_08[0]",
+      "itemNumber": null,
+      "label": "Country",
+      "source": {
+        "kind": "path",
+        "path": "estateEntity.mailingAddress.country"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_09[0]",
+      "itemNumber": null,
+      "label": "ZIP or foreign postal code",
+      "source": {
+        "kind": "path",
+        "path": "estateEntity.mailingAddress.zip"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_10[0]",
+      "itemNumber": null,
+      "label": "Fiduciary's name",
+      "source": {
+        "kind": "path",
+        "path": "fiduciary.name.full"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_11[0]",
+      "itemNumber": null,
+      "label": "Telephone no.",
+      "source": {
+        "kind": "path",
+        "path": "fiduciary.phone.number"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_12[0]",
+      "itemNumber": null,
+      "label": "Address of fiduciary (number and street). If you have a P.O. box, see instructions.",
+      "source": {
+        "kind": "path",
+        "path": "fiduciary.address.line1"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_13[0]",
+      "itemNumber": null,
+      "label": "Room or suite no.",
+      "source": {
+        "kind": "path",
+        "path": "fiduciary.address.line2"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "medium",
+      "note": "line2 is null for this estate; field will render empty, which is correct.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_14[0]",
+      "itemNumber": null,
+      "label": "City or town",
+      "source": {
+        "kind": "path",
+        "path": "fiduciary.address.city"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_15[0]",
+      "itemNumber": null,
+      "label": "State or province",
+      "source": {
+        "kind": "path",
+        "path": "fiduciary.address.state"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_16[0]",
+      "itemNumber": null,
+      "label": "Country",
+      "source": {
+        "kind": "path",
+        "path": "fiduciary.address.country"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_17[0]",
+      "itemNumber": null,
+      "label": "ZIP or foreign postal code",
+      "source": {
+        "kind": "path",
+        "path": "fiduciary.address.zip"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": true,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_18[0]",
+      "itemNumber": "1g",
+      "label": "Other. Describe:",
+      "source": {
+        "kind": "path",
+        "path": "authority.basisOtherDescription"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": {
+        "path": "authority.basis",
+        "equals": "Other"
+      }
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_19[0]",
+      "itemNumber": "2a",
+      "label": "If box 1a, 1b, or 1d is checked, enter the date of death:",
+      "source": {
+        "kind": "path",
+        "path": "decedent.dateOfDeath"
+      },
+      "format": "date",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": "Emitted as three guarded bindings to the same field (1a/1b/1d branches); this record satisfies the 1a branch.",
+      "when": {
+        "path": "authority.basis",
+        "equals": "CourtAppointmentTestate"
+      }
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_20[0]",
+      "itemNumber": "2b",
+      "label": "If box 1c, 1e, 1f, or 1g is checked, enter the date of appointment, taking office, or assignment or transfer of assets:",
+      "source": {
+        "kind": "path",
+        "path": "authority.dateOfAppointment"
+      },
+      "format": "date",
+      "onValue": null,
+      "required": false,
+      "confidence": "low",
+      "note": "1c branch; depends on inferred enum literal for c1_1[2].",
+      "when": {
+        "path": "authority.basis",
+        "equals": "CourtAppointmentGuardianOrConservator"
+      }
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_21[0]",
+      "itemNumber": "2d",
+      "label": "If \"No\" to line 2c, list the assets that were transferred:",
+      "source": {
+        "kind": "path",
+        "path": "authority.transferredAssetsDescription"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": {
+        "path": "authority.assetsUnderCourtControl",
+        "equals": false
+      }
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_22[0]",
+      "itemNumber": "3g",
+      "label": "Other (describe):",
+      "source": {
+        "kind": "path",
+        "path": "taxMatters.taxTypeOtherDescription"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "medium",
+      "note": "No `when` guard: the original guard compared an array path with equality and was therefore always false. A description is only recorded when the 'Other' option applies, so the value's own presence is the condition.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_23[0]",
+      "itemNumber": "4h",
+      "label": "Other (list):",
+      "source": {
+        "kind": "path",
+        "path": "taxMatters.federalFormOtherList"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "medium",
+      "note": "No `when` guard: the original guard compared an array path with equality and was therefore always false. A description is only recorded when the 'Other' option applies, so the value's own presence is the condition.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page1[0].f1_24[0]",
+      "itemNumber": "5b",
+      "label": "If you checked line 5a, list the specific years or periods within your authority:",
+      "source": {
+        "kind": "path",
+        "path": "taxMatters.specificPeriods"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": {
+        "path": "taxMatters.authorityLimitedToSpecificPeriods",
+        "equals": true
+      }
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].Time_ReadOrder[0].f2_13[0]",
+      "itemNumber": null,
+      "label": "Time",
+      "source": {
+        "kind": "path",
+        "path": "authority.proceeding.hearingTime"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "medium",
+      "note": "Paired with f2_12 (Date) and the a.m./p.m. checkboxes; interpreted as hearing time. Null in all five sample estates.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].c2_1[0]",
+      "itemNumber": "6a",
+      "label": "Check this box if you are revoking or terminating all prior notices concerning fiduciary relationships on file with the Internal Revenue Service for the same tax matters and years or periods covered by this notice concerning fiduciary relationship",
+      "source": {
+        "kind": "condition",
+        "path": "form56.totalRevocation.revokeAllPriorNotices",
+        "equals": true
+      },
+      "format": "checkbox",
+      "onValue": "/1",
+      "required": false,
+      "confidence": "high",
+      "note": "Direct boolean; verified false/absent across all five sample estates.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].c2_3[0]",
+      "itemNumber": "7a",
+      "label": "Check this box if you are revoking earlier notices concerning fiduciary relationships on file with the Internal Revenue Service for the same tax matters and years or periods covered by this notice concerning fiduciary relationship",
+      "source": {
+        "kind": "condition",
+        "path": "form56.partialRevocation.revokeEarlierNotices",
+        "equals": true
+      },
+      "format": "checkbox",
+      "onValue": "/1",
+      "required": false,
+      "confidence": "high",
+      "note": "Direct boolean; verified false/absent across all five sample estates.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].c2_4[0]",
+      "itemNumber": "8",
+      "label": "Check this box if a new fiduciary or fiduciaries have been or will be substituted for the revoking or terminating fiduciary and specify the name(s) and address(es), including ZIP code(s), of the new fiduciary(ies)",
+      "source": {
+        "kind": "condition",
+        "path": "form56.substituteFiduciary.hasSubstitute",
+        "equals": true
+      },
+      "format": "checkbox",
+      "onValue": "/1",
+      "required": false,
+      "confidence": "high",
+      "note": "Direct boolean; verified false/absent across all five sample estates.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].f2_01[0]",
+      "itemNumber": "6d",
+      "label": "Other. Describe:",
+      "source": {
+        "kind": "path",
+        "path": "form56.totalRevocation.reasonOtherDescription"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "medium",
+      "note": "Bound by direct path so the description prints whenever present, independent of the unresolved reason enum (see unbound c2_2[2]). Text may render without its checkbox marked until a repair round can confirm the enum literal.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].f2_02[0]",
+      "itemNumber": "7b",
+      "label": "Specify to whom granted, date, and address, including ZIP code.",
+      "source": {
+        "kind": "path",
+        "path": "form56.partialRevocation.grantedToDateAndAddress"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": "Single pre-composed string field; null in all sample estates but the mapping is unambiguous.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].f2_03[0]",
+      "itemNumber": "8",
+      "label": "specify the name(s) and address(es), including ZIP code(s), of the new fiduciary(ies)",
+      "source": {
+        "kind": "path",
+        "path": "form56.substituteFiduciary.namesAndAddresses"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": "Single pre-composed string field; null in all sample estates but the mapping is unambiguous.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].f2_04[0]",
+      "itemNumber": null,
+      "label": "Name of court (if other than a court proceeding, identify the type of proceeding and name of agency)",
+      "source": {
+        "kind": "path",
+        "path": "authority.proceeding.courtName"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": "Field is dual-purpose per its caption; estate-04 (non-court trust administration) puts the descriptive non-court text directly in courtName, confirming the source models both branches in one path.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].f2_05[0]",
+      "itemNumber": null,
+      "label": "Date proceeding initiated",
+      "source": {
+        "kind": "path",
+        "path": "authority.proceeding.dateProceedingInitiated"
+      },
+      "format": "date",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].f2_06[0]",
+      "itemNumber": null,
+      "label": "Address of court (number and street)",
+      "source": {
+        "kind": "path",
+        "path": "authority.proceeding.courtAddress.line1"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].f2_07[0]",
+      "itemNumber": null,
+      "label": "Room or suite no.",
+      "source": {
+        "kind": "path",
+        "path": "authority.proceeding.courtRoomOrSuite"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].f2_08[0]",
+      "itemNumber": null,
+      "label": "Docket number of proceeding",
+      "source": {
+        "kind": "path",
+        "path": "authority.proceeding.docketNumber"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].f2_09[0]",
+      "itemNumber": null,
+      "label": "City or town",
+      "source": {
+        "kind": "path",
+        "path": "authority.proceeding.courtAddress.city"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].f2_10[0]",
+      "itemNumber": null,
+      "label": "State",
+      "source": {
+        "kind": "path",
+        "path": "authority.proceeding.courtAddress.state"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].f2_11[0]",
+      "itemNumber": null,
+      "label": "ZIP code",
+      "source": {
+        "kind": "path",
+        "path": "authority.proceeding.courtAddress.zip"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].f2_12[0]",
+      "itemNumber": null,
+      "label": "Date",
+      "source": {
+        "kind": "path",
+        "path": "authority.proceeding.hearingDate"
+      },
+      "format": "date",
+      "onValue": null,
+      "required": false,
+      "confidence": "medium",
+      "note": "Paired with the Time/a.m.-p.m. fields immediately after it; interpreted as the hearing date. Null in all five sample estates, so the mapping is unverified against a populated example.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].f2_14[0]",
+      "itemNumber": null,
+      "label": "Place of other proceedings",
+      "source": {
+        "kind": "path",
+        "path": "authority.proceeding.placeOfOtherProceedings"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": "Populated in the non-court-proceeding sample estates (estate-03, estate-04); null here since estate-05 is a formal court proceeding.",
+      "when": null
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].f2_15[0]",
+      "itemNumber": null,
+      "label": "Title, if applicable",
+      "source": {
+        "kind": "path",
+        "path": "form56.signature.title"
+      },
+      "format": "text",
+      "onValue": null,
+      "required": false,
+      "confidence": "high",
+      "note": null,
+      "when": null
+    }
+  ],
+  "unbound": [
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].c2_2[0]",
+      "label": "Court order revoking fiduciary authority",
+      "reason": "form56.totalRevocation.reason is an enum-typed field but is null in every one of the five sample estates, and no schema file defining its literal strings exists in this repo. Guessing a literal to test equality against risks the box silently never firing for any real estate.",
+      "whatWouldFillIt": "The exact literal string form56.totalRevocation.reason takes for a court-order termination (e.g. from the schema file referenced at estate JSON $schema, or from an estate that actually exercises this branch)."
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].c2_2[1]",
+      "label": "Certificate of dissolution or termination of a business entity",
+      "reason": "Same enum-literal gap as c2_2[0]: form56.totalRevocation.reason is null in every sample estate and its possible string values are not documented anywhere in this repo.",
+      "whatWouldFillIt": "The exact literal string form56.totalRevocation.reason takes for a dissolution-certificate termination."
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].c2_2[2]",
+      "label": "Other. Describe:",
+      "reason": "Same enum-literal gap: cannot confirm the literal that marks 'other' as the reason. The paired free-text field f2_01 is still bound directly (see bindings) since it does not require knowing this literal.",
+      "whatWouldFillIt": "The exact literal string form56.totalRevocation.reason takes for the 'other' branch."
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].Time_ReadOrder[0].c2_5[0]",
+      "label": "a.m.",
+      "reason": "authority.proceeding.hearingTimeMeridiem is null in every sample estate and no schema documents its literal values (e.g. 'AM' vs 'am' vs 'A').",
+      "whatWouldFillIt": "The exact literal string authority.proceeding.hearingTimeMeridiem takes for morning hearings."
+    },
+    {
+      "qualifiedName": "topmostSubform[0].Page2[0].Time_ReadOrder[0].c2_5[1]",
+      "label": "p.m.",
+      "reason": "Same enum-literal gap as c2_5[0]: authority.proceeding.hearingTimeMeridiem is null in every sample estate and its literal values are undocumented.",
+      "whatWouldFillIt": "The exact literal string authority.proceeding.hearingTimeMeridiem takes for afternoon/evening hearings."
+    }
+  ],
+  "exclusiveGroups": [
+    {
+      "label": "Line 1 \u2014 authority for filing notice",
+      "rule": "exactlyOne",
+      "members": [
+        "topmostSubform[0].Page1[0].c1_1[0]",
+        "topmostSubform[0].Page1[0].c1_1[1]",
+        "topmostSubform[0].Page1[0].c1_1[2]",
+        "topmostSubform[0].Page1[0].c1_1[3]",
+        "topmostSubform[0].Page1[0].c1_1[4]",
+        "topmostSubform[0].Page1[0].c1_1[5]",
+        "topmostSubform[0].Page1[0].c1_1[6]"
+      ],
+      "when": null
+    },
+    {
+      "label": "Line 2c \u2014 assets in control/custody of court",
+      "rule": "atMostOne",
+      "members": [
+        "topmostSubform[0].Page1[0].c1_2[0]",
+        "topmostSubform[0].Page1[0].c1_2[1]"
+      ],
+      "when": null
+    },
+    {
+      "label": "Line 6 \u2014 reason for termination of fiduciary relationship",
+      "rule": "atMostOne",
+      "members": [
+        "topmostSubform[0].Page2[0].c2_2[0]",
+        "topmostSubform[0].Page2[0].c2_2[1]",
+        "topmostSubform[0].Page2[0].c2_2[2]"
+      ],
+      "when": null
+    },
+    {
+      "label": "Proceeding time \u2014 a.m./p.m.",
+      "rule": "atMostOne",
+      "members": [
+        "topmostSubform[0].Page2[0].Time_ReadOrder[0].c2_5[0]",
+        "topmostSubform[0].Page2[0].Time_ReadOrder[0].c2_5[1]"
+      ],
+      "when": null
+    }
+  ]
+}

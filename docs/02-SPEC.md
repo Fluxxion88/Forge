@@ -2,6 +2,10 @@
 
 Four stages. The first two may call a model. The last two must not.
 
+> Amended 2026-07-27: the binding language has **six** source kinds, not five. `contains` was
+> added because Form 56 items 3 and 4 store "check all that apply" answers as arrays and no
+> scalar-equality kind can read them. See §2.1.
+
 ```
 calibrate  →  bind  →  review  →  fill
 (model)      (model)    (human)   (no model, ever)
@@ -180,17 +184,45 @@ Supported `source.kind`:
 | `constant` | `{ value }` | a box whose content never varies |
 | `template` | `{ pattern, paths }` | e.g. `"{0}, {1}"` from two paths |
 | `condition` | `{ path, equals }` | checkbox: mark when the path equals the value |
+| `contains` | `{ path, includes }` | checkbox: mark when the array at the path contains the value |
 | `absent` | `{ path }` | checkbox: mark when the path is absent or null |
 
-Nothing else. If a field needs logic beyond these five, it does not get bound — it goes into
+Nothing else. If a field needs logic beyond these six, it does not get bound — it goes into
 `unbound` with a description. Arbitrary expressions are how a data artifact quietly becomes code.
 
+**Why `contains` exists.** This list was five kinds, all of them scalar equality, until the
+first real binding hit Form 56 items 3 and 4 — "check all that apply". The estate stores those
+answers as arrays (`taxMatters.taxTypes` is `["Income", "Estate"]`,
+`taxMatters.federalFormNumbers` is `["1040_or_1040SR", "1041"]`), and `condition` compares with
+`==`, which is never true against a list. Fifteen checkboxes were bound, validated, and could
+not have been marked on any estate ever. The failure was silent: the boxes simply rendered
+empty, exactly as they would if the data were missing. A "check all that apply" group is not an
+exotic form construct, so the sixth kind is the honest fix; the alternative was leaving a whole
+section of the form permanently unfillable. `includes` is a single literal, membership only —
+no predicates, no expressions. It stays data.
+
+A checkbox whose `condition`/`contains` path is the wrong shape (scalar equality against an
+array, or membership against a scalar) is **provably unmarkable**, and the loop must not ship
+one. `bind.unbind_dead_bindings()` detects both directions against the calibration estate and
+moves the binding to `unbound` with the reason, so the review UI shows it rather than the
+reviewer discovering an empty box on a filed form.
+
 **Conditional values: the `when` guard.** Any binding, whatever its `source.kind`, may carry an
-optional guard:
+optional guard, in one of two shapes:
 
 ```json
 "when": { "path": "authority.basis", "equals": "CourtAppointmentTestate" }
+"when": { "path": "authority.basis", "equalsAny": ["CourtAppointmentTestate",
+                                                  "CourtAppointmentIntestate",
+                                                  "FiduciaryIntestateEstate"] }
 ```
+
+`equalsAny` was added 2026-07-27 for the same reason as the `contains` source kind: the branch
+below is three authority values wide on the 2a side and four on the 2b side, and a single-literal
+guard cannot express it. The first approved v1 binding guarded 2a on `CourtAppointmentTestate`
+alone, which silently blanked the date of death for estate-02 (intestate, box 1b) and the date of
+appointment for estates 03 and 04 (trust instrument, box 1e). Membership against a fixed list,
+still one path, still no expressions.
 
 If the guard path does not resolve to exactly that value, the binding is skipped and the field is
 left empty, recorded as guarded-off rather than absent. This exists because which text field gets

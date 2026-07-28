@@ -1,0 +1,23 @@
+{
+  "estateId": "estate-04-ca-trust-and-estate",
+  "jurisdiction": "CA/Los Angeles",
+  "route": "TRUST_ADMINISTRATION",
+  "authorityBasis": "ValidTrustInstrument",
+  "line1Ticked": [
+    "1e"
+  ],
+  "date2a": null,
+  "date2b": "05/28/2026",
+  "fiduciaryTitle": "Successor Trustee",
+  "fieldsFilled": 25,
+  "fieldsEmpty": 42,
+  "guardedOff": 6,
+  "groupViolations": [],
+  "llmCallsAtRuntime": 0,
+  "elapsedMs": 39,
+  "pdf": "out/demo/reuse/estate-04-ca-trust-and-estate.pdf",
+  "renders": [
+    "out/demo/reuse/estate-04-ca-trust-and-estate-page-0.png",
+    "out/demo/reuse/estate-04-ca-trust-and-estate-page-1.png"
+  ]
+}

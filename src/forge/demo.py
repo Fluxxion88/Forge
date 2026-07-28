@@ -9,6 +9,7 @@ estate-05 is the calibration estate, so demoing it proves nothing about reuse).
 from __future__ import annotations
 
 import json
+import os
 import shutil
 import subprocess
 from pathlib import Path
@@ -24,6 +25,15 @@ from .registry import (
 )
 
 DEMO = OUT / "demo"
+
+
+def _demo_link(target: Path) -> str:
+    """A path relative to out/demo/, because that is where these reports live. A
+    repo-relative link renders as a broken image when the markdown is opened in
+    place — which is exactly how it gets opened on stage."""
+    return os.path.relpath(Path(target).resolve(), DEMO.resolve())
+
+
 HEADLINE_ESTATE = "estate-03-oh-trust-administration"
 HEADLINE_FORM = "irs-f56"
 
@@ -107,23 +117,44 @@ def build_headline() -> list[str]:
             "",
         ]
         for estate in made:
-            index.append(f"## {estate}\n\n![]({rel(crops_dir / (estate + '.png'))})\n")
+            index.append(
+                f"## {estate}\n\n![]({_demo_link(crops_dir / (estate + '.png'))})\n"
+            )
         (DEMO / "headline.md").write_text("\n".join(index), encoding="utf-8")
         notes.append(f"headline: {len(made)} Section A crops written")
     return notes
 
 
 def build_loop_history() -> list[str]:
-    """Round 1 wrong next to the final round right — the loop's provenance."""
-    report_path = REPORTS_DIR / f"{HEADLINE_FORM}-loop.json"
-    if not report_path.exists():
-        return [f"loop history: {rel(report_path)} does not exist yet"]
+    """Round 1 wrong next to the final round right — the loop's provenance.
+
+    Prefers a labelled run (`forge bind --label ...`), because the unlabelled report is
+    whatever the last ad-hoc run happened to write, while a labelled one was produced
+    deliberately for this asset.
+    """
+    candidates = sorted(REPORTS_DIR.glob(f"{HEADLINE_FORM}-loop.*.json")) + [
+        REPORTS_DIR / f"{HEADLINE_FORM}-loop.json"
+    ]
+    report_path = next((c for c in candidates if c.exists()), None)
+    if report_path is None:
+        return [f"loop history: no {HEADLINE_FORM}-loop*.json in {rel(REPORTS_DIR)} yet"]
     r = json.loads(report_path.read_text(encoding="utf-8"))
     lines = [
         f"# The convergence loop, {r['formId']} vs {r['estateId']}",
         "",
         f"Converged: **{r['converged']}** in {r['rounds']} round(s), "
         f"{r['modelCalls']} model calls, {r['elapsedSeconds']}s.",
+        "",
+        "Started from a deliberately naive proposal — the pre-lessons binding language, "
+        "with no guidance about array-shaped paths, unverified enum spellings or "
+        "multi-value branch guards (`forge bind --naive`). Feeding the loop a "
+        "pre-corrected proposal and then showing it converge in one round would prove "
+        "nothing. Every finding below was read off the RENDERED PAGE, not off the JSON "
+        "that produced it.",
+        "",
+        f"Source: `{rel(report_path)}`. This run wrote nothing to "
+        "`artifacts/bindings/` or `artifacts/approved/` — it is history, not a "
+        "candidate for approval.",
         "",
     ]
     for h in r["history"]:
@@ -139,7 +170,7 @@ def build_loop_history() -> list[str]:
                 f"~{len(d['changed'])} changed"
             )
         for png in h["renders"]:
-            lines.append(f"\n![]({png})\n")
+            lines.append(f"\n![]({_demo_link(OUT.parent / png)})\n")
     (DEMO / "loop-history.md").write_text("\n".join(lines), encoding="utf-8")
     return ["loop history: written"]
 
@@ -157,7 +188,115 @@ def build_runbook() -> list[str]:
     return ["RUNBOOK.md: written"]
 
 
-RUNBOOK = """# Demo runbook
+RUNBOOK = """# Demo runbook — Forge
+
+Three minutes. Every live command below runs in under two seconds. Nothing that calls a
+model is ever run live: calibration is ~83 s and a single critique round is ~2-4 min.
+Their outputs are pre-rendered and on disk.
+
+The approved binding is **v3**. Every `forge fill` below pins it with
+`--binding-version 3` rather than taking whatever is highest — so the demo cannot change
+under you if someone approves a v4 between now and the slot.
+
+## Before the slot (once)
+
+    cd <repo root>
+    source .venv/bin/activate
+    forge inspect --all                # 4 forms, exact field counts, PASS
+    forge review --port 8078           # leave running; open the URL it prints
+
+## Live sequence
+
+**1. The problem.** Open `inputs/forms/Form 56 June 2026.pdf`, click any box, show the
+field name: `topmostSubform[0].Page1[0].f1_04[0]`. 76 fields, zero tooltips. Nothing in
+the file says what any of them mean. Today a human closes that gap by hand, per form.
+
+**2. The compiled artifact.**
+
+    less artifacts/approved/irs-f56.v3.json
+
+Point at one binding (a data path onto a box), a `when` guard with `equalsAny`, an
+`exclusiveGroups` entry, and `approvedBy` / `approvedAt`. Say: *a human approved this
+once; it is data, not code; no model runs from here on.* Then point at `changeLog` — the
+three defects v1 shipped with, and what fixed them.
+
+**3. The review UI** (already open). Hover any row — the box it fills lights up on the
+rendered form. Click to pin. Every value on the paper traces to a named path, and you
+can see which box.
+
+**4. The fill.**
+
+    forge fill irs-f56 --estate estate-03-oh-trust-administration --binding-version 3
+    cat out/fills/estate-03-oh-trust-administration-irs-f56.json
+
+Point at `llmCallsAtRuntime: 0` — a counter wired into the model client, with a test that
+fails if it is ever non-zero. Then `elapsedMs`: about 40 ms.
+
+**5. Reuse — the headline.**
+
+    open out/demo/reuse.md
+    open out/demo/reuse-section-a.png
+
+One binding, five estates, five jurisdictions: line 1 ticks 1a / 1b / 1e differently,
+line 2a and 2b swap on the guard, the fiduciary title changes across four values. **The
+binding file is byte-identical** — its sha256 is in the report. Zero `exactlyOne`
+violations. Cold cost 485 s once per form; warm cost ~40 ms per estate, forever.
+
+**6. Honesty.** In the step-4 sidecar, the `empty` array: every blank field names the
+data path that would fill it. Unknown is not false. Then:
+
+    open out/demo/reuse-v1.md
+
+The same five-estate run over the **first** approved binding: two estates with no
+authority box ticked, from one wrong enum literal. The deterministic `exclusiveGroups`
+check caught it before anything was filed. That is the system reporting its own defect —
+kept on disk on purpose.
+
+**7. The loop's history.**
+
+    open out/demo/loop-history.md
+
+Round 1's four findings, read off the rendered image rather than the JSON that produced
+it; round 3 clean. Started from a deliberately naive proposal. Never run live.
+
+**8. Anvil, the sponsor path.**
+
+    forge fill irs-f56 --estate estate-05-in-formal-probate --via anvil --binding-version 3
+    open out/demo/anvil.md
+
+Same artifact, Anvil executes it — on the XFA hybrid, not the easy form. All 72 fields
+detected. Then the catch:
+
+    open out/demo/anvil-drift/before-the-hole.png
+
+A renamed field: 31 of 32 values delivered, HTTP 200, 156 KB of valid PDF with the
+date of death missing. Then reconciliation on — refuses, zero fill requests sent, no
+file written.
+
+**9. Close.**
+
+    open out/reports/benchmark.md
+
+14 applicable pairs, build cost paid once per form, model calls at fill time **0**
+everywhere, measured. And the accuracy line: we do not claim a number a human has not
+checked.
+
+## Regenerating the assets (not live)
+
+    forge reuse-proof --binding-version 3     # out/demo/reuse.md + strip, ~1 s
+    forge bench                               # out/reports/benchmark.{json,md}
+    forge demo                                # assembles out/demo/
+    pytest -q                                 # 72 tests
+
+Model-calling steps, for reference only — do not run these on stage:
+
+    forge calibrate irs-f56                                    # ~83 s, 2 calls
+    forge bind irs-f56 --estate estate-03-oh-trust-administration \\
+        --naive --max-rounds 4 --label naive-estate03           # ~11 min, 6 calls
+
+---
+
+# Appendix — the original phase-ordered runbook
 
 Slot is three minutes. Every live command below completes in under two seconds.
 The convergence loop is NEVER run live — a critique round costs about a minute.
@@ -206,25 +345,31 @@ Live sequence:
 
 
 def build_reconciliation_catch() -> list[str]:
-    """Static narration + the stub-verified behaviour; refreshed with live output
-    when a key arrives."""
+    """Superseded by the LIVE demonstration in out/demo/anvil.md."""
+    live = DEMO / "anvil.md"
+    if live.exists():
+        (DEMO / "reconciliation-catch.md").write_text(
+            "# The reconciliation catch\n\n"
+            "This asset used to carry a stub-verified narration while an Anvil key was\n"
+            "pending. The key arrived and the catch was demonstrated live against a real\n"
+            "cast: a renamed field, 31 of 32 values delivered, HTTP 200, 156 KB of valid\n"
+            "PDF with the date of death missing — then reconciliation on, refusing, with\n"
+            "zero fill requests sent.\n\n"
+            "See **[anvil.md](anvil.md)** and `anvil-drift/report.json`.\n",
+            encoding="utf-8",
+        )
+        return ["reconciliation-catch.md: points at the live anvil.md"]
     txt = """# The reconciliation catch
 
-Anvil's fill endpoint fails silently: a value posted to an alias the template does
-not have is dropped — no error, and the returned PDF looks complete with one empty
-box. On a real filing that is a rejection and another month of a family's life.
+Anvil's fill endpoint fails silently: a value posted to a field the template does not
+have is dropped — no error, and the returned PDF looks complete with one empty box. On a
+real filing that is a rejection and another month of a family's life.
 
-`forge fill --via anvil` therefore reconciles first, in both directions, and
-refuses to fill on any drift.
+`forge fill --via anvil` therefore reconciles first, in both directions, and refuses to
+fill on any drift.
 
-Status: verified against a stub transport (tests/test_anvil.py::
-test_fill_refuses_on_missing_alias — asserts no fill request is even sent).
-LIVE demonstration pending ANVIL_API_KEY; once present:
-
-    forge anvil-register ca-dmv-dl142          # registers cast with our aliases
-    forge fill ca-dmv-dl142 --estate estate-02-ca-intestate-independent-admin --via anvil
-    # then deliberately break one alias in the draft, re-register, and watch the
-    # fill REFUSE rather than return a clean-looking PDF with a hole.
+Status: verified against a stub transport (tests/test_anvil.py). LIVE demonstration
+pending ANVIL_API_KEY.
 """
     (DEMO / "reconciliation-catch.md").write_text(txt, encoding="utf-8")
     return ["reconciliation-catch.md: written (stub-verified; live pending key)"]

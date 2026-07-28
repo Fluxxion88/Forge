@@ -1,0 +1,7 @@
+```json
+[
+  {"target": "Print Name (line 6)", "problem": "The taxpayer signature block's Print Name field is empty even though form8821.signature.printName = 'Sharon Prescott' is available.", "mustFix": true},
+  {"target": "Title (if applicable) (line 6)", "problem": "The taxpayer signature block's Title field is empty even though form8821.signature.title = 'Personal Representative' is available.", "mustFix": true},
+  {"target": "Specific Tax Matters (item 3d)", "problem": "All three rows of the Specific Tax Matters column are clipped at the right edge (e.g. 'Final individual return of the dece', 'Fiduciary income tax for the estat', 'Resolution of an outstanding bala'), cutting off the full text.", "mustFix": true}
+]
+```

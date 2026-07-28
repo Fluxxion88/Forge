@@ -1,17 +1,9 @@
 # The reconciliation catch
 
-Anvil's fill endpoint fails silently: a value posted to an alias the template does
-not have is dropped — no error, and the returned PDF looks complete with one empty
-box. On a real filing that is a rejection and another month of a family's life.
+This asset used to carry a stub-verified narration while an Anvil key was
+pending. The key arrived and the catch was demonstrated live against a real
+cast: a renamed field, 31 of 32 values delivered, HTTP 200, 156 KB of valid
+PDF with the date of death missing — then reconciliation on, refusing, with
+zero fill requests sent.
 
-`forge fill --via anvil` therefore reconciles first, in both directions, and
-refuses to fill on any drift.
-
-Status: verified against a stub transport (tests/test_anvil.py::
-test_fill_refuses_on_missing_alias — asserts no fill request is even sent).
-LIVE demonstration pending ANVIL_API_KEY; once present:
-
-    forge anvil-register ca-dmv-dl142          # registers cast with our aliases
-    forge fill ca-dmv-dl142 --estate estate-02-ca-intestate-independent-admin --via anvil
-    # then deliberately break one alias in the draft, re-register, and watch the
-    # fill REFUSE rather than return a clean-looking PDF with a hole.
+See **[anvil.md](anvil.md)** and `anvil-drift/report.json`.

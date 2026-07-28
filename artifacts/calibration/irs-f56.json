@@ -27,7 +27,18 @@
       "printedLabel": "Name of person for whom you're acting (as shown on the tax return)",
       "meaning": "Legal name of the person or entity the fiduciary is acting for.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            36.0,
+            671.998,
+            373.65,
+            685.999
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].f1_02[0]",
@@ -48,7 +59,18 @@
       "printedLabel": "Identifying number",
       "meaning": "Taxpayer identifying number (SSN or EIN) of the person the fiduciary is acting for.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            374.4,
+            671.998,
+            468.0,
+            685.999
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].f1_03[0]",
@@ -69,7 +91,18 @@
       "printedLabel": "Decedent's social security no.",
       "meaning": "Social security number of the decedent.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            468.0,
+            671.998,
+            576.0,
+            685.999
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].f1_04[0]",
@@ -90,7 +123,18 @@
       "printedLabel": "Address of person for whom you're acting (number and street). If you have a P.O. box, see instructions.",
       "meaning": "Street address of the person the fiduciary is acting for.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            36.0,
+            648.0,
+            503.25,
+            662.001
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].f1_05[0]",
@@ -111,7 +155,18 @@
       "printedLabel": "Room or suite no.",
       "meaning": "Room or suite number for that address.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            504.0,
+            648.0,
+            576.0,
+            662.001
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].f1_06[0]",
@@ -132,7 +187,18 @@
       "printedLabel": "City or town",
       "meaning": "City or town of the person the fiduciary is acting for.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            36.0,
+            623.999,
+            272.85,
+            638.0
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].f1_07[0]",
@@ -153,7 +219,18 @@
       "printedLabel": "State or province",
       "meaning": "State or province of that address.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            274.6,
+            623.999,
+            373.65,
+            638.0
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].f1_08[0]",
@@ -174,7 +251,18 @@
       "printedLabel": "Country",
       "meaning": "Country of that address.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            375.4,
+            623.999,
+            474.45,
+            638.0
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].f1_09[0]",
@@ -195,7 +283,18 @@
       "printedLabel": "ZIP or foreign postal code",
       "meaning": "ZIP or foreign postal code of that address.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            475.2,
+            623.999,
+            576.0,
+            638.0
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].f1_10[0]",
@@ -216,7 +315,18 @@
       "printedLabel": "Fiduciary's name",
       "meaning": "Name of the fiduciary filing the notice.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            36.0,
+            599.998,
+            452.85,
+            613.999
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].f1_11[0]",
@@ -237,7 +347,18 @@
       "printedLabel": "Telephone no.",
       "meaning": "Fiduciary's telephone number.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            453.6,
+            599.998,
+            576.0,
+            613.999
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].f1_12[0]",
@@ -258,7 +379,18 @@
       "printedLabel": "Address of fiduciary (number and street). If you have a P.O. box, see instructions.",
       "meaning": "Street address of the fiduciary.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            36.0,
+            576.0,
+            503.25,
+            590.001
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].f1_13[0]",
@@ -279,7 +411,18 @@
       "printedLabel": "Room or suite no.",
       "meaning": "Room or suite number for the fiduciary's address.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            504.0,
+            576.0,
+            576.0,
+            590.001
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].f1_14[0]",
@@ -300,7 +443,18 @@
       "printedLabel": "City or town",
       "meaning": "City or town of the fiduciary's address.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            36.0,
+            551.999,
+            272.85,
+            566.0
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].f1_15[0]",
@@ -321,7 +475,18 @@
       "printedLabel": "State or province",
       "meaning": "State or province of the fiduciary's address.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            274.6,
+            551.999,
+            373.65,
+            566.0
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].f1_16[0]",
@@ -342,7 +507,18 @@
       "printedLabel": "Country",
       "meaning": "Country of the fiduciary's address.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            375.4,
+            551.999,
+            474.45,
+            566.0
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].f1_17[0]",
@@ -363,7 +539,18 @@
       "printedLabel": "ZIP or foreign postal code",
       "meaning": "ZIP or foreign postal code of the fiduciary's address.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            475.2,
+            551.999,
+            576.0,
+            566.0
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].c1_1[0]",
@@ -384,7 +571,18 @@
       "printedLabel": "Court appointment of testate estate (valid will exists)",
       "meaning": "Check if authority is a court appointment for a testate estate.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            64.8,
+            518.002,
+            72.8,
+            526.002
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].c1_1[1]",
@@ -405,7 +603,18 @@
       "printedLabel": "Court appointment of intestate estate (no valid will exists)",
       "meaning": "Check if authority is a court appointment for an intestate estate.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            64.8,
+            506.0,
+            72.8,
+            514.0
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].c1_1[2]",
@@ -426,7 +635,18 @@
       "printedLabel": "Court appointment as guardian or conservator",
       "meaning": "Check if authority is a court appointment as guardian or conservator.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            64.8,
+            494.001,
+            72.8,
+            502.001
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].c1_1[3]",
@@ -447,7 +667,18 @@
       "printedLabel": "Fiduciary of intestate estate",
       "meaning": "Check if acting as fiduciary of an intestate estate.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            64.8,
+            482.002,
+            72.8,
+            490.002
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].c1_1[4]",
@@ -468,7 +699,18 @@
       "printedLabel": "Valid trust instrument and amendments",
       "meaning": "Check if authority derives from a valid trust instrument and amendments.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            64.8,
+            470.0,
+            72.8,
+            478.0
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].c1_1[5]",
@@ -489,7 +731,18 @@
       "printedLabel": "Bankruptcy, appointment of receiver/fiduciary, or assignment for the benefit of creditors",
       "meaning": "Check if authority is from bankruptcy, receiver/fiduciary appointment, or assignment for creditors.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            64.8,
+            458.001,
+            72.8,
+            466.001
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].c1_1[6]",
@@ -510,7 +763,18 @@
       "printedLabel": "Other. Describe:",
       "meaning": "Check if authority is some other basis, described in the adjacent text field.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            64.8,
+            446.002,
+            72.8,
+            454.002
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].f1_18[0]",
@@ -531,7 +795,18 @@
       "printedLabel": "Other. Describe:",
       "meaning": "Free-text description of the other basis of authority when box 1g is checked.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            151.2,
+            444.002,
+            576.0,
+            456.001
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].f1_19[0]",
@@ -552,7 +827,18 @@
       "printedLabel": "If box 1a, 1b, or 1d is checked, enter the date of death:",
       "meaning": "Decedent's date of death, required when box 1a, 1b, or 1d is checked.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            288.0,
+            432.0,
+            410.4,
+            443.999
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].f1_20[0]",
@@ -573,7 +859,18 @@
       "printedLabel": "If box 1c, 1e, 1f, or 1g is checked, enter the date of appointment, taking office, or assignment or transfer of assets:",
       "meaning": "Date of appointment, taking office, or asset assignment/transfer, required when box 1c, 1e, 1f, or 1g is checked.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            64.8,
+            396.0,
+            576.0,
+            420.001
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].c1_2[0]",
@@ -594,7 +891,18 @@
       "printedLabel": "Yes",
       "meaning": "Check Yes if all or substantially all of the taxpayer's assets are in the control or custody of the court (appointment of receiver/fiduciary under box 1f).",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            507.0,
+            374.002,
+            515.0,
+            382.002
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].c1_2[1]",
@@ -615,7 +923,18 @@
       "printedLabel": "No",
       "meaning": "Check No if not all or substantially all of the taxpayer's assets are in the control or custody of the court.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            543.0,
+            374.002,
+            551.0,
+            382.002
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].f1_21[0]",
@@ -636,7 +955,18 @@
       "printedLabel": "If \"No\" to line 2c, list the assets that were transferred:",
       "meaning": "List of assets that were transferred, required if 2c is answered No.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            64.8,
+            312.001,
+            576.0,
+            360.0
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].c1_3[0]",
@@ -657,7 +987,18 @@
       "printedLabel": "Income",
       "meaning": "Check if the type of tax liability is income tax.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            216.0,
+            289.75,
+            224.0,
+            297.75
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].c1_4[0]",
@@ -678,7 +1019,18 @@
       "printedLabel": "Gift",
       "meaning": "Check if the type of tax liability is gift tax.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            273.6,
+            289.75,
+            281.6,
+            297.75
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].c1_5[0]",
@@ -699,7 +1051,18 @@
       "printedLabel": "Estate",
       "meaning": "Check if the type of tax liability is estate tax.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            316.8,
+            289.75,
+            324.8,
+            297.75
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].c1_6[0]",
@@ -720,7 +1083,18 @@
       "printedLabel": "Generation-skipping transfer",
       "meaning": "Check if the type of tax liability is generation-skipping transfer tax.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            367.2,
+            289.75,
+            375.2,
+            297.75
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].c1_7[0]",
@@ -741,7 +1115,18 @@
       "printedLabel": "Employment",
       "meaning": "Check if the type of tax liability is employment tax.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            511.2,
+            289.75,
+            519.2,
+            297.75
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].c1_8[0]",
@@ -762,7 +1147,18 @@
       "printedLabel": "Excise",
       "meaning": "Check if the type of tax liability is excise tax.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            72.0,
+            277.751,
+            80.0,
+            285.751
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].c1_9[0]",
@@ -783,7 +1179,18 @@
       "printedLabel": "Other",
       "meaning": "Check if the type of tax liability is some other tax, described in the adjacent text field.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            122.4,
+            277.751,
+            130.4,
+            285.751
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].f1_22[0]",
@@ -804,7 +1211,18 @@
       "printedLabel": "Other (describe):",
       "meaning": "Free-text description of the other type of tax when box 3g is checked.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            208.8,
+            276.001,
+            576.0,
+            288.0
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].c1_10[0]",
@@ -825,7 +1243,18 @@
       "printedLabel": "706 series",
       "meaning": "Check if the federal tax form is a 706 series form.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            269.4,
+            266.002,
+            277.4,
+            274.002
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].c1_11[0]",
@@ -846,7 +1275,18 @@
       "printedLabel": "709 series",
       "meaning": "Check if the federal tax form is a 709 series form.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            348.6,
+            266.002,
+            356.6,
+            274.002
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].c1_12[0]",
@@ -867,7 +1307,18 @@
       "printedLabel": "940",
       "meaning": "Check if the federal tax form is Form 940.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            427.8,
+            266.002,
+            435.8,
+            274.002
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].c1_13[0]",
@@ -888,7 +1339,18 @@
       "printedLabel": "941, 943, 944",
       "meaning": "Check if the federal tax form is Form 941, 943, or 944.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            485.4,
+            266.002,
+            493.4,
+            274.002
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].c1_14[0]",
@@ -909,7 +1371,18 @@
       "printedLabel": "1040 or 1040-SR",
       "meaning": "Check if the federal tax form is Form 1040 or 1040-SR.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            75.0,
+            254.0,
+            83.0,
+            262.0
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].c1_15[0]",
@@ -930,7 +1403,18 @@
       "printedLabel": "1041",
       "meaning": "Check if the federal tax form is Form 1041.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            175.8,
+            254.0,
+            183.8,
+            262.0
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].c1_16[0]",
@@ -951,7 +1435,18 @@
       "printedLabel": "1120",
       "meaning": "Check if the federal tax form is Form 1120.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            226.2,
+            254.0,
+            234.2,
+            262.0
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].c1_17[0]",
@@ -972,7 +1467,18 @@
       "printedLabel": "Other (list):",
       "meaning": "Check if the federal tax form is some other form, listed in the adjacent text field.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            276.6,
+            254.0,
+            284.6,
+            262.0
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].f1_23[0]",
@@ -993,7 +1499,18 @@
       "printedLabel": "Other (list):",
       "meaning": "Free-text list of the other federal tax form number when box 4h is checked.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            338.4,
+            252.0,
+            576.0,
+            263.999
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].c1_18[0]",
@@ -1014,7 +1531,18 @@
       "printedLabel": "If your authority as a fiduciary does not cover all years or tax periods, check here",
       "meaning": "Check if the fiduciary's authority does not cover all tax years or periods.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            564.8,
+            242.001,
+            572.8,
+            250.001
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page1[0].f1_24[0]",
@@ -1035,7 +1563,18 @@
       "printedLabel": "If you checked line 5a, list the specific years or periods within your authority:",
       "meaning": "List of the specific years or periods within the fiduciary's authority, required if 5a is checked.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 0,
+          "rect": [
+            64.8,
+            203.998,
+            576.0,
+            227.999
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page2[0].c2_1[0]",
@@ -1056,7 +1595,18 @@
       "printedLabel": "Check this box if you are revoking or terminating all prior notices concerning fiduciary relationships on file with the Internal Revenue Service for the same tax matters and years or periods covered by this notice concerning fiduciary relationship",
       "meaning": "Check if this notice revokes/terminates all prior fiduciary relationship notices on file for the same tax matters and years/periods.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 1,
+          "rect": [
+            564.8,
+            698.002,
+            572.8,
+            706.002
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page2[0].c2_2[0]",
@@ -1077,7 +1627,18 @@
       "printedLabel": "Court order revoking fiduciary authority",
       "meaning": "Check if the reason for termination is a court order revoking fiduciary authority.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 1,
+          "rect": [
+            64.8,
+            674.001,
+            72.8,
+            682.001
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page2[0].c2_2[1]",
@@ -1098,7 +1659,18 @@
       "printedLabel": "Certificate of dissolution or termination of a business entity",
       "meaning": "Check if the reason for termination is a certificate of dissolution or termination of a business entity.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 1,
+          "rect": [
+            64.8,
+            662.002,
+            72.8,
+            670.002
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page2[0].c2_2[2]",
@@ -1119,7 +1691,18 @@
       "printedLabel": "Other. Describe:",
       "meaning": "Check if the reason for termination is some other reason, to be described in the field below.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 1,
+          "rect": [
+            64.8,
+            650.0,
+            72.8,
+            658.0
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page2[0].f2_01[0]",
@@ -1140,7 +1723,18 @@
       "printedLabel": "Other. Describe:",
       "meaning": "Free-text description of the other reason for termination of the fiduciary relationship.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 1,
+          "rect": [
+            64.8,
+            587.999,
+            576.0,
+            648.0
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page2[0].c2_3[0]",
@@ -1161,7 +1755,18 @@
       "printedLabel": "Check this box if you are revoking earlier notices concerning fiduciary relationships on file with the Internal Revenue Service for the same tax matters and years or periods covered by this notice concerning fiduciary relationship",
       "meaning": "Check if this notice partially revokes earlier fiduciary relationship notices on file for the same tax matters and years/periods.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 1,
+          "rect": [
+            564.8,
+            554.002,
+            572.8,
+            562.002
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page2[0].f2_02[0]",
@@ -1182,7 +1787,18 @@
       "printedLabel": "Specify to whom granted, date, and address, including ZIP code.",
       "meaning": "Name, date, and address (with ZIP code) of the party to whom the fiduciary authority being partially revoked was originally granted.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 1,
+          "rect": [
+            64.8,
+            479.999,
+            576.0,
+            540.0
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page2[0].c2_4[0]",
@@ -1203,7 +1819,18 @@
       "printedLabel": "Check this box if a new fiduciary or fiduciaries have been or will be substituted for the revoking or terminating fiduciary and specify the name(s) and address(es), including ZIP code(s), of the new fiduciary(ies)",
       "meaning": "Check if a substitute fiduciary has been or will be appointed in place of the revoking/terminating fiduciary.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 1,
+          "rect": [
+            564.8,
+            446.002,
+            572.8,
+            454.002
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page2[0].f2_03[0]",
@@ -1224,7 +1851,18 @@
       "printedLabel": "specify the name(s) and address(es), including ZIP code(s), of the new fiduciary(ies)",
       "meaning": "Name(s) and address(es) (with ZIP code(s)) of the substitute fiduciary or fiduciaries.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 1,
+          "rect": [
+            64.8,
+            383.998,
+            576.0,
+            443.999
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page2[0].f2_04[0]",
@@ -1245,7 +1883,18 @@
       "printedLabel": "Name of court (if other than a court proceeding, identify the type of proceeding and name of agency)",
       "meaning": "Name of the court handling the proceeding, or if not a court proceeding, the type of proceeding and name of the agency.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 1,
+          "rect": [
+            36.0,
+            347.998,
+            402.45,
+            361.999
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page2[0].f2_05[0]",
@@ -1266,7 +1915,18 @@
       "printedLabel": "Date proceeding initiated",
       "meaning": "Date the court or administrative proceeding was initiated.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 1,
+          "rect": [
+            403.2,
+            347.998,
+            576.0,
+            361.999
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page2[0].f2_06[0]",
@@ -1287,7 +1947,18 @@
       "printedLabel": "Address of court (number and street)",
       "meaning": "Street address (number and street) of the court.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 1,
+          "rect": [
+            36.0,
+            324.0,
+            337.65,
+            338.001
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page2[0].f2_07[0]",
@@ -1308,7 +1979,18 @@
       "printedLabel": "Room or suite no.",
       "meaning": "Room or suite number of the court address.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 1,
+          "rect": [
+            338.4,
+            324.0,
+            403.2,
+            338.001
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page2[0].f2_08[0]",
@@ -1329,7 +2011,18 @@
       "printedLabel": "Docket number of proceeding",
       "meaning": "Docket number assigned to the court or administrative proceeding.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 1,
+          "rect": [
+            403.2,
+            324.0,
+            576.0,
+            338.001
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page2[0].f2_09[0]",
@@ -1350,7 +2043,18 @@
       "printedLabel": "City or town",
       "meaning": "City or town of the court's address.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 1,
+          "rect": [
+            36.0,
+            299.999,
+            208.05,
+            314.0
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page2[0].f2_10[0]",
@@ -1371,7 +2075,18 @@
       "printedLabel": "State",
       "meaning": "State of the court's address.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 1,
+          "rect": [
+            209.8,
+            299.999,
+            272.85,
+            314.0
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page2[0].f2_11[0]",
@@ -1392,7 +2107,18 @@
       "printedLabel": "ZIP code",
       "meaning": "ZIP code of the court's address.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 1,
+          "rect": [
+            273.6,
+            299.999,
+            338.4,
+            314.0
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page2[0].f2_12[0]",
@@ -1413,7 +2139,18 @@
       "printedLabel": "Date",
       "meaning": "Date associated with the proceeding (in the court address/details row).",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 1,
+          "rect": [
+            338.4,
+            299.999,
+            403.2,
+            314.0
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page2[0].Time_ReadOrder[0].f2_13[0]",
@@ -1434,7 +2171,18 @@
       "printedLabel": "Time",
       "meaning": "Time of the proceeding, paired with the a.m./p.m. checkboxes.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 1,
+          "rect": [
+            403.2,
+            299.999,
+            446.4,
+            314.0
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page2[0].Time_ReadOrder[0].c2_5[0]",
@@ -1455,7 +2203,18 @@
       "printedLabel": "a.m.",
       "meaning": "Check if the proceeding time entered is a.m.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 1,
+          "rect": [
+            451.4,
+            313.501,
+            459.4,
+            321.501
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page2[0].Time_ReadOrder[0].c2_5[1]",
@@ -1476,7 +2235,18 @@
       "printedLabel": "p.m.",
       "meaning": "Check if the proceeding time entered is p.m.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 1,
+          "rect": [
+            451.4,
+            302.502,
+            459.4,
+            310.502
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page2[0].f2_14[0]",
@@ -1497,7 +2267,18 @@
       "printedLabel": "Place of other proceedings",
       "meaning": "Location/place of the proceeding if not a standard court proceeding.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 1,
+          "rect": [
+            483.4,
+            299.999,
+            576.0,
+            314.0
+          ]
+        }
+      ]
     },
     {
       "qualifiedName": "topmostSubform[0].Page2[0].f2_15[0]",
@@ -1518,8 +2299,58 @@
       "printedLabel": "Title, if applicable",
       "meaning": "The fiduciary's title (e.g., executor, trustee), if applicable, entered next to the signature.",
       "confidence": "high",
-      "escalated": false
+      "escalated": false,
+      "widgets": [
+        {
+          "page": 1,
+          "rect": [
+            316.8,
+            239.998,
+            453.6,
+            252.0
+          ]
+        }
+      ]
     }
   ],
-  "unresolved": []
+  "unresolved": [],
+  "pages": [
+    {
+      "index": 0,
+      "cropBox": [
+        0.0,
+        0.0,
+        612.0,
+        792.0
+      ],
+      "mediaBox": [
+        0.0,
+        0.0,
+        612.0,
+        792.0
+      ],
+      "widthPt": 612.0,
+      "heightPt": 792.0,
+      "rotate": 0
+    },
+    {
+      "index": 1,
+      "cropBox": [
+        0.0,
+        0.0,
+        612.0,
+        792.0
+      ],
+      "mediaBox": [
+        0.0,
+        0.0,
+        612.0,
+        792.0
+      ],
+      "widthPt": 612.0,
+      "heightPt": 792.0,
+      "rotate": 0
+    }
+  ],
+  "geometryBackfilledAt": "2026-07-28T04:34:03Z"
 }

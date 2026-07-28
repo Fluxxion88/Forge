@@ -1,0 +1,14 @@
+[propose] drafting binding for irs-f56 against estate-03-oh-trust-administration
+[call 1] propose (attempt 1) (72 field(s)) — prev call took n/a
+[call 2] critique round 1 (attempt 1) (72 field(s)) — prev call took 146.3s
+round 1: 4 finding(s) (0 deterministic, 4 from the image), 25 filled
+[call 3] repair round 1 (attempt 1) (4 field(s)) — prev call took 52.6s
+[call 4] critique round 2 (attempt 1) (70 field(s)) — prev call took 154.9s
+round 2: 1 finding(s) (0 deterministic, 1 from the image), 25 filled
+[call 5] repair round 2 (attempt 1) (1 field(s)) — prev call took 32.1s
+[call 6] critique round 3 (attempt 1) (70 field(s)) — prev call took 228.3s
+round 3: 0 finding(s) (0 deterministic, 0 from the image), 25 filled
+wrote out/reports/irs-f56-naive-estate03.draft.json
+wrote out/reports/irs-f56-loop.naive-estate03.json
+converged in 3 round(s)
+PASS

@@ -5,7 +5,7 @@ This module is the runtime. The convergence loop (build time) and `forge fill`
 difference is that `forge fill` runs inside `forbid_model_calls()`.
 
 Semantics, per docs/02-SPEC.md §2.1:
-  - five source kinds: path, constant, template, condition, absent
+  - six source kinds: path, constant, template, condition, contains, absent
   - an optional `when: {path, equals}` guard on any binding; a failed guard leaves
     the field empty and records guarded-off
   - `exclusiveGroups` with rule exactlyOne | atMostOne; violations are recorded and
@@ -28,7 +28,7 @@ from .fillwriter import render_pages, write_filled
 
 ISO_DATE = re.compile(r"(\d{4})-(\d{2})-(\d{2})")
 
-SOURCE_KINDS = {"path", "constant", "template", "condition", "absent"}
+SOURCE_KINDS = {"path", "constant", "template", "condition", "contains", "absent"}
 
 
 @dataclass
@@ -132,10 +132,22 @@ def _format_value(raw: Any, fmt: str) -> str:
 
 
 def _guard_passes(when: dict[str, Any] | None, estate: EstateData) -> bool:
+    """`when: {path, equals}` or `when: {path, equalsAny: [...]}`.
+
+    `equalsAny` exists because Form 56 line 2a takes the date of death on the
+    1a/1b/1d branch and 2b takes the date of appointment on the 1c/1e/1f/1g branch
+    (docs/02-SPEC.md §2.1). One literal cannot express a three-way branch, and a
+    single-literal guard silently left estate-02's date of death blank. Still
+    membership against a fixed list — no predicates, no expressions.
+    """
     if not when:
         return True
     r = estate.resolve(when["path"])
-    return r.present and r.value == when["equals"]
+    if not r.present:
+        return False
+    if "equalsAny" in when:
+        return r.value in (when["equalsAny"] or [])
+    return r.value == when["equals"]
 
 
 def resolve_one(binding: dict[str, Any], estate: EstateData) -> ResolvedField:
@@ -153,7 +165,9 @@ def resolve_one(binding: dict[str, Any], estate: EstateData) -> ResolvedField:
     if not _guard_passes(binding.get("when"), estate):
         out.guarded_off = True
         w = binding.get("when") or {}
-        out.reason = f"guard failed: {w.get('path')} != {w.get('equals')!r}"
+        wanted = w["equalsAny"] if "equalsAny" in w else w.get("equals")
+        op = "not in" if "equalsAny" in w else "!="
+        out.reason = f"guard failed: {w.get('path')} {op} {wanted!r}"
         return out
 
     if kind == "constant":
@@ -202,6 +216,25 @@ def resolve_one(binding: dict[str, Any], estate: EstateData) -> ResolvedField:
         out.checked = r.present and r.value == src["equals"]
         if not r.present:
             out.reason = r.reason
+        return out
+
+    if kind == "contains":
+        # "check all that apply": the estate holds an array, the form holds one box
+        # per option. Membership only — one literal, no predicate (docs/02 §2.1).
+        r = estate.resolve(src["path"])
+        out.paths = [src["path"]]
+        out.present = r.present
+        if not r.present:
+            out.reason = r.reason
+        elif not isinstance(r.value, list):
+            # a scalar here means the binding is unmarkable, not that the answer is no
+            out.present = False
+            out.reason = (
+                f"{src['path']} holds {type(r.value).__name__}, not a list; "
+                "'contains' needs an array"
+            )
+        else:
+            out.checked = src["includes"] in r.value
         return out
 
     if kind == "absent":
@@ -266,9 +299,14 @@ def _fill_anvil(binding: dict[str, Any], estate: EstateData, out_pdf: Path) -> "
 
     cast_eid = binding.get("anvilCastEid")
     if not cast_eid:
+        # approved artifacts are immutable, so a form approved before registration
+        # carries its cast in artifacts/anvil/<formId>.json instead
+        reg = anvil.load_cast_registry(binding["formId"])
+        cast_eid = (reg or {}).get("castEid")
+    if not cast_eid:
         raise RuntimeError(
-            f"binding for {binding['formId']} has no anvilCastEid; "
-            f"run: forge anvil-register {binding['formId']}"
+            f"binding for {binding['formId']} has no anvilCastEid and no entry in "
+            f"artifacts/anvil/; run: forge anvil-register {binding['formId']}"
         )
     transport = anvil.HttpTransport()
     cast = transport.graphql(anvil.CAST_QUERY, {"eid": cast_eid})["cast"]
@@ -284,8 +322,13 @@ def _fill_anvil(binding: dict[str, Any], estate: EstateData, out_pdf: Path) -> "
     return result
 
 
-def load_approved(form_id: str) -> tuple[dict[str, Any], Path]:
-    """Highest approved version, or a clear refusal. Never falls back to a draft."""
+def load_approved(form_id: str, version: int | None = None) -> tuple[dict[str, Any], Path]:
+    """Highest approved version, or a clear refusal. Never falls back to a draft.
+
+    `version` pins an exact approved version. Reproducing a filing months later means
+    filling with the artifact that was approved then, not whatever is newest — and a
+    demo that says "the frozen v1 binding" should be filling with v1.
+    """
     from .registry import APPROVED_DIR
 
     candidates = sorted(
@@ -297,11 +340,21 @@ def load_approved(form_id: str) -> tuple[dict[str, Any], Path]:
             f"form {form_id} has not been compiled: no approved binding under "
             f"artifacts/approved/. Run the loop and approve it in forge review."
         )
+    if version is not None:
+        exact = APPROVED_DIR / f"{form_id}.v{version}.json"
+        if not exact.exists():
+            have = ", ".join(p.name for p in candidates)
+            raise FileNotFoundError(
+                f"{form_id} has no approved v{version}; available: {have}"
+            )
+        return json.loads(exact.read_text(encoding="utf-8")), exact
     best = candidates[-1]
     return json.loads(best.read_text(encoding="utf-8")), best
 
 
-def run_fill(form_id: str, estate_id: str, via: str = "local") -> int:
+def run_fill(
+    form_id: str, estate_id: str, via: str = "local", binding_version: int | None = None
+) -> int:
     from . import llm
     from .registry import FILLS_DIR, RENDERS_DIR, get_form, load_work_order, rel, sha256_of
 
@@ -316,7 +369,7 @@ def run_fill(form_id: str, estate_id: str, via: str = "local") -> int:
         return 0  # a correct refusal, not a failure — and no file is produced
 
     form = get_form(form_id)
-    binding, binding_path = load_approved(form_id)
+    binding, binding_path = load_approved(form_id, binding_version)
     if binding["sourceFormSha256"] != sha256_of(form.path):
         print(f"FAIL: {rel(binding_path)} was compiled against a different PDF")
         return 1
@@ -370,7 +423,9 @@ def run_fill(form_id: str, estate_id: str, via: str = "local") -> int:
         "elapsedMs": elapsed_ms,
         "renders": [rel(p) for p in pngs],
     }
-    sidecar_path = FILLS_DIR / f"{estate_id}-{form_id}.json"
+    # the suffix must be on the sidecar too, or an --via anvil run silently
+    # overwrites the local run's report and the two can never be compared
+    sidecar_path = FILLS_DIR / f"{estate_id}-{form_id}{suffix}.json"
     sidecar_path.write_text(json.dumps(sidecar, indent=2) + "\n", encoding="utf-8")
 
     print(f"wrote {rel(out_pdf)}")

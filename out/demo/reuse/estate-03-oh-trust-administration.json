@@ -1,0 +1,23 @@
+{
+  "estateId": "estate-03-oh-trust-administration",
+  "jurisdiction": "OH/Cuyahoga",
+  "route": "TRUST_ADMINISTRATION",
+  "authorityBasis": "ValidTrustInstrument",
+  "line1Ticked": [
+    "1e"
+  ],
+  "date2a": null,
+  "date2b": "06/29/2026",
+  "fiduciaryTitle": "Successor Trustee",
+  "fieldsFilled": 27,
+  "fieldsEmpty": 40,
+  "guardedOff": 6,
+  "groupViolations": [],
+  "llmCallsAtRuntime": 0,
+  "elapsedMs": 41,
+  "pdf": "out/demo/reuse/estate-03-oh-trust-administration.pdf",
+  "renders": [
+    "out/demo/reuse/estate-03-oh-trust-administration-page-0.png",
+    "out/demo/reuse/estate-03-oh-trust-administration-page-1.png"
+  ]
+}

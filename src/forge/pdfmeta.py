@@ -226,6 +226,34 @@ def _walk(
         _walk(kid_obj, next_parent, ft, page_map, out, seen)
 
 
+def page_boxes(pdf_path: str | Path) -> list[dict[str, Any]]:
+    """Per-page geometry, measured from the PDF. Never assumed, never US Letter.
+
+    `pdftoppm` rasterises the **CropBox**, not the MediaBox, and a CropBox does not
+    have to start at the origin: DL 142 is a 1224x792 MediaBox cropped to
+    [0, 3.55556, 612, 792]. Anything mapping a widget rectangle onto the rendered
+    pixels must therefore subtract the crop origin as well as flip Y, so the crop box
+    is what gets recorded here.
+    """
+    reader = PdfReader(str(pdf_path))
+    out: list[dict[str, Any]] = []
+    for i, page in enumerate(reader.pages):
+        crop = [float(v) for v in page.cropbox]
+        media = [float(v) for v in page.mediabox]
+        rotate = int(_deref(page.get("/Rotate")) or 0) % 360
+        out.append(
+            {
+                "index": i,
+                "cropBox": crop,
+                "mediaBox": media,
+                "widthPt": crop[2] - crop[0],
+                "heightPt": crop[3] - crop[1],
+                "rotate": rotate,
+            }
+        )
+    return out
+
+
 def read_form(pdf_path: str | Path) -> FormInfo:
     """Enumerate every field node in a PDF's AcroForm, keyed by qualified name."""
     reader = PdfReader(str(pdf_path))
