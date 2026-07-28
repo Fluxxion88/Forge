@@ -26,3 +26,11 @@ Format: timestamp UTC · fork · decision · reason.
   coerced), malformed entries are dropped loudly. Per-page propose fallback worked:
   pages 0+1 proposed in 360+206s after the whole-form 420s timeout. Round 1 had
   produced 1 image finding before the crash; rerunning the loop from scratch.
+- 2026-07-28T04:45Z · **Lane discipline** · Operator rule folded in: subagents may not
+  edit shared code while other lanes run; they report diffs, MAIN applies between runs.
+  f8821 agent's two earlier loop.py edits (parse-retry, FORM_SUMMARY_KEYS) accepted.
+  MAIN pre-added FORM_SUMMARY_KEYS["irs-ss4"] before that lane's bind starts.
+- 2026-07-28T04:45Z · **f8821 lane cost diagnosis** · The 30-minute lane was NOT crop
+  escalation (0/45 escalated; calibration passed in 1 call). It was bind attempt 1
+  dying at round 2 on an unparseable critique reply + the agent's root-cause work +
+  full rerun. Both underlying bugs were real and are fixed in shared code.

@@ -1,0 +1,3 @@
+One genuine issue found: the **item 3d "Specific Tax Matters"** column is text-clipped on all three rows — "Final individual return of the dece[dent]", "Fiduciary income tax for the estat[e]", and "Resolution of an outstanding bala[nce-due notice]" are all cut off mid-word, so the printed authorization scope is unclear/incomplete on the rendered page.
+
+Everything else checks out: taxpayer block, EIN, phone, both designees' CAF/PTIN/phone/fax numbers and "new"/"copies" checkboxes, items 2–5 checkboxes, and the signature date format (MM/DD/YYYY) all match the estate facts correctly.

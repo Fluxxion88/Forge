@@ -38,3 +38,29 @@ Logged per docs/05 §2. This lane writes here, never to out/reports/decisions.md
 - Rerunning `forge bind irs-f8821 --estate estate-05-in-formal-probate` from a
   fresh propose rather than resuming the half-repaired draft: the gate command is
   the full bind, and the attempt-1 history is preserved on disk either way.
+
+## 2026-07-27 — bind attempt 2 (crashed round 1, fixed, rerun)
+
+- Attempt 2 (`out/reports/bind-irs-f8821.attempt2.log`) survived a prose reply on
+  propose (fell back to per-page proposals as designed) but crashed in critique
+  round 1: the retried reply was prose containing incidental brackets
+  ("dece[dent]"), so `extract_json_array` sliced non-JSON and `json.loads` raised
+  a raw JSONDecodeError that nothing caught
+  (`out/reports/calls/004-bind-irs-f8821-critique-r1.reply.txt`).
+- Decision 3: `llm.extract_json_array`/`extract_json_object` now wrap
+  `json.loads` and raise ModelCallFailed on decode errors, so unparseable replies
+  are retryable failures everywhere instead of crashes.
+- Decision 4: the model replied in prose in 3 of 6 calls despite "Answer with
+  ONLY a JSON..." — hardened the format instruction at the END of the critique,
+  repair and propose prompts (entire reply must parse as JSON; non-JSON replies
+  are discarded unread; do not read/edit repo files). One propose reply showed
+  the sub-model attempting to EDIT `artifacts/bindings/irs-f8821.json` (blocked
+  by allowedTools=Read); the added instruction forbids that explicitly.
+- Verified by eye from `out/renders/irs-f8821/round-1-page-0.png` (attempt 2):
+  the critique's substance is real — column 3(d) clips all three rows. From the
+  blank PDF: those fields are single-line (Ff=8388608 DoNotScroll, no multiline),
+  fixed 8pt font, 128.6pt wide (~35 chars); the estate's specificTaxMatters
+  strings are longer. This is a form-capacity fact, not a rendering bug. Not
+  patching the fill path (shared with irs-f56); the loop must surface it —
+  an open finding or an unbound-with-reason is the honest result.
+- Test suite after edits: 58 passed.

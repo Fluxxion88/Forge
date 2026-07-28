@@ -1,3 +1,4 @@
+```json
 {
  "bindings": [
   {
@@ -433,6 +434,21 @@
    "when": null
   },
   {
+   "qualifiedName": "topmostSubform[0].Page1[0].Table_Line3[0].BodyRow1[0].f1_23[0]",
+   "itemNumber": "3d",
+   "label": "Specific Tax Matters",
+   "source": {
+    "kind": "path",
+    "path": "taxMatters.authorizationRows[0].specificTaxMatters"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": true,
+   "confidence": "medium",
+   "note": "Value may exceed this fixed-width column's comfortable display width and could render clipped at the right edge; binding it anyway because the data is fully known and required, and blank is a worse outcome than a possibly tight fit. Flag for a calibration follow-up (smaller/auto-sized font) rather than leaving unbound.",
+   "when": null
+  },
+  {
    "qualifiedName": "topmostSubform[0].Page1[0].Table_Line3[0].BodyRow2[0].f1_24[0]",
    "itemNumber": "3a",
    "label": "Type of Tax Information",
@@ -478,6 +494,21 @@
    "when": null
   },
   {
+   "qualifiedName": "topmostSubform[0].Page1[0].Table_Line3[0].BodyRow2[0].f1_27[0]",
+   "itemNumber": "3d",
+   "label": "Specific Tax Matters",
+   "source": {
+    "kind": "path",
+    "path": "taxMatters.authorizationRows[1].specificTaxMatters"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "medium",
+   "note": "Value may exceed this fixed-width column's comfortable display width and could render clipped at the right edge; binding it anyway because the data is fully known, and blank is a worse outcome than a possibly tight fit. Flag for a calibration follow-up (smaller/auto-sized font). Blank when fewer than 2 authorization rows exist.",
+   "when": null
+  },
+  {
    "qualifiedName": "topmostSubform[0].Page1[0].Table_Line3[0].BodyRow3[0].f1_28[0]",
    "itemNumber": "3a",
    "label": "Type of Tax Information",
@@ -520,6 +551,21 @@
    "required": false,
    "confidence": "high",
    "note": null,
+   "when": null
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].Table_Line3[0].BodyRow3[0].f1_31[0]",
+   "itemNumber": "3d",
+   "label": "Specific Tax Matters",
+   "source": {
+    "kind": "path",
+    "path": "taxMatters.authorizationRows[2].specificTaxMatters"
+   },
+   "format": "text",
+   "onValue": null,
+   "required": false,
+   "confidence": "medium",
+   "note": "Value may exceed this fixed-width column's comfortable display width and could render clipped at the right edge; binding it anyway because the data is fully known, and blank is a worse outcome than a possibly tight fit. Flag for a calibration follow-up (smaller/auto-sized font). Blank when fewer than 3 authorization rows exist.",
    "when": null
   },
   {
@@ -608,35 +654,18 @@
    "whatWouldFillIt": "The taxpayer's or fiduciary's physical signature captured at execution time."
   },
   {
-   "qualifiedName": "topmostSubform[0].Page1[0].Table_Line3[0].BodyRow1[0].f1_23[0]",
-   "label": "Specific Tax Matters",
-   "reason": "Row 1's specific-tax-matters value ('Final individual return of the decedent') is longer than this fixed-width column can display and is clipped at the right edge when rendered. The binding language (path/constant/template/condition/absent) has no truncation, wrap, or auto-size primitive, so the full value cannot be guaranteed to render correctly; binding it risks a confident-looking but visibly cut-off answer.",
-   "whatWouldFillIt": "taxMatters.authorizationRows[0].specificTaxMatters once this field is recalibrated with a smaller or auto-sizing font (a fill-time/calibration fix, not a binding-source fix); the estate data itself is complete."
-  },
-  {
-   "qualifiedName": "topmostSubform[0].Page1[0].Table_Line3[0].BodyRow2[0].f1_27[0]",
-   "label": "Specific Tax Matters",
-   "reason": "Row 2's specific-tax-matters value ('Fiduciary income tax for the estate') is longer than this fixed-width column can display and is clipped at the right edge when rendered. The binding language has no truncation, wrap, or auto-size primitive to keep the full value visible.",
-   "whatWouldFillIt": "taxMatters.authorizationRows[1].specificTaxMatters once this field is recalibrated with a smaller or auto-sizing font; the estate data itself is complete."
-  },
-  {
-   "qualifiedName": "topmostSubform[0].Page1[0].Table_Line3[0].BodyRow3[0].f1_31[0]",
-   "label": "Specific Tax Matters",
-   "reason": "Row 3's specific-tax-matters value ('Resolution of an outstanding balance-due notice') is longer than this fixed-width column can display and is clipped at the right edge when rendered. The binding language has no truncation, wrap, or auto-size primitive to keep the full value visible.",
-   "whatWouldFillIt": "taxMatters.authorizationRows[2].specificTaxMatters once this field is recalibrated with a smaller or auto-sizing font; the estate data itself is complete."
-  },
-  {
    "qualifiedName": null,
    "label": "Print Name",
-   "reason": "The rendered page shows a printed 'Print Name' line beneath the Signature/Date row, but calibration (artifacts/calibration/irs-f8821.json) enumerates no AcroForm field there — the field set ends at f1_33 (Date). There is no calibrated qualifiedName to bind to, so a value cannot be placed without fabricating a field reference. This looks like a calibration gap (the untested crop-escalation path is the most likely cause on this form) rather than a fact this binding can supply.",
+   "reason": "The rendered page shows a printed 'Print Name' line beneath the Signature/Date row, but calibration (artifacts/calibration/irs-f8821.json) enumerates no AcroForm field there — the field set ends at f1_33 (Date). There is no calibrated qualifiedName to bind to, so a value cannot be placed without fabricating a field reference, which the binding language forbids (qualifiedName must be a calibrated field's qualifiedName, verbatim). This is still a calibration gap, not something a second binding pass can resolve — recalibrating irs-f8821 (the untested crop-escalation path is the most likely cause) is required before this finding can close.",
    "whatWouldFillIt": "form8821.signature.printName ('Sharon Prescott') once irs-f8821 is recalibrated and a field is found/added for this line."
   },
   {
    "qualifiedName": null,
    "label": "Title (if applicable)",
-   "reason": "The rendered page shows a printed 'Title (if applicable)' line beneath the Signature/Date row, but calibration enumerates no AcroForm field there — the field set ends at f1_33 (Date). There is no calibrated qualifiedName to bind to. This looks like a calibration gap (the untested crop-escalation path is the most likely cause on this form) rather than a fact this binding can supply.",
+   "reason": "The rendered page shows a printed 'Title (if applicable)' line beneath the Signature/Date row, but calibration enumerates no AcroForm field there — the field set ends at f1_33 (Date). There is no calibrated qualifiedName to bind to. This is still a calibration gap, not something a second binding pass can resolve — recalibrating irs-f8821 is required before this finding can close.",
    "whatWouldFillIt": "form8821.signature.title ('Personal Representative') once irs-f8821 is recalibrated and a field is found/added for this line."
   }
  ],
  "exclusiveGroups": []
 }
+```

@@ -1,0 +1,1 @@
+Findings reported: 2 must-fix (clipped Specific Tax Matters text across all three rows in column (d), and blank Print Name/Title despite available data) plus 1 minor cosmetic issue (designee 1's address missing a line break before the city).

@@ -132,21 +132,33 @@ class CountedModelClient:
 
 
 def extract_json_array(text: str) -> list[Any]:
-    """Pull the first JSON array out of a model reply, tolerating code fences."""
+    """Pull the first JSON array out of a model reply, tolerating code fences.
+
+    Raises ModelCallFailed (never a bare JSONDecodeError) so callers' retry
+    machinery treats an unparseable reply like any other failed call — prose with
+    an incidental bracket ("dece[dent]") must not crash the run."""
     text = re.sub(r"```(?:json)?", "", text)
     start, end = text.find("["), text.rfind("]")
     if start == -1 or end <= start:
         raise ModelCallFailed(f"no JSON array in model reply: {text[:200]!r}")
-    return json.loads(text[start : end + 1])
+    try:
+        return json.loads(text[start : end + 1])
+    except json.JSONDecodeError as exc:
+        raise ModelCallFailed(f"invalid JSON array in model reply: {exc}") from exc
 
 
 def extract_json_object(text: str) -> dict[str, Any]:
-    """Pull the outermost JSON object out of a model reply, tolerating code fences."""
+    """Pull the outermost JSON object out of a model reply, tolerating code fences.
+
+    Same ModelCallFailed contract as extract_json_array."""
     text = re.sub(r"```(?:json)?", "", text)
     start, end = text.find("{"), text.rfind("}")
     if start == -1 or end <= start:
         raise ModelCallFailed(f"no JSON object in model reply: {text[:200]!r}")
-    return json.loads(text[start : end + 1])
+    try:
+        return json.loads(text[start : end + 1])
+    except json.JSONDecodeError as exc:
+        raise ModelCallFailed(f"invalid JSON object in model reply: {exc}") from exc
 
 
 client = CountedModelClient()

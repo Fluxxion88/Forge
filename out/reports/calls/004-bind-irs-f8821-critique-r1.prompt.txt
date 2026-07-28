@@ -1,6 +1,6 @@
-You are auditing a filled government form irs-f8821 (round 2).
+You are auditing a filled government form irs-f8821 (round 1).
 FIRST use the Read tool to view every rendered page:
-- page 0: /Users/fluxxion/untitled folder/Work_projects/Hackothons/Alix Hackathoon/forge/out/renders/irs-f8821/round-2-page-0.png
+- page 0: /Users/fluxxion/untitled folder/Work_projects/Hackothons/Alix Hackathoon/forge/out/renders/irs-f8821/round-1-page-0.png
 
 What each box on this form is FOR, from a separate calibration of the BLANK form:
 - page 0, unnumbered (text box): "Received by:" — IRS employee name who received the form (For IRS Use Only box).
@@ -159,8 +159,3 @@ correct). Each finding: {"target": "<item number or printed label>",
   clearly has supporting data among the estate facts; name the data
 An empty box with no available supporting data is correct, not a finding. Do not
 invent problems on a correct page.
-
-FORMAT: your ENTIRE reply must be the JSON array and nothing else — no prose, no
-summary sentence, no markdown heading. A reply that is not parseable JSON is
-discarded unread and the round is wasted. Do not read or edit any file other than
-the listed images.

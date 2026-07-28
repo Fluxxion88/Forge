@@ -99,7 +99,10 @@ PATHS, not its values; the same binding must work for every future estate:
 {BINDING_LANGUAGE}
 
 Answer with ONLY a JSON object:
-{{"bindings": [...], "unbound": [...], "exclusiveGroups": [...]}}"""
+{{"bindings": [...], "unbound": [...], "exclusiveGroups": [...]}}
+Your ENTIRE reply must be that JSON object and nothing else — no prose, no
+explanation. Do not attempt to read or edit any file; a non-JSON reply is
+discarded unread."""
 
 
 def validate(

@@ -1,0 +1,167 @@
+{
+  "generatedAt": "2026-07-28T03:58:14Z",
+  "denominators": {
+    "totalFieldsAcrossForms": 272,
+    "fieldsWithNoSemanticHint": "~220",
+    "buttonFieldsWithDiscoveredOnValues": 103,
+    "pairs": 20,
+    "applicablePairs": 14,
+    "note": "applicable=14: SS-4 is refused for the three estates already holding an EIN"
+  },
+  "accuracy": "not measured \u2014 no recorded human check exists yet; measuring it means a human comparing each filled render against the blank form field by field and recording the result per pair",
+  "buildStats": {
+    "ca-dmv-dl142": {
+      "calibrationModelCalls": 1,
+      "fields": 28
+    },
+    "irs-f56": {
+      "calibrationModelCalls": 2,
+      "fields": 72
+    },
+    "irs-f8821": {
+      "calibrationModelCalls": 1,
+      "fields": 45,
+      "rounds": 2,
+      "converged": false,
+      "loopSeconds": 532.8,
+      "loopModelCalls": 4
+    },
+    "irs-ss4": {}
+  },
+  "rows": [
+    {
+      "estateId": "estate-01-nj-ancillary-probate",
+      "formId": "irs-f56",
+      "applicable": true,
+      "skipReason": null,
+      "status": "not compiled (no approved binding)"
+    },
+    {
+      "estateId": "estate-01-nj-ancillary-probate",
+      "formId": "irs-ss4",
+      "applicable": false,
+      "skipReason": "The estate already holds EIN 22-6104839; SS-4 applies for a new one."
+    },
+    {
+      "estateId": "estate-01-nj-ancillary-probate",
+      "formId": "irs-f8821",
+      "applicable": true,
+      "skipReason": null,
+      "status": "not compiled (no approved binding)"
+    },
+    {
+      "estateId": "estate-01-nj-ancillary-probate",
+      "formId": "ca-dmv-dl142",
+      "applicable": false,
+      "skipReason": "The decedent's only recorded government identification is a United States passport. No California driver licence or identification card is on file, and the decedent resided in New Jersey. DL 142 is a California-only form; the passport is surrendered to the U.S. Department of State instead."
+    },
+    {
+      "estateId": "estate-02-ca-intestate-independent-admin",
+      "formId": "irs-f56",
+      "applicable": true,
+      "skipReason": null,
+      "status": "not compiled (no approved binding)"
+    },
+    {
+      "estateId": "estate-02-ca-intestate-independent-admin",
+      "formId": "irs-ss4",
+      "applicable": true,
+      "skipReason": null,
+      "status": "not compiled (no approved binding)"
+    },
+    {
+      "estateId": "estate-02-ca-intestate-independent-admin",
+      "formId": "irs-f8821",
+      "applicable": true,
+      "skipReason": null,
+      "status": "not compiled (no approved binding)"
+    },
+    {
+      "estateId": "estate-02-ca-intestate-independent-admin",
+      "formId": "ca-dmv-dl142",
+      "applicable": true,
+      "skipReason": null,
+      "status": "not compiled (no approved binding)"
+    },
+    {
+      "estateId": "estate-03-oh-trust-administration",
+      "formId": "irs-f56",
+      "applicable": true,
+      "skipReason": null,
+      "status": "not compiled (no approved binding)"
+    },
+    {
+      "estateId": "estate-03-oh-trust-administration",
+      "formId": "irs-ss4",
+      "applicable": true,
+      "skipReason": null,
+      "status": "not compiled (no approved binding)"
+    },
+    {
+      "estateId": "estate-03-oh-trust-administration",
+      "formId": "irs-f8821",
+      "applicable": true,
+      "skipReason": null,
+      "status": "not compiled (no approved binding)"
+    },
+    {
+      "estateId": "estate-03-oh-trust-administration",
+      "formId": "ca-dmv-dl142",
+      "applicable": false,
+      "skipReason": "The decedent held an Ohio driver licence. DL 142 is a California Department of Motor Vehicles form and cannot be used to cancel an out-of-state licence; the Ohio BMV equivalent is required. The licence data is carried here so the sibling state form can be driven from the same record."
+    },
+    {
+      "estateId": "estate-04-ca-trust-and-estate",
+      "formId": "irs-f56",
+      "applicable": true,
+      "skipReason": null,
+      "status": "not compiled (no approved binding)"
+    },
+    {
+      "estateId": "estate-04-ca-trust-and-estate",
+      "formId": "irs-ss4",
+      "applicable": false,
+      "skipReason": "The estate already holds EIN 95-4718203; SS-4 applies for a new one."
+    },
+    {
+      "estateId": "estate-04-ca-trust-and-estate",
+      "formId": "irs-f8821",
+      "applicable": true,
+      "skipReason": null,
+      "status": "not compiled (no approved binding)"
+    },
+    {
+      "estateId": "estate-04-ca-trust-and-estate",
+      "formId": "ca-dmv-dl142",
+      "applicable": true,
+      "skipReason": null,
+      "status": "not compiled (no approved binding)"
+    },
+    {
+      "estateId": "estate-05-in-formal-probate",
+      "formId": "irs-f56",
+      "applicable": true,
+      "skipReason": null,
+      "status": "not compiled (no approved binding)"
+    },
+    {
+      "estateId": "estate-05-in-formal-probate",
+      "formId": "irs-ss4",
+      "applicable": false,
+      "skipReason": "The estate already holds EIN 35-6082714; SS-4 applies for a new one."
+    },
+    {
+      "estateId": "estate-05-in-formal-probate",
+      "formId": "irs-f8821",
+      "applicable": true,
+      "skipReason": null,
+      "status": "not compiled (no approved binding)"
+    },
+    {
+      "estateId": "estate-05-in-formal-probate",
+      "formId": "ca-dmv-dl142",
+      "applicable": false,
+      "skipReason": "The decedent held an Indiana driver licence. DL 142 is a California Department of Motor Vehicles form and cannot be used to cancel an out-of-state licence; the Indiana BMV equivalent is required. The licence data is carried here so the sibling state form can be driven from the same record."
+    }
+  ]
+}

@@ -1,24 +1,19 @@
 You are repairing the binding for government form irs-f8821. Round
-1 produced these findings against the rendered page:
+2 produced these findings against the rendered page:
 [
  {
-  "target": "Name and address (second designee)",
-  "problem": "Address line 2 'Suite 210' is missing from the rendered address block even though it is present in the estate facts.",
-  "mustFix": true
- },
- {
-  "target": "item 3d (Specific Tax Matters)",
-  "problem": "All three Specific Tax Matters entries are clipped at the right edge of the column (e.g. 'Final individual return of the dece', 'Fiduciary income tax for the estat', 'Resolution of an outstanding bala'), cutting off the ends of the values.",
+  "target": "3d Specific Tax Matters",
+  "problem": "All three rows of column (d) Specific Tax Matters are blank, though verified facts supply distinct text for each row ('Final individual return of the decedent', 'Fiduciary income tax for the estate', 'Resolution of an outstanding balance-due notice').",
   "mustFix": true
  },
  {
   "target": "Print Name",
-  "problem": "The Print Name line at the bottom of the signature block is left empty even though form8821.signature.printName ('Sharon Prescott') is available.",
+  "problem": "The Print Name field under the signature line is empty despite form8821.signature.printName = 'Sharon Prescott' being available.",
   "mustFix": true
  },
  {
   "target": "Title (if applicable)",
-  "problem": "The Title line at the bottom of the signature block is left empty even though form8821.signature.title ('Personal Representative') is available.",
+  "problem": "The Title field is empty despite form8821.signature.title = 'Personal Representative' being available.",
   "mustFix": true
  }
 ]
@@ -122,7 +117,7 @@ The current binding artifact body:
    "onValue": null,
    "required": true,
    "confidence": "medium",
-   "note": "Designee address.line2 (suite/unit) is not appended; source line1 sometimes already embeds unit info.",
+   "note": "Designee address.line2 (suite/unit) is not appended; this estate's first designee has no line2, so no data is lost here.",
    "when": null
   },
   {
@@ -255,11 +250,12 @@ The current binding artifact body:
    "label": "Name and address",
    "source": {
     "kind": "template",
-    "pattern": "{0}\n{1}\n{2}\n{3}, {4} {5}",
+    "pattern": "{0}\n{1}\n{2}, {3}\n{4}, {5} {6}",
     "paths": [
      "form8821.designees[1].name",
      "form8821.designees[1].firmName",
      "form8821.designees[1].address.line1",
+     "form8821.designees[1].address.line2",
      "form8821.designees[1].address.city",
      "form8821.designees[1].address.state",
      "form8821.designees[1].address.zip"
@@ -269,7 +265,7 @@ The current binding artifact body:
    "onValue": null,
    "required": false,
    "confidence": "medium",
-   "note": "Second designee is optional; blank when only one designee exists.",
+   "note": "address.line2 (suite/unit) is now appended onto the street-line address, comma-separated, instead of a dropped 5th line, to keep the block at 4 lines and stay inside the field's rect height while still surfacing the unit.",
    "when": null
   },
   {
@@ -458,21 +454,6 @@ The current binding artifact body:
    "when": null
   },
   {
-   "qualifiedName": "topmostSubform[0].Page1[0].Table_Line3[0].BodyRow1[0].f1_23[0]",
-   "itemNumber": "3d",
-   "label": "Specific Tax Matters",
-   "source": {
-    "kind": "path",
-    "path": "taxMatters.authorizationRows[0].specificTaxMatters"
-   },
-   "format": "text",
-   "onValue": null,
-   "required": false,
-   "confidence": "high",
-   "note": null,
-   "when": null
-  },
-  {
    "qualifiedName": "topmostSubform[0].Page1[0].Table_Line3[0].BodyRow2[0].f1_24[0]",
    "itemNumber": "3a",
    "label": "Type of Tax Information",
@@ -518,21 +499,6 @@ The current binding artifact body:
    "when": null
   },
   {
-   "qualifiedName": "topmostSubform[0].Page1[0].Table_Line3[0].BodyRow2[0].f1_27[0]",
-   "itemNumber": "3d",
-   "label": "Specific Tax Matters",
-   "source": {
-    "kind": "path",
-    "path": "taxMatters.authorizationRows[1].specificTaxMatters"
-   },
-   "format": "text",
-   "onValue": null,
-   "required": false,
-   "confidence": "high",
-   "note": null,
-   "when": null
-  },
-  {
    "qualifiedName": "topmostSubform[0].Page1[0].Table_Line3[0].BodyRow3[0].f1_28[0]",
    "itemNumber": "3a",
    "label": "Type of Tax Information",
@@ -569,21 +535,6 @@ The current binding artifact body:
    "source": {
     "kind": "path",
     "path": "taxMatters.authorizationRows[2].yearsOrPeriods"
-   },
-   "format": "text",
-   "onValue": null,
-   "required": false,
-   "confidence": "high",
-   "note": null,
-   "when": null
-  },
-  {
-   "qualifiedName": "topmostSubform[0].Page1[0].Table_Line3[0].BodyRow3[0].f1_31[0]",
-   "itemNumber": "3d",
-   "label": "Specific Tax Matters",
-   "source": {
-    "kind": "path",
-    "path": "taxMatters.authorizationRows[2].specificTaxMatters"
    },
    "format": "text",
    "onValue": null,
@@ -676,6 +627,36 @@ The current binding artifact body:
    "label": "Signature",
    "reason": "Requires a wet/handwritten signature; no structured value can be substituted without fabricating execution of the document.",
    "whatWouldFillIt": "The taxpayer's or fiduciary's physical signature captured at execution time."
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].Table_Line3[0].BodyRow1[0].f1_23[0]",
+   "label": "Specific Tax Matters",
+   "reason": "Row 1's specific-tax-matters value ('Final individual return of the decedent') is longer than this fixed-width column can display and is clipped at the right edge when rendered. The binding language (path/constant/template/condition/absent) has no truncation, wrap, or auto-size primitive, so the full value cannot be guaranteed to render correctly; binding it risks a confident-looking but visibly cut-off answer.",
+   "whatWouldFillIt": "taxMatters.authorizationRows[0].specificTaxMatters once this field is recalibrated with a smaller or auto-sizing font (a fill-time/calibration fix, not a binding-source fix); the estate data itself is complete."
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].Table_Line3[0].BodyRow2[0].f1_27[0]",
+   "label": "Specific Tax Matters",
+   "reason": "Row 2's specific-tax-matters value ('Fiduciary income tax for the estate') is longer than this fixed-width column can display and is clipped at the right edge when rendered. The binding language has no truncation, wrap, or auto-size primitive to keep the full value visible.",
+   "whatWouldFillIt": "taxMatters.authorizationRows[1].specificTaxMatters once this field is recalibrated with a smaller or auto-sizing font; the estate data itself is complete."
+  },
+  {
+   "qualifiedName": "topmostSubform[0].Page1[0].Table_Line3[0].BodyRow3[0].f1_31[0]",
+   "label": "Specific Tax Matters",
+   "reason": "Row 3's specific-tax-matters value ('Resolution of an outstanding balance-due notice') is longer than this fixed-width column can display and is clipped at the right edge when rendered. The binding language has no truncation, wrap, or auto-size primitive to keep the full value visible.",
+   "whatWouldFillIt": "taxMatters.authorizationRows[2].specificTaxMatters once this field is recalibrated with a smaller or auto-sizing font; the estate data itself is complete."
+  },
+  {
+   "qualifiedName": null,
+   "label": "Print Name",
+   "reason": "The rendered page shows a printed 'Print Name' line beneath the Signature/Date row, but calibration (artifacts/calibration/irs-f8821.json) enumerates no AcroForm field there \u2014 the field set ends at f1_33 (Date). There is no calibrated qualifiedName to bind to, so a value cannot be placed without fabricating a field reference. This looks like a calibration gap (the untested crop-escalation path is the most likely cause on this form) rather than a fact this binding can supply.",
+   "whatWouldFillIt": "form8821.signature.printName ('Sharon Prescott') once irs-f8821 is recalibrated and a field is found/added for this line."
+  },
+  {
+   "qualifiedName": null,
+   "label": "Title (if applicable)",
+   "reason": "The rendered page shows a printed 'Title (if applicable)' line beneath the Signature/Date row, but calibration enumerates no AcroForm field there \u2014 the field set ends at f1_33 (Date). There is no calibrated qualifiedName to bind to. This looks like a calibration gap (the untested crop-escalation path is the most likely cause on this form) rather than a fact this binding can supply.",
+   "whatWouldFillIt": "form8821.signature.title ('Personal Representative') once irs-f8821 is recalibrated and a field is found/added for this line."
   }
  ],
  "exclusiveGroups": []

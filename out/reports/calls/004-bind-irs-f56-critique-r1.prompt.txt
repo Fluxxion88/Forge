@@ -110,15 +110,22 @@ support filling it):
 - Room or suite no.: estateEntity.mailingAddress.line2 is empty
 - Room or suite no.: fiduciary.address.line2 is empty
 - item 1b: no supporting data
+- item 1c: no supporting data
+- item 1d: no supporting data
 - item 1e: no supporting data
+- item 1f: no supporting data
+- item 1g: no supporting data
 - item 1g: authority.basisOtherDescription is empty
 - item 2b: guard failed: authority.basis != 'ValidTrustInstrument'
 - item 2c: no supporting data
 - item 2c: no supporting data
-- item 2d: guard failed: authority.assetsUnderCourtControl != False
+- item 2d: authority.transferredAssetsDescription is empty
 - item 3g: taxMatters.taxTypeOtherDescription is empty
 - item 4h: taxMatters.federalFormOtherList is empty
 - item 6a: no supporting data
+- item 6b: no supporting data
+- item 6c: no supporting data
+- item 6d: no supporting data
 - item 6d: form56.totalRevocation.reasonOtherDescription is empty
 - item 7a: no supporting data
 - item 7b: form56.partialRevocation.grantedToDateAndAddress is empty
@@ -126,6 +133,8 @@ support filling it):
 - item 8: form56.substituteFiduciary.namesAndAddresses is empty
 - Date: authority.proceeding.hearingDate is empty
 - Time: authority.proceeding.hearingTime is empty
+- a.m.: no supporting data
+- p.m.: no supporting data
 - Place of other proceedings: authority.proceeding.placeOfOtherProceedings is empty
 
 Judge the IMAGE against each box's printed purpose and the estate

@@ -1,24 +1,14 @@
 You are repairing the binding for government form irs-f8821. Round
-1 produced these findings against the rendered page:
+3 produced these findings against the rendered page:
 [
  {
-  "target": "Name and address (second designee)",
-  "problem": "Address line 2 'Suite 210' is missing from the rendered address block even though it is present in the estate facts.",
-  "mustFix": true
- },
- {
-  "target": "item 3d (Specific Tax Matters)",
-  "problem": "All three Specific Tax Matters entries are clipped at the right edge of the column (e.g. 'Final individual return of the dece', 'Fiduciary income tax for the estat', 'Resolution of an outstanding bala'), cutting off the ends of the values.",
-  "mustFix": true
- },
- {
   "target": "Print Name",
-  "problem": "The Print Name line at the bottom of the signature block is left empty even though form8821.signature.printName ('Sharon Prescott') is available.",
+  "problem": "The 'Print Name' box on line 6 is empty even though form8821.signature.printName = 'Sharon Prescott' is available.",
   "mustFix": true
  },
  {
   "target": "Title (if applicable)",
-  "problem": "The Title line at the bottom of the signature block is left empty even though form8821.signature.title ('Personal Representative') is available.",
+  "problem": "The 'Title (if applicable)' box on line 6 is empty even though form8821.signature.title = 'Personal Representative' is available.",
   "mustFix": true
  }
 ]
@@ -122,7 +112,7 @@ The current binding artifact body:
    "onValue": null,
    "required": true,
    "confidence": "medium",
-   "note": "Designee address.line2 (suite/unit) is not appended; source line1 sometimes already embeds unit info.",
+   "note": "Designee address.line2 (suite/unit) is not appended; this estate's first designee has no line2, so no data is lost here.",
    "when": null
   },
   {
@@ -255,11 +245,12 @@ The current binding artifact body:
    "label": "Name and address",
    "source": {
     "kind": "template",
-    "pattern": "{0}\n{1}\n{2}\n{3}, {4} {5}",
+    "pattern": "{0}\n{1}\n{2}, {3}\n{4}, {5} {6}",
     "paths": [
      "form8821.designees[1].name",
      "form8821.designees[1].firmName",
      "form8821.designees[1].address.line1",
+     "form8821.designees[1].address.line2",
      "form8821.designees[1].address.city",
      "form8821.designees[1].address.state",
      "form8821.designees[1].address.zip"
@@ -269,7 +260,7 @@ The current binding artifact body:
    "onValue": null,
    "required": false,
    "confidence": "medium",
-   "note": "Second designee is optional; blank when only one designee exists.",
+   "note": "address.line2 (suite/unit) is now appended onto the street-line address, comma-separated, instead of a dropped 5th line, to keep the block at 4 lines and stay inside the field's rect height while still surfacing the unit.",
    "when": null
   },
   {
@@ -467,9 +458,9 @@ The current binding artifact body:
    },
    "format": "text",
    "onValue": null,
-   "required": false,
-   "confidence": "high",
-   "note": null,
+   "required": true,
+   "confidence": "medium",
+   "note": "Value may exceed this fixed-width column's comfortable display width and could render clipped at the right edge; binding it anyway because the data is fully known and required, and blank is a worse outcome than a possibly tight fit. Flag for a calibration follow-up (smaller/auto-sized font) rather than leaving unbound.",
    "when": null
   },
   {
@@ -528,8 +519,8 @@ The current binding artifact body:
    "format": "text",
    "onValue": null,
    "required": false,
-   "confidence": "high",
-   "note": null,
+   "confidence": "medium",
+   "note": "Value may exceed this fixed-width column's comfortable display width and could render clipped at the right edge; binding it anyway because the data is fully known, and blank is a worse outcome than a possibly tight fit. Flag for a calibration follow-up (smaller/auto-sized font). Blank when fewer than 2 authorization rows exist.",
    "when": null
   },
   {
@@ -588,8 +579,8 @@ The current binding artifact body:
    "format": "text",
    "onValue": null,
    "required": false,
-   "confidence": "high",
-   "note": null,
+   "confidence": "medium",
+   "note": "Value may exceed this fixed-width column's comfortable display width and could render clipped at the right edge; binding it anyway because the data is fully known, and blank is a worse outcome than a possibly tight fit. Flag for a calibration follow-up (smaller/auto-sized font). Blank when fewer than 3 authorization rows exist.",
    "when": null
   },
   {
@@ -676,6 +667,18 @@ The current binding artifact body:
    "label": "Signature",
    "reason": "Requires a wet/handwritten signature; no structured value can be substituted without fabricating execution of the document.",
    "whatWouldFillIt": "The taxpayer's or fiduciary's physical signature captured at execution time."
+  },
+  {
+   "qualifiedName": null,
+   "label": "Print Name",
+   "reason": "The rendered page shows a printed 'Print Name' line beneath the Signature/Date row, but calibration (artifacts/calibration/irs-f8821.json) enumerates no AcroForm field there \u2014 the field set ends at f1_33 (Date). There is no calibrated qualifiedName to bind to, so a value cannot be placed without fabricating a field reference, which the binding language forbids (qualifiedName must be a calibrated field's qualifiedName, verbatim). This is still a calibration gap, not something a second binding pass can resolve \u2014 recalibrating irs-f8821 (the untested crop-escalation path is the most likely cause) is required before this finding can close.",
+   "whatWouldFillIt": "form8821.signature.printName ('Sharon Prescott') once irs-f8821 is recalibrated and a field is found/added for this line."
+  },
+  {
+   "qualifiedName": null,
+   "label": "Title (if applicable)",
+   "reason": "The rendered page shows a printed 'Title (if applicable)' line beneath the Signature/Date row, but calibration enumerates no AcroForm field there \u2014 the field set ends at f1_33 (Date). There is no calibrated qualifiedName to bind to. This is still a calibration gap, not something a second binding pass can resolve \u2014 recalibrating irs-f8821 is required before this finding can close.",
+   "whatWouldFillIt": "form8821.signature.title ('Personal Representative') once irs-f8821 is recalibrated and a field is found/added for this line."
   }
  ],
  "exclusiveGroups": []

@@ -76,6 +76,58 @@ Verified estate facts this filling must agree with:
 - authority.proceeding.courtAddress.zip = '46204'
 - form56.signature.title = 'Personal Representative'
 - taxMatters.authorizationRows[0].taxFormNumber = '1040'
+- form8821.taxpayerNameAndAddressBlock = 'Estate of Walter Dean Prescott\nc/o Sharon Prescott, Personal Representative\n3204 Adams Street\nIndianapolis, IN 46221'
+- form8821.taxpayerIdentificationNumbers = '35-6082714'
+- estateEntity.daytimePhone.number = '(317) 555-0154'
+- form8821.additionalDesigneesAttached = False
+- form8821.authorizeIntermediateServiceProvider = False
+- form8821.specificUseNotRecordedOnCaf = False
+- form8821.retainPriorAuthorizations = True
+- form8821.signature.printName = 'Sharon Prescott'
+- form8821.signature.title = 'Personal Representative'
+- form8821.signature.date = '2026-08-03'
+- form8821.designees[0].name = 'Marguerite T. Holloway'
+- form8821.designees[0].firmName = 'Holloway Estate Law LLC'
+- form8821.designees[0].address.line1 = '151 N'
+- form8821.designees[0].address.line2 = None
+- form8821.designees[0].address.city = 'Indianapolis'
+- form8821.designees[0].address.state = 'IN'
+- form8821.designees[0].address.zip = '46221'
+- form8821.designees[0].cafNumber = '2871-40119R'
+- form8821.designees[0].ptin = 'P00583612'
+- form8821.designees[0].phone.number = '(317) 555-0108'
+- form8821.designees[0].faxNumber = None
+- form8821.designees[0].sendCopiesOfNotices = True
+- form8821.designees[0].isNewAddress = False
+- form8821.designees[0].isNewPhone = False
+- form8821.designees[0].isNewFax = False
+- form8821.designees[1].name = 'Curtis Alan Reddick'
+- form8821.designees[1].firmName = 'Reddick & Associates'
+- form8821.designees[1].address.line1 = '1450 W. Meade Road 210'
+- form8821.designees[1].address.line2 = 'Suite 210'
+- form8821.designees[1].address.city = 'Morgantown'
+- form8821.designees[1].address.state = 'IN'
+- form8821.designees[1].address.zip = '46160'
+- form8821.designees[1].cafNumber = '2871-55207R'
+- form8821.designees[1].ptin = 'P01120884'
+- form8821.designees[1].phone.number = '(812) 555-0143'
+- form8821.designees[1].faxNumber = '(812) 555-0144'
+- form8821.designees[1].sendCopiesOfNotices = False
+- form8821.designees[1].isNewAddress = True
+- form8821.designees[1].isNewPhone = False
+- form8821.designees[1].isNewFax = False
+- taxMatters.authorizationRows[0].typeOfTaxInformation = 'Income'
+- taxMatters.authorizationRows[0].taxFormNumber = '1040'
+- taxMatters.authorizationRows[0].yearsOrPeriods = '2024, 2025, 2026'
+- taxMatters.authorizationRows[0].specificTaxMatters = 'Final individual return of the decedent'
+- taxMatters.authorizationRows[1].typeOfTaxInformation = 'Income'
+- taxMatters.authorizationRows[1].taxFormNumber = '1041'
+- taxMatters.authorizationRows[1].yearsOrPeriods = '2026'
+- taxMatters.authorizationRows[1].specificTaxMatters = 'Fiduciary income tax for the estate'
+- taxMatters.authorizationRows[2].typeOfTaxInformation = 'Civil Penalty'
+- taxMatters.authorizationRows[2].taxFormNumber = '1040'
+- taxMatters.authorizationRows[2].yearsOrPeriods = '2024, 2025'
+- taxMatters.authorizationRows[2].specificTaxMatters = 'Resolution of an outstanding balance-due notice'
 
 Boxes the filler left empty on purpose (flag one only if the facts above clearly
 support filling it):
@@ -107,3 +159,8 @@ correct). Each finding: {"target": "<item number or printed label>",
   clearly has supporting data among the estate facts; name the data
 An empty box with no available supporting data is correct, not a finding. Do not
 invent problems on a correct page.
+
+FORMAT: your ENTIRE reply must be the JSON array and nothing else — no prose, no
+summary sentence, no markdown heading. A reply that is not parseable JSON is
+discarded unread and the round is wasted. Do not read or edit any file other than
+the listed images.

@@ -40,7 +40,12 @@ correct). Each finding: {"target": "<item number or printed label>",
 - a box left EMPTY — even one on the deliberately-empty list — whose printed purpose
   clearly has supporting data among the estate facts; name the data
 An empty box with no available supporting data is correct, not a finding. Do not
-invent problems on a correct page."""
+invent problems on a correct page.
+
+FORMAT: your ENTIRE reply must be the JSON array and nothing else — no prose, no
+summary sentence, no markdown heading. A reply that is not parseable JSON is
+discarded unread and the round is wasted. Do not read or edit any file other than
+the listed images."""
 
 
 def _box_table(cal: dict[str, Any]) -> str:
@@ -125,7 +130,10 @@ The estate record (bind to PATHS, not values):
 Revise the binding to address every finding. Keep everything that is correct. If a
 finding cannot be fixed with the five source kinds plus when-guards, move that field
 to "unbound" with an explanation — never approximate.
-Answer with ONLY a JSON object: {{"bindings": [...], "unbound": [...], "exclusiveGroups": [...]}}"""
+Answer with ONLY a JSON object: {{"bindings": [...], "unbound": [...], "exclusiveGroups": [...]}}
+Your ENTIRE reply must be that JSON object and nothing else — no prose, no
+explanation. Do not attempt to read or edit any file; a non-JSON reply is
+discarded unread."""
     def call_and_parse() -> dict[str, Any]:
         # Same retry-on-unparseable contract as the critique (docs/05 §2).
         reply = llm.client.call(
@@ -186,6 +194,32 @@ FORM_SUMMARY_KEYS: dict[str, list[str]] = {
             "typeOfTaxInformation", "taxFormNumber", "yearsOrPeriods",
             "specificTaxMatters",
         )
+    ],
+    # added by MAIN ahead of the ss4 lane, same failure mode as f8821: without
+    # these, the critique calls genuine formSS4.* values fabricated
+    "irs-ss4": [
+        "estateEntity.careOfName", "estateEntity.entityKind",
+        "estateEntity.mailingAddress.line1", "estateEntity.mailingAddress.line2",
+        "estateEntity.mailingAddress.city", "estateEntity.mailingAddress.state",
+        "estateEntity.mailingAddress.zip",
+        "estateEntity.physicalAddress.line1", "estateEntity.physicalAddress.city",
+        "estateEntity.physicalAddress.state", "estateEntity.physicalAddress.zip",
+        "estateEntity.principalCounty", "estateEntity.principalState",
+        "estateEntity.daytimePhone.number",
+        "formSS4.entityType", "formSS4.entityTypeQualifier",
+        "formSS4.isLlc", "formSS4.llcMemberCount", "formSS4.llcOrganizedInUs",
+        "formSS4.reasonForApplying", "formSS4.reasonSpecify",
+        "formSS4.businessStartOrAcquiredDate", "formSS4.closingMonthOfAccountingYear",
+        "formSS4.firstWagesPaidDate", "formSS4.expectedEmployees.agricultural",
+        "formSS4.expectedEmployees.household", "formSS4.expectedEmployees.other",
+        "formSS4.electForm944", "formSS4.principalActivity",
+        "formSS4.principalActivityOther", "formSS4.principalLineOfMerchandiseOrServices",
+        "formSS4.hasEverAppliedForEin", "formSS4.previousEin",
+        "formSS4.thirdPartyDesignee.name", "formSS4.thirdPartyDesignee.phone.number",
+        "formSS4.thirdPartyDesignee.faxNumber",
+        "formSS4.applicant.printedName", "formSS4.applicant.title",
+        "formSS4.applicant.phone.number", "formSS4.applicant.faxNumber",
+        "formSS4.applicant.signatureDate",
     ],
 }
 

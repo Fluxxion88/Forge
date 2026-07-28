@@ -77,6 +77,12 @@ def cmd_fill(args: argparse.Namespace) -> int:
     return run_fill(args.form, args.estate, via=args.via)
 
 
+def cmd_demo(args: argparse.Namespace) -> int:
+    from .demo import build_all
+
+    return build_all()
+
+
 def cmd_anvil_register(args: argparse.Namespace) -> int:
     import json
 
@@ -158,6 +164,9 @@ def build_parser() -> argparse.ArgumentParser:
 
     p = sub.add_parser("bench", help="run every applicable (estate, form) pair; write report")
     p.set_defaults(func=cmd_bench)
+
+    p = sub.add_parser("demo", help="assemble demo assets under out/demo/")
+    p.set_defaults(func=cmd_demo)
 
     return parser
 

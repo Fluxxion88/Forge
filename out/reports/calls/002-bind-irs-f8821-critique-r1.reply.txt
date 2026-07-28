@@ -1,17 +1,1 @@
-Looking at the rendered page against the calibration and estate facts:
-
-**Findings:**
-
-1. **Signature date (08/03/2026)** — No estate fact supports this date; it doesn't match `authority.dateOfAppointment` (2026-07-28) or any other provided date, and it's in the future relative to today (2026-07-27). This looks like an invented value rather than one left empty per the "unknown is not false" rule.
-
-2. **Second designee's address (Curtis Alan Reddick)** — Reads "1450 W. Meade Road 210" then a second line "Suite 210", duplicating the suite number. The street line appears to have absorbed the suite number and then repeated it on its own line.
-
-3. **Item 3(d) "Specific Tax Matters" column, all three rows** — Text is truncated at the right edge of the box in every row ("...of the dece", "...for the estat", "...outstanding bala"), consistent with content overflowing the field's rectangle rather than being cropped by the page.
-
-```json
-[
-  {"target": "Date (signature block)", "problem": "Signature date 08/03/2026 has no supporting estate fact and is later than the current date, suggesting an invented value.", "mustFix": true},
-  {"target": "Name and address (second designee)", "problem": "Curtis Alan Reddick's address duplicates the suite number, showing '1450 W. Meade Road 210' followed by a redundant 'Suite 210' line.", "mustFix": true},
-  {"target": "3d, Specific Tax Matters", "problem": "Text in all three rows of the Specific Tax Matters column is truncated/clipped at the box edge (e.g. 'Final individual return of the dece').", "mustFix": true}
-]
-```
+[{"target": "Name and address (second designee)", "problem": "Address line 2 'Suite 210' is missing from the rendered address block even though it is present in the estate facts.", "mustFix": true}, {"target": "item 3d (Specific Tax Matters)", "problem": "All three Specific Tax Matters entries are clipped at the right edge of the column (e.g. 'Final individual return of the dece', 'Fiduciary income tax for the estat', 'Resolution of an outstanding bala'), cutting off the ends of the values.", "mustFix": true}, {"target": "Print Name", "problem": "The Print Name line at the bottom of the signature block is left empty even though form8821.signature.printName ('Sharon Prescott') is available.", "mustFix": true}, {"target": "Title (if applicable)", "problem": "The Title line at the bottom of the signature block is left empty even though form8821.signature.title ('Personal Representative') is available.", "mustFix": true}]

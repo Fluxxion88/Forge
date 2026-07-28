@@ -681,3 +681,6 @@ Rules:
 
 Answer with ONLY a JSON object:
 {"bindings": [...], "unbound": [...], "exclusiveGroups": [...]}
+Your ENTIRE reply must be that JSON object and nothing else — no prose, no
+explanation. Do not attempt to read or edit any file; a non-JSON reply is
+discarded unread.
