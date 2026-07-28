@@ -1,0 +1,67 @@
+You are calibrating page 0 of government form irs-f56.
+
+First use the Read tool to view BOTH images:
+- image A (every text field filled with a unique sentinel token): /Users/fluxxion/untitled folder/Work_projects/Hackothons/Alix Hackathoon/forge/out/renders/irs-f56/sentinel-text-page-0.png
+- image B (every checkbox ticked): /Users/fluxxion/untitled folder/Work_projects/Hackothons/Alix Hackathoon/forge/out/renders/irs-f56/sentinel-btn-page-0.png
+
+Entries on this page:
+- id=Z002  text box showing the token "Z002"  pixelBbox=[75, 221, 778, 250]
+- id=Z003  text box showing the token "Z003"  pixelBbox=[780, 221, 975, 250]
+- id=Z004  text box showing the token "Z004"  pixelBbox=[975, 221, 1200, 250]
+- id=Z005  text box showing the token "Z005"  pixelBbox=[75, 271, 1048, 300]
+- id=Z006  text box showing the token "Z006"  pixelBbox=[1050, 271, 1200, 300]
+- id=Z007  text box showing the token "Z007"  pixelBbox=[75, 321, 568, 350]
+- id=Z008  text box showing the token "Z008"  pixelBbox=[572, 321, 778, 350]
+- id=Z009  text box showing the token "Z009"  pixelBbox=[782, 321, 988, 350]
+- id=Z010  text box showing the token "Z010"  pixelBbox=[990, 321, 1200, 350]
+- id=Z011  text box showing the token "Z011"  pixelBbox=[75, 371, 943, 400]
+- id=Z012  text box showing the token "Z012"  pixelBbox=[945, 371, 1200, 400]
+- id=Z013  text box showing the token "Z013"  pixelBbox=[75, 421, 1048, 450]
+- id=Z014  text box showing the token "Z014"  pixelBbox=[1050, 421, 1200, 450]
+- id=Z015  text box showing the token "Z015"  pixelBbox=[75, 471, 568, 500]
+- id=Z016  text box showing the token "Z016"  pixelBbox=[572, 471, 778, 500]
+- id=Z017  text box showing the token "Z017"  pixelBbox=[782, 471, 988, 500]
+- id=Z018  text box showing the token "Z018"  pixelBbox=[990, 471, 1200, 500]
+- id=B0  checkbox (shown ticked in image B)  pixelBbox=[135, 554, 152, 571]
+- id=B1  checkbox (shown ticked in image B)  pixelBbox=[135, 579, 152, 596]
+- id=B2  checkbox (shown ticked in image B)  pixelBbox=[135, 604, 152, 621]
+- id=B3  checkbox (shown ticked in image B)  pixelBbox=[135, 629, 152, 646]
+- id=B4  checkbox (shown ticked in image B)  pixelBbox=[135, 654, 152, 671]
+- id=B5  checkbox (shown ticked in image B)  pixelBbox=[135, 679, 152, 696]
+- id=B6  checkbox (shown ticked in image B)  pixelBbox=[135, 704, 152, 721]
+- id=Z026  text box showing the token "Z026"  pixelBbox=[315, 700, 1200, 725]
+- id=Z027  text box showing the token "Z027"  pixelBbox=[600, 725, 855, 750]
+- id=Z028  text box showing the token "Z028"  pixelBbox=[135, 775, 1200, 825]
+- id=B7  checkbox (shown ticked in image B)  pixelBbox=[1056, 854, 1073, 871]
+- id=B8  checkbox (shown ticked in image B)  pixelBbox=[1131, 854, 1148, 871]
+- id=Z031  text box showing the token "Z031"  pixelBbox=[135, 900, 1200, 1000]
+- id=B9  checkbox (shown ticked in image B)  pixelBbox=[450, 1030, 467, 1046]
+- id=B10  checkbox (shown ticked in image B)  pixelBbox=[570, 1030, 587, 1046]
+- id=B11  checkbox (shown ticked in image B)  pixelBbox=[660, 1030, 677, 1046]
+- id=B12  checkbox (shown ticked in image B)  pixelBbox=[765, 1030, 782, 1046]
+- id=B13  checkbox (shown ticked in image B)  pixelBbox=[1065, 1030, 1082, 1046]
+- id=B14  checkbox (shown ticked in image B)  pixelBbox=[150, 1055, 167, 1071]
+- id=B15  checkbox (shown ticked in image B)  pixelBbox=[255, 1055, 272, 1071]
+- id=Z039  text box showing the token "Z039"  pixelBbox=[435, 1050, 1200, 1075]
+- id=B16  checkbox (shown ticked in image B)  pixelBbox=[561, 1079, 578, 1096]
+- id=B17  checkbox (shown ticked in image B)  pixelBbox=[726, 1079, 743, 1096]
+- id=B18  checkbox (shown ticked in image B)  pixelBbox=[891, 1079, 908, 1096]
+- id=B19  checkbox (shown ticked in image B)  pixelBbox=[1011, 1079, 1028, 1096]
+- id=B20  checkbox (shown ticked in image B)  pixelBbox=[156, 1104, 173, 1121]
+- id=B21  checkbox (shown ticked in image B)  pixelBbox=[366, 1104, 383, 1121]
+- id=B22  checkbox (shown ticked in image B)  pixelBbox=[471, 1104, 488, 1121]
+- id=B23  checkbox (shown ticked in image B)  pixelBbox=[576, 1104, 593, 1121]
+- id=Z048  text box showing the token "Z048"  pixelBbox=[705, 1100, 1200, 1125]
+- id=B24  checkbox (shown ticked in image B)  pixelBbox=[1177, 1129, 1193, 1146]
+- id=Z050  text box showing the token "Z050"  pixelBbox=[135, 1175, 1200, 1225]
+
+For every entry report:
+- itemNumber: the item number/letter printed on the paper next to that field, e.g. "1b", "7a", "9". null if the form does not number that area.
+- printedLabel: the caption printed on the form for that field, verbatim. null if none.
+- meaning: one short plain-English sentence saying what belongs in the field.
+- confidence: "high" | "medium" | "low".
+
+Rules:
+- Locate text fields by their unique token; verify with the pixel bounding box (origin top-left, 150 dpi). Locate checkboxes by bounding box in image B.
+- If you cannot locate an entry or cannot read its caption, return null values with confidence "low". NEVER guess: a wrong itemNumber is worse than a missing one, because a reviewer trusts it.
+- Answer with ONLY a JSON array: [{"id": ..., "itemNumber": ..., "printedLabel": ..., "meaning": ..., "confidence": ...}, ...] — one object per entry, ids exactly as given.

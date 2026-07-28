@@ -1,0 +1,32 @@
+```json
+[
+  {"id": "B0", "itemNumber": null, "printedLabel": "Print", "meaning": "Button that prints the form; not a data field.", "confidence": "high"},
+  {"id": "B1", "itemNumber": null, "printedLabel": "Clear Form", "meaning": "Button that clears all form fields; not a data field.", "confidence": "high"},
+  {"id": "Z003", "itemNumber": null, "printedLabel": "ADDRESS", "meaning": "Street address of the person whose license or ID card is being cancelled.", "confidence": "high"},
+  {"id": "Z005", "itemNumber": null, "printedLabel": "CITY", "meaning": "City of the person whose license or ID card is being cancelled.", "confidence": "high"},
+  {"id": "Z007", "itemNumber": null, "printedLabel": "STATE", "meaning": "State of the person whose license or ID card is being cancelled.", "confidence": "high"},
+  {"id": "Z009", "itemNumber": null, "printedLabel": "ZIP CODE", "meaning": "Zip code of the person whose license or ID card is being cancelled.", "confidence": "high"},
+  {"id": "Z011", "itemNumber": null, "printedLabel": "LICENSE OR ID CARD NUMBER TO BE CANCELLED", "meaning": "The license or ID card number being cancelled or surrendered.", "confidence": "high"},
+  {"id": "Z013", "itemNumber": null, "printedLabel": "DATE OF BIRTH", "meaning": "Date of birth of the person whose license or ID card is being cancelled.", "confidence": "high"},
+  {"id": "B2", "itemNumber": null, "printedLabel": "Lost/destroyed", "meaning": "Check if the license/ID card is lost or destroyed.", "confidence": "high"},
+  {"id": "B3", "itemNumber": null, "printedLabel": "Attached", "meaning": "Check if the license/ID card is attached to this form.", "confidence": "high"},
+  {"id": "B4", "itemNumber": null, "printedLabel": "Other (explain on reverse)", "meaning": "Check if the license/ID card's location is something else, explained on the back of the form.", "confidence": "high"},
+  {"id": "B5", "itemNumber": null, "printedLabel": "Driver License (DL)", "meaning": "Check to voluntarily surrender and request cancellation of the driver license.", "confidence": "high"},
+  {"id": "B6", "itemNumber": null, "printedLabel": "Identification Card (ID)", "meaning": "Check to voluntarily surrender and request cancellation of the identification card.", "confidence": "high"},
+  {"id": "Z025", "itemNumber": null, "printedLabel": "Reason for the cancellation or surrender:", "meaning": "Free-text explanation of why the license or ID is being cancelled or surrendered.", "confidence": "high"},
+  {"id": "B7", "itemNumber": null, "printedLabel": "Yes", "meaning": "Check yes if the license is in the minor's possession.", "confidence": "high"},
+  {"id": "B8", "itemNumber": null, "printedLabel": "No", "meaning": "Check no if the license is not in the minor's possession.", "confidence": "high"},
+  {"id": "B9", "itemNumber": null, "printedLabel": "Yes", "meaning": "Check yes if there is a change in custody of the minor.", "confidence": "high"},
+  {"id": "B10", "itemNumber": null, "printedLabel": "No", "meaning": "Check no if there is no change in custody of the minor.", "confidence": "high"},
+  {"id": "B11", "itemNumber": null, "printedLabel": "I signed the minor's application for a license.", "meaning": "Check if the person completing the form signed the minor's license application.", "confidence": "high"},
+  {"id": "B12", "itemNumber": null, "printedLabel": "I did not sign the application but I gave written consent to the issuance of the minor's license.", "meaning": "Check if the person did not sign the application but gave written consent to the minor's license.", "confidence": "high"},
+  {"id": "B13", "itemNumber": null, "printedLabel": "I did not sign the application but now have custody of the minor.", "meaning": "Check if the person did not sign the application but now has custody of the minor.", "confidence": "high"},
+  {"id": "Z041", "itemNumber": null, "printedLabel": "PRINT YOUR NAME", "meaning": "Printed name of the person completing the form.", "confidence": "high"},
+  {"id": "Z043", "itemNumber": null, "printedLabel": "ADDRESS", "meaning": "Address of the person completing the form.", "confidence": "high"},
+  {"id": "Z045", "itemNumber": null, "printedLabel": "OFFICE NUMBER", "meaning": "DMV office number of the employee signing the form.", "confidence": "high"},
+  {"id": "Z047", "itemNumber": null, "printedLabel": "DATE", "meaning": "Date the DMV employee signed the form.", "confidence": "high"},
+  {"id": "Z048", "itemNumber": null, "printedLabel": "NAME OF PERSON AS SHOWN ON THE LICENSE OR IDENTIFICATION CARD TO BE CANCELLED", "meaning": "Full name as it appears on the license or ID card being cancelled.", "confidence": "high"},
+  {"id": "Z049", "itemNumber": null, "printedLabel": "DATE", "meaning": "Date the person completing the form signed it (top copy of the form).", "confidence": "high"},
+  {"id": "Z050", "itemNumber": null, "printedLabel": "DATE", "meaning": "Date the person completing the form signed it (bottom tear-off copy of the form).", "confidence": "high"}
+]
+```

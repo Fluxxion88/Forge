@@ -1,0 +1,27 @@
+```json
+[
+  {"id":"B25","itemNumber":"6a","printedLabel":"Check this box if you are revoking or terminating all prior notices concerning fiduciary relationships on file with the Internal Revenue Service for the same tax matters and years or periods covered by this notice concerning fiduciary relationship","meaning":"Check if this notice revokes/terminates all prior fiduciary relationship notices on file for the same tax matters and years/periods.","confidence":"high"},
+  {"id":"B26","itemNumber":"6b","printedLabel":"Court order revoking fiduciary authority","meaning":"Check if the reason for termination is a court order revoking fiduciary authority.","confidence":"high"},
+  {"id":"B27","itemNumber":"6c","printedLabel":"Certificate of dissolution or termination of a business entity","meaning":"Check if the reason for termination is a certificate of dissolution or termination of a business entity.","confidence":"high"},
+  {"id":"B28","itemNumber":"6d","printedLabel":"Other. Describe:","meaning":"Check if the reason for termination is some other reason, to be described in the field below.","confidence":"high"},
+  {"id":"Z056","itemNumber":"6d","printedLabel":"Other. Describe:","meaning":"Free-text description of the other reason for termination of the fiduciary relationship.","confidence":"high"},
+  {"id":"B29","itemNumber":"7a","printedLabel":"Check this box if you are revoking earlier notices concerning fiduciary relationships on file with the Internal Revenue Service for the same tax matters and years or periods covered by this notice concerning fiduciary relationship","meaning":"Check if this notice partially revokes earlier fiduciary relationship notices on file for the same tax matters and years/periods.","confidence":"high"},
+  {"id":"Z058","itemNumber":"7b","printedLabel":"Specify to whom granted, date, and address, including ZIP code.","meaning":"Name, date, and address (with ZIP code) of the party to whom the fiduciary authority being partially revoked was originally granted.","confidence":"high"},
+  {"id":"B30","itemNumber":"8","printedLabel":"Check this box if a new fiduciary or fiduciaries have been or will be substituted for the revoking or terminating fiduciary and specify the name(s) and address(es), including ZIP code(s), of the new fiduciary(ies)","meaning":"Check if a substitute fiduciary has been or will be appointed in place of the revoking/terminating fiduciary.","confidence":"high"},
+  {"id":"Z060","itemNumber":"8","printedLabel":"specify the name(s) and address(es), including ZIP code(s), of the new fiduciary(ies)","meaning":"Name(s) and address(es) (with ZIP code(s)) of the substitute fiduciary or fiduciaries.","confidence":"high"},
+  {"id":"Z061","itemNumber":null,"printedLabel":"Name of court (if other than a court proceeding, identify the type of proceeding and name of agency)","meaning":"Name of the court handling the proceeding, or if not a court proceeding, the type of proceeding and name of the agency.","confidence":"high"},
+  {"id":"Z062","itemNumber":null,"printedLabel":"Date proceeding initiated","meaning":"Date the court or administrative proceeding was initiated.","confidence":"high"},
+  {"id":"Z063","itemNumber":null,"printedLabel":"Address of court (number and street)","meaning":"Street address (number and street) of the court.","confidence":"high"},
+  {"id":"Z064","itemNumber":null,"printedLabel":"Room or suite no.","meaning":"Room or suite number of the court address.","confidence":"high"},
+  {"id":"Z065","itemNumber":null,"printedLabel":"Docket number of proceeding","meaning":"Docket number assigned to the court or administrative proceeding.","confidence":"high"},
+  {"id":"Z066","itemNumber":null,"printedLabel":"City or town","meaning":"City or town of the court's address.","confidence":"high"},
+  {"id":"Z067","itemNumber":null,"printedLabel":"State","meaning":"State of the court's address.","confidence":"high"},
+  {"id":"Z068","itemNumber":null,"printedLabel":"ZIP code","meaning":"ZIP code of the court's address.","confidence":"high"},
+  {"id":"Z069","itemNumber":null,"printedLabel":"Date","meaning":"Date associated with the proceeding (in the court address/details row).","confidence":"high"},
+  {"id":"Z071","itemNumber":null,"printedLabel":"Time","meaning":"Time of the proceeding, paired with the a.m./p.m. checkboxes.","confidence":"high"},
+  {"id":"B31","itemNumber":null,"printedLabel":"a.m.","meaning":"Check if the proceeding time entered is a.m.","confidence":"high"},
+  {"id":"B32","itemNumber":null,"printedLabel":"p.m.","meaning":"Check if the proceeding time entered is p.m.","confidence":"high"},
+  {"id":"Z074","itemNumber":null,"printedLabel":"Place of other proceedings","meaning":"Location/place of the proceeding if not a standard court proceeding.","confidence":"high"},
+  {"id":"Z075","itemNumber":null,"printedLabel":"Title, if applicable","meaning":"The fiduciary's title (e.g., executor, trustee), if applicable, entered next to the signature.","confidence":"high"}
+]
+```

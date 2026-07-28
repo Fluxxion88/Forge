@@ -62,6 +62,15 @@ Instruct the model explicitly that a sentinel it cannot locate must be returned 
 `confidence: low` and nulls, never with a guess. A wrong `itemNumber` is worse than a missing one,
 because a reviewer trusts it.
 
+**Crop escalation.** After the whole-page pass, any field that returned `confidence: low`
+**or no `printedLabel`** is re-queried from a crop: re-render around each of the field's
+widget rectangles, extended ~120pt to the left and ~40pt vertically so the printed caption
+is in frame. Batch at most 4 crops per call, with at most 2 calls in flight.
+
+A null `itemNumber` alone must **never** trigger escalation — many forms number nothing at
+all (DL 142 is one), and on those the trigger fires for every field on the page. A field
+that is still unlabelled after escalation goes to `unresolved`; it is not retried further.
+
 ### 1.4 Output
 
 `artifacts/calibration/<formId>.json`

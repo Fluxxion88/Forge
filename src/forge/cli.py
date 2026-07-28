@@ -60,7 +60,9 @@ def cmd_mock_workorder(args: argparse.Namespace) -> int:
 
 
 def cmd_calibrate(args: argparse.Namespace) -> int:
-    return _not_built("calibrate")
+    from .calibrate import calibrate
+
+    return calibrate(args.form)
 
 
 def cmd_bind(args: argparse.Namespace) -> int:

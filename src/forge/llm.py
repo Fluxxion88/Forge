@@ -10,14 +10,27 @@ Calibration and binding synthesis are allowed to call. `forge fill` runs inside
 
 from __future__ import annotations
 
+import json
+import os
+import re
+import subprocess
 import threading
 from contextlib import contextmanager
 from dataclasses import dataclass, field
 from typing import Any, Iterator
 
+from .registry import REPORTS_DIR
+
+DEFAULT_MODEL = os.environ.get("FORGE_MODEL", "sonnet")
+CALL_LOG_DIR = REPORTS_DIR / "calls"
+
 
 class ModelCallForbidden(RuntimeError):
     """Raised when a model call is attempted inside the fill path."""
+
+
+class ModelCallFailed(RuntimeError):
+    """The transport ran but did not return usable output."""
 
 
 @dataclass
@@ -41,7 +54,7 @@ class CountedModelClient:
         with self._lock:
             self.calls.clear()
 
-    def _record(self, purpose: str, model: str, images: int) -> None:
+    def _record(self, purpose: str, model: str, images: int) -> int:
         with self._lock:
             if self.forbidden:
                 raise ModelCallForbidden(
@@ -49,17 +62,82 @@ class CountedModelClient:
                     "the fill path must be deterministic"
                 )
             self.calls.append(CallRecord(purpose=purpose, model=model, images=images))
+            return len(self.calls)
 
-    def call(self, *, purpose: str, model: str, images: int = 0, **_: Any) -> Any:
-        """Placeholder for the real transport, wired in phase 1.
+    def call(
+        self,
+        *,
+        purpose: str,
+        prompt: str,
+        model: str = DEFAULT_MODEL,
+        images: int = 0,
+        timeout: int = 180,
+    ) -> str:
+        """One counted vision/text call, transported through the `claude` CLI.
 
-        It counts first and raises second, so the zero-call guarantee is enforced
-        before any provider code exists.
+        The prompt names any image paths and instructs the model to Read them; the
+        only tool allowed to the subprocess is Read. Counting happens before the
+        transport runs, so a forbidden call is refused before it can do anything.
         """
-        self._record(purpose, model, images)
-        raise NotImplementedError(
-            "no model transport is wired yet; phase 1 (calibration) adds it"
+        seq = self._record(purpose, model, images)
+        self._log(seq, purpose, "prompt", prompt)
+        try:
+            reply = self._transport(purpose, prompt, model, timeout)
+        except Exception as exc:
+            self._log(seq, purpose, "error", f"{type(exc).__name__}: {exc}")
+            raise
+        self._log(seq, purpose, "reply", reply)
+        return reply
+
+    @staticmethod
+    def _log(seq: int, purpose: str, kind: str, text: str) -> str:
+        """Every prompt and every raw reply lands on disk before anything parses it."""
+        slug = re.sub(r"[^A-Za-z0-9]+", "-", purpose).strip("-")
+        CALL_LOG_DIR.mkdir(parents=True, exist_ok=True)
+        path = CALL_LOG_DIR / f"{seq:03d}-{slug}.{kind}.txt"
+        path.write_text(text, encoding="utf-8")
+        return str(path)
+
+    def _transport(self, purpose: str, prompt: str, model: str, timeout: int) -> str:
+        try:
+            proc = self._spawn(prompt, model, timeout)
+        except subprocess.TimeoutExpired as exc:
+            raise ModelCallFailed(f"{purpose!r} timed out after {timeout}s") from exc
+        if proc.returncode != 0:
+            raise ModelCallFailed(
+                f"claude CLI exited {proc.returncode} for {purpose!r}: {proc.stderr[:500]}"
+            )
+        try:
+            envelope = json.loads(proc.stdout)
+            result = envelope["result"]
+        except (json.JSONDecodeError, KeyError) as exc:
+            raise ModelCallFailed(f"unparseable CLI envelope for {purpose!r}: {exc}") from exc
+        if not isinstance(result, str) or not result.strip():
+            raise ModelCallFailed(f"empty model result for {purpose!r}")
+        return result
+
+    def _spawn(self, prompt: str, model: str, timeout: int):
+        return subprocess.run(
+            [
+                "claude", "-p",
+                "--output-format", "json",
+                "--model", model,
+                "--allowedTools", "Read",
+            ],
+            input=prompt,
+            capture_output=True,
+            text=True,
+            timeout=timeout,
         )
+
+
+def extract_json_array(text: str) -> list[Any]:
+    """Pull the first JSON array out of a model reply, tolerating code fences."""
+    text = re.sub(r"```(?:json)?", "", text)
+    start, end = text.find("["), text.rfind("]")
+    if start == -1 or end <= start:
+        raise ModelCallFailed(f"no JSON array in model reply: {text[:200]!r}")
+    return json.loads(text[start : end + 1])
 
 
 client = CountedModelClient()

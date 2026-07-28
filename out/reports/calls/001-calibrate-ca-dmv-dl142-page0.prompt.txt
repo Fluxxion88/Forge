@@ -1,0 +1,48 @@
+You are calibrating page 0 of government form ca-dmv-dl142.
+
+First use the Read tool to view BOTH images:
+- image A (every text field filled with a unique sentinel token): /Users/fluxxion/untitled folder/Work_projects/Hackothons/Alix Hackathoon/forge/out/renders/ca-dmv-dl142/sentinel-text-page-0.png
+- image B (every checkbox ticked): /Users/fluxxion/untitled folder/Work_projects/Hackothons/Alix Hackathoon/forge/out/renders/ca-dmv-dl142/sentinel-btn-page-0.png
+
+NOTE: this page prints the form TWICE (an identical tear-off copy below a cut line). An entry listing two bounding boxes is ONE field rendered in both copies — report it once. Entries with a single bounding box that look alike across the two copies are DIFFERENT fields; disambiguate by bounding box.
+
+Entries on this page:
+- id=B0  checkbox (shown ticked in image B)  pixelBbox=[394, 1593, 536, 1641] tooltipHint="click here to print"
+- id=B1  checkbox (shown ticked in image B)  pixelBbox=[539, 1593, 681, 1641] tooltipHint="click here to clear"
+- id=Z003  text box showing the token "Z003"  appears 2 times (one field, duplicate copies) at pixelBboxes=[[255, 235, 731, 271], [257, 1053, 732, 1089]] tooltipHint="enter address"
+- id=Z005  text box showing the token "Z005"  appears 2 times (one field, duplicate copies) at pixelBboxes=[[733, 237, 1035, 271], [735, 1055, 1040, 1089]] tooltipHint="city"
+- id=Z007  text box showing the token "Z007"  appears 2 times (one field, duplicate copies) at pixelBboxes=[[1039, 237, 1100, 272], [1043, 1053, 1105, 1089]] tooltipHint="state"
+- id=Z009  text box showing the token "Z009"  appears 2 times (one field, duplicate copies) at pixelBboxes=[[1102, 237, 1227, 271], [1108, 1055, 1228, 1089]] tooltipHint="zip code"
+- id=Z011  text box showing the token "Z011"  appears 2 times (one field, duplicate copies) at pixelBboxes=[[254, 288, 615, 322], [256, 1104, 616, 1138]] tooltipHint="license or id card number to be cancelled"
+- id=Z013  text box showing the token "Z013"  appears 2 times (one field, duplicate copies) at pixelBboxes=[[621, 287, 742, 321], [621, 1105, 738, 1140]] tooltipHint="type in date of birth"
+- id=B2  checkbox (shown ticked in image B)  appears 2 times (one field, duplicate copies) at pixelBboxes=[[747, 296, 764, 313], [748, 1112, 765, 1130]] tooltipHint="check if license is lost or destroyed"
+- id=B3  checkbox (shown ticked in image B)  appears 2 times (one field, duplicate copies) at pixelBboxes=[[894, 296, 911, 313], [894, 1112, 911, 1130]] tooltipHint="check if license is attached"
+- id=B4  checkbox (shown ticked in image B)  appears 2 times (one field, duplicate copies) at pixelBboxes=[[1002, 296, 1017, 313], [1001, 1112, 1017, 1130]] tooltipHint="Check if location of license is other, please explain on reverse"
+- id=B5  checkbox (shown ticked in image B)  appears 2 times (one field, duplicate copies) at pixelBboxes=[[750, 327, 767, 344], [750, 1143, 767, 1160]] tooltipHint="Voluntary surrender or cancellation of a D L or I D Card. I voluntarily surrender and request the cancellation of my driver license. Check if driver license."
+- id=B6  checkbox (shown ticked in image B)  appears 2 times (one field, duplicate copies) at pixelBboxes=[[979, 327, 997, 344], [979, 1143, 996, 1160]] tooltipHint="or check if voluntarily surrender and request the cancellation of my identification card."
+- id=Z025  text box showing the token "Z025"  appears 2 times (one field, duplicate copies) at pixelBboxes=[[610, 363, 1200, 386], [607, 1179, 1201, 1203]] tooltipHint="reason for the cancellation or surrender"
+- id=B7  checkbox (shown ticked in image B)  appears 2 times (one field, duplicate copies) at pixelBboxes=[[624, 401, 642, 419], [626, 1219, 642, 1235]] tooltipHint="person cancelling minor child's application or driver license section. Is the license in the minors possession? Check if yes."
+- id=B8  checkbox (shown ticked in image B)  appears 2 times (one field, duplicate copies) at pixelBboxes=[[704, 403, 722, 419], [704, 1219, 721, 1235]] tooltipHint="Check if no."
+- id=B9  checkbox (shown ticked in image B)  appears 2 times (one field, duplicate copies) at pixelBboxes=[[624, 426, 642, 445], [626, 1244, 642, 1260]] tooltipHint="Is there a change in custody of the minor? Check if yes."
+- id=B10  checkbox (shown ticked in image B)  appears 2 times (one field, duplicate copies) at pixelBboxes=[[704, 426, 722, 443], [704, 1244, 721, 1260]] tooltipHint="Check if no."
+- id=B11  checkbox (shown ticked in image B)  appears 2 times (one field, duplicate copies) at pixelBboxes=[[334, 490, 353, 511], [336, 1310, 352, 1327]] tooltipHint="I certify under penalty of perjury under the laws of the state of California that, check one. Check if I signed the minors application for a license."
+- id=B12  checkbox (shown ticked in image B)  appears 2 times (one field, duplicate copies) at pixelBboxes=[[335, 518, 354, 535], [336, 1336, 352, 1352]] tooltipHint="Checki if I did not sign the application, but I gave written consent to the issuance of the minor's license."
+- id=B13  checkbox (shown ticked in image B)  appears 2 times (one field, duplicate copies) at pixelBboxes=[[335, 546, 355, 565], [338, 1362, 352, 1379]] tooltipHint="Check if I did not sign the application, but now have custody of the minor."
+- id=Z041  text box showing the token "Z041"  appears 2 times (one field, duplicate copies) at pixelBboxes=[[255, 589, 1223, 629], [255, 1404, 1227, 1444]] tooltipHint="Signature of person completing the form. Print your name."
+- id=Z043  text box showing the token "Z043"  appears 2 times (one field, duplicate copies) at pixelBboxes=[[255, 692, 1225, 728], [255, 1506, 1227, 1542]] tooltipHint="print address of person completing the form"
+- id=Z045  text box showing the token "Z045"  appears 2 times (one field, duplicate copies) at pixelBboxes=[[855, 743, 1054, 775], [852, 1559, 1075, 1591]] tooltipHint="print office number of DMV employee signing the form"
+- id=Z047  text box showing the token "Z047"  appears 2 times (one field, duplicate copies) at pixelBboxes=[[1059, 741, 1224, 775], [1077, 1557, 1224, 1591]] tooltipHint="print date of DMV employee signing the form"
+- id=Z048  text box showing the token "Z048"  appears 2 times (one field, duplicate copies) at pixelBboxes=[[254, 186, 1226, 222], [256, 1004, 1227, 1040]] tooltipHint="Information about the document being cancelled or surrendered section. NAME OF PERSON AS SHOWN ON THE LICENSE OR IDENTIFICATION CARD TO BE CANCELLED"
+- id=Z049  text box showing the token "Z049"  pixelBbox=[1063, 644, 1228, 680] tooltipHint="Enter date of signature."
+- id=Z050  text box showing the token "Z050"  pixelBbox=[1066, 1459, 1226, 1496] tooltipHint="Enter date of signature."
+
+For every entry report:
+- itemNumber: the item number/letter printed on the paper next to that field, e.g. "1b", "7a", "9". null if the form does not number that area.
+- printedLabel: the caption printed on the form for that field, verbatim. null if none.
+- meaning: one short plain-English sentence saying what belongs in the field.
+- confidence: "high" | "medium" | "low".
+
+Rules:
+- Locate text fields by their unique token; verify with the pixel bounding box (origin top-left, 150 dpi). Locate checkboxes by bounding box in image B.
+- If you cannot locate an entry or cannot read its caption, return null values with confidence "low". NEVER guess: a wrong itemNumber is worse than a missing one, because a reviewer trusts it.
+- Answer with ONLY a JSON array: [{"id": ..., "itemNumber": ..., "printedLabel": ..., "meaning": ..., "confidence": ...}, ...] — one object per entry, ids exactly as given.
